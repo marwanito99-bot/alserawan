@@ -1245,7 +1245,7 @@ function switchNews(p,btn){
 }
 /* ============ MWM PRODUCTS CATALOGUE ENGINE ============ */
 /* غيّر هذا الرابط برابط CSV المنشور من Google Sheet الخاص بك */
-var PC_CSV_URL = 'PASTE_YOUR_GOOGLE_SHEET_CSV_URL_HERE';
+var PC_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRTEYaED31Eun6Tnq8K9xoipYJO5oB_yF3NavzevBRfsFnXs7Y75xqVHP3JH0VbYw/pub?gid=572362026&single=true&output=csv';
 var PC_PER_PAGE = 10;
 var pcAll=[], pcView=[], pcCat='ALL', pcPage=1, pcLoaded=false;
 
@@ -1305,6 +1305,10 @@ function pcLoad(){
       if(!v||!pcNorm(v[iM])) continue;
       var st=pcNorm(v[iS]).toLowerCase();
       if(st==='hidden') continue;
+      // تجاهل صف الأسماء العربية المساعدة
+      if(pcNorm(v[iM])==='الموديل'||st==='الحالة') continue;
+      // تجاهل أي صف بلا اسم إنجليزي (صف مساعد أو فارغ)
+      if(!pcNorm(v[iEN])||pcNorm(v[iEN])==='الاسم إنجليزي') continue;
       var o={ model:pcNorm(v[iM]), cat:pcNorm(v[iC]), order:parseInt(pcNorm(v[iO]))||999,
         en:pcNorm(v[iEN]), ar:pcNorm(v[iAR]), cn:pcNorm(v[iCN]), badge:pcNorm(v[iB]),
         desc:iD>=0?pcNorm(v[iD]):'', img:iImg>=0?pcNorm(v[iImg]):'',
@@ -1393,7 +1397,7 @@ function pcPager(pages){
 function pcGo(n){
   pcPage=n; pcRender();
   var s=document.getElementById('pc-section');
-  if(s) s.scrollIntoView({behavior:'smooth',block:'start'});
+  if(s && s.scrollIntoView) try{ s.scrollIntoView({behavior:'smooth',block:'start'}) }catch(e){}
 }
 function pcOpen(i){
   var p=pcAll[i]; if(!p) return;
