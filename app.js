@@ -230,7 +230,7 @@ function pcLoad(){
 
 function pcRenderDemo(){
   var g=document.getElementById('pcGrid');
-  if(g) g.innerHTML='<div class="pc-empty"><span class="en">Product catalogue is being updated. Please contact us for the latest range.</span><span class="ar-t">يجري تحديث كتالوج المنتجات. تواصل معنا لأحدث التشكيلة.</span><span class="cn-t">产品目录正在更新中，请联系我们获取最新系列。</span><br><br><a class="pc-ask" href="mailto:mwm.management@alserawan.com?subject=Product%20Enquiry">Contact Us →</a></div>';
+  if(g) g.innerHTML='<div class="pc-empty"><span class="en">Product catalogue is being updated. Please contact us for the latest range.</span><span class="ar-t">يجري تحديث كتالوج المنتجات. تواصل معنا لأحدث التشكيلة.</span><span class="cn-t">产品目录正在更新中，请联系我们获取最新系列。</span><br><br><a class="pc-ask" href="mailto:info.mwm@alserawan.com?subject=Product%20Enquiry">Contact Us →</a></div>';
   var c=document.getElementById('pcCount'); if(c) c.textContent='';
   var p=document.getElementById('pcPager'); if(p) p.innerHTML='';
 }
@@ -329,7 +329,7 @@ function pcOpen(i){
     +(feats?'<div class="pc-box-lbl"><span class="en">Key Features</span><span class="ar-t">المميزات</span><span class="cn-t">主要特点</span></div><ul class="pc-feat">'+feats+'</ul>':'')
     +'</div></div>'
     +(specs?'<div style="padding:0 1.8rem 1.5rem"><div class="pc-box-lbl"><span class="en">Specifications</span><span class="ar-t">المواصفات</span><span class="cn-t">技术参数</span></div><table class="pc-spec">'+specs+'</table></div>':'')
-    +'<div class="pc-box-bot"><a class="pc-ask" href="mailto:mwm.management@alserawan.com?subject='+subj+'"><span class="en">Enquire About This Product →</span><span class="ar-t">استفسر عن هذا المنتج ←</span><span class="cn-t">咨询此产品 →</span></a>'
+    +'<div class="pc-box-bot"><a class="pc-ask" href="mailto:info.mwm@alserawan.com?subject='+subj+'"><span class="en">Enquire About This Product →</span><span class="ar-t">استفسر عن هذا المنتج ←</span><span class="cn-t">咨询此产品 →</span></a>'
     +(p.warr?'<span class="pc-warr">✓ '+p.warr+' warranty</span>':'')+'</div>';
   document.getElementById('pcBox').innerHTML=h;
   document.getElementById('pcModal').classList.add('on');
@@ -360,7 +360,7 @@ function jumpSvc(n){
 }
 function dlProfile(e){
   e.preventDefault();
-  alert('Company Profile PDF\n\nTo receive the full company profile, please contact us:\n\n📧 mwm.management@alserawan.com\n📱 +963 994 483 331 (UAE)\n💬 WeChat: wxid_xbg1ew2vblr812');
+  alert('Company Profile PDF\n\nTo receive the full company profile, please contact us:\n\n📧 info.mwm@alserawan.com\n📱 +963 994 483 331 (UAE)\n💬 WeChat: wxid_xbg1ew2vblr812');
 }
 
 
@@ -598,7 +598,7 @@ function displayResult(s,products){
   if(s['Notes']){document.getElementById('notesContent').textContent=s['Notes'];document.getElementById('notesSection').style.display='block'}
 
   document.getElementById('waLink').href='https://wa.me/963994483331?text=Hi MWM, help with '+s['Tracking #'];
-  document.getElementById('emailLink').href='mailto:mwm.management@alserawan.com?subject=Shipment '+s['Tracking #'];
+  document.getElementById('emailLink').href='mailto:info.mwm@alserawan.com?subject=Shipment '+s['Tracking #'];
   document.getElementById('result').classList.add('show');
   document.getElementById('result').scrollIntoView({behavior:'smooth'});
 }
