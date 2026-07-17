@@ -259,8 +259,20 @@ function pcFilter(){
   });
   pcPage=1; pcRender();
 }
+function pcImgSrc(p){
+  var u=(p||'').trim();
+  if(!u) return '';
+  // رابط خارجي كامل — نتركه كما هو
+  if(/^(https?:)?\/\//i.test(u)||u.indexOf('data:')===0) return u;
+  // مسار مطلق من جذر الموقع
+  if(u.charAt(0)==='/') return u;
+  // مسار نسبي (images/x.jpg) — نضيف جذر الموقع ليعمل من أي صفحة
+  var root=(typeof SITE_ROOT!=='undefined')?SITE_ROOT:'';
+  return root+u;
+}
 function pcImgHTML(p){
-  if(p.img) return '<img src="'+p.img+'" alt="'+p.en+'" loading="lazy" onerror="this.parentNode.innerHTML=pcPhHTML()"/>';
+  var src=pcImgSrc(p.img);
+  if(src) return '<img src="'+src+'" alt="'+p.en+'" loading="lazy" onerror="this.parentNode.innerHTML=pcPhHTML()"/>';
   return pcPhHTML();
 }
 function pcPhHTML(){
@@ -309,7 +321,7 @@ function pcOpen(i){
   var specs=p.specs.map(function(s){return '<tr><td>'+s[0]+'</td><td>'+s[1]+'</td></tr>'}).join('');
   var subj=encodeURIComponent('Product Enquiry - '+p.model+' ('+p.en+')');
   var h='<button class="pc-close" onclick="pcCloseModal()">×</button>'
-    +'<div class="pc-box-top"><div class="pc-box-img">'+(p.img?'<img src="'+p.img+'" alt="'+p.en+'"/>':pcPhHTML())+'</div>'
+    +'<div class="pc-box-top"><div class="pc-box-img">'+(pcImgSrc(p.img)?'<img src="'+pcImgSrc(p.img)+'" alt="'+p.en+'"/>':pcPhHTML())+'</div>'
     +'<div class="pc-box-info"><div class="pc-box-model">'+p.model+'</div>'
     +'<div class="pc-box-name">'+p.en+'</div>'
     +'<div class="pc-box-loc">'+(p.ar||'')+(p.cn?' · '+p.cn:'')+'</div>'
