@@ -264,13 +264,13 @@ body.ar .ar-b{display:block}
 
 /* ===== MODERN ANIMATIONS ===== */
 
-/* Scroll Reveal */
-.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
-.reveal-left.visible{opacity:1;transform:translateX(0)}
-.reveal-right{opacity:0;transform:translateX(32px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
-.reveal-right.visible{opacity:1;transform:translateX(0)}
+/* Scroll Reveal — only active after JS init */
+.reveal-ready{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.reveal-ready.visible{opacity:1;transform:translateY(0)}
+.reveal-left-ready{opacity:0;transform:translateX(-32px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.reveal-left-ready.visible{opacity:1;transform:translateX(0)}
+.reveal-right-ready{opacity:0;transform:translateX(32px);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.reveal-right-ready.visible{opacity:1;transform:translateX(0)}
 .reveal-delay-1{transition-delay:.1s}
 .reveal-delay-2{transition-delay:.2s}
 .reveal-delay-3{transition-delay:.3s}

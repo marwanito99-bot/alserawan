@@ -18,19 +18,28 @@ else mwmLoadImages();
 
 /* ===== SCROLL REVEAL ===== */
 (function(){
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+
   function initReveal(){
-    var els=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
-    if(!els.length) return;
-    var io=new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
-      });
-    },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
-    els.forEach(function(el){io.observe(el);});
+    // Swap class name so CSS activates (prevents flash of invisible content)
+    document.querySelectorAll('.reveal').forEach(function(el){
+      el.classList.add('reveal-ready'); io.observe(el);
+    });
+    document.querySelectorAll('.reveal-left').forEach(function(el){
+      el.classList.add('reveal-left-ready'); io.observe(el);
+    });
+    document.querySelectorAll('.reveal-right').forEach(function(el){
+      el.classList.add('reveal-right-ready'); io.observe(el);
+    });
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initReveal);
   else initReveal();
-  document.addEventListener('pagechange',initReveal);
+  // Re-run when SPA page changes
+  document.addEventListener('pagechange',function(){setTimeout(initReveal,50);});
 })();
 
 /* ===== STATS COUNTER ===== */
