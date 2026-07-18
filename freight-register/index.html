@@ -1147,20 +1147,21 @@ function submitForm(){
     textData['file_warehouse_b64'] = warehouse.b64;
     textData['file_warehouse_name']= warehouse.name;
 
-    // Send via fetch no-cors — all data is text/base64 so URLSearchParams works fine
+    // Build URLSearchParams object (browser sets Content-Type automatically — no custom headers needed)
+    var params = new URLSearchParams();
+    Object.keys(textData).forEach(function(k){ params.append(k, textData[k]); });
+
     fetch(SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: new URLSearchParams(textData).toString()
+      body: params
     }).then(function(){
       document.getElementById('fw-loading').classList.remove('show');
       showSuccess();
-    }).catch(function(err){
-      // no-cors resolves even on redirect; catch = real network failure
+    }).catch(function(){
       document.getElementById('fw-loading').classList.remove('show');
-      var msgs={en:'Network error. Please check your connection and try again.',ar:'خطأ في الشبكة. تحقق من اتصالك وحاول مجدداً.',cn:'网络错误，请检查连接后重试。'};
-      alert(msgs[lang]);
+      var m={en:'Connection error. Please try again.',ar:'خطأ في الاتصال. حاول مرة أخرى.',cn:'连接错误，请重试。'};
+      alert(m[lang]);
     });
   }).catch(function(err){
     document.getElementById('fw-loading').classList.remove('show');
