@@ -7,6 +7,19 @@
 // Click the dropdown next to ▶ Run → select "testDriveAccess" → Run
 // Google will show a permission dialog → click Allow
 // ─────────────────────────────────────────────────────────────────
+// RUN THIS to verify Sheet access is working
+function testSheetAccess() {
+  try {
+    var SHEET_ID = '1ZpX143c5awE9Reg541MLzWITAym6axUKfLPGdZVUmJ8';
+    var sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
+    Logger.log('✅ Sheet found: ' + sheet.getName());
+    sheet.appendRow(['✅ TEST ROW — delete me', new Date()]);
+    Logger.log('✅ Row written successfully. Row count: ' + sheet.getLastRow());
+  } catch(err) {
+    Logger.log('❌ Sheet error: ' + err.toString());
+  }
+}
+
 function testDriveAccess() {
   try {
     var folder = DriveApp.createFolder('_TEST_DRIVE_ACCESS_DELETE_ME_');
