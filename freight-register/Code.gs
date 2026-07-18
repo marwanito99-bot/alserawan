@@ -2,6 +2,22 @@
 // Google Apps Script
 // Extensions > Apps Script > Code.gs > Deploy > New deployment > Web app > Anyone > Deploy
 
+// ─────────────────────────────────────────────────────────────────
+// RUN THIS FUNCTION ONCE from the editor to grant Drive permission:
+// Click the dropdown next to ▶ Run → select "testDriveAccess" → Run
+// Google will show a permission dialog → click Allow
+// ─────────────────────────────────────────────────────────────────
+function testDriveAccess() {
+  try {
+    var folder = DriveApp.createFolder('_TEST_DRIVE_ACCESS_DELETE_ME_');
+    Logger.log('✅ Drive permission GRANTED. Folder URL: ' + folder.getUrl());
+    folder.setTrashed(true);
+    Logger.log('✅ Test folder deleted. You can now redeploy safely.');
+  } catch(err) {
+    Logger.log('❌ Drive permission NOT granted: ' + err.toString());
+  }
+}
+
 function doPost(e) {
 
   // ── 1. Parse POST body ───────────────────────────────────────────
