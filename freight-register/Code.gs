@@ -47,7 +47,9 @@ function doPost(e) {
   }
 
   // ── 2. Get sheet ─────────────────────────────────────────────────
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  // Use openById so this works as a standalone script (not bound to the spreadsheet)
+  var SHEET_ID = '1ZpX143c5awE9Reg541MLzWITAym6axUKfLPGdZVUmJ8';
+  var sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
 
   // ── 3. Add headers on first use ──────────────────────────────────
   var HEADERS = [
