@@ -1095,78 +1095,81 @@ function readFileAsBase64(file){
 
 function submitForm(){
   var lang=document.body.classList.contains('ar')?'ar':document.body.classList.contains('cn')?'cn':'en';
+
+  // CR file required
   var crFile=document.getElementById('file-cr');
   if(!crFile.files||!crFile.files.length){
     var msgs={en:'Please upload your Commercial Registration (required).',ar:'يرجى رفع السجل التجاري (مطلوب).',cn:'请上传营业执照（必填）。'};
     alert(msgs[lang]);
-    crFile.closest('.fw-field').scrollIntoView({behavior:'smooth',block:'center'});
     return;
   }
+
   document.getElementById('fw-loading').classList.add('show');
+
   if(SCRIPT_URL==='YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'){
     setTimeout(function(){document.getElementById('fw-loading').classList.remove('show');showSuccess();},1500);
     return;
   }
 
-  // Collect all file inputs for base64 encoding
-  var fileInputs={
-    file_cr:    document.getElementById('file-cr').files[0]    || null,
-    file_logo:  document.getElementById('file-logo').files[0]  || null,
-    file_profile: document.getElementById('file-profile').files[0] || null,
-    file_warehouse: document.getElementById('file-warehouse').files[0] || null
-  };
-
+  // Read all files as base64, then submit via hidden form
   Promise.all([
-    readFileAsBase64(fileInputs.file_cr),
-    readFileAsBase64(fileInputs.file_logo),
-    readFileAsBase64(fileInputs.file_profile),
-    readFileAsBase64(fileInputs.file_warehouse)
+    readFileAsBase64(document.getElementById('file-cr').files[0]||null),
+    readFileAsBase64(document.getElementById('file-logo').files[0]||null),
+    readFileAsBase64(document.getElementById('file-profile').files[0]||null),
+    readFileAsBase64(document.getElementById('file-warehouse').files[0]||null)
   ]).then(function(results){
     var cr=results[0], logo=results[1], profile=results[2], warehouse=results[3];
 
-    // Collect all text form data (excluding file inputs)
-    var fd = new FormData(document.getElementById('fw-form'));
+    // Collect text fields
+    var fd=new FormData(document.getElementById('fw-form'));
     var textData={};
     fd.forEach(function(val,key){
-      // skip the raw file entries — we'll send base64 instead
       if(key==='file_cr'||key==='file_logo'||key==='file_profile'||key==='file_warehouse')return;
-      if(textData[key]){
-        textData[key]=textData[key]+', '+val;
-      } else {
-        textData[key]=val;
-      }
+      textData[key]=textData[key]?textData[key]+', '+val:val;
     });
 
-    // Add base64 file fields
-    textData['file_cr_b64']        = cr.b64;
-    textData['file_cr_name']       = cr.name;
-    textData['file_logo_b64']      = logo.b64;
-    textData['file_logo_name']     = logo.name;
-    textData['file_profile_b64']   = profile.b64;
-    textData['file_profile_name']  = profile.name;
-    textData['file_warehouse_b64'] = warehouse.b64;
-    textData['file_warehouse_name']= warehouse.name;
+    // Attach base64 files
+    textData['file_cr_b64']=cr.b64;         textData['file_cr_name']=cr.name;
+    textData['file_logo_b64']=logo.b64;     textData['file_logo_name']=logo.name;
+    textData['file_profile_b64']=profile.b64; textData['file_profile_name']=profile.name;
+    textData['file_warehouse_b64']=warehouse.b64; textData['file_warehouse_name']=warehouse.name;
 
-    // Build URLSearchParams object (browser sets Content-Type automatically — no custom headers needed)
-    var params = new URLSearchParams();
-    Object.keys(textData).forEach(function(k){ params.append(k, textData[k]); });
+    // Build hidden iframe + form (bypasses CORS entirely — native form POST)
+    var uid='fw-'+Date.now();
+    var iframe=document.createElement('iframe');
+    iframe.name=uid; iframe.id=uid; iframe.style.display='none';
+    document.body.appendChild(iframe);
 
-    fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: params
-    }).then(function(){
+    var hForm=document.createElement('form');
+    hForm.method='POST'; hForm.action=SCRIPT_URL;
+    hForm.target=uid; hForm.style.display='none';
+
+    Object.keys(textData).forEach(function(k){
+      var inp=document.createElement('input');
+      inp.type='hidden'; inp.name=k; inp.value=textData[k];
+      hForm.appendChild(inp);
+    });
+    document.body.appendChild(hForm);
+
+    // Success: show after 8s timeout (iframe onload unreliable cross-origin)
+    // whichever fires first wins
+    var done=false;
+    function finish(){
+      if(done)return; done=true;
       document.getElementById('fw-loading').classList.remove('show');
       showSuccess();
-    }).catch(function(){
-      document.getElementById('fw-loading').classList.remove('show');
-      var m={en:'Connection error. Please try again.',ar:'خطأ في الاتصال. حاول مرة أخرى.',cn:'连接错误，请重试。'};
-      alert(m[lang]);
-    });
-  }).catch(function(err){
+      try{document.body.removeChild(hForm);}catch(x){}
+      try{document.body.removeChild(iframe);}catch(x){}
+    }
+    setTimeout(finish, 8000);
+    iframe.onload=finish;
+
+    hForm.submit();
+
+  }).catch(function(){
     document.getElementById('fw-loading').classList.remove('show');
-    var msgs={en:'An error occurred while preparing files. Please try again.',ar:'حدث خطأ أثناء تحضير الملفات. حاول مرة أخرى.',cn:'准备文件时出错，请重试。'};
-    alert(msgs[lang]);
+    var m={en:'Error reading files. Please try again.',ar:'خطأ في قراءة الملفات. حاول مجدداً.',cn:'读取文件错误，请重试。'};
+    alert(m[lang]);
   });
 }
 
