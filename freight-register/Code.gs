@@ -59,12 +59,25 @@ function doPost(e) {
   ];
 
   if (sheet.getLastRow() === 0) {
+    // Fresh sheet — write all headers
     sheet.appendRow(HEADERS);
     sheet.getRange(1, 1, 1, HEADERS.length)
          .setFontWeight('bold')
          .setBackground('#1d00f4')
          .setFontColor('#ffffff');
     sheet.setFrozenRows(1);
+  } else {
+    // Sheet already has headers — check if Drive URL columns are missing and add them
+    var existingHeaders = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+    var lastExisting = existingHeaders.length;
+    if (lastExisting < HEADERS.length) {
+      var missingHeaders = HEADERS.slice(lastExisting);
+      sheet.getRange(1, lastExisting + 1, 1, missingHeaders.length)
+           .setValues([missingHeaders])
+           .setFontWeight('bold')
+           .setBackground('#1d00f4')
+           .setFontColor('#ffffff');
+    }
   }
 
   // ── 4. Build & save text row FIRST ──────────────────────────────
