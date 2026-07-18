@@ -1,119 +1,111 @@
 // Al Serawan Group — Freight Partner Registration
-// Google Apps Script
+// Google Apps Script — bound to the Freight Partner Applications spreadsheet
 // Extensions > Apps Script > Code.gs > Deploy > New deployment > Web app > Anyone > Deploy
 
-// ─────────────────────────────────────────────────────────────────
-// RUN THIS FUNCTION ONCE from the editor to grant Drive permission:
-// Click the dropdown next to ▶ Run → select "testDriveAccess" → Run
-// Google will show a permission dialog → click Allow
-// ─────────────────────────────────────────────────────────────────
-// RUN THIS to verify Sheet access is working
+var SHEET_ID = '1ZpX143c5awE9Reg541MLzWITAym6axUKfLPGdZVUmJ8';
+var ROOT_FOLDER_NAME = 'Freight Partner Applications';
+
+var HEADERS = [
+  'Timestamp','Company Name','Brand Name','Year Founded','City',
+  'Countries','Office Address','Website','Social Media',
+  'Contact Name','Position','WhatsApp','Phone 2','Email','Is Owner',
+  'Has CR','CR Number','CR Date','Tax Number','Intl Licensed',
+  'Shipping Lines','Has Agency','Agency Name',
+  'Has Certs','Cert Names','Has Network','Network Name',
+  'Shipping Scope','Ship From','Ship To','Shipping Types',
+  'Has Warehouse','Warehouse Address',
+  'Has Vehicles','Vehicle Types','Vehicle Count',
+  'Employees','Branches Local','Branches Intl','Additional Services',
+  'Cargo Types','Cargo Other','Weight Min','Weight Max',
+  'Volume Min','Volume Max',
+  'Pricing Type','Pricing Mechanism','Has Insurance',
+  'Has Compensation','Compensation Policy',
+  'Payment Methods','Currencies','Deferred Payment',
+  'Has Tracking','Has App','24/7 Support','Languages',
+  'Monthly Shipments','Max Capacity',
+  'Delivery Domestic','Delivery Intl','Working Days','Working Hours',
+  'Differentiator','Appear on Platform','Accept Referrals','Referral Pricing',
+  'CR File (Drive)','Logo File (Drive)','Profile File (Drive)','Warehouse File (Drive)',
+  'Company Folder (Drive)'
+];
+
+// ── Test functions (run manually from editor) ─────────────────────
+
 function testSheetAccess() {
   try {
-    var SHEET_ID = '1ZpX143c5awE9Reg541MLzWITAym6axUKfLPGdZVUmJ8';
     var sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
-    Logger.log('✅ Sheet found: ' + sheet.getName());
+    Logger.log('✅ Sheet: ' + sheet.getName() + ' | Rows: ' + sheet.getLastRow());
     sheet.appendRow(['✅ TEST ROW — delete me', new Date()]);
-    Logger.log('✅ Row written successfully. Row count: ' + sheet.getLastRow());
-  } catch(err) {
-    Logger.log('❌ Sheet error: ' + err.toString());
-  }
+    Logger.log('✅ Row written OK');
+  } catch(err) { Logger.log('❌ ' + err); }
 }
 
 function testDriveAccess() {
   try {
-    var folder = DriveApp.createFolder('_TEST_DRIVE_ACCESS_DELETE_ME_');
-    Logger.log('✅ Drive permission GRANTED. Folder URL: ' + folder.getUrl());
-    folder.setTrashed(true);
-    Logger.log('✅ Test folder deleted. You can now redeploy safely.');
+    var f = DriveApp.createFolder('_TEST_DELETE_ME_');
+    Logger.log('✅ Drive OK: ' + f.getUrl());
+    f.setTrashed(true);
+  } catch(err) { Logger.log('❌ ' + err); }
+}
+
+// ── Main entry point ──────────────────────────────────────────────
+
+function doPost(e) {
+  try {
+    var contentType = (e.postData && e.postData.type) ? e.postData.type : '';
+
+    // Route: JSON file upload (text/plain body from fetch)
+    if (contentType.indexOf('text/plain') !== -1) {
+      return handleFiles(e);
+    }
+
+    // Route: URL-encoded form submission (text data)
+    return handleForm(e);
+
   } catch(err) {
-    Logger.log('❌ Drive permission NOT granted: ' + err.toString());
+    Logger.log('doPost error: ' + err);
+    return ContentService
+      .createTextOutput(JSON.stringify({result:'error',error:err.toString()}))
+      .setMimeType(ContentService.MimeType.JSON);
   }
 }
 
-function doPost(e) {
+// ── Handle text form data ─────────────────────────────────────────
 
-  // ── 1. Parse POST body ───────────────────────────────────────────
-  // URLSearchParams sends application/x-www-form-urlencoded
-  // For large payloads (base64 files), e.parameter can be truncated — read raw body instead
+function handleForm(e) {
+  // Parse URL-encoded body
   var data = {};
-
   try {
     if (e.postData && e.postData.contents) {
       e.postData.contents.split('&').forEach(function(pair) {
-        var eqIdx = pair.indexOf('=');
-        if (eqIdx < 0) return;
-        var k = decodeURIComponent(pair.substring(0, eqIdx).replace(/\+/g, ' '));
-        var v = decodeURIComponent(pair.substring(eqIdx + 1).replace(/\+/g, ' '));
+        var idx = pair.indexOf('=');
+        if (idx < 0) return;
+        var k = decodeURIComponent(pair.substring(0, idx).replace(/\+/g, ' '));
+        var v = decodeURIComponent(pair.substring(idx + 1).replace(/\+/g, ' '));
         data[k] = v;
       });
     }
-  } catch(parseErr) {
-    Logger.log('postData parse error: ' + parseErr);
-  }
+  } catch(parseErr) { Logger.log('parse error: ' + parseErr); }
 
-  // Fill any keys missing from postData parse using e.parameter
   if (e.parameter) {
-    for (var pk in e.parameter) {
-      if (!data[pk]) data[pk] = e.parameter[pk];
-    }
+    for (var pk in e.parameter) { if (!data[pk]) data[pk] = e.parameter[pk]; }
   }
 
-  // ── 2. Get sheet ─────────────────────────────────────────────────
-  // Use openById so this works as a standalone script (not bound to the spreadsheet)
-  var SHEET_ID = '1ZpX143c5awE9Reg541MLzWITAym6axUKfLPGdZVUmJ8';
   var sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
 
-  // ── 3. Add headers on first use ──────────────────────────────────
-  var HEADERS = [
-    'Timestamp','Company Name','Brand Name','Year Founded','City',
-    'Countries','Office Address','Website','Social Media',
-    'Contact Name','Position','WhatsApp','Phone 2','Email','Is Owner',
-    'Has CR','CR Number','CR Date','Tax Number','Intl Licensed',
-    'Shipping Lines','Has Agency','Agency Name',
-    'Has Certs','Cert Names','Has Network','Network Name',
-    'Shipping Scope','Ship From','Ship To','Shipping Types',
-    'Has Warehouse','Warehouse Address',
-    'Has Vehicles','Vehicle Types','Vehicle Count',
-    'Employees','Branches Local','Branches Intl','Additional Services',
-    'Cargo Types','Cargo Other','Weight Min','Weight Max',
-    'Volume Min','Volume Max',
-    'Pricing Type','Pricing Mechanism','Has Insurance',
-    'Has Compensation','Compensation Policy',
-    'Payment Methods','Currencies','Deferred Payment',
-    'Has Tracking','Has App','24/7 Support','Languages',
-    'Monthly Shipments','Max Capacity',
-    'Delivery Domestic','Delivery Intl','Working Days','Working Hours',
-    'Differentiator','Appear on Platform','Accept Referrals','Referral Pricing',
-    'CR File (Drive)','Logo File (Drive)','Profile File (Drive)','Warehouse File (Drive)',
-    'Company Folder (Drive)'
-  ];
-
+  // Add / fix headers
   if (sheet.getLastRow() === 0) {
-    // Fresh sheet — write all headers
     sheet.appendRow(HEADERS);
-    sheet.getRange(1, 1, 1, HEADERS.length)
-         .setFontWeight('bold')
-         .setBackground('#1d00f4')
-         .setFontColor('#ffffff');
+    sheet.getRange(1,1,1,HEADERS.length).setFontWeight('bold').setBackground('#1d00f4').setFontColor('#ffffff');
     sheet.setFrozenRows(1);
   } else {
-    // Sheet already has headers — check if Drive URL columns are missing and add them
-    var existingHeaders = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
-    var lastExisting = existingHeaders.length;
-    if (lastExisting < HEADERS.length) {
-      var missingHeaders = HEADERS.slice(lastExisting);
-      sheet.getRange(1, lastExisting + 1, 1, missingHeaders.length)
-           .setValues([missingHeaders])
-           .setFontWeight('bold')
-           .setBackground('#1d00f4')
-           .setFontColor('#ffffff');
+    var existing = sheet.getRange(1,1,1,sheet.getLastColumn()).getValues()[0];
+    if (existing.length < HEADERS.length) {
+      var missing = HEADERS.slice(existing.length);
+      sheet.getRange(1, existing.length+1, 1, missing.length)
+           .setValues([missing]).setFontWeight('bold').setBackground('#1d00f4').setFontColor('#ffffff');
     }
   }
-
-  // ── 4. Build & save text row FIRST ──────────────────────────────
-  // This runs BEFORE Drive — so even if Drive permissions are missing, text data is saved
-  var companyName = (data.company_name || 'Unknown').replace(/[\/\\:*?"<>|]/g, '-');
 
   var row = [
     new Date(),
@@ -126,7 +118,7 @@ function doPost(e) {
     data.website             || '',
     data['social[]']         || '',
     data.contact_name        || '',
-    data.position !== 'Other' ? (data.position || '') : (data.position_other || ''),
+    data.position !== 'Other' ? (data.position||'') : (data.position_other||''),
     data.whatsapp            || '',
     data.phone2              || '',
     data.email               || '',
@@ -184,55 +176,82 @@ function doPost(e) {
     data.appear_platform     || '',
     data.accept_referrals    || '',
     data.referral_pricing    || '',
-    '', '', '', '', ''   // Drive URLs — updated below if Drive succeeds
+    '','','','',''
   ];
 
   sheet.appendRow(row);
-  var savedRowNum = sheet.getLastRow();
   sheet.autoResizeColumns(1, sheet.getLastColumn());
 
-  // ── 5. Google Drive file saving (separate try — won't break Sheet save) ──
+  return ContentService
+    .createTextOutput(JSON.stringify({result:'success'}))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+// ── Handle file upload (separate JSON request) ────────────────────
+
+function handleFiles(e) {
   try {
-    var ROOT_FOLDER_NAME = 'Freight Partner Applications';
+    var payload = JSON.parse(e.postData.contents);
+    Logger.log('handleFiles: company=' + payload.company + ' | email=' + payload.email);
+    Logger.log('CR b64 length: ' + (payload.file_cr_b64 ? payload.file_cr_b64.length : 0));
+
+    var sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
+    var lastRow = sheet.getLastRow();
+
+    // Find the most recent row matching company or email
+    var targetRow = -1;
+    for (var i = lastRow; i >= 2; i--) {
+      var rowCompany = sheet.getRange(i, 2).getValue();
+      var rowEmail   = sheet.getRange(i, 14).getValue();
+      if ((payload.company && rowCompany === payload.company) ||
+          (payload.email   && rowEmail   === payload.email)) {
+        targetRow = i;
+        break;
+      }
+    }
+
+    if (targetRow < 0) {
+      Logger.log('No matching row found — using last row: ' + lastRow);
+      targetRow = lastRow; // fallback: update the last row
+    }
+
+    // Create Drive folder
     var rootFolder = DriveApp.getFoldersByName(ROOT_FOLDER_NAME).hasNext()
       ? DriveApp.getFoldersByName(ROOT_FOLDER_NAME).next()
       : DriveApp.createFolder(ROOT_FOLDER_NAME);
 
+    var companyName = (payload.company || 'Unknown').replace(/[\/\\:*?"<>|]/g,'-');
     var stamp = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy-MM-dd HH:mm');
-    var companyFolder = rootFolder.createFolder(companyName + ' (' + stamp + ')');
-    companyFolder.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+    var folder = rootFolder.createFolder(companyName + ' (' + stamp + ')');
+    folder.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
 
     function saveFile(b64, fileName) {
       if (!b64 || !fileName) return '';
       try {
-        var decoded = Utilities.base64Decode(b64);
-        var blob    = Utilities.newBlob(decoded, 'application/pdf', fileName);
-        var file    = companyFolder.createFile(blob);
+        var blob = Utilities.newBlob(Utilities.base64Decode(b64), 'application/pdf', fileName);
+        var file = folder.createFile(blob);
         file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
         return file.getUrl();
-      } catch(fileErr) {
-        Logger.log('File save error: ' + fileErr);
-        return 'upload-error';
-      }
+      } catch(err) { Logger.log('saveFile error: ' + err); return ''; }
     }
 
-    var crUrl        = saveFile(data.file_cr_b64,        data.file_cr_name);
-    var logoUrl      = saveFile(data.file_logo_b64,      data.file_logo_name);
-    var profileUrl   = saveFile(data.file_profile_b64,   data.file_profile_name);
-    var warehouseUrl = saveFile(data.file_warehouse_b64, data.file_warehouse_name);
-    var folderUrl    = companyFolder.getUrl();
+    var crUrl  = saveFile(payload.file_cr_b64,        payload.file_cr_name);
+    var lgUrl  = saveFile(payload.file_logo_b64,       payload.file_logo_name);
+    var prUrl  = saveFile(payload.file_profile_b64,    payload.file_profile_name);
+    var whUrl  = saveFile(payload.file_warehouse_b64,  payload.file_warehouse_name);
+    var flUrl  = folder.getUrl();
 
-    // HEADERS.length = 73 → Drive columns start at col 69 (1-indexed in Sheets)
-    var driveColStart = HEADERS.length - 4;
-    sheet.getRange(savedRowNum, driveColStart, 1, 5)
-         .setValues([[crUrl, logoUrl, profileUrl, warehouseUrl, folderUrl]]);
+    Logger.log('crUrl: ' + crUrl);
 
-  } catch(driveErr) {
-    // Drive permission not yet granted — text data is already safely in the Sheet
-    Logger.log('Drive error (text data already saved): ' + driveErr.toString());
+    // Update Drive URL columns (69–73)
+    sheet.getRange(targetRow, HEADERS.length - 4, 1, 5)
+         .setValues([[crUrl, lgUrl, prUrl, whUrl, flUrl]]);
+
+  } catch(err) {
+    Logger.log('handleFiles error: ' + err);
   }
 
   return ContentService
-    .createTextOutput(JSON.stringify({ result: 'success' }))
+    .createTextOutput(JSON.stringify({result:'ok'}))
     .setMimeType(ContentService.MimeType.JSON);
 }

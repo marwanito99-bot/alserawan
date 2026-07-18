@@ -1128,13 +1128,7 @@ function submitForm(){
       textData[key]=textData[key]?textData[key]+', '+val:val;
     });
 
-    // Attach base64 files
-    textData['file_cr_b64']=cr.b64;         textData['file_cr_name']=cr.name;
-    textData['file_logo_b64']=logo.b64;     textData['file_logo_name']=logo.name;
-    textData['file_profile_b64']=profile.b64; textData['file_profile_name']=profile.name;
-    textData['file_warehouse_b64']=warehouse.b64; textData['file_warehouse_name']=warehouse.name;
-
-    // Build hidden iframe + form (bypasses CORS entirely — native form POST)
+    // Step 1: submit TEXT data via hidden form (no files — keeps payload small & reliable)
     var uid='fw-'+Date.now();
     var iframe=document.createElement('iframe');
     iframe.name=uid; iframe.id=uid; iframe.style.display='none';
@@ -1151,8 +1145,6 @@ function submitForm(){
     });
     document.body.appendChild(hForm);
 
-    // Success: show after 8s timeout (iframe onload unreliable cross-origin)
-    // whichever fires first wins
     var done=false;
     function finish(){
       if(done)return; done=true;
@@ -1165,6 +1157,23 @@ function submitForm(){
     iframe.onload=finish;
 
     hForm.submit();
+
+    // Step 2: send files separately as JSON (text/plain bypasses CORS encoding issues)
+    // Fires after 3s to give Step 1 time to complete first
+    if(cr.b64||logo.b64||profile.b64||warehouse.b64){
+      setTimeout(function(){
+        var payload=JSON.stringify({
+          action:'files',
+          company:textData.company_name||'',
+          email:textData.email||'',
+          file_cr_b64:cr.b64,       file_cr_name:cr.name,
+          file_logo_b64:logo.b64,   file_logo_name:logo.name,
+          file_profile_b64:profile.b64, file_profile_name:profile.name,
+          file_warehouse_b64:warehouse.b64, file_warehouse_name:warehouse.name
+        });
+        fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:payload});
+      },3000);
+    }
 
   }).catch(function(){
     document.getElementById('fw-loading').classList.remove('show');
