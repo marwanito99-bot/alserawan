@@ -1062,24 +1062,38 @@ function submitForm(){
     setTimeout(function(){document.getElementById('fw-loading').classList.remove('show');showSuccess();},1500);
     return;
   }
+  // Hidden iframe submit — bypasses CORS completely
   var fd = new FormData(document.getElementById('fw-form'));
-  var params = new URLSearchParams();
-  fd.forEach(function(val, key){ params.append(key, val); });
 
-  fetch(SCRIPT_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-    body: params.toString()
-  })
-  .then(function(){
-    document.getElementById('fw-loading').classList.remove('show');
-    showSuccess();
-  })
-  .catch(function(){
-    document.getElementById('fw-loading').classList.remove('show');
-    showSuccess();
+  var iframe = document.createElement('iframe');
+  iframe.name = 'fw-hidden-target';
+  iframe.style.display = 'none';
+  document.body.appendChild(iframe);
+
+  var hiddenForm = document.createElement('form');
+  hiddenForm.method = 'POST';
+  hiddenForm.action = SCRIPT_URL;
+  hiddenForm.target = 'fw-hidden-target';
+  hiddenForm.style.display = 'none';
+
+  fd.forEach(function(val, key){
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = key;
+    input.value = val;
+    hiddenForm.appendChild(input);
   });
+
+  document.body.appendChild(hiddenForm);
+
+  iframe.onload = function(){
+    document.getElementById('fw-loading').classList.remove('show');
+    showSuccess();
+    document.body.removeChild(hiddenForm);
+    document.body.removeChild(iframe);
+  };
+
+  hiddenForm.submit();
 }
 
 function showSuccess(){
