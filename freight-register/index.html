@@ -1147,37 +1147,21 @@ function submitForm(){
     textData['file_warehouse_b64'] = warehouse.b64;
     textData['file_warehouse_name']= warehouse.name;
 
-    // Build hidden iframe + form — bypasses CORS completely
-    var iframe = document.createElement('iframe');
-    iframe.name = 'fw-hidden-target-'+Date.now();
-    iframe.style.display='none';
-    document.body.appendChild(iframe);
-
-    var hiddenForm = document.createElement('form');
-    hiddenForm.method = 'POST';
-    hiddenForm.action = SCRIPT_URL;
-    hiddenForm.target = iframe.name;
-    hiddenForm.style.display='none';
-    hiddenForm.enctype='application/x-www-form-urlencoded';
-
-    Object.keys(textData).forEach(function(key){
-      var inp=document.createElement('input');
-      inp.type='hidden';
-      inp.name=key;
-      inp.value=textData[key];
-      hiddenForm.appendChild(inp);
-    });
-
-    document.body.appendChild(hiddenForm);
-
-    iframe.onload=function(){
+    // Send via fetch no-cors — all data is text/base64 so URLSearchParams works fine
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(textData).toString()
+    }).then(function(){
       document.getElementById('fw-loading').classList.remove('show');
       showSuccess();
-      try{document.body.removeChild(hiddenForm);}catch(x){}
-      try{document.body.removeChild(iframe);}catch(x){}
-    };
-
-    hiddenForm.submit();
+    }).catch(function(err){
+      // no-cors resolves even on redirect; catch = real network failure
+      document.getElementById('fw-loading').classList.remove('show');
+      var msgs={en:'Network error. Please check your connection and try again.',ar:'خطأ في الشبكة. تحقق من اتصالك وحاول مجدداً.',cn:'网络错误，请检查连接后重试。'};
+      alert(msgs[lang]);
+    });
   }).catch(function(err){
     document.getElementById('fw-loading').classList.remove('show');
     var msgs={en:'An error occurred while preparing files. Please try again.',ar:'حدث خطأ أثناء تحضير الملفات. حاول مرة أخرى.',cn:'准备文件时出错，请重试。'};
