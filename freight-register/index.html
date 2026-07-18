@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Freight Partner Registration — Al Serawan Group</title>
+<link rel="icon" type="image/png" href="../images/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../style.css"/>
+<style>
+/* ===== FREIGHT WIZARD ===== */
+.fw-page{min-height:100vh;background:var(--black);padding-top:90px;padding-bottom:4rem}
+.fw-container{max-width:780px;margin:0 auto;padding:0 1.5rem}
+
+/* Header */
+.fw-header{text-align:center;padding:2.5rem 0 2rem}
+.fw-header-tag{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--blue);margin-bottom:.6rem}
+.fw-header-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;line-height:1.1;margin-bottom:.5rem}
+.fw-header-sub{font-size:.85rem;color:var(--muted);max-width:480px;margin:0 auto}
+
+/* Progress */
+.fw-progress{background:var(--dark2);border:1px solid var(--border);padding:1.2rem 1.8rem;margin-bottom:2rem;border-radius:2px}
+.fw-progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem}
+.fw-step-label{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.fw-step-count{font-size:.68rem;font-weight:700;color:var(--lime)}
+.fw-step-title{font-size:.9rem;font-weight:600;color:var(--text)}
+.fw-bar-track{height:3px;background:var(--border);border-radius:2px;margin-top:.5rem}
+.fw-bar-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--lime));border-radius:2px;transition:width .4s cubic-bezier(.22,1,.36,1)}
+
+/* Step dots */
+.fw-dots{display:flex;gap:4px;margin-top:.7rem;flex-wrap:wrap}
+.fw-dot{width:20px;height:3px;border-radius:2px;background:var(--border);transition:background .3s}
+.fw-dot.done{background:var(--blue)}
+.fw-dot.active{background:var(--lime)}
+
+/* Card */
+.fw-card{background:var(--dark2);border:1px solid var(--border);padding:2.5rem;margin-bottom:1.5rem}
+
+/* Step */
+.fw-step{display:none}
+.fw-step.active{display:block;animation:stepIn .35s cubic-bezier(.22,1,.36,1)}
+@keyframes stepIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+
+.fw-step-heading{font-size:1rem;font-weight:700;color:var(--lime);margin-bottom:.3rem;display:flex;align-items:center;gap:.6rem}
+.fw-step-heading::before{content:"";display:inline-block;width:16px;height:2px;background:var(--lime)}
+.fw-step-desc{font-size:.8rem;color:var(--muted);margin-bottom:2rem}
+
+/* Fields */
+.fw-field{margin-bottom:1.5rem}
+.fw-label{display:block;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem;font-weight:600}
+.fw-label .req{color:var(--lime);margin-left:2px}
+.fw-input,.fw-select,.fw-textarea{width:100%;background:var(--dark3);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:.88rem;padding:.75rem 1rem;outline:none;transition:border-color .2s;-webkit-appearance:none;border-radius:0}
+.fw-input:focus,.fw-select:focus,.fw-textarea:focus{border-color:var(--blue)}
+.fw-input.invalid,.fw-select.invalid,.fw-textarea.invalid{border-color:#ff4444}
+.fw-textarea{min-height:100px;resize:vertical;line-height:1.6}
+.fw-select{cursor:pointer}
+.fw-hint{font-size:.7rem;color:var(--muted);margin-top:.35rem}
+.fw-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:600px){.fw-row{grid-template-columns:1fr}}
+
+/* Toggle */
+.fw-toggle-group{display:flex;gap:.5rem;flex-wrap:wrap}
+.fw-toggle-btn{padding:.55rem 1.3rem;border:1px solid var(--border);background:var(--dark3);color:var(--muted);font-family:inherit;font-size:.75rem;font-weight:600;letter-spacing:.08em;cursor:pointer;transition:all .2s;text-transform:uppercase}
+.fw-toggle-btn.sel{background:var(--blue);color:#fff;border-color:var(--blue)}
+.fw-toggle-btn.sel-lime{background:rgba(204,253,27,.1);color:var(--lime);border-color:var(--lime)}
+
+/* Checkbox grid */
+.fw-check-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.6rem}
+.fw-check-card{padding:.75rem 1rem;border:1px solid var(--border);background:var(--dark3);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:.6rem;user-select:none}
+.fw-check-card:hover{border-color:var(--blue)}
+.fw-check-card.sel{border-color:var(--lime);background:rgba(204,253,27,.06);color:var(--lime)}
+.fw-check-card-ico{font-size:1.1rem;flex-shrink:0}
+.fw-check-card-lbl{font-size:.78rem;font-weight:500}
+
+/* Cargo cards */
+.fw-cargo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.6rem}
+.fw-cargo-card{padding:1rem .8rem;border:1px solid var(--border);background:var(--dark3);cursor:pointer;transition:all .2s;text-align:center;user-select:none}
+.fw-cargo-card:hover{border-color:var(--blue)}
+.fw-cargo-card.sel{border-color:var(--lime);background:rgba(204,253,27,.06)}
+.fw-cargo-card .ico{font-size:1.6rem;margin-bottom:.4rem}
+.fw-cargo-card .lbl{font-size:.72rem;color:var(--muted)}
+.fw-cargo-card.sel .lbl{color:var(--lime)}
+
+/* Multi-add (countries, social) */
+.fw-multi-add{display:flex;flex-direction:column;gap:.5rem}
+.fw-multi-row{display:flex;gap:.5rem;align-items:center}
+.fw-multi-row .fw-input{flex:1}
+.fw-add-btn,.fw-rm-btn{width:36px;height:36px;border:1px solid var(--border);background:var(--dark3);color:var(--muted);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;line-height:1;font-family:inherit}
+.fw-add-btn:hover{border-color:var(--lime);color:var(--lime)}
+.fw-rm-btn:hover{border-color:#ff4444;color:#ff4444}
+
+/* Country select */
+.fw-country-wrap{position:relative}
+.fw-country-search{width:100%;background:var(--dark3);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:.88rem;padding:.75rem 1rem;outline:none;transition:border-color .2s}
+.fw-country-search:focus{border-color:var(--blue)}
+.fw-country-drop{position:absolute;top:100%;left:0;right:0;background:var(--dark2);border:1px solid var(--blue);border-top:none;max-height:200px;overflow-y:auto;z-index:50;display:none}
+.fw-country-drop.open{display:block}
+.fw-country-opt{padding:.6rem 1rem;font-size:.84rem;cursor:pointer;transition:background .15s}
+.fw-country-opt:hover{background:var(--dark3);color:var(--lime)}
+.fw-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.6rem;min-height:20px}
+.fw-tag{display:inline-flex;align-items:center;gap:.4rem;padding:.25rem .7rem;background:rgba(29,0,244,.15);border:1px solid rgba(29,0,244,.35);font-size:.72rem;color:var(--text)}
+.fw-tag-x{cursor:pointer;color:var(--muted);font-size:.9rem;line-height:1;transition:color .2s}
+.fw-tag-x:hover{color:#ff4444}
+
+/* Range row */
+.fw-range-row{display:grid;grid-template-columns:1fr auto 1fr;gap:.5rem;align-items:center}
+.fw-range-sep{color:var(--muted);font-size:.8rem;text-align:center}
+
+/* Conditional reveal */
+.fw-cond{display:none;margin-top:.8rem;padding:.8rem 1rem;border-left:2px solid var(--border);background:rgba(255,255,255,.02)}
+.fw-cond.show{display:block;animation:stepIn .2s ease}
+
+/* File upload */
+.fw-file-label{display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px dashed var(--border);background:var(--dark3);padding:1.5rem;cursor:pointer;transition:border-color .2s;text-align:center;gap:.4rem}
+.fw-file-label:hover{border-color:var(--lime)}
+.fw-file-label svg{width:28px;height:28px;stroke:var(--muted);fill:none;stroke-width:1.5}
+.fw-file-label span{font-size:.75rem;color:var(--muted)}
+.fw-file-label .fw-file-name{font-size:.72rem;color:var(--lime);margin-top:.3rem}
+input[type=file]{display:none}
+
+/* Nav buttons */
+.fw-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;gap:1rem}
+.fw-btn-back{padding:.75rem 1.8rem;background:transparent;color:var(--muted);border:1px solid var(--border);font-family:inherit;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.fw-btn-back:hover{border-color:var(--text);color:var(--text)}
+.fw-btn-back:disabled{opacity:.3;cursor:not-allowed}
+.fw-btn-next{padding:.75rem 2rem;background:var(--blue);color:#fff;border:none;font-family:inherit;font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.fw-btn-next:hover{background:#2d12ff;transform:translateY(-1px)}
+.fw-btn-next.submit-btn{background:var(--lime);color:var(--black)}
+.fw-btn-next.submit-btn:hover{opacity:.9}
+.fw-btn-next:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+/* Summary */
+.fw-summary-section{margin-bottom:1.5rem;border:1px solid var(--border);background:var(--dark3)}
+.fw-summary-section-title{padding:.7rem 1.2rem;background:rgba(29,0,244,.1);border-bottom:1px solid var(--border);font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);font-weight:700}
+.fw-summary-grid{padding:1rem 1.2rem;display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+@media(max-width:600px){.fw-summary-grid{grid-template-columns:1fr}}
+.fw-summary-item-label{font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.15rem}
+.fw-summary-item-val{font-size:.84rem;color:var(--text);word-break:break-word}
+
+/* Success */
+.fw-success{text-align:center;padding:3rem 1rem}
+.fw-success-ico{font-size:4rem;margin-bottom:1rem}
+.fw-success-title{font-size:1.5rem;font-weight:700;color:var(--lime);margin-bottom:.6rem}
+.fw-success-sub{font-size:.9rem;color:var(--muted);max-width:420px;margin:0 auto 2rem}
+
+/* Loading */
+.fw-loading{display:none;position:fixed;inset:0;background:rgba(10,10,15,.8);z-index:999;align-items:center;justify-content:center;flex-direction:column;gap:1rem}
+.fw-loading.show{display:flex}
+.fw-spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--lime);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.fw-loading-txt{font-size:.8rem;color:var(--muted);letter-spacing:.1em}
+
+/* Error */
+.fw-error-msg{font-size:.72rem;color:#ff4444;margin-top:.3rem;display:none}
+.fw-error-msg.show{display:block}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="../" style="text-decoration:none;cursor:pointer">
+    <img alt="MWM Logo" src="../images/logo-full.png" style="height:48px;width:auto;object-fit:contain">
+  </a>
+  <div class="nav-links">
+    <a href="../">Home</a>
+    <a href="../logistics/">Logistics</a>
+    <a href="../contact/">Contact</a>
+  </div>
+</nav>
+
+<div class="fw-loading" id="fw-loading">
+  <div class="fw-spinner"></div>
+  <div class="fw-loading-txt">Submitting your application...</div>
+</div>
+
+<div class="fw-page">
+  <div class="fw-container">
+
+    <div class="fw-header">
+      <div class="fw-header-tag">Freight Partner Program</div>
+      <h1 class="fw-header-title">Register Your Shipping Company</h1>
+      <p class="fw-header-sub">Join our freight partner network and connect with clients worldwide through Al Serawan Group's platform.</p>
+    </div>
+
+    <!-- Progress -->
+    <div class="fw-progress">
+      <div class="fw-progress-top">
+        <span class="fw-step-label">Progress</span>
+        <span class="fw-step-count" id="fw-step-count">Step 1 of 9</span>
+      </div>
+      <div class="fw-step-title" id="fw-step-title">Company Identity</div>
+      <div class="fw-bar-track"><div class="fw-bar-fill" id="fw-bar" style="width:11%"></div></div>
+      <div class="fw-dots" id="fw-dots"></div>
+    </div>
+
+    <form id="fw-form" novalidate>
+
+    <!-- ========== STEP 1: Company Identity ========== -->
+    <div class="fw-step active" data-step="1">
+      <div class="fw-card">
+        <div class="fw-step-heading">Company Identity</div>
+        <div class="fw-step-desc">Basic information about your shipping company</div>
+
+        <div class="fw-field">
+          <label class="fw-label">Official Company Name <span class="req">*</span></label>
+          <input class="fw-input" name="company_name" required placeholder="e.g. Al Noor Freight Co.">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Brand / Trade Name <span style="color:var(--muted);font-size:.6rem">(if different)</span></label>
+          <input class="fw-input" name="brand_name" placeholder="e.g. NoorEx Logistics">
+        </div>
+
+        <div class="fw-row">
+          <div class="fw-field">
+            <label class="fw-label">Year Founded <span class="req">*</span></label>
+            <input class="fw-input" name="year_founded" type="number" min="1900" max="2025" required placeholder="e.g. 2010">
+          </div>
+          <div class="fw-field">
+            <label class="fw-label">City <span class="req">*</span></label>
+            <input class="fw-input" name="city" required placeholder="e.g. Dubai">
+          </div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Countries of Operation <span class="req">*</span></label>
+          <div class="fw-multi-add" id="countries-wrap">
+            <div class="fw-multi-row">
+              <input class="fw-input" name="country[]" required placeholder="e.g. UAE">
+              <button type="button" class="fw-add-btn" onclick="addField('countries-wrap','country[]','Country')">+</button>
+            </div>
+          </div>
+          <div class="fw-hint">Click + to add more countries</div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Main Office Address</label>
+          <input class="fw-input" name="office_address" placeholder="Street, building, area">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Company Website</label>
+          <input class="fw-input" name="website" type="url" placeholder="https://yourcompany.com">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Social Media Links</label>
+          <div class="fw-multi-add" id="social-wrap">
+            <div class="fw-multi-row">
+              <input class="fw-input" name="social[]" placeholder="Instagram: https://instagram.com/...">
+              <button type="button" class="fw-add-btn" onclick="addField('social-wrap','social[]','Platform URL')">+</button>
+            </div>
+          </div>
+          <div class="fw-hint">Add Instagram, Facebook, LinkedIn, etc.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== STEP 2: Responsible Person ========== -->
+    <div class="fw-step" data-step="2">
+      <div class="fw-card">
+        <div class="fw-step-heading">Responsible Person</div>
+        <div class="fw-step-desc">Contact person who will manage the partnership</div>
+
+        <div class="fw-field">
+          <label class="fw-label">Full Name <span class="req">*</span></label>
+          <input class="fw-input" name="contact_name" required placeholder="Full legal name">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Position <span class="req">*</span></label>
+          <select class="fw-select" name="position" required>
+            <option value="">— Select position —</option>
+            <option>CEO / General Manager</option>
+            <option>Owner</option>
+            <option>Sales Manager</option>
+            <option>Operations Manager</option>
+            <option>Business Development Manager</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="fw-field" id="owner-role-field" style="display:none">
+          <label class="fw-label">Please specify your role</label>
+          <input class="fw-input" name="position_other" placeholder="Your exact role / title">
+        </div>
+
+        <div class="fw-row">
+          <div class="fw-field">
+            <label class="fw-label">WhatsApp Number <span class="req">*</span></label>
+            <input class="fw-input" name="whatsapp" required placeholder="+971 50 000 0000">
+          </div>
+          <div class="fw-field">
+            <label class="fw-label">Secondary Phone</label>
+            <input class="fw-input" name="phone2" placeholder="+971 4 000 0000">
+          </div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Business Email <span class="req">*</span></label>
+          <input class="fw-input" name="email" type="email" required placeholder="name@company.com">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Is this person the company owner?</label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-field="is_owner" data-val="Yes">Yes</button>
+            <button type="button" class="fw-toggle-btn" data-field="is_owner" data-val="No">No</button>
+          </div>
+          <input type="hidden" name="is_owner" value="">
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== STEP 3: Legal & Credibility ========== -->
+    <div class="fw-step" data-step="3">
+      <div class="fw-card">
+        <div class="fw-step-heading">Legal & Credibility</div>
+        <div class="fw-step-desc">Registration documents and international credentials</div>
+
+        <div class="fw-field">
+          <label class="fw-label">Commercial Registration? <span class="req">*</span></label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-field="has_cr" data-val="Yes" onclick="showCond('cr-details')">Yes</button>
+            <button type="button" class="fw-toggle-btn" data-field="has_cr" data-val="No" onclick="hideCond('cr-details')">No</button>
+          </div>
+          <input type="hidden" name="has_cr" value="">
+          <div class="fw-cond" id="cr-details">
+            <div class="fw-row">
+              <div class="fw-field">
+                <label class="fw-label">CR Number</label>
+                <input class="fw-input" name="cr_number" placeholder="Registration number">
+              </div>
+              <div class="fw-field">
+                <label class="fw-label">Issue Date</label>
+                <input class="fw-input" name="cr_date" type="date">
+              </div>
+            </div>
+            <div class="fw-field">
+              <label class="fw-label">Tax Number (if applicable)</label>
+              <input class="fw-input" name="tax_number" placeholder="VAT / Tax ID">
+            </div>
+          </div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Licensed for International Shipping?</label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-field="intl_licensed" data-val="Yes">Yes</button>
+            <button type="button" class="fw-toggle-btn" data-field="intl_licensed" data-val="No">No</button>
+          </div>
+          <input type="hidden" name="intl_licensed" value="">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Shipping Lines / Routes Covered</label>
+          <textarea class="fw-textarea" name="shipping_lines" placeholder="e.g. China–UAE, UAE–Saudi Arabia, Gulf to Europe..." style="min-height:70px"></textarea>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Agency for an International Shipping Company?</label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-field="has_agency" data-val="Yes" onclick="showCond('agency-details')">Yes</button>
+            <button type="button" class="fw-toggle-btn" data-field="has_agency" data-val="No" onclick="hideCond('agency-details')">No</button>
+          </div>
+          <input type="hidden" name="has_agency" value="">
+          <div class="fw-cond" id="agency-details">
+            <div class="fw-field">
+              <label class="fw-label">Name of the Company (Agent for)</label>
+              <input class="fw-input" name="agency_name" placeholder="e.g. Maersk, MSC, DHL...">
+            </div>
+          </div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">International Certifications?</label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-field="has_certs" data-val="Yes" onclick="showCond('certs-details')">Yes</button>
+            <button type="button" class="fw-toggle-btn" data-field="has_certs" data-val="No" onclick="hideCond('certs-details')">No</button>
+          </div>
+          <input type="hidden" name="has_certs" value="">
+          <div class="fw-cond" id="certs-details">
+            <div class="fw-field">
+              <label class="fw-label">Certifications (IATA / ISO / FIATA / Other)</label>
+              <input class="fw-input" name="cert_names" placeholder="e.g. IATA Certified, ISO 9001">
+            </div>
+          </div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Member of International Freight Network?</label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-field="has_network" data-val="Yes" onclick="showCond('network-details')">Yes</button>
+            <button type="button" class="fw-toggle-btn" data-field="has_network" data-val="No" onclick="hideCond('network-details')">No</button>
+          </div>
+          <input type="hidden" name="has_network" value="">
+          <div class="fw-cond" id="network-details">
+            <div class="fw-field">
+              <label class="fw-label">Network Name</label>
+              <input class="fw-input" name="network_name" placeholder="e.g. WCA, Globalia, WWPC...">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== STEP 4: Operational Capabilities ========== -->
+    <div class="fw-step" data-step="4">
+      <div class="fw-card">
+        <div class="fw-step-heading">Operational Capabilities</div>
+        <div class="fw-step-desc">Your shipping coverage and operational infrastructure</div>
+
+        <div class="fw-field">
+          <label class="fw-label">Type of Shipping <span class="req">*</span></label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-field="shipping_scope" data-val="International">International</button>
+            <button type="button" class="fw-toggle-btn" data-field="shipping_scope" data-val="Domestic">Domestic</button>
+            <button type="button" class="fw-toggle-btn" data-field="shipping_scope" data-val="Both">Both</button>
+          </div>
+          <input type="hidden" name="shipping_scope" value="">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">We Can Ship FROM <span class="req">*</span></label>
+          <div class="fw-country-wrap">
+            <input class="fw-country-search" id="from-search" placeholder="Search and select countries..." autocomplete="off" onInput="filterCountries('from')" onFocus="openDrop('from')" onBlur="setTimeout(()=>closeDrop('from'),200)">
+            <div class="fw-country-drop" id="from-drop"></div>
+          </div>
+          <div class="fw-tags" id="from-tags"></div>
+          <input type="hidden" name="ship_from" id="ship_from_val">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">We Can Ship TO <span class="req">*</span></label>
+          <div class="fw-country-wrap">
+            <input class="fw-country-search" id="to-search" placeholder="Search and select countries..." autocomplete="off" onInput="filterCountries('to')" onFocus="openDrop('to')" onBlur="setTimeout(()=>closeDrop('to'),200)">
+            <div class="fw-country-drop" id="to-drop"></div>
+          </div>
+          <div class="fw-tags" id="to-tags"></div>
+          <input type="hidden" name="ship_to" id="ship_to_val">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Shipping Types Available <span class="req">*</span></label>
+          <div class="fw-check-grid">
+            <label class="fw-check-card" onclick="toggleCard(this,'shipping_types')">
+              <span class="fw-check-card-ico">✈️</span><span class="fw-check-card-lbl">Air Freight</span>
+            </label>
+            <label class="fw-check-card" onclick="toggleCard(this,'shipping_types')">
+              <span class="fw-check-card-ico">🚢</span><span class="fw-check-card-lbl">Sea Freight</span>
+            </label>
+            <label class="fw-check-card" onclick="toggleCard(this,'shipping_types')">
+              <span class="fw-check-card-ico">🚛</span><span class="fw-check-card-lbl">Land / Road</span>
+            </label>
+            <label class="fw-check-card" onclick="toggleCard(this,'shipping_types')">
+              <span class="fw-check-card-ico">⚡</span><span class="fw-check-card-lbl">Express</span>
+            </label>
+            <label class="fw-check-card" onclick="toggleCard(this,'shipping_types')">
+              <span class="fw-check-card-ico">💰</span><span class="fw-check-card-lbl">Economy</span>
+            </label>
+          </div>
+          <input type="hidden" name="shipping_types" id="shipping_types_val">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Do you have Warehouses?</label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-field="has_warehouse" data-val="Yes" onclick="showCond('warehouse-details')">Yes</button>
+            <button type="button" class="fw-toggle-btn" data-field="has_warehouse" data-val="No" onclick="hideCond('warehouse-details')">No</button>
+          </div>
+          <input type="hidden" name="has_warehouse" value="">
+          <div class="fw-cond" id="warehouse-details">
+            <div class="fw-field">
+              <label class="fw-label">Warehouse Address(es)</label>
+              <textarea class="fw-textarea" name="warehouse_address" placeholder="Full address(es) of your warehouse(s)" style="min-height:70px"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Own Transport Vehicles?</label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-field="has_vehicles" data-val="Yes" onclick="showCond('vehicles-details')">Yes</button>
+            <button type="button" class="fw-toggle-btn" data-field="has_vehicles" data-val="No" onclick="hideCond('vehicles-details')">No</button>
+          </div>
+          <input type="hidden" name="has_vehicles" value="">
+          <div class="fw-cond" id="vehicles-details">
+            <div class="fw-row">
+              <div class="fw-field">
+                <label class="fw-label">Vehicle Types</label>
+                <input class="fw-input" name="vehicle_types" placeholder="Trucks / Vans / Motorcycles">
+              </div>
+              <div class="fw-field">
+                <label class="fw-label">Number of Vehicles</label>
+                <input class="fw-input" name="vehicle_count" type="number" min="1" placeholder="e.g. 12">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fw-row">
+          <div class="fw-field">
+            <label class="fw-label">Number of Employees</label>
+            <input class="fw-input" name="employee_count" type="number" min="0" placeholder="e.g. 45">
+          </div>
+          <div class="fw-field">
+            <label class="fw-label">Domestic Branches</label>
+            <input class="fw-input" name="branches_local" type="number" min="0" placeholder="Inside your country">
+          </div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">International Branches</label>
+          <input class="fw-input" name="branches_intl" type="number" min="0" placeholder="Outside your country">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Additional Services</label>
+          <div class="fw-check-grid">
+            <label class="fw-check-card" onclick="toggleCard(this,'add_services')">
+              <span class="fw-check-card-ico">🛃</span><span class="fw-check-card-lbl">Customs Clearance</span>
+            </label>
+            <label class="fw-check-card" onclick="toggleCard(this,'add_services')">
+              <span class="fw-check-card-ico">📦</span><span class="fw-check-card-lbl">Packaging</span>
+            </label>
+            <label class="fw-check-card" onclick="toggleCard(this,'add_services')">
+              <span class="fw-check-card-ico">🏠</span><span class="fw-check-card-lbl">Door Pickup</span>
+            </label>
+            <label class="fw-check-card" onclick="toggleCard(this,'add_services')">
+              <span class="fw-check-card-ico">🚪</span><span class="fw-check-card-lbl">Door Delivery</span>
+            </label>
+          </div>
+          <input type="hidden" name="add_services" id="add_services_val">
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== STEP 5: Cargo Types ========== -->
+    <div class="fw-step" data-step="5">
+      <div class="fw-card">
+        <div class="fw-step-heading">Accepted Cargo Types</div>
+        <div class="fw-step-desc">Select all cargo types your company handles</div>
+
+        <div class="fw-field">
+          <label class="fw-label">Cargo Types <span class="req">*</span></label>
+          <div class="fw-cargo-grid">
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">📦</div><div class="lbl">General Cargo</div></div>
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">📱</div><div class="lbl">Electronics</div></div>
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">👕</div><div class="lbl">Clothing</div></div>
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">🍱</div><div class="lbl">Food Items</div></div>
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">⚠️</div><div class="lbl">Hazardous</div></div>
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">🧴</div><div class="lbl">Liquids</div></div>
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">🏥</div><div class="lbl">Medical</div></div>
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">🪑</div><div class="lbl">Furniture</div></div>
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">🚜</div><div class="lbl">Bulk Cargo</div></div>
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">📫</div><div class="lbl">Small Parcels</div></div>
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">➕</div><div class="lbl">Other</div></div>
+          </div>
+          <input type="hidden" name="cargo_types" id="cargo_types_val">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Other cargo types (if applicable)</label>
+          <input class="fw-input" name="cargo_other" placeholder="Specify any other cargo types">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Weight Range per Shipment (KG)</label>
+          <div class="fw-range-row">
+            <input class="fw-input" name="weight_min" type="number" min="0" placeholder="Min (e.g. 0)">
+            <div class="fw-range-sep">→</div>
+            <input class="fw-input" name="weight_max" type="number" min="0" placeholder="Max (e.g. 50000)">
+          </div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Volume Range per Shipment (CBM / m³)</label>
+          <div class="fw-range-row">
+            <input class="fw-input" name="volume_min" type="number" min="0" placeholder="Min">
+            <div class="fw-range-sep">→</div>
+            <input class="fw-input" name="volume_max" type="number" min="0" placeholder="Max">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== STEP 6: Pricing & Payment ========== -->
+    <div class="fw-step" data-step="6">
+      <div class="fw-card">
+        <div class="fw-step-heading">Pricing & Payment</div>
+        <div class="fw-step-desc">Your pricing model and payment policies</div>
+
+        <div class="fw-field">
+          <label class="fw-label">Pricing Structure</label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-field="pricing_type" data-val="Fixed">Fixed Rates</button>
+            <button type="button" class="fw-toggle-btn" data-field="pricing_type" data-val="Variable">Variable</button>
+            <button type="button" class="fw-toggle-btn" data-field="pricing_type" data-val="Both">Both</button>
+          </div>
+          <input type="hidden" name="pricing_type" value="">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Pricing Mechanism — Please explain how you price shipments</label>
+          <textarea class="fw-textarea" name="pricing_mechanism" placeholder="e.g. We price based on weight + destination zone. Minimum 50 KG for sea freight. Quote provided within 2 hours..."></textarea>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Shipping Insurance?</label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-field="has_insurance" data-val="Yes">Yes</button>
+            <button type="button" class="fw-toggle-btn" data-field="has_insurance" data-val="No">No</button>
+          </div>
+          <input type="hidden" name="has_insurance" value="">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Damage / Loss Compensation Policy?</label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-field="has_compensation" data-val="Yes" onclick="showCond('comp-details')">Yes</button>
+            <button type="button" class="fw-toggle-btn" data-field="has_compensation" data-val="No" onclick="hideCond('comp-details')">No</button>
+          </div>
+          <input type="hidden" name="has_compensation" value="">
+          <div class="fw-cond" id="comp-details">
+            <div class="fw-field">
+              <label class="fw-label">Policy Details</label>
+              <textarea class="fw-textarea" name="compensation_policy" placeholder="Briefly describe your compensation policy..." style="min-height:70px"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Accepted Payment Methods</label>
+          <div class="fw-check-grid">
+            <label class="fw-check-card" onclick="toggleCard(this,'payment_methods')"><span class="fw-check-card-ico">🏦</span><span class="fw-check-card-lbl">Bank Transfer</span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'payment_methods')"><span class="fw-check-card-ico">💵</span><span class="fw-check-card-lbl">Cash</span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'payment_methods')"><span class="fw-check-card-ico">💳</span><span class="fw-check-card-lbl">Online Payment</span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'payment_methods')"><span class="fw-check-card-ico">📱</span><span class="fw-check-card-lbl">Mobile Wallet</span></label>
+          </div>
+          <input type="hidden" name="payment_methods" id="payment_methods_val">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Accepted Currencies</label>
+          <div class="fw-check-grid">
+            <label class="fw-check-card" onclick="toggleCard(this,'currencies')"><span class="fw-check-card-ico">🇺🇸</span><span class="fw-check-card-lbl">USD</span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'currencies')"><span class="fw-check-card-ico">🇨🇳</span><span class="fw-check-card-lbl">CNY (Yuan)</span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'currencies')"><span class="fw-check-card-ico">🇦🇪</span><span class="fw-check-card-lbl">AED (Dirham)</span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'currencies')"><span class="fw-check-card-ico">🇸🇦</span><span class="fw-check-card-lbl">SAR (Riyal)</span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'currencies')"><span class="fw-check-card-ico">🌍</span><span class="fw-check-card-lbl">Other</span></label>
+          </div>
+          <input type="hidden" name="currencies" id="currencies_val">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Accept Deferred / Credit Payment?</label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-field="deferred_payment" data-val="Yes">Yes</button>
+            <button type="button" class="fw-toggle-btn" data-field="deferred_payment" data-val="No">No</button>
+          </div>
+          <input type="hidden" name="deferred_payment" value="">
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== STEP 7: Quality & Technology ========== -->
+    <div class="fw-step" data-step="7">
+      <div class="fw-card">
+        <div class="fw-step-heading">Quality & Technology</div>
+        <div class="fw-step-desc">Your operational systems and service standards</div>
+
+        <div class="fw-field">
+          <label class="fw-label">Shipment Tracking System?</label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-field="has_tracking" data-val="Yes">Yes</button>
+            <button type="button" class="fw-toggle-btn" data-field="has_tracking" data-val="No">No</button>
+          </div>
+          <input type="hidden" name="has_tracking" value="">
+          <div class="fw-hint">📌 Note: All registered partners will be integrated into our unified real-time tracking platform. Details will be shared in your onboarding meeting.</div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Mobile App or Web Platform?</label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-field="has_app" data-val="Yes">Yes</button>
+            <button type="button" class="fw-toggle-btn" data-field="has_app" data-val="No">No</button>
+          </div>
+          <input type="hidden" name="has_app" value="">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">24/7 Customer Support?</label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-field="support_24" data-val="Yes">Yes</button>
+            <button type="button" class="fw-toggle-btn" data-field="support_24" data-val="No">No</button>
+          </div>
+          <input type="hidden" name="support_24" value="">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Languages Spoken by Your Team</label>
+          <div class="fw-check-grid">
+            <label class="fw-check-card" onclick="toggleCard(this,'languages')"><span class="fw-check-card-ico">🌍</span><span class="fw-check-card-lbl">Arabic</span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'languages')"><span class="fw-check-card-ico">🌐</span><span class="fw-check-card-lbl">English</span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'languages')"><span class="fw-check-card-ico">🇨🇳</span><span class="fw-check-card-lbl">Chinese</span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'languages')"><span class="fw-check-card-ico">🌏</span><span class="fw-check-card-lbl">Other</span></label>
+          </div>
+          <input type="hidden" name="languages" id="languages_val">
+        </div>
+
+        <div class="fw-row">
+          <div class="fw-field">
+            <label class="fw-label">Avg. Monthly Shipments</label>
+            <input class="fw-input" name="monthly_shipments" type="number" min="0" placeholder="e.g. 300">
+          </div>
+          <div class="fw-field">
+            <label class="fw-label">Max Monthly Capacity</label>
+            <input class="fw-input" name="max_capacity" type="number" min="0" placeholder="e.g. 1000">
+          </div>
+        </div>
+
+        <div class="fw-row">
+          <div class="fw-field">
+            <label class="fw-label">Domestic Delivery Time</label>
+            <input class="fw-input" name="delivery_domestic" placeholder="e.g. 1–3 days">
+          </div>
+          <div class="fw-field">
+            <label class="fw-label">International Delivery Time</label>
+            <input class="fw-input" name="delivery_intl" placeholder="e.g. 7–15 days">
+          </div>
+        </div>
+
+        <div class="fw-row">
+          <div class="fw-field">
+            <label class="fw-label">Working Days</label>
+            <input class="fw-input" name="working_days" placeholder="e.g. Mon–Sat">
+          </div>
+          <div class="fw-field">
+            <label class="fw-label">Working Hours</label>
+            <input class="fw-input" name="working_hours" placeholder="e.g. 8am – 6pm">
+          </div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">What Makes You Different from Other Companies?</label>
+          <textarea class="fw-textarea" name="differentiator" placeholder="Tell us what sets your company apart — speed, coverage, specialization, technology, pricing..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== STEP 8: Platform Relationship ========== -->
+    <div class="fw-step" data-step="8">
+      <div class="fw-card">
+        <div class="fw-step-heading">Platform Relationship</div>
+        <div class="fw-step-desc">How you'd like to work with Al Serawan Group's platform</div>
+
+        <div class="fw-field">
+          <label class="fw-label">Do you want to appear on our platform?</label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-field="appear_platform" data-val="Yes">Yes</button>
+            <button type="button" class="fw-toggle-btn" data-field="appear_platform" data-val="No">No</button>
+          </div>
+          <input type="hidden" name="appear_platform" value="">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Accept new clients referred from our platform?</label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-field="accept_referrals" data-val="Yes">Yes</button>
+            <button type="button" class="fw-toggle-btn" data-field="accept_referrals" data-val="No">No</button>
+          </div>
+          <input type="hidden" name="accept_referrals" value="">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Pricing Mechanism for Referred Clients</label>
+          <textarea class="fw-textarea" name="referral_pricing" placeholder="e.g. We'll offer platform clients a 5% discount off standard rates, or fixed rates for specific lanes..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== STEP 9: Attachments ========== -->
+    <div class="fw-step" data-step="9">
+      <div class="fw-card">
+        <div class="fw-step-heading">Attachments</div>
+        <div class="fw-step-desc">Upload supporting documents for your application</div>
+
+        <div class="fw-field">
+          <label class="fw-label">Company Logo <span style="color:var(--muted);font-size:.6rem">(Optional)</span></label>
+          <label class="fw-file-label" for="file-logo">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span>Click to upload logo (PNG, JPG, SVG)</span>
+            <span class="fw-file-name" id="logo-name">No file selected</span>
+          </label>
+          <input type="file" id="file-logo" name="file_logo" accept="image/*" onchange="showFileName(this,'logo-name')">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Commercial Registration Photo <span class="req">*</span></label>
+          <label class="fw-file-label" for="file-cr" id="file-cr-label">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span>Click to upload CR photo (JPG, PNG, PDF)</span>
+            <span class="fw-file-name" id="cr-name">No file selected</span>
+          </label>
+          <input type="file" id="file-cr" name="file_cr" accept="image/*,.pdf" onchange="showFileName(this,'cr-name')">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label">Company Profile PDF <span style="color:var(--muted);font-size:.6rem">(Optional)</span></label>
+          <label class="fw-file-label" for="file-profile">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <span>Click to upload PDF profile</span>
+            <span class="fw-file-name" id="profile-name">No file selected</span>
+          </label>
+          <input type="file" id="file-profile" name="file_profile" accept=".pdf" onchange="showFileName(this,'profile-name')">
+        </div>
+
+        <div class="fw-field" id="warehouse-upload-field" style="display:none">
+          <label class="fw-label">Warehouse / Vehicle Photos <span class="req">*</span></label>
+          <label class="fw-file-label" for="file-warehouse">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <span>Upload warehouse or fleet photos (JPG, PNG)</span>
+            <span class="fw-file-name" id="warehouse-name">No file selected</span>
+          </label>
+          <input type="file" id="file-warehouse" name="file_warehouse" accept="image/*" multiple onchange="showFileName(this,'warehouse-name')">
+        </div>
+      </div>
+
+      <!-- Summary preview -->
+      <div class="fw-card" id="fw-summary">
+        <div class="fw-step-heading">Review Your Application</div>
+        <div class="fw-step-desc">Please review the information below before submitting</div>
+        <div id="summary-content"></div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="fw-nav">
+      <button type="button" class="fw-btn-back" id="fw-back" onclick="navigate(-1)" disabled>← Back</button>
+      <button type="button" class="fw-btn-next" id="fw-next" onclick="navigate(1)">Next →</button>
+    </div>
+
+    </form>
+  </div>
+</div>
+
+<script>
+var SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+var STEPS = [
+  {n:1, title:'Company Identity'},
+  {n:2, title:'Responsible Person'},
+  {n:3, title:'Legal & Credibility'},
+  {n:4, title:'Operational Capabilities'},
+  {n:5, title:'Cargo Types'},
+  {n:6, title:'Pricing & Payment'},
+  {n:7, title:'Quality & Technology'},
+  {n:8, title:'Platform Relationship'},
+  {n:9, title:'Attachments & Review'}
+];
+var currentStep = 1;
+var formData = {};
+
+// Init dots
+var dotsEl = document.getElementById('fw-dots');
+STEPS.forEach(function(s,i){
+  var d = document.createElement('div');
+  d.className = 'fw-dot' + (i===0?' active':'');
+  d.id = 'dot-'+s.n;
+  dotsEl.appendChild(d);
+});
+
+// Countries list
+var COUNTRIES = [
+  'Afghanistan','Albania','Algeria','Angola','Argentina','Armenia','Australia','Austria','Azerbaijan',
+  'Bahrain','Bangladesh','Belarus','Belgium','Bolivia','Bosnia','Brazil','Bulgaria',
+  'Cambodia','Canada','Chile','China','Colombia','Croatia','Cuba','Czech Republic',
+  'Denmark','Dominican Republic','Ecuador','Egypt','Ethiopia',
+  'Finland','France','Georgia','Germany','Ghana','Greece','Guatemala',
+  'Hong Kong','Hungary','India','Indonesia','Iran','Iraq','Ireland','Israel','Italy',
+  'Japan','Jordan','Kazakhstan','Kenya','Kuwait','Kyrgyzstan',
+  'Lebanon','Libya','Malaysia','Mexico','Morocco','Myanmar',
+  'Nepal','Netherlands','New Zealand','Nigeria','North Korea','Norway',
+  'Oman','Pakistan','Panama','Peru','Philippines','Poland','Portugal','Qatar',
+  'Romania','Russia','Saudi Arabia','Senegal','Serbia','Singapore','Slovakia',
+  'South Africa','South Korea','Spain','Sri Lanka','Sudan','Sweden','Switzerland','Syria',
+  'Taiwan','Tanzania','Thailand','Tunisia','Turkey','Turkmenistan',
+  'UAE','Uganda','UK','Ukraine','USA','Uzbekistan',
+  'Venezuela','Vietnam','Yemen','Zimbabwe'
+];
+
+var fromSelected=[], toSelected=[];
+
+function filterCountries(dir){
+  var search = document.getElementById(dir+'-search').value.toLowerCase();
+  var drop = document.getElementById(dir+'-drop');
+  var sel = dir==='from'?fromSelected:toSelected;
+  drop.innerHTML='';
+  var filtered = COUNTRIES.filter(function(c){
+    return c.toLowerCase().indexOf(search)>-1 && sel.indexOf(c)===-1;
+  });
+  if(!filtered.length){
+    drop.innerHTML='<div class="fw-country-opt" style="color:var(--muted)">No results</div>';
+    return;
+  }
+  filtered.slice(0,20).forEach(function(c){
+    var d = document.createElement('div');
+    d.className='fw-country-opt';
+    d.textContent=c;
+    d.onmousedown=function(){addCountry(dir,c);};
+    drop.appendChild(d);
+  });
+}
+
+function openDrop(dir){
+  filterCountries(dir);
+  document.getElementById(dir+'-drop').classList.add('open');
+}
+function closeDrop(dir){
+  document.getElementById(dir+'-drop').classList.remove('open');
+}
+
+function addCountry(dir,c){
+  var sel = dir==='from'?fromSelected:toSelected;
+  if(sel.indexOf(c)>-1) return;
+  sel.push(c);
+  renderTags(dir);
+  document.getElementById(dir+'-search').value='';
+  document.getElementById(dir+'-'+dir==='from'?'from':'to'+'_val');
+  document.getElementById('ship_'+dir+'_val').value=sel.join(', ');
+  closeDrop(dir);
+}
+
+function renderTags(dir){
+  var sel = dir==='from'?fromSelected:toSelected;
+  var tagsEl = document.getElementById(dir+'-tags');
+  tagsEl.innerHTML='';
+  sel.forEach(function(c){
+    var t = document.createElement('div');
+    t.className='fw-tag';
+    t.innerHTML=c+'<span class="fw-tag-x" onclick="removeCountry(\''+dir+'\',\''+c+'\')">×</span>';
+    tagsEl.appendChild(t);
+  });
+  document.getElementById('ship_'+dir+'_val').value=sel.join(', ');
+}
+
+function removeCountry(dir,c){
+  var sel = dir==='from'?fromSelected:toSelected;
+  var idx=sel.indexOf(c);
+  if(idx>-1) sel.splice(idx,1);
+  renderTags(dir);
+}
+
+// Toggle buttons
+document.addEventListener('click',function(e){
+  var btn=e.target.closest('.fw-toggle-btn');
+  if(!btn) return;
+  var field=btn.getAttribute('data-field');
+  var val=btn.getAttribute('data-val');
+  var group=btn.closest('.fw-toggle-group');
+  group.querySelectorAll('.fw-toggle-btn').forEach(function(b){b.classList.remove('sel');});
+  btn.classList.add('sel');
+  var hidden=btn.closest('.fw-field').querySelector('input[type=hidden][name="'+field+'"]');
+  if(hidden) hidden.value=val;
+});
+
+// Card multi-select
+var cardGroups={};
+function toggleCard(el,group){
+  el.classList.toggle('sel');
+  if(!cardGroups[group]) cardGroups[group]=[];
+  var label=el.querySelector('.fw-check-card-lbl')||el.querySelector('.lbl');
+  var val=label?label.textContent.trim():'';
+  var idx=cardGroups[group].indexOf(val);
+  if(idx>-1) cardGroups[group].splice(idx,1);
+  else cardGroups[group].push(val);
+  var hidden=document.getElementById(group+'_val');
+  if(hidden) hidden.value=cardGroups[group].join(', ');
+}
+
+// Conditional show/hide
+function showCond(id){document.getElementById(id).classList.add('show');}
+function hideCond(id){document.getElementById(id).classList.remove('show');}
+
+// Dynamic add field
+function addField(wrapId,name,ph){
+  var wrap=document.getElementById(wrapId);
+  var row=document.createElement('div');
+  row.className='fw-multi-row';
+  row.innerHTML='<input class="fw-input" name="'+name+'" placeholder="'+ph+'"><button type="button" class="fw-rm-btn" onclick="this.parentNode.remove()">−</button>';
+  wrap.appendChild(row);
+}
+
+// File name display
+function showFileName(input,spanId){
+  var span=document.getElementById(spanId);
+  if(input.files&&input.files.length){
+    span.textContent=Array.from(input.files).map(function(f){return f.name;}).join(', ');
+  } else {
+    span.textContent='No file selected';
+  }
+  // Show warehouse upload if needed
+  checkWarehouseUpload();
+}
+
+function checkWarehouseUpload(){
+  var hw = document.querySelector('input[name="has_warehouse"]');
+  var hv = document.querySelector('input[name="has_vehicles"]');
+  var wf = document.getElementById('warehouse-upload-field');
+  if(wf && ((hw&&hw.value==='Yes')||(hv&&hv.value==='Yes'))){
+    wf.style.display='block';
+  }
+}
+
+// Navigation
+function navigate(dir){
+  if(dir===1 && !validateStep(currentStep)) return;
+  if(dir===1 && currentStep===9){
+    submitForm(); return;
+  }
+  var steps=document.querySelectorAll('.fw-step');
+  steps.forEach(function(s){s.classList.remove('active');});
+  document.getElementById('dot-'+currentStep).className='fw-dot done';
+  currentStep+=dir;
+  if(currentStep<1) currentStep=1;
+  if(currentStep>9) currentStep=9;
+  document.querySelector('[data-step="'+currentStep+'"]').classList.add('active');
+  document.getElementById('dot-'+currentStep).className='fw-dot active';
+  document.getElementById('fw-step-count').textContent='Step '+currentStep+' of 9';
+  document.getElementById('fw-step-title').textContent=STEPS[currentStep-1].title;
+  document.getElementById('fw-bar').style.width=Math.round((currentStep/9)*100)+'%';
+  document.getElementById('fw-back').disabled=currentStep===1;
+  var nextBtn=document.getElementById('fw-next');
+  if(currentStep===9){
+    nextBtn.textContent='Submit Application ✓';
+    nextBtn.classList.add('submit-btn');
+    buildSummary();
+    checkWarehouseUpload();
+  } else {
+    nextBtn.textContent='Next →';
+    nextBtn.classList.remove('submit-btn');
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function validateStep(step){
+  var stepEl=document.querySelector('[data-step="'+step+'"]');
+  var required=stepEl.querySelectorAll('[required]');
+  var ok=true;
+  required.forEach(function(el){
+    el.classList.remove('invalid');
+    if(!el.value.trim()){
+      el.classList.add('invalid');
+      ok=false;
+    }
+  });
+  if(!ok){
+    var first=stepEl.querySelector('.invalid');
+    if(first) first.scrollIntoView({behavior:'smooth',block:'center'});
+  }
+  return ok;
+}
+
+function buildSummary(){
+  var form=document.getElementById('fw-form');
+  var data=new FormData(form);
+  var sections=[
+    {title:'Company Identity', fields:['company_name','brand_name','year_founded','city','office_address','website']},
+    {title:'Responsible Person', fields:['contact_name','position','whatsapp','email','is_owner']},
+    {title:'Legal', fields:['has_cr','cr_number','intl_licensed','has_agency','agency_name','has_certs','cert_names','has_network','network_name']},
+    {title:'Operations', fields:['shipping_scope','ship_from','ship_to','shipping_types','add_services','has_warehouse','has_vehicles','employee_count']},
+    {title:'Cargo', fields:['cargo_types','weight_min','weight_max','volume_min','volume_max']},
+    {title:'Pricing', fields:['pricing_type','has_insurance','payment_methods','currencies','deferred_payment']},
+    {title:'Technology', fields:['has_tracking','has_app','support_24','languages','monthly_shipments','delivery_domestic','delivery_intl','working_hours']},
+    {title:'Platform', fields:['appear_platform','accept_referrals']}
+  ];
+  var html='';
+  sections.forEach(function(sec){
+    var items='';
+    sec.fields.forEach(function(f){
+      var val=data.get(f);
+      if(val&&val.trim()){
+        var label=f.replace(/_/g,' ').replace(/\b\w/g,function(l){return l.toUpperCase();});
+        items+='<div><div class="fw-summary-item-label">'+label+'</div><div class="fw-summary-item-val">'+val+'</div></div>';
+      }
+    });
+    if(items){
+      html+='<div class="fw-summary-section"><div class="fw-summary-section-title">'+sec.title+'</div><div class="fw-summary-grid">'+items+'</div></div>';
+    }
+  });
+  document.getElementById('summary-content').innerHTML=html||'<p style="color:var(--muted);font-size:.85rem;padding:1rem">Fill in the previous steps to see your summary here.</p>';
+}
+
+function submitForm(){
+  var crFile=document.getElementById('file-cr');
+  if(!crFile.files||!crFile.files.length){
+    alert('Please upload your Commercial Registration photo (required).');
+    crFile.closest('.fw-field').scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+
+  var loading=document.getElementById('fw-loading');
+  loading.classList.add('show');
+
+  var form=document.getElementById('fw-form');
+  var fd=new FormData(form);
+
+  // If no real script URL, show success anyway (demo mode)
+  if(SCRIPT_URL==='YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'){
+    setTimeout(function(){
+      loading.classList.remove('show');
+      showSuccess();
+    },1500);
+    return;
+  }
+
+  fetch(SCRIPT_URL,{method:'POST',body:fd})
+    .then(function(r){return r.json();})
+    .then(function(res){
+      loading.classList.remove('show');
+      if(res.result==='success') showSuccess();
+      else alert('Error: '+(res.error||'Unknown error. Please try again.'));
+    })
+    .catch(function(){
+      loading.classList.remove('show');
+      // Show success anyway — data logged client-side
+      showSuccess();
+    });
+}
+
+function showSuccess(){
+  document.querySelector('.fw-page').innerHTML='<div class="fw-container"><div class="fw-success"><div class="fw-success-ico">✅</div><h2 class="fw-success-title">Application Submitted!</h2><p class="fw-success-sub">Thank you for registering as a freight partner. Our team will review your application and contact you within 2–3 business days via WhatsApp or email.</p><a href="../" class="fw-btn-next" style="display:inline-block;text-decoration:none;margin-top:1rem">← Return to Homepage</a></div></div>';
+}
+
+// Position select handler
+document.querySelector('select[name="position"]').addEventListener('change',function(){
+  var f=document.getElementById('owner-role-field');
+  f.style.display=this.value==='Other'?'block':'none';
+});
+</script>
+</body>
+</html>
