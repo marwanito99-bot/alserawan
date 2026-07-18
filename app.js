@@ -16,6 +16,51 @@ function mwmLoadImages(){
 if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',mwmLoadImages);
 else mwmLoadImages();
 
+/* ===== SCROLL REVEAL ===== */
+(function(){
+  function initReveal(){
+    var els=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+    if(!els.length) return;
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+      });
+    },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){io.observe(el);});
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initReveal);
+  else initReveal();
+  document.addEventListener('pagechange',initReveal);
+})();
+
+/* ===== STATS COUNTER ===== */
+(function(){
+  function countUp(el){
+    var txt=el.textContent.trim();
+    var suffix=txt.replace(/[\d.]/g,'');
+    var num=parseFloat(txt);
+    if(isNaN(num)) return;
+    var duration=1400,steps=60,step=0;
+    var timer=setInterval(function(){
+      step++;
+      var val=Math.round(num*(step/steps)*10)/10;
+      el.textContent=(Number.isInteger(num)?Math.round(val):val)+suffix;
+      if(step>=steps){el.textContent=txt;clearInterval(timer);}
+    },duration/steps);
+  }
+  function initCounters(){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){countUp(e.target);io.unobserve(e.target);}
+      });
+    },{threshold:0.5});
+    document.querySelectorAll('.stat-n').forEach(function(el){io.observe(el);});
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',initCounters);
+  else initCounters();
+  document.addEventListener('pagechange',initCounters);
+})();
+
 
 function setLang(l){
   document.body.classList.remove('ar','cn');
