@@ -1,43 +1,76 @@
 // Al Serawan Group — Freight Partner Registration
-// Google Apps Script — Paste this in Extensions > Apps Script > Code.gs
+// Google Apps Script — Paste in Extensions > Apps Script > Code.gs
+// Then: Deploy > New deployment > Web app > Anyone > Deploy
 
 function doPost(e) {
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    var data = e.parameter;
+    var data  = e.parameter;
 
-    // Add headers on first submission
+    // ── Google Drive folder ──────────────────────────────────────
+    var ROOT_FOLDER_NAME = 'Freight Partner Applications';
+    var rootFolder = DriveApp.getFoldersByName(ROOT_FOLDER_NAME).hasNext()
+      ? DriveApp.getFoldersByName(ROOT_FOLDER_NAME).next()
+      : DriveApp.createFolder(ROOT_FOLDER_NAME);
+
+    var companyName   = (data.company_name || 'Unknown').replace(/[\/\\:*?"<>|]/g, '-');
+    var stamp         = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy-MM-dd HH:mm');
+    var companyFolder = rootFolder.createFolder(companyName + ' (' + stamp + ')');
+    companyFolder.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+
+    // ── Helper: decode base64 → Drive file ──────────────────────
+    function saveFile(b64, fileName) {
+      if (!b64 || !fileName) return '';
+      try {
+        var decoded = Utilities.base64Decode(b64);
+        var blob    = Utilities.newBlob(decoded, 'application/pdf', fileName);
+        var file    = companyFolder.createFile(blob);
+        file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+        return file.getUrl();
+      } catch (err) {
+        return 'Upload error: ' + err.message;
+      }
+    }
+
+    var crUrl        = saveFile(data.file_cr_b64,        data.file_cr_name);
+    var logoUrl      = saveFile(data.file_logo_b64,      data.file_logo_name);
+    var profileUrl   = saveFile(data.file_profile_b64,   data.file_profile_name);
+    var warehouseUrl = saveFile(data.file_warehouse_b64, data.file_warehouse_name);
+
+    // ── Headers on first row ─────────────────────────────────────
     if (sheet.getLastRow() === 0) {
       var headers = [
-        'Timestamp', 'Company Name', 'Brand Name', 'Year Founded', 'City',
-        'Countries', 'Office Address', 'Website', 'Social Media',
-        'Contact Name', 'Position', 'WhatsApp', 'Phone 2', 'Email', 'Is Owner',
-        'Has CR', 'CR Number', 'CR Date', 'Tax Number', 'Intl Licensed',
-        'Shipping Lines', 'Has Agency', 'Agency Name',
-        'Has Certs', 'Cert Names', 'Has Network', 'Network Name',
-        'Shipping Scope', 'Ship From', 'Ship To', 'Shipping Types',
-        'Has Warehouse', 'Warehouse Address',
-        'Has Vehicles', 'Vehicle Types', 'Vehicle Count',
-        'Employees', 'Branches Local', 'Branches Intl', 'Additional Services',
-        'Cargo Types', 'Cargo Other', 'Weight Min', 'Weight Max',
-        'Volume Min', 'Volume Max',
-        'Pricing Type', 'Pricing Mechanism', 'Has Insurance',
-        'Has Compensation', 'Compensation Policy',
-        'Payment Methods', 'Currencies', 'Deferred Payment',
-        'Has Tracking', 'Has App', '24/7 Support', 'Languages',
-        'Monthly Shipments', 'Max Capacity',
-        'Delivery Domestic', 'Delivery Intl', 'Working Days', 'Working Hours',
-        'Differentiator', 'Appear on Platform', 'Accept Referrals', 'Referral Pricing'
+        'Timestamp','Company Name','Brand Name','Year Founded','City',
+        'Countries','Office Address','Website','Social Media',
+        'Contact Name','Position','WhatsApp','Phone 2','Email','Is Owner',
+        'Has CR','CR Number','CR Date','Tax Number','Intl Licensed',
+        'Shipping Lines','Has Agency','Agency Name',
+        'Has Certs','Cert Names','Has Network','Network Name',
+        'Shipping Scope','Ship From','Ship To','Shipping Types',
+        'Has Warehouse','Warehouse Address',
+        'Has Vehicles','Vehicle Types','Vehicle Count',
+        'Employees','Branches Local','Branches Intl','Additional Services',
+        'Cargo Types','Cargo Other','Weight Min','Weight Max',
+        'Volume Min','Volume Max',
+        'Pricing Type','Pricing Mechanism','Has Insurance',
+        'Has Compensation','Compensation Policy',
+        'Payment Methods','Currencies','Deferred Payment',
+        'Has Tracking','Has App','24/7 Support','Languages',
+        'Monthly Shipments','Max Capacity',
+        'Delivery Domestic','Delivery Intl','Working Days','Working Hours',
+        'Differentiator','Appear on Platform','Accept Referrals','Referral Pricing',
+        'CR File (Drive)','Logo File (Drive)','Profile File (Drive)','Warehouse File (Drive)',
+        'Company Folder (Drive)'
       ];
       sheet.appendRow(headers);
-      sheet
-        .getRange(1, 1, 1, headers.length)
-        .setFontWeight('bold')
-        .setBackground('#1d00f4')
-        .setFontColor('#ffffff');
+      sheet.getRange(1, 1, 1, headers.length)
+           .setFontWeight('bold')
+           .setBackground('#1d00f4')
+           .setFontColor('#ffffff');
       sheet.setFrozenRows(1);
     }
 
+    // ── Data row ─────────────────────────────────────────────────
     var row = [
       new Date(),
       data.company_name        || '',
@@ -106,16 +139,16 @@ function doPost(e) {
       data.differentiator      || '',
       data.appear_platform     || '',
       data.accept_referrals    || '',
-      data.referral_pricing    || ''
+      data.referral_pricing    || '',
+      crUrl,
+      logoUrl,
+      profileUrl,
+      warehouseUrl,
+      companyFolder.getUrl()
     ];
 
     sheet.appendRow(row);
-
-    // Auto-resize columns
     sheet.autoResizeColumns(1, sheet.getLastColumn());
-
-    // Send notification email (optional — change the address below)
-    // MailApp.sendEmail('info.mwm@alserawan.com', 'New Freight Partner Application', 'Company: ' + (data.company_name || 'Unknown'));
 
     return ContentService
       .createTextOutput(JSON.stringify({ result: 'success' }))

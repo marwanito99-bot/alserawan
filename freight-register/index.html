@@ -761,7 +761,7 @@ input[type=file]{display:none}
             <span><span class="en">Click to upload logo (PNG, JPG, SVG)</span><span class="ar-t">اضغط لرفع الشعار (PNG، JPG، SVG)</span><span class="cn-t">点击上传标志（PNG、JPG、SVG）</span></span>
             <span class="fw-file-name" id="logo-name"><span class="en">No file selected</span><span class="ar-t">لم يُختر ملف</span><span class="cn-t">未选择文件</span></span>
           </label>
-          <input type="file" id="file-logo" name="file_logo" accept="image/*" onchange="showFileName(this,'logo-name')">
+          <input type="file" id="file-logo" name="file_logo" accept="application/pdf,.pdf" onchange="validateFile(this,'logo-name')">
         </div>
 
         <div class="fw-field">
@@ -771,7 +771,7 @@ input[type=file]{display:none}
             <span><span class="en">Click to upload CR photo (JPG, PNG, PDF)</span><span class="ar-t">اضغط لرفع صورة السجل التجاري</span><span class="cn-t">点击上传营业执照（JPG、PNG、PDF）</span></span>
             <span class="fw-file-name" id="cr-name"><span class="en">No file selected</span><span class="ar-t">لم يُختر ملف</span><span class="cn-t">未选择文件</span></span>
           </label>
-          <input type="file" id="file-cr" name="file_cr" accept="image/*,.pdf" onchange="showFileName(this,'cr-name')">
+          <input type="file" id="file-cr" name="file_cr" accept="application/pdf,.pdf" onchange="validateFile(this,'cr-name')">
         </div>
 
         <div class="fw-field">
@@ -781,7 +781,7 @@ input[type=file]{display:none}
             <span><span class="en">Click to upload PDF profile</span><span class="ar-t">اضغط لرفع ملف PDF</span><span class="cn-t">点击上传PDF简介</span></span>
             <span class="fw-file-name" id="profile-name"><span class="en">No file selected</span><span class="ar-t">لم يُختر ملف</span><span class="cn-t">未选择文件</span></span>
           </label>
-          <input type="file" id="file-profile" name="file_profile" accept=".pdf" onchange="showFileName(this,'profile-name')">
+          <input type="file" id="file-profile" name="file_profile" accept="application/pdf,.pdf" onchange="validateFile(this,'profile-name')">
         </div>
 
         <div class="fw-field" id="warehouse-upload-field" style="display:none">
@@ -791,7 +791,7 @@ input[type=file]{display:none}
             <span><span class="en">Upload warehouse or fleet photos (JPG, PNG)</span><span class="ar-t">ارفع صور المستودع أو الأسطول</span><span class="cn-t">上传仓库或车队照片（JPG、PNG）</span></span>
             <span class="fw-file-name" id="warehouse-name"><span class="en">No file selected</span><span class="ar-t">لم يُختر ملف</span><span class="cn-t">未选择文件</span></span>
           </label>
-          <input type="file" id="file-warehouse" name="file_warehouse" accept="image/*" multiple onchange="showFileName(this,'warehouse-name')">
+          <input type="file" id="file-warehouse" name="file_warehouse" accept="application/pdf,.pdf" onchange="validateFile(this,'warehouse-name')">
         </div>
       </div>
 
@@ -819,7 +819,7 @@ input[type=file]{display:none}
 
 <script src="../app.js"></script>
 <script>
-var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwfqP9POicXGN3FUqVUzWAZRjaL4-PWqYs6F-BUMU8UjHrwnrbuppmDNXM6Mp8gTxAYOQ/exec';
+var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxcjBs1lbTeC5nXgozU5ulJNS8LYGYPyQdt09l75fwz1I5j4Fo0K0A3HvMT_HUwoLSCDA/exec';
 
 var STEPS = [
   {n:1, en:'Company Identity',       ar:'هوية الشركة',                    cn:'公司基本信息'},
@@ -977,6 +977,37 @@ function showFileName(input,spanId){
   checkWarehouseUpload();
 }
 
+var MAX_FILE_SIZE = 500 * 1024; // 500 KB
+
+function validateFile(input, spanId) {
+  var lang = document.body.classList.contains('ar') ? 'ar' : document.body.classList.contains('cn') ? 'cn' : 'en';
+  var msgs = {
+    type: {
+      en: 'Only PDF files are accepted.',
+      ar: 'يُقبل ملف PDF فقط.',
+      cn: '仅接受PDF格式文件。'
+    },
+    size: {
+      en: 'File size must be under 500 KB. Please compress your PDF and try again.',
+      ar: 'حجم الملف يجب أن يكون أقل من 500 KB. يرجى ضغط ملف PDF والمحاولة مرة أخرى.',
+      cn: '文件大小必须低于500KB，请压缩PDF后重试。'
+    }
+  };
+  if (!input.files || !input.files[0]) return;
+  var file = input.files[0];
+  if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+    alert(msgs.type[lang]);
+    input.value = '';
+    return;
+  }
+  if (file.size > MAX_FILE_SIZE) {
+    alert(msgs.size[lang]);
+    input.value = '';
+    return;
+  }
+  showFileName(input, spanId);
+}
+
 function checkWarehouseUpload(){
   var hw=document.querySelector('input[name="has_warehouse"]');
   var hv=document.querySelector('input[name="has_vehicles"]');
@@ -1048,11 +1079,25 @@ function buildSummary(){
   document.getElementById('summary-content').innerHTML=html||'<p style="color:var(--muted);font-size:.85rem;padding:1rem"><span class="en">Fill in previous steps to see your summary.</span><span class="ar-t">أكمل الخطوات السابقة لرؤية الملخص.</span><span class="cn-t">完成前面步骤后此处将显示摘要。</span></p>';
 }
 
+function readFileAsBase64(file){
+  return new Promise(function(resolve){
+    if(!file){resolve({b64:'',name:''});return;}
+    var reader=new FileReader();
+    reader.onload=function(e){
+      // result is data:application/pdf;base64,XXXXX — strip the prefix
+      var b64=e.target.result.split(',')[1]||'';
+      resolve({b64:b64,name:file.name});
+    };
+    reader.onerror=function(){resolve({b64:'',name:''});};
+    reader.readAsDataURL(file);
+  });
+}
+
 function submitForm(){
+  var lang=document.body.classList.contains('ar')?'ar':document.body.classList.contains('cn')?'cn':'en';
   var crFile=document.getElementById('file-cr');
   if(!crFile.files||!crFile.files.length){
-    var lang=document.body.classList.contains('ar')?'ar':document.body.classList.contains('cn')?'cn':'en';
-    var msgs={en:'Please upload your Commercial Registration photo (required).',ar:'يرجى رفع صورة السجل التجاري (مطلوب).',cn:'请上传营业执照照片（必填）。'};
+    var msgs={en:'Please upload your Commercial Registration (required).',ar:'يرجى رفع السجل التجاري (مطلوب).',cn:'请上传营业执照（必填）。'};
     alert(msgs[lang]);
     crFile.closest('.fw-field').scrollIntoView({behavior:'smooth',block:'center'});
     return;
@@ -1062,38 +1107,82 @@ function submitForm(){
     setTimeout(function(){document.getElementById('fw-loading').classList.remove('show');showSuccess();},1500);
     return;
   }
-  // Hidden iframe submit — bypasses CORS completely
-  var fd = new FormData(document.getElementById('fw-form'));
 
-  var iframe = document.createElement('iframe');
-  iframe.name = 'fw-hidden-target';
-  iframe.style.display = 'none';
-  document.body.appendChild(iframe);
-
-  var hiddenForm = document.createElement('form');
-  hiddenForm.method = 'POST';
-  hiddenForm.action = SCRIPT_URL;
-  hiddenForm.target = 'fw-hidden-target';
-  hiddenForm.style.display = 'none';
-
-  fd.forEach(function(val, key){
-    var input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = key;
-    input.value = val;
-    hiddenForm.appendChild(input);
-  });
-
-  document.body.appendChild(hiddenForm);
-
-  iframe.onload = function(){
-    document.getElementById('fw-loading').classList.remove('show');
-    showSuccess();
-    document.body.removeChild(hiddenForm);
-    document.body.removeChild(iframe);
+  // Collect all file inputs for base64 encoding
+  var fileInputs={
+    file_cr:    document.getElementById('file-cr').files[0]    || null,
+    file_logo:  document.getElementById('file-logo').files[0]  || null,
+    file_profile: document.getElementById('file-profile').files[0] || null,
+    file_warehouse: document.getElementById('file-warehouse').files[0] || null
   };
 
-  hiddenForm.submit();
+  Promise.all([
+    readFileAsBase64(fileInputs.file_cr),
+    readFileAsBase64(fileInputs.file_logo),
+    readFileAsBase64(fileInputs.file_profile),
+    readFileAsBase64(fileInputs.file_warehouse)
+  ]).then(function(results){
+    var cr=results[0], logo=results[1], profile=results[2], warehouse=results[3];
+
+    // Collect all text form data (excluding file inputs)
+    var fd = new FormData(document.getElementById('fw-form'));
+    var textData={};
+    fd.forEach(function(val,key){
+      // skip the raw file entries — we'll send base64 instead
+      if(key==='file_cr'||key==='file_logo'||key==='file_profile'||key==='file_warehouse')return;
+      if(textData[key]){
+        textData[key]=textData[key]+', '+val;
+      } else {
+        textData[key]=val;
+      }
+    });
+
+    // Add base64 file fields
+    textData['file_cr_b64']        = cr.b64;
+    textData['file_cr_name']       = cr.name;
+    textData['file_logo_b64']      = logo.b64;
+    textData['file_logo_name']     = logo.name;
+    textData['file_profile_b64']   = profile.b64;
+    textData['file_profile_name']  = profile.name;
+    textData['file_warehouse_b64'] = warehouse.b64;
+    textData['file_warehouse_name']= warehouse.name;
+
+    // Build hidden iframe + form — bypasses CORS completely
+    var iframe = document.createElement('iframe');
+    iframe.name = 'fw-hidden-target-'+Date.now();
+    iframe.style.display='none';
+    document.body.appendChild(iframe);
+
+    var hiddenForm = document.createElement('form');
+    hiddenForm.method = 'POST';
+    hiddenForm.action = SCRIPT_URL;
+    hiddenForm.target = iframe.name;
+    hiddenForm.style.display='none';
+    hiddenForm.enctype='application/x-www-form-urlencoded';
+
+    Object.keys(textData).forEach(function(key){
+      var inp=document.createElement('input');
+      inp.type='hidden';
+      inp.name=key;
+      inp.value=textData[key];
+      hiddenForm.appendChild(inp);
+    });
+
+    document.body.appendChild(hiddenForm);
+
+    iframe.onload=function(){
+      document.getElementById('fw-loading').classList.remove('show');
+      showSuccess();
+      try{document.body.removeChild(hiddenForm);}catch(x){}
+      try{document.body.removeChild(iframe);}catch(x){}
+    };
+
+    hiddenForm.submit();
+  }).catch(function(err){
+    document.getElementById('fw-loading').classList.remove('show');
+    var msgs={en:'An error occurred while preparing files. Please try again.',ar:'حدث خطأ أثناء تحضير الملفات. حاول مرة أخرى.',cn:'准备文件时出错，请重试。'};
+    alert(msgs[lang]);
+  });
 }
 
 function showSuccess(){
