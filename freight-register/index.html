@@ -5,95 +5,67 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Freight Partner Registration — Al Serawan Group</title>
 <link rel="icon" type="image/png" href="../images/logo-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="../style.css"/>
 <style>
-/* ===== FREIGHT WIZARD ===== */
 .fw-page{min-height:100vh;background:var(--black);padding-top:90px;padding-bottom:4rem}
 .fw-container{max-width:780px;margin:0 auto;padding:0 1.5rem}
-
-/* Header */
 .fw-header{text-align:center;padding:2.5rem 0 2rem}
 .fw-header-tag{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--blue);margin-bottom:.6rem}
 .fw-header-title{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;line-height:1.1;margin-bottom:.5rem}
 .fw-header-sub{font-size:.85rem;color:var(--muted);max-width:480px;margin:0 auto}
-
-/* Progress */
-.fw-progress{background:var(--dark2);border:1px solid var(--border);padding:1.2rem 1.8rem;margin-bottom:2rem;border-radius:2px}
+.fw-progress{background:var(--dark2);border:1px solid var(--border);padding:1.2rem 1.8rem;margin-bottom:2rem}
 .fw-progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem}
 .fw-step-label{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .fw-step-count{font-size:.68rem;font-weight:700;color:var(--lime)}
 .fw-step-title{font-size:.9rem;font-weight:600;color:var(--text)}
-.fw-bar-track{height:3px;background:var(--border);border-radius:2px;margin-top:.5rem}
-.fw-bar-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--lime));border-radius:2px;transition:width .4s cubic-bezier(.22,1,.36,1)}
-
-/* Step dots */
+.fw-bar-track{height:3px;background:var(--border);margin-top:.5rem}
+.fw-bar-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--lime));transition:width .4s cubic-bezier(.22,1,.36,1)}
 .fw-dots{display:flex;gap:4px;margin-top:.7rem;flex-wrap:wrap}
-.fw-dot{width:20px;height:3px;border-radius:2px;background:var(--border);transition:background .3s}
-.fw-dot.done{background:var(--blue)}
-.fw-dot.active{background:var(--lime)}
-
-/* Card */
+.fw-dot{width:20px;height:3px;background:var(--border);transition:background .3s}
+.fw-dot.done{background:var(--blue)}.fw-dot.active{background:var(--lime)}
 .fw-card{background:var(--dark2);border:1px solid var(--border);padding:2.5rem;margin-bottom:1.5rem}
-
-/* Step */
-.fw-step{display:none}
-.fw-step.active{display:block;animation:stepIn .35s cubic-bezier(.22,1,.36,1)}
+.fw-step{display:none}.fw-step.active{display:block;animation:stepIn .35s cubic-bezier(.22,1,.36,1)}
 @keyframes stepIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
-
+body.ar .fw-step.active{animation:stepInRtl .35s cubic-bezier(.22,1,.36,1)}
+@keyframes stepInRtl{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
 .fw-step-heading{font-size:1rem;font-weight:700;color:var(--lime);margin-bottom:.3rem;display:flex;align-items:center;gap:.6rem}
 .fw-step-heading::before{content:"";display:inline-block;width:16px;height:2px;background:var(--lime)}
 .fw-step-desc{font-size:.8rem;color:var(--muted);margin-bottom:2rem}
-
-/* Fields */
 .fw-field{margin-bottom:1.5rem}
 .fw-label{display:block;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem;font-weight:600}
 .fw-label .req{color:var(--lime);margin-left:2px}
-.fw-input,.fw-select,.fw-textarea{width:100%;background:var(--dark3);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:.88rem;padding:.75rem 1rem;outline:none;transition:border-color .2s;-webkit-appearance:none;border-radius:0}
+.fw-input,.fw-select,.fw-textarea{width:100%;background:var(--dark3);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:.88rem;padding:.75rem 1rem;outline:none;transition:border-color .2s;-webkit-appearance:none;border-radius:0;box-sizing:border-box}
 .fw-input:focus,.fw-select:focus,.fw-textarea:focus{border-color:var(--blue)}
 .fw-input.invalid,.fw-select.invalid,.fw-textarea.invalid{border-color:#ff4444}
 .fw-textarea{min-height:100px;resize:vertical;line-height:1.6}
-.fw-select{cursor:pointer}
 .fw-hint{font-size:.7rem;color:var(--muted);margin-top:.35rem}
 .fw-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 @media(max-width:600px){.fw-row{grid-template-columns:1fr}}
-
-/* Toggle */
 .fw-toggle-group{display:flex;gap:.5rem;flex-wrap:wrap}
 .fw-toggle-btn{padding:.55rem 1.3rem;border:1px solid var(--border);background:var(--dark3);color:var(--muted);font-family:inherit;font-size:.75rem;font-weight:600;letter-spacing:.08em;cursor:pointer;transition:all .2s;text-transform:uppercase}
 .fw-toggle-btn.sel{background:var(--blue);color:#fff;border-color:var(--blue)}
-.fw-toggle-btn.sel-lime{background:rgba(204,253,27,.1);color:var(--lime);border-color:var(--lime)}
-
-/* Checkbox grid */
 .fw-check-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.6rem}
 .fw-check-card{padding:.75rem 1rem;border:1px solid var(--border);background:var(--dark3);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:.6rem;user-select:none}
 .fw-check-card:hover{border-color:var(--blue)}
 .fw-check-card.sel{border-color:var(--lime);background:rgba(204,253,27,.06);color:var(--lime)}
 .fw-check-card-ico{font-size:1.1rem;flex-shrink:0}
 .fw-check-card-lbl{font-size:.78rem;font-weight:500}
-
-/* Cargo cards */
-.fw-cargo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.6rem}
+.fw-cargo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.6rem}
 .fw-cargo-card{padding:1rem .8rem;border:1px solid var(--border);background:var(--dark3);cursor:pointer;transition:all .2s;text-align:center;user-select:none}
 .fw-cargo-card:hover{border-color:var(--blue)}
 .fw-cargo-card.sel{border-color:var(--lime);background:rgba(204,253,27,.06)}
 .fw-cargo-card .ico{font-size:1.6rem;margin-bottom:.4rem}
-.fw-cargo-card .lbl{font-size:.72rem;color:var(--muted)}
+.fw-cargo-card .lbl{font-size:.7rem;color:var(--muted)}
 .fw-cargo-card.sel .lbl{color:var(--lime)}
-
-/* Multi-add (countries, social) */
 .fw-multi-add{display:flex;flex-direction:column;gap:.5rem}
 .fw-multi-row{display:flex;gap:.5rem;align-items:center}
 .fw-multi-row .fw-input{flex:1}
 .fw-add-btn,.fw-rm-btn{width:36px;height:36px;border:1px solid var(--border);background:var(--dark3);color:var(--muted);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;line-height:1;font-family:inherit}
 .fw-add-btn:hover{border-color:var(--lime);color:var(--lime)}
 .fw-rm-btn:hover{border-color:#ff4444;color:#ff4444}
-
-/* Country select */
 .fw-country-wrap{position:relative}
-.fw-country-search{width:100%;background:var(--dark3);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:.88rem;padding:.75rem 1rem;outline:none;transition:border-color .2s}
+.fw-country-search{width:100%;background:var(--dark3);border:1px solid var(--border);color:var(--text);font-family:inherit;font-size:.88rem;padding:.75rem 1rem;outline:none;transition:border-color .2s;box-sizing:border-box}
 .fw-country-search:focus{border-color:var(--blue)}
 .fw-country-drop{position:absolute;top:100%;left:0;right:0;background:var(--dark2);border:1px solid var(--blue);border-top:none;max-height:200px;overflow-y:auto;z-index:50;display:none}
 .fw-country-drop.open{display:block}
@@ -103,329 +75,342 @@
 .fw-tag{display:inline-flex;align-items:center;gap:.4rem;padding:.25rem .7rem;background:rgba(29,0,244,.15);border:1px solid rgba(29,0,244,.35);font-size:.72rem;color:var(--text)}
 .fw-tag-x{cursor:pointer;color:var(--muted);font-size:.9rem;line-height:1;transition:color .2s}
 .fw-tag-x:hover{color:#ff4444}
-
-/* Range row */
 .fw-range-row{display:grid;grid-template-columns:1fr auto 1fr;gap:.5rem;align-items:center}
 .fw-range-sep{color:var(--muted);font-size:.8rem;text-align:center}
-
-/* Conditional reveal */
 .fw-cond{display:none;margin-top:.8rem;padding:.8rem 1rem;border-left:2px solid var(--border);background:rgba(255,255,255,.02)}
-.fw-cond.show{display:block;animation:stepIn .2s ease}
-
-/* File upload */
+.fw-cond.show{display:block}
+body.ar .fw-cond{border-left:none;border-right:2px solid var(--border)}
 .fw-file-label{display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px dashed var(--border);background:var(--dark3);padding:1.5rem;cursor:pointer;transition:border-color .2s;text-align:center;gap:.4rem}
 .fw-file-label:hover{border-color:var(--lime)}
 .fw-file-label svg{width:28px;height:28px;stroke:var(--muted);fill:none;stroke-width:1.5}
 .fw-file-label span{font-size:.75rem;color:var(--muted)}
-.fw-file-label .fw-file-name{font-size:.72rem;color:var(--lime);margin-top:.3rem}
+.fw-file-name{font-size:.72rem;color:var(--lime)!important;margin-top:.3rem}
 input[type=file]{display:none}
-
-/* Nav buttons */
 .fw-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;gap:1rem}
 .fw-btn-back{padding:.75rem 1.8rem;background:transparent;color:var(--muted);border:1px solid var(--border);font-family:inherit;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s}
 .fw-btn-back:hover{border-color:var(--text);color:var(--text)}
 .fw-btn-back:disabled{opacity:.3;cursor:not-allowed}
-.fw-btn-next{padding:.75rem 2rem;background:var(--blue);color:#fff;border:none;font-family:inherit;font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.fw-btn-next{padding:.75rem 2rem;background:var(--blue);color:#fff;border:none;font-family:inherit;font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .2s}
 .fw-btn-next:hover{background:#2d12ff;transform:translateY(-1px)}
 .fw-btn-next.submit-btn{background:var(--lime);color:var(--black)}
-.fw-btn-next.submit-btn:hover{opacity:.9}
-.fw-btn-next:disabled{opacity:.5;cursor:not-allowed;transform:none}
-
-/* Summary */
 .fw-summary-section{margin-bottom:1.5rem;border:1px solid var(--border);background:var(--dark3)}
 .fw-summary-section-title{padding:.7rem 1.2rem;background:rgba(29,0,244,.1);border-bottom:1px solid var(--border);font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);font-weight:700}
 .fw-summary-grid{padding:1rem 1.2rem;display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
 @media(max-width:600px){.fw-summary-grid{grid-template-columns:1fr}}
 .fw-summary-item-label{font-size:.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.15rem}
 .fw-summary-item-val{font-size:.84rem;color:var(--text);word-break:break-word}
-
-/* Success */
 .fw-success{text-align:center;padding:3rem 1rem}
 .fw-success-ico{font-size:4rem;margin-bottom:1rem}
 .fw-success-title{font-size:1.5rem;font-weight:700;color:var(--lime);margin-bottom:.6rem}
 .fw-success-sub{font-size:.9rem;color:var(--muted);max-width:420px;margin:0 auto 2rem}
-
-/* Loading */
 .fw-loading{display:none;position:fixed;inset:0;background:rgba(10,10,15,.8);z-index:999;align-items:center;justify-content:center;flex-direction:column;gap:1rem}
 .fw-loading.show{display:flex}
 .fw-spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--lime);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .fw-loading-txt{font-size:.8rem;color:var(--muted);letter-spacing:.1em}
-
-/* Error */
-.fw-error-msg{font-size:.72rem;color:#ff4444;margin-top:.3rem;display:none}
-.fw-error-msg.show{display:block}
 </style>
 </head>
 <body>
 
+<div class="lang-bar">
+  <button class="lb on" onclick="setLang('en')">EN</button>
+  <button class="lb" onclick="setLang('ar')">عربي</button>
+  <button class="lb" onclick="setLang('cn')">中文</button>
+</div>
+
+<a class="wa-btn" href="https://wa.me/963994483331" target="_blank" title="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
 <nav>
   <a class="nav-logo" href="../" style="text-decoration:none;cursor:pointer">
     <img alt="MWM Logo" src="../images/logo-full.png" style="height:48px;width:auto;object-fit:contain">
+    <div><div class="nav-brand-cn">义乌镘旺国际贸易有限公司</div></div>
   </a>
   <div class="nav-links">
-    <a href="../">Home</a>
-    <a href="../logistics/">Logistics</a>
-    <a href="../contact/">Contact</a>
+    <a href="../"><span class="en">Home</span><span class="ar-t">الرئيسية</span><span class="cn-t">首页</span></a>
+    <a href="../logistics/"><span class="en">Logistics</span><span class="ar-t">اللوجستيات</span><span class="cn-t">物流</span></a>
+    <a href="../contact/"><span class="en">Contact</span><span class="ar-t">اتصل بنا</span><span class="cn-t">联系我们</span></a>
   </div>
 </nav>
 
 <div class="fw-loading" id="fw-loading">
   <div class="fw-spinner"></div>
-  <div class="fw-loading-txt">Submitting your application...</div>
+  <div class="fw-loading-txt">
+    <span class="en">Submitting your application...</span>
+    <span class="ar-t">جارٍ إرسال طلبك...</span>
+    <span class="cn-t">正在提交您的申请...</span>
+  </div>
 </div>
 
 <div class="fw-page">
   <div class="fw-container">
 
     <div class="fw-header">
-      <div class="fw-header-tag">Freight Partner Program</div>
-      <h1 class="fw-header-title">Register Your Shipping Company</h1>
-      <p class="fw-header-sub">Join our freight partner network and connect with clients worldwide through Al Serawan Group's platform.</p>
+      <div class="fw-header-tag">
+        <span class="en">Freight Partner Program</span>
+        <span class="ar-t">برنامج شركاء الشحن</span>
+        <span class="cn-t">货运合作伙伴计划</span>
+      </div>
+      <h1 class="fw-header-title">
+        <span class="en">Register Your Shipping Company</span>
+        <span class="ar-t">سجّل شركة الشحن الخاصة بك</span>
+        <span class="cn-t">注册您的货运公司</span>
+      </h1>
+      <p class="fw-header-sub">
+        <span class="en">Join our freight partner network and connect with clients worldwide through Al Serawan Group's platform.</span>
+        <span class="ar-t">انضم لشبكة شركاء الشحن وتواصل مع عملاء حول العالم عبر منصة مجموعة السروان.</span>
+        <span class="cn-t">加入我们的货运合作网络，通过阿尔塞拉万集团平台与全球客户建立联系。</span>
+      </p>
     </div>
 
     <!-- Progress -->
     <div class="fw-progress">
       <div class="fw-progress-top">
-        <span class="fw-step-label">Progress</span>
-        <span class="fw-step-count" id="fw-step-count">Step 1 of 9</span>
+        <span class="fw-step-label">
+          <span class="en">Progress</span><span class="ar-t">التقدم</span><span class="cn-t">进度</span>
+        </span>
+        <span class="fw-step-count" id="fw-step-count">
+          <span class="en">Step 1 of 9</span><span class="ar-t">خطوة 1 من 9</span><span class="cn-t">第1步，共9步</span>
+        </span>
       </div>
-      <div class="fw-step-title" id="fw-step-title">Company Identity</div>
+      <div class="fw-step-title" id="fw-step-title">
+        <span class="en">Company Identity</span><span class="ar-t">هوية الشركة</span><span class="cn-t">公司基本信息</span>
+      </div>
       <div class="fw-bar-track"><div class="fw-bar-fill" id="fw-bar" style="width:11%"></div></div>
       <div class="fw-dots" id="fw-dots"></div>
     </div>
 
     <form id="fw-form" novalidate>
 
-    <!-- ========== STEP 1: Company Identity ========== -->
+    <!-- STEP 1 -->
     <div class="fw-step active" data-step="1">
       <div class="fw-card">
-        <div class="fw-step-heading">Company Identity</div>
-        <div class="fw-step-desc">Basic information about your shipping company</div>
+        <div class="fw-step-heading"><span class="en">Company Identity</span><span class="ar-t">هوية الشركة</span><span class="cn-t">公司基本信息</span></div>
+        <div class="fw-step-desc"><span class="en">Basic information about your shipping company</span><span class="ar-t">المعلومات الأساسية عن شركة الشحن</span><span class="cn-t">关于您货运公司的基本信息</span></div>
 
         <div class="fw-field">
-          <label class="fw-label">Official Company Name <span class="req">*</span></label>
-          <input class="fw-input" name="company_name" required placeholder="e.g. Al Noor Freight Co.">
+          <label class="fw-label"><span class="en">Official Company Name</span><span class="ar-t">اسم الشركة الرسمي</span><span class="cn-t">公司官方名称</span> <span class="req">*</span></label>
+          <input class="fw-input" name="company_name" required data-ph-en="e.g. Al Noor Freight Co." data-ph-ar="مثال: شركة النور للشحن" data-ph-cn="例：阿尔努尔货运公司">
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Brand / Trade Name <span style="color:var(--muted);font-size:.6rem">(if different)</span></label>
-          <input class="fw-input" name="brand_name" placeholder="e.g. NoorEx Logistics">
+          <label class="fw-label"><span class="en">Brand / Trade Name</span><span class="ar-t">الاسم التجاري</span><span class="cn-t">品牌/商业名称</span> <span style="color:var(--muted);font-size:.6rem;text-transform:none">(<span class="en">if different</span><span class="ar-t">إن وجد</span><span class="cn-t">如不同</span>)</span></label>
+          <input class="fw-input" name="brand_name" data-ph-en="e.g. NoorEx Logistics" data-ph-ar="مثال: نوركس لوجستيك" data-ph-cn="例：NoorEx物流">
         </div>
 
         <div class="fw-row">
           <div class="fw-field">
-            <label class="fw-label">Year Founded <span class="req">*</span></label>
-            <input class="fw-input" name="year_founded" type="number" min="1900" max="2025" required placeholder="e.g. 2010">
+            <label class="fw-label"><span class="en">Year Founded</span><span class="ar-t">سنة التأسيس</span><span class="cn-t">成立年份</span> <span class="req">*</span></label>
+            <input class="fw-input" name="year_founded" type="number" min="1900" max="2025" required data-ph-en="e.g. 2010" data-ph-ar="مثال: 2010" data-ph-cn="例：2010">
           </div>
           <div class="fw-field">
-            <label class="fw-label">City <span class="req">*</span></label>
-            <input class="fw-input" name="city" required placeholder="e.g. Dubai">
+            <label class="fw-label"><span class="en">City</span><span class="ar-t">المدينة</span><span class="cn-t">城市</span> <span class="req">*</span></label>
+            <input class="fw-input" name="city" required data-ph-en="e.g. Dubai" data-ph-ar="مثال: دبي" data-ph-cn="例：迪拜">
           </div>
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Countries of Operation <span class="req">*</span></label>
+          <label class="fw-label"><span class="en">Countries of Operation</span><span class="ar-t">دول التشغيل</span><span class="cn-t">运营国家</span> <span class="req">*</span></label>
           <div class="fw-multi-add" id="countries-wrap">
             <div class="fw-multi-row">
-              <input class="fw-input" name="country[]" required placeholder="e.g. UAE">
-              <button type="button" class="fw-add-btn" onclick="addField('countries-wrap','country[]','Country')">+</button>
+              <input class="fw-input" name="country[]" required data-ph-en="e.g. UAE" data-ph-ar="مثال: الإمارات" data-ph-cn="例：阿联酋">
+              <button type="button" class="fw-add-btn" onclick="addField('countries-wrap','country[]','')">+</button>
             </div>
           </div>
-          <div class="fw-hint">Click + to add more countries</div>
+          <div class="fw-hint"><span class="en">Click + to add more countries</span><span class="ar-t">اضغط + لإضافة دول أخرى</span><span class="cn-t">点击+添加更多国家</span></div>
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Main Office Address</label>
-          <input class="fw-input" name="office_address" placeholder="Street, building, area">
+          <label class="fw-label"><span class="en">Main Office Address</span><span class="ar-t">عنوان المكتب الرئيسي</span><span class="cn-t">主要办公地址</span></label>
+          <input class="fw-input" name="office_address" data-ph-en="Street, building, area" data-ph-ar="الشارع، المبنى، المنطقة" data-ph-cn="街道、楼号、区域">
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Company Website</label>
-          <input class="fw-input" name="website" type="url" placeholder="https://yourcompany.com">
+          <label class="fw-label"><span class="en">Company Website</span><span class="ar-t">موقع الشركة</span><span class="cn-t">公司网站</span></label>
+          <input class="fw-input" name="website" type="url" data-ph-en="https://yourcompany.com" data-ph-ar="https://yourcompany.com" data-ph-cn="https://yourcompany.com">
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Social Media Links</label>
+          <label class="fw-label"><span class="en">Social Media Links</span><span class="ar-t">روابط التواصل الاجتماعي</span><span class="cn-t">社交媒体链接</span></label>
           <div class="fw-multi-add" id="social-wrap">
             <div class="fw-multi-row">
-              <input class="fw-input" name="social[]" placeholder="Instagram: https://instagram.com/...">
-              <button type="button" class="fw-add-btn" onclick="addField('social-wrap','social[]','Platform URL')">+</button>
+              <input class="fw-input" name="social[]" data-ph-en="Instagram / Facebook / LinkedIn URL" data-ph-ar="رابط انستغرام / فيسبوك / لينكدإن" data-ph-cn="Instagram/Facebook/LinkedIn链接">
+              <button type="button" class="fw-add-btn" onclick="addField('social-wrap','social[]','')">+</button>
             </div>
           </div>
-          <div class="fw-hint">Add Instagram, Facebook, LinkedIn, etc.</div>
         </div>
       </div>
     </div>
 
-    <!-- ========== STEP 2: Responsible Person ========== -->
+    <!-- STEP 2 -->
     <div class="fw-step" data-step="2">
       <div class="fw-card">
-        <div class="fw-step-heading">Responsible Person</div>
-        <div class="fw-step-desc">Contact person who will manage the partnership</div>
+        <div class="fw-step-heading"><span class="en">Responsible Person</span><span class="ar-t">الشخص المسؤول</span><span class="cn-t">负责人信息</span></div>
+        <div class="fw-step-desc"><span class="en">Contact person who will manage the partnership</span><span class="ar-t">الشخص الذي سيدير الشراكة</span><span class="cn-t">将负责管理合作关系的联系人</span></div>
 
         <div class="fw-field">
-          <label class="fw-label">Full Name <span class="req">*</span></label>
-          <input class="fw-input" name="contact_name" required placeholder="Full legal name">
+          <label class="fw-label"><span class="en">Full Name</span><span class="ar-t">الاسم الكامل</span><span class="cn-t">全名</span> <span class="req">*</span></label>
+          <input class="fw-input" name="contact_name" required data-ph-en="Full legal name" data-ph-ar="الاسم القانوني الكامل" data-ph-cn="法定全名">
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Position <span class="req">*</span></label>
-          <select class="fw-select" name="position" required>
-            <option value="">— Select position —</option>
-            <option>CEO / General Manager</option>
-            <option>Owner</option>
-            <option>Sales Manager</option>
-            <option>Operations Manager</option>
-            <option>Business Development Manager</option>
-            <option>Other</option>
+          <label class="fw-label"><span class="en">Position</span><span class="ar-t">المنصب</span><span class="cn-t">职位</span> <span class="req">*</span></label>
+          <select class="fw-select" name="position" id="position-select" required>
+            <option value="">— <span class="en">Select</span> —</option>
+            <option value="CEO / General Manager">CEO / General Manager — المدير العام — 总经理</option>
+            <option value="Owner">Owner — مالك — 所有者</option>
+            <option value="Sales Manager">Sales Manager — مدير مبيعات — 销售经理</option>
+            <option value="Operations Manager">Operations Manager — مدير عمليات — 运营经理</option>
+            <option value="Business Development">Business Development — تطوير أعمال — 业务拓展</option>
+            <option value="Other">Other — أخرى — 其他</option>
           </select>
         </div>
 
-        <div class="fw-field" id="owner-role-field" style="display:none">
-          <label class="fw-label">Please specify your role</label>
-          <input class="fw-input" name="position_other" placeholder="Your exact role / title">
+        <div class="fw-field" id="position-other-field" style="display:none">
+          <label class="fw-label"><span class="en">Please specify</span><span class="ar-t">حدد منصبك</span><span class="cn-t">请说明</span></label>
+          <input class="fw-input" name="position_other" data-ph-en="Your exact role / title" data-ph-ar="منصبك الدقيق" data-ph-cn="您的具体职位">
         </div>
 
         <div class="fw-row">
           <div class="fw-field">
-            <label class="fw-label">WhatsApp Number <span class="req">*</span></label>
-            <input class="fw-input" name="whatsapp" required placeholder="+971 50 000 0000">
+            <label class="fw-label"><span class="en">WhatsApp Number</span><span class="ar-t">رقم الواتساب</span><span class="cn-t">WhatsApp号码</span> <span class="req">*</span></label>
+            <input class="fw-input" name="whatsapp" required data-ph-en="+971 50 000 0000" data-ph-ar="+971 50 000 0000" data-ph-cn="+971 50 000 0000">
           </div>
           <div class="fw-field">
-            <label class="fw-label">Secondary Phone</label>
-            <input class="fw-input" name="phone2" placeholder="+971 4 000 0000">
+            <label class="fw-label"><span class="en">Secondary Phone</span><span class="ar-t">هاتف ثانوي</span><span class="cn-t">备用电话</span></label>
+            <input class="fw-input" name="phone2" data-ph-en="+971 4 000 0000" data-ph-ar="+971 4 000 0000" data-ph-cn="+971 4 000 0000">
           </div>
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Business Email <span class="req">*</span></label>
-          <input class="fw-input" name="email" type="email" required placeholder="name@company.com">
+          <label class="fw-label"><span class="en">Business Email</span><span class="ar-t">البريد الإلكتروني</span><span class="cn-t">商业邮箱</span> <span class="req">*</span></label>
+          <input class="fw-input" name="email" type="email" required data-ph-en="name@company.com" data-ph-ar="name@company.com" data-ph-cn="name@company.com">
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Is this person the company owner?</label>
+          <label class="fw-label"><span class="en">Is this person the company owner?</span><span class="ar-t">هل هذا الشخص مالك الشركة؟</span><span class="cn-t">此人是否为公司所有者？</span></label>
           <div class="fw-toggle-group">
-            <button type="button" class="fw-toggle-btn" data-field="is_owner" data-val="Yes">Yes</button>
-            <button type="button" class="fw-toggle-btn" data-field="is_owner" data-val="No">No</button>
+            <button type="button" class="fw-toggle-btn" data-field="is_owner" data-val="Yes"><span class="en">Yes</span><span class="ar-t">نعم</span><span class="cn-t">是</span></button>
+            <button type="button" class="fw-toggle-btn" data-field="is_owner" data-val="No"><span class="en">No</span><span class="ar-t">لا</span><span class="cn-t">否</span></button>
           </div>
           <input type="hidden" name="is_owner" value="">
         </div>
       </div>
     </div>
 
-    <!-- ========== STEP 3: Legal & Credibility ========== -->
+    <!-- STEP 3 -->
     <div class="fw-step" data-step="3">
       <div class="fw-card">
-        <div class="fw-step-heading">Legal & Credibility</div>
-        <div class="fw-step-desc">Registration documents and international credentials</div>
+        <div class="fw-step-heading"><span class="en">Legal & Credibility</span><span class="ar-t">الوضع القانوني والمصداقية</span><span class="cn-t">法律资质与信誉</span></div>
+        <div class="fw-step-desc"><span class="en">Registration documents and international credentials</span><span class="ar-t">وثائق التسجيل والاعتمادات الدولية</span><span class="cn-t">注册文件和国际资质</span></div>
 
         <div class="fw-field">
-          <label class="fw-label">Commercial Registration? <span class="req">*</span></label>
+          <label class="fw-label"><span class="en">Commercial Registration?</span><span class="ar-t">سجل تجاري؟</span><span class="cn-t">是否有商业注册？</span> <span class="req">*</span></label>
           <div class="fw-toggle-group">
-            <button type="button" class="fw-toggle-btn" data-field="has_cr" data-val="Yes" onclick="showCond('cr-details')">Yes</button>
-            <button type="button" class="fw-toggle-btn" data-field="has_cr" data-val="No" onclick="hideCond('cr-details')">No</button>
+            <button type="button" class="fw-toggle-btn" data-field="has_cr" data-val="Yes" onclick="showCond('cr-details')"><span class="en">Yes</span><span class="ar-t">نعم</span><span class="cn-t">是</span></button>
+            <button type="button" class="fw-toggle-btn" data-field="has_cr" data-val="No" onclick="hideCond('cr-details')"><span class="en">No</span><span class="ar-t">لا</span><span class="cn-t">否</span></button>
           </div>
           <input type="hidden" name="has_cr" value="">
           <div class="fw-cond" id="cr-details">
             <div class="fw-row">
               <div class="fw-field">
-                <label class="fw-label">CR Number</label>
-                <input class="fw-input" name="cr_number" placeholder="Registration number">
+                <label class="fw-label"><span class="en">CR Number</span><span class="ar-t">رقم السجل التجاري</span><span class="cn-t">注册号</span></label>
+                <input class="fw-input" name="cr_number" data-ph-en="Registration number" data-ph-ar="رقم التسجيل" data-ph-cn="注册号码">
               </div>
               <div class="fw-field">
-                <label class="fw-label">Issue Date</label>
+                <label class="fw-label"><span class="en">Issue Date</span><span class="ar-t">تاريخ الإصدار</span><span class="cn-t">签发日期</span></label>
                 <input class="fw-input" name="cr_date" type="date">
               </div>
             </div>
             <div class="fw-field">
-              <label class="fw-label">Tax Number (if applicable)</label>
-              <input class="fw-input" name="tax_number" placeholder="VAT / Tax ID">
+              <label class="fw-label"><span class="en">Tax Number (if applicable)</span><span class="ar-t">الرقم الضريبي (إن وجد)</span><span class="cn-t">税号（如适用）</span></label>
+              <input class="fw-input" name="tax_number" data-ph-en="VAT / Tax ID" data-ph-ar="رقم ضريبة القيمة المضافة" data-ph-cn="增值税/税务编号">
             </div>
           </div>
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Licensed for International Shipping?</label>
+          <label class="fw-label"><span class="en">Licensed for International Shipping?</span><span class="ar-t">مرخص للشحن الدولي؟</span><span class="cn-t">是否持有国际运输许可证？</span></label>
           <div class="fw-toggle-group">
-            <button type="button" class="fw-toggle-btn" data-field="intl_licensed" data-val="Yes">Yes</button>
-            <button type="button" class="fw-toggle-btn" data-field="intl_licensed" data-val="No">No</button>
+            <button type="button" class="fw-toggle-btn" data-field="intl_licensed" data-val="Yes"><span class="en">Yes</span><span class="ar-t">نعم</span><span class="cn-t">是</span></button>
+            <button type="button" class="fw-toggle-btn" data-field="intl_licensed" data-val="No"><span class="en">No</span><span class="ar-t">لا</span><span class="cn-t">否</span></button>
           </div>
           <input type="hidden" name="intl_licensed" value="">
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Shipping Lines / Routes Covered</label>
-          <textarea class="fw-textarea" name="shipping_lines" placeholder="e.g. China–UAE, UAE–Saudi Arabia, Gulf to Europe..." style="min-height:70px"></textarea>
+          <label class="fw-label"><span class="en">Shipping Lines / Routes Covered</span><span class="ar-t">خطوط الشحن / المسارات المغطاة</span><span class="cn-t">覆盖的航线/路线</span></label>
+          <textarea class="fw-textarea" name="shipping_lines" data-ph-en="e.g. China–UAE, UAE–Saudi Arabia, Gulf to Europe..." data-ph-ar="مثال: الصين–الإمارات، الإمارات–السعودية..." data-ph-cn="例：中国–阿联酋，阿联酋–沙特，海湾–欧洲..." style="min-height:70px"></textarea>
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Agency for an International Shipping Company?</label>
+          <label class="fw-label"><span class="en">Agency for an International Shipping Company?</span><span class="ar-t">وكيل لشركة شحن دولية؟</span><span class="cn-t">是否为国际运输公司代理？</span></label>
           <div class="fw-toggle-group">
-            <button type="button" class="fw-toggle-btn" data-field="has_agency" data-val="Yes" onclick="showCond('agency-details')">Yes</button>
-            <button type="button" class="fw-toggle-btn" data-field="has_agency" data-val="No" onclick="hideCond('agency-details')">No</button>
+            <button type="button" class="fw-toggle-btn" data-field="has_agency" data-val="Yes" onclick="showCond('agency-details')"><span class="en">Yes</span><span class="ar-t">نعم</span><span class="cn-t">是</span></button>
+            <button type="button" class="fw-toggle-btn" data-field="has_agency" data-val="No" onclick="hideCond('agency-details')"><span class="en">No</span><span class="ar-t">لا</span><span class="cn-t">否</span></button>
           </div>
           <input type="hidden" name="has_agency" value="">
           <div class="fw-cond" id="agency-details">
             <div class="fw-field">
-              <label class="fw-label">Name of the Company (Agent for)</label>
-              <input class="fw-input" name="agency_name" placeholder="e.g. Maersk, MSC, DHL...">
+              <label class="fw-label"><span class="en">Name of Company (Agent for)</span><span class="ar-t">اسم الشركة (وكيل لـ)</span><span class="cn-t">代理公司名称</span></label>
+              <input class="fw-input" name="agency_name" data-ph-en="e.g. Maersk, MSC, DHL..." data-ph-ar="مثال: ميرسك، MSC، DHL..." data-ph-cn="例：马士基、MSC、DHL...">
             </div>
           </div>
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">International Certifications?</label>
+          <label class="fw-label"><span class="en">International Certifications?</span><span class="ar-t">شهادات دولية؟</span><span class="cn-t">是否持有国际认证？</span></label>
           <div class="fw-toggle-group">
-            <button type="button" class="fw-toggle-btn" data-field="has_certs" data-val="Yes" onclick="showCond('certs-details')">Yes</button>
-            <button type="button" class="fw-toggle-btn" data-field="has_certs" data-val="No" onclick="hideCond('certs-details')">No</button>
+            <button type="button" class="fw-toggle-btn" data-field="has_certs" data-val="Yes" onclick="showCond('certs-details')"><span class="en">Yes</span><span class="ar-t">نعم</span><span class="cn-t">是</span></button>
+            <button type="button" class="fw-toggle-btn" data-field="has_certs" data-val="No" onclick="hideCond('certs-details')"><span class="en">No</span><span class="ar-t">لا</span><span class="cn-t">否</span></button>
           </div>
           <input type="hidden" name="has_certs" value="">
           <div class="fw-cond" id="certs-details">
             <div class="fw-field">
-              <label class="fw-label">Certifications (IATA / ISO / FIATA / Other)</label>
-              <input class="fw-input" name="cert_names" placeholder="e.g. IATA Certified, ISO 9001">
+              <label class="fw-label"><span class="en">Certification Names</span><span class="ar-t">أسماء الشهادات</span><span class="cn-t">认证名称</span></label>
+              <input class="fw-input" name="cert_names" data-ph-en="e.g. IATA, ISO 9001, FIATA..." data-ph-ar="مثال: IATA، ISO 9001، FIATA..." data-ph-cn="例：IATA、ISO 9001、FIATA...">
             </div>
           </div>
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Member of International Freight Network?</label>
+          <label class="fw-label"><span class="en">Member of International Freight Network?</span><span class="ar-t">عضو في شبكة شحن دولية؟</span><span class="cn-t">是否为国际货运网络成员？</span></label>
           <div class="fw-toggle-group">
-            <button type="button" class="fw-toggle-btn" data-field="has_network" data-val="Yes" onclick="showCond('network-details')">Yes</button>
-            <button type="button" class="fw-toggle-btn" data-field="has_network" data-val="No" onclick="hideCond('network-details')">No</button>
+            <button type="button" class="fw-toggle-btn" data-field="has_network" data-val="Yes" onclick="showCond('network-details')"><span class="en">Yes</span><span class="ar-t">نعم</span><span class="cn-t">是</span></button>
+            <button type="button" class="fw-toggle-btn" data-field="has_network" data-val="No" onclick="hideCond('network-details')"><span class="en">No</span><span class="ar-t">لا</span><span class="cn-t">否</span></button>
           </div>
           <input type="hidden" name="has_network" value="">
           <div class="fw-cond" id="network-details">
             <div class="fw-field">
-              <label class="fw-label">Network Name</label>
-              <input class="fw-input" name="network_name" placeholder="e.g. WCA, Globalia, WWPC...">
+              <label class="fw-label"><span class="en">Network Name</span><span class="ar-t">اسم الشبكة</span><span class="cn-t">网络名称</span></label>
+              <input class="fw-input" name="network_name" data-ph-en="e.g. WCA, Globalia, WWPC..." data-ph-ar="مثال: WCA، Globalia..." data-ph-cn="例：WCA、Globalia、WWPC...">
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ========== STEP 4: Operational Capabilities ========== -->
+    <!-- STEP 4 -->
     <div class="fw-step" data-step="4">
       <div class="fw-card">
-        <div class="fw-step-heading">Operational Capabilities</div>
-        <div class="fw-step-desc">Your shipping coverage and operational infrastructure</div>
+        <div class="fw-step-heading"><span class="en">Operational Capabilities</span><span class="ar-t">القدرات التشغيلية</span><span class="cn-t">运营能力</span></div>
+        <div class="fw-step-desc"><span class="en">Your shipping coverage and infrastructure</span><span class="ar-t">تغطية الشحن والبنية التحتية</span><span class="cn-t">您的运输覆盖范围和基础设施</span></div>
 
         <div class="fw-field">
-          <label class="fw-label">Type of Shipping <span class="req">*</span></label>
+          <label class="fw-label"><span class="en">Type of Shipping</span><span class="ar-t">نوع الشحن</span><span class="cn-t">运输类型</span> <span class="req">*</span></label>
           <div class="fw-toggle-group">
-            <button type="button" class="fw-toggle-btn" data-field="shipping_scope" data-val="International">International</button>
-            <button type="button" class="fw-toggle-btn" data-field="shipping_scope" data-val="Domestic">Domestic</button>
-            <button type="button" class="fw-toggle-btn" data-field="shipping_scope" data-val="Both">Both</button>
+            <button type="button" class="fw-toggle-btn" data-field="shipping_scope" data-val="International"><span class="en">International</span><span class="ar-t">دولي</span><span class="cn-t">国际</span></button>
+            <button type="button" class="fw-toggle-btn" data-field="shipping_scope" data-val="Domestic"><span class="en">Domestic</span><span class="ar-t">محلي</span><span class="cn-t">国内</span></button>
+            <button type="button" class="fw-toggle-btn" data-field="shipping_scope" data-val="Both"><span class="en">Both</span><span class="ar-t">كلاهما</span><span class="cn-t">两者</span></button>
           </div>
           <input type="hidden" name="shipping_scope" value="">
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">We Can Ship FROM <span class="req">*</span></label>
+          <label class="fw-label"><span class="en">We Ship FROM</span><span class="ar-t">نشحن من</span><span class="cn-t">发货地</span> <span class="req">*</span></label>
           <div class="fw-country-wrap">
-            <input class="fw-country-search" id="from-search" placeholder="Search and select countries..." autocomplete="off" onInput="filterCountries('from')" onFocus="openDrop('from')" onBlur="setTimeout(()=>closeDrop('from'),200)">
+            <input class="fw-country-search" id="from-search" data-ph-en="Search countries..." data-ph-ar="ابحث عن دولة..." data-ph-cn="搜索国家..." autocomplete="off" oninput="filterCountries('from')" onfocus="openDrop('from')" onblur="setTimeout(()=>closeDrop('from'),200)">
             <div class="fw-country-drop" id="from-drop"></div>
           </div>
           <div class="fw-tags" id="from-tags"></div>
@@ -433,9 +418,9 @@ input[type=file]{display:none}
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">We Can Ship TO <span class="req">*</span></label>
+          <label class="fw-label"><span class="en">We Ship TO</span><span class="ar-t">نشحن إلى</span><span class="cn-t">目的地</span> <span class="req">*</span></label>
           <div class="fw-country-wrap">
-            <input class="fw-country-search" id="to-search" placeholder="Search and select countries..." autocomplete="off" onInput="filterCountries('to')" onFocus="openDrop('to')" onBlur="setTimeout(()=>closeDrop('to'),200)">
+            <input class="fw-country-search" id="to-search" data-ph-en="Search countries..." data-ph-ar="ابحث عن دولة..." data-ph-cn="搜索国家..." autocomplete="off" oninput="filterCountries('to')" onfocus="openDrop('to')" onblur="setTimeout(()=>closeDrop('to'),200)">
             <div class="fw-country-drop" id="to-drop"></div>
           </div>
           <div class="fw-tags" id="to-tags"></div>
@@ -443,58 +428,48 @@ input[type=file]{display:none}
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Shipping Types Available <span class="req">*</span></label>
+          <label class="fw-label"><span class="en">Available Shipping Methods</span><span class="ar-t">وسائل الشحن المتاحة</span><span class="cn-t">可提供的运输方式</span> <span class="req">*</span></label>
           <div class="fw-check-grid">
-            <label class="fw-check-card" onclick="toggleCard(this,'shipping_types')">
-              <span class="fw-check-card-ico">✈️</span><span class="fw-check-card-lbl">Air Freight</span>
-            </label>
-            <label class="fw-check-card" onclick="toggleCard(this,'shipping_types')">
-              <span class="fw-check-card-ico">🚢</span><span class="fw-check-card-lbl">Sea Freight</span>
-            </label>
-            <label class="fw-check-card" onclick="toggleCard(this,'shipping_types')">
-              <span class="fw-check-card-ico">🚛</span><span class="fw-check-card-lbl">Land / Road</span>
-            </label>
-            <label class="fw-check-card" onclick="toggleCard(this,'shipping_types')">
-              <span class="fw-check-card-ico">⚡</span><span class="fw-check-card-lbl">Express</span>
-            </label>
-            <label class="fw-check-card" onclick="toggleCard(this,'shipping_types')">
-              <span class="fw-check-card-ico">💰</span><span class="fw-check-card-lbl">Economy</span>
-            </label>
+            <label class="fw-check-card" onclick="toggleCard(this,'shipping_types')"><span class="fw-check-card-ico">✈️</span><span class="fw-check-card-lbl"><span class="en">Air Freight</span><span class="ar-t">شحن جوي</span><span class="cn-t">空运</span></span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'shipping_types')"><span class="fw-check-card-ico">🚢</span><span class="fw-check-card-lbl"><span class="en">Sea Freight</span><span class="ar-t">شحن بحري</span><span class="cn-t">海运</span></span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'shipping_types')"><span class="fw-check-card-ico">🚛</span><span class="fw-check-card-lbl"><span class="en">Land / Road</span><span class="ar-t">شحن بري</span><span class="cn-t">陆运</span></span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'shipping_types')"><span class="fw-check-card-ico">⚡</span><span class="fw-check-card-lbl"><span class="en">Express</span><span class="ar-t">سريع</span><span class="cn-t">快递</span></span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'shipping_types')"><span class="fw-check-card-ico">💰</span><span class="fw-check-card-lbl"><span class="en">Economy</span><span class="ar-t">اقتصادي</span><span class="cn-t">经济运输</span></span></label>
           </div>
           <input type="hidden" name="shipping_types" id="shipping_types_val">
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Do you have Warehouses?</label>
+          <label class="fw-label"><span class="en">Do you have Warehouses?</span><span class="ar-t">هل لديكم مستودعات؟</span><span class="cn-t">是否有仓库？</span></label>
           <div class="fw-toggle-group">
-            <button type="button" class="fw-toggle-btn" data-field="has_warehouse" data-val="Yes" onclick="showCond('warehouse-details')">Yes</button>
-            <button type="button" class="fw-toggle-btn" data-field="has_warehouse" data-val="No" onclick="hideCond('warehouse-details')">No</button>
+            <button type="button" class="fw-toggle-btn" data-field="has_warehouse" data-val="Yes" onclick="showCond('warehouse-details');checkWarehouseUpload()"><span class="en">Yes</span><span class="ar-t">نعم</span><span class="cn-t">是</span></button>
+            <button type="button" class="fw-toggle-btn" data-field="has_warehouse" data-val="No" onclick="hideCond('warehouse-details');checkWarehouseUpload()"><span class="en">No</span><span class="ar-t">لا</span><span class="cn-t">否</span></button>
           </div>
           <input type="hidden" name="has_warehouse" value="">
           <div class="fw-cond" id="warehouse-details">
             <div class="fw-field">
-              <label class="fw-label">Warehouse Address(es)</label>
-              <textarea class="fw-textarea" name="warehouse_address" placeholder="Full address(es) of your warehouse(s)" style="min-height:70px"></textarea>
+              <label class="fw-label"><span class="en">Warehouse Address(es)</span><span class="ar-t">عنوان/عناوين المستودع</span><span class="cn-t">仓库地址</span></label>
+              <textarea class="fw-textarea" name="warehouse_address" data-ph-en="Full address of your warehouse(s)" data-ph-ar="العنوان الكامل للمستودع/المستودعات" data-ph-cn="仓库完整地址" style="min-height:70px"></textarea>
             </div>
           </div>
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Own Transport Vehicles?</label>
+          <label class="fw-label"><span class="en">Own Transport Vehicles?</span><span class="ar-t">مركبات نقل خاصة؟</span><span class="cn-t">是否有自有运输车辆？</span></label>
           <div class="fw-toggle-group">
-            <button type="button" class="fw-toggle-btn" data-field="has_vehicles" data-val="Yes" onclick="showCond('vehicles-details')">Yes</button>
-            <button type="button" class="fw-toggle-btn" data-field="has_vehicles" data-val="No" onclick="hideCond('vehicles-details')">No</button>
+            <button type="button" class="fw-toggle-btn" data-field="has_vehicles" data-val="Yes" onclick="showCond('vehicles-details');checkWarehouseUpload()"><span class="en">Yes</span><span class="ar-t">نعم</span><span class="cn-t">是</span></button>
+            <button type="button" class="fw-toggle-btn" data-field="has_vehicles" data-val="No" onclick="hideCond('vehicles-details');checkWarehouseUpload()"><span class="en">No</span><span class="ar-t">لا</span><span class="cn-t">否</span></button>
           </div>
           <input type="hidden" name="has_vehicles" value="">
           <div class="fw-cond" id="vehicles-details">
             <div class="fw-row">
               <div class="fw-field">
-                <label class="fw-label">Vehicle Types</label>
-                <input class="fw-input" name="vehicle_types" placeholder="Trucks / Vans / Motorcycles">
+                <label class="fw-label"><span class="en">Vehicle Types</span><span class="ar-t">أنواع المركبات</span><span class="cn-t">车辆类型</span></label>
+                <input class="fw-input" name="vehicle_types" data-ph-en="Trucks / Vans / Motorcycles" data-ph-ar="شاحنات / فانات / دراجات" data-ph-cn="卡车/厢式车/摩托车">
               </div>
               <div class="fw-field">
-                <label class="fw-label">Number of Vehicles</label>
-                <input class="fw-input" name="vehicle_count" type="number" min="1" placeholder="e.g. 12">
+                <label class="fw-label"><span class="en">Number of Vehicles</span><span class="ar-t">عدد المركبات</span><span class="cn-t">车辆数量</span></label>
+                <input class="fw-input" name="vehicle_count" type="number" min="1" data-ph-en="e.g. 12" data-ph-ar="مثال: 12" data-ph-cn="例：12">
               </div>
             </div>
           </div>
@@ -502,366 +477,365 @@ input[type=file]{display:none}
 
         <div class="fw-row">
           <div class="fw-field">
-            <label class="fw-label">Number of Employees</label>
-            <input class="fw-input" name="employee_count" type="number" min="0" placeholder="e.g. 45">
+            <label class="fw-label"><span class="en">Number of Employees</span><span class="ar-t">عدد الموظفين</span><span class="cn-t">员工人数</span></label>
+            <input class="fw-input" name="employee_count" type="number" min="0" data-ph-en="e.g. 45" data-ph-ar="مثال: 45" data-ph-cn="例：45">
           </div>
           <div class="fw-field">
-            <label class="fw-label">Domestic Branches</label>
-            <input class="fw-input" name="branches_local" type="number" min="0" placeholder="Inside your country">
+            <label class="fw-label"><span class="en">Domestic Branches</span><span class="ar-t">فروع محلية</span><span class="cn-t">国内分支机构</span></label>
+            <input class="fw-input" name="branches_local" type="number" min="0" data-ph-en="Inside your country" data-ph-ar="داخل البلد" data-ph-cn="国内分支数量">
           </div>
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">International Branches</label>
-          <input class="fw-input" name="branches_intl" type="number" min="0" placeholder="Outside your country">
+          <label class="fw-label"><span class="en">International Branches</span><span class="ar-t">فروع دولية</span><span class="cn-t">国际分支机构</span></label>
+          <input class="fw-input" name="branches_intl" type="number" min="0" data-ph-en="Outside your country" data-ph-ar="خارج البلد" data-ph-cn="国际分支数量">
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Additional Services</label>
+          <label class="fw-label"><span class="en">Additional Services</span><span class="ar-t">خدمات إضافية</span><span class="cn-t">附加服务</span></label>
           <div class="fw-check-grid">
-            <label class="fw-check-card" onclick="toggleCard(this,'add_services')">
-              <span class="fw-check-card-ico">🛃</span><span class="fw-check-card-lbl">Customs Clearance</span>
-            </label>
-            <label class="fw-check-card" onclick="toggleCard(this,'add_services')">
-              <span class="fw-check-card-ico">📦</span><span class="fw-check-card-lbl">Packaging</span>
-            </label>
-            <label class="fw-check-card" onclick="toggleCard(this,'add_services')">
-              <span class="fw-check-card-ico">🏠</span><span class="fw-check-card-lbl">Door Pickup</span>
-            </label>
-            <label class="fw-check-card" onclick="toggleCard(this,'add_services')">
-              <span class="fw-check-card-ico">🚪</span><span class="fw-check-card-lbl">Door Delivery</span>
-            </label>
+            <label class="fw-check-card" onclick="toggleCard(this,'add_services')"><span class="fw-check-card-ico">🛃</span><span class="fw-check-card-lbl"><span class="en">Customs Clearance</span><span class="ar-t">تخليص جمركي</span><span class="cn-t">清关服务</span></span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'add_services')"><span class="fw-check-card-ico">📦</span><span class="fw-check-card-lbl"><span class="en">Packaging</span><span class="ar-t">تغليف</span><span class="cn-t">包装</span></span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'add_services')"><span class="fw-check-card-ico">🏠</span><span class="fw-check-card-lbl"><span class="en">Door Pickup</span><span class="ar-t">استلام من الباب</span><span class="cn-t">上门取货</span></span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'add_services')"><span class="fw-check-card-ico">🚪</span><span class="fw-check-card-lbl"><span class="en">Door Delivery</span><span class="ar-t">توصيل للباب</span><span class="cn-t">送货上门</span></span></label>
           </div>
           <input type="hidden" name="add_services" id="add_services_val">
         </div>
       </div>
     </div>
 
-    <!-- ========== STEP 5: Cargo Types ========== -->
+    <!-- STEP 5 -->
     <div class="fw-step" data-step="5">
       <div class="fw-card">
-        <div class="fw-step-heading">Accepted Cargo Types</div>
-        <div class="fw-step-desc">Select all cargo types your company handles</div>
+        <div class="fw-step-heading"><span class="en">Accepted Cargo Types</span><span class="ar-t">أنواع البضائع المقبولة</span><span class="cn-t">可接受的货物类型</span></div>
+        <div class="fw-step-desc"><span class="en">Select all cargo types your company handles</span><span class="ar-t">اختر جميع أنواع البضائع التي تتعامل معها شركتك</span><span class="cn-t">选择贵公司处理的所有货物类型</span></div>
 
         <div class="fw-field">
-          <label class="fw-label">Cargo Types <span class="req">*</span></label>
+          <label class="fw-label"><span class="en">Cargo Types</span><span class="ar-t">أنواع البضائع</span><span class="cn-t">货物类型</span> <span class="req">*</span></label>
           <div class="fw-cargo-grid">
-            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">📦</div><div class="lbl">General Cargo</div></div>
-            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">📱</div><div class="lbl">Electronics</div></div>
-            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">👕</div><div class="lbl">Clothing</div></div>
-            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">🍱</div><div class="lbl">Food Items</div></div>
-            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">⚠️</div><div class="lbl">Hazardous</div></div>
-            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">🧴</div><div class="lbl">Liquids</div></div>
-            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">🏥</div><div class="lbl">Medical</div></div>
-            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">🪑</div><div class="lbl">Furniture</div></div>
-            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">🚜</div><div class="lbl">Bulk Cargo</div></div>
-            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">📫</div><div class="lbl">Small Parcels</div></div>
-            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">➕</div><div class="lbl">Other</div></div>
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">📦</div><div class="lbl"><span class="en">General</span><span class="ar-t">عام</span><span class="cn-t">普货</span></div></div>
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">📱</div><div class="lbl"><span class="en">Electronics</span><span class="ar-t">إلكترونيات</span><span class="cn-t">电子产品</span></div></div>
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">👕</div><div class="lbl"><span class="en">Clothing</span><span class="ar-t">ملابس</span><span class="cn-t">服装</span></div></div>
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">🍱</div><div class="lbl"><span class="en">Food Items</span><span class="ar-t">مواد غذائية</span><span class="cn-t">食品</span></div></div>
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">⚠️</div><div class="lbl"><span class="en">Hazardous</span><span class="ar-t">خطرة</span><span class="cn-t">危险品</span></div></div>
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">🧴</div><div class="lbl"><span class="en">Liquids</span><span class="ar-t">سوائل</span><span class="cn-t">液体</span></div></div>
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">🏥</div><div class="lbl"><span class="en">Medical</span><span class="ar-t">طبية</span><span class="cn-t">医疗</span></div></div>
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">🪑</div><div class="lbl"><span class="en">Furniture</span><span class="ar-t">أثاث</span><span class="cn-t">家具</span></div></div>
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">🚜</div><div class="lbl"><span class="en">Bulk</span><span class="ar-t">سائب</span><span class="cn-t">散货</span></div></div>
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">📫</div><div class="lbl"><span class="en">Parcels</span><span class="ar-t">طرود</span><span class="cn-t">小包裹</span></div></div>
+            <div class="fw-cargo-card" onclick="toggleCard(this,'cargo_types')"><div class="ico">➕</div><div class="lbl"><span class="en">Other</span><span class="ar-t">أخرى</span><span class="cn-t">其他</span></div></div>
           </div>
           <input type="hidden" name="cargo_types" id="cargo_types_val">
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Other cargo types (if applicable)</label>
-          <input class="fw-input" name="cargo_other" placeholder="Specify any other cargo types">
+          <label class="fw-label"><span class="en">Other cargo types</span><span class="ar-t">أنواع بضائع أخرى</span><span class="cn-t">其他货物类型</span></label>
+          <input class="fw-input" name="cargo_other" data-ph-en="Specify any unlisted cargo types" data-ph-ar="اذكر أنواعاً غير مدرجة" data-ph-cn="请说明未列出的货物类型">
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Weight Range per Shipment (KG)</label>
+          <label class="fw-label"><span class="en">Weight Range per Shipment (KG)</span><span class="ar-t">نطاق الوزن للشحنة (كغ)</span><span class="cn-t">每票货物重量范围（千克）</span></label>
           <div class="fw-range-row">
-            <input class="fw-input" name="weight_min" type="number" min="0" placeholder="Min (e.g. 0)">
+            <input class="fw-input" name="weight_min" type="number" min="0" data-ph-en="Min" data-ph-ar="الحد الأدنى" data-ph-cn="最小">
             <div class="fw-range-sep">→</div>
-            <input class="fw-input" name="weight_max" type="number" min="0" placeholder="Max (e.g. 50000)">
+            <input class="fw-input" name="weight_max" type="number" min="0" data-ph-en="Max" data-ph-ar="الحد الأقصى" data-ph-cn="最大">
           </div>
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Volume Range per Shipment (CBM / m³)</label>
+          <label class="fw-label"><span class="en">Volume Range per Shipment (CBM)</span><span class="ar-t">نطاق الحجم للشحنة (م³)</span><span class="cn-t">每票货物体积范围（立方米）</span></label>
           <div class="fw-range-row">
-            <input class="fw-input" name="volume_min" type="number" min="0" placeholder="Min">
+            <input class="fw-input" name="volume_min" type="number" min="0" data-ph-en="Min" data-ph-ar="الحد الأدنى" data-ph-cn="最小">
             <div class="fw-range-sep">→</div>
-            <input class="fw-input" name="volume_max" type="number" min="0" placeholder="Max">
+            <input class="fw-input" name="volume_max" type="number" min="0" data-ph-en="Max" data-ph-ar="الحد الأقصى" data-ph-cn="最大">
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ========== STEP 6: Pricing & Payment ========== -->
+    <!-- STEP 6 -->
     <div class="fw-step" data-step="6">
       <div class="fw-card">
-        <div class="fw-step-heading">Pricing & Payment</div>
-        <div class="fw-step-desc">Your pricing model and payment policies</div>
+        <div class="fw-step-heading"><span class="en">Pricing & Payment</span><span class="ar-t">التسعير والدفع</span><span class="cn-t">定价与付款</span></div>
+        <div class="fw-step-desc"><span class="en">Your pricing model and payment policies</span><span class="ar-t">نموذج التسعير وسياسات الدفع</span><span class="cn-t">您的定价模式和付款政策</span></div>
 
         <div class="fw-field">
-          <label class="fw-label">Pricing Structure</label>
+          <label class="fw-label"><span class="en">Pricing Structure</span><span class="ar-t">هيكل التسعير</span><span class="cn-t">定价结构</span></label>
           <div class="fw-toggle-group">
-            <button type="button" class="fw-toggle-btn" data-field="pricing_type" data-val="Fixed">Fixed Rates</button>
-            <button type="button" class="fw-toggle-btn" data-field="pricing_type" data-val="Variable">Variable</button>
-            <button type="button" class="fw-toggle-btn" data-field="pricing_type" data-val="Both">Both</button>
+            <button type="button" class="fw-toggle-btn" data-field="pricing_type" data-val="Fixed"><span class="en">Fixed Rates</span><span class="ar-t">أسعار ثابتة</span><span class="cn-t">固定费率</span></button>
+            <button type="button" class="fw-toggle-btn" data-field="pricing_type" data-val="Variable"><span class="en">Variable</span><span class="ar-t">متغيرة</span><span class="cn-t">浮动报价</span></button>
+            <button type="button" class="fw-toggle-btn" data-field="pricing_type" data-val="Both"><span class="en">Both</span><span class="ar-t">كلاهما</span><span class="cn-t">两者均有</span></button>
           </div>
           <input type="hidden" name="pricing_type" value="">
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Pricing Mechanism — Please explain how you price shipments</label>
-          <textarea class="fw-textarea" name="pricing_mechanism" placeholder="e.g. We price based on weight + destination zone. Minimum 50 KG for sea freight. Quote provided within 2 hours..."></textarea>
+          <label class="fw-label"><span class="en">How do you price shipments?</span><span class="ar-t">كيف تسعّر الشحنات؟</span><span class="cn-t">如何计算运费？</span></label>
+          <textarea class="fw-textarea" name="pricing_mechanism" data-ph-en="e.g. Based on weight + zone. Min 50 KG for sea. Quote within 2 hours..." data-ph-ar="مثال: بناءً على الوزن + المنطقة. الحد الأدنى 50 كغ للبحري..." data-ph-cn="例：按重量+目的地区域计费，海运最低50千克，2小时内报价..."></textarea>
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Shipping Insurance?</label>
+          <label class="fw-label"><span class="en">Shipping Insurance?</span><span class="ar-t">تأمين على الشحن؟</span><span class="cn-t">是否提供运输保险？</span></label>
           <div class="fw-toggle-group">
-            <button type="button" class="fw-toggle-btn" data-field="has_insurance" data-val="Yes">Yes</button>
-            <button type="button" class="fw-toggle-btn" data-field="has_insurance" data-val="No">No</button>
+            <button type="button" class="fw-toggle-btn" data-field="has_insurance" data-val="Yes"><span class="en">Yes</span><span class="ar-t">نعم</span><span class="cn-t">是</span></button>
+            <button type="button" class="fw-toggle-btn" data-field="has_insurance" data-val="No"><span class="en">No</span><span class="ar-t">لا</span><span class="cn-t">否</span></button>
           </div>
           <input type="hidden" name="has_insurance" value="">
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Damage / Loss Compensation Policy?</label>
+          <label class="fw-label"><span class="en">Damage / Loss Compensation Policy?</span><span class="ar-t">سياسة تعويض عن الضرر/الفقدان؟</span><span class="cn-t">是否有损失赔偿政策？</span></label>
           <div class="fw-toggle-group">
-            <button type="button" class="fw-toggle-btn" data-field="has_compensation" data-val="Yes" onclick="showCond('comp-details')">Yes</button>
-            <button type="button" class="fw-toggle-btn" data-field="has_compensation" data-val="No" onclick="hideCond('comp-details')">No</button>
+            <button type="button" class="fw-toggle-btn" data-field="has_compensation" data-val="Yes" onclick="showCond('comp-details')"><span class="en">Yes</span><span class="ar-t">نعم</span><span class="cn-t">是</span></button>
+            <button type="button" class="fw-toggle-btn" data-field="has_compensation" data-val="No" onclick="hideCond('comp-details')"><span class="en">No</span><span class="ar-t">لا</span><span class="cn-t">否</span></button>
           </div>
           <input type="hidden" name="has_compensation" value="">
           <div class="fw-cond" id="comp-details">
             <div class="fw-field">
-              <label class="fw-label">Policy Details</label>
-              <textarea class="fw-textarea" name="compensation_policy" placeholder="Briefly describe your compensation policy..." style="min-height:70px"></textarea>
+              <label class="fw-label"><span class="en">Policy Details</span><span class="ar-t">تفاصيل السياسة</span><span class="cn-t">政策详情</span></label>
+              <textarea class="fw-textarea" name="compensation_policy" data-ph-en="Briefly describe your compensation policy..." data-ph-ar="اشرح سياسة التعويض باختصار..." data-ph-cn="请简述您的赔偿政策..." style="min-height:70px"></textarea>
             </div>
           </div>
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Accepted Payment Methods</label>
+          <label class="fw-label"><span class="en">Accepted Payment Methods</span><span class="ar-t">طرق الدفع المقبولة</span><span class="cn-t">接受的付款方式</span></label>
           <div class="fw-check-grid">
-            <label class="fw-check-card" onclick="toggleCard(this,'payment_methods')"><span class="fw-check-card-ico">🏦</span><span class="fw-check-card-lbl">Bank Transfer</span></label>
-            <label class="fw-check-card" onclick="toggleCard(this,'payment_methods')"><span class="fw-check-card-ico">💵</span><span class="fw-check-card-lbl">Cash</span></label>
-            <label class="fw-check-card" onclick="toggleCard(this,'payment_methods')"><span class="fw-check-card-ico">💳</span><span class="fw-check-card-lbl">Online Payment</span></label>
-            <label class="fw-check-card" onclick="toggleCard(this,'payment_methods')"><span class="fw-check-card-ico">📱</span><span class="fw-check-card-lbl">Mobile Wallet</span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'payment_methods')"><span class="fw-check-card-ico">🏦</span><span class="fw-check-card-lbl"><span class="en">Bank Transfer</span><span class="ar-t">تحويل بنكي</span><span class="cn-t">银行转账</span></span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'payment_methods')"><span class="fw-check-card-ico">💵</span><span class="fw-check-card-lbl"><span class="en">Cash</span><span class="ar-t">نقداً</span><span class="cn-t">现金</span></span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'payment_methods')"><span class="fw-check-card-ico">💳</span><span class="fw-check-card-lbl"><span class="en">Online Payment</span><span class="ar-t">دفع إلكتروني</span><span class="cn-t">在线支付</span></span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'payment_methods')"><span class="fw-check-card-ico">📱</span><span class="fw-check-card-lbl"><span class="en">Mobile Wallet</span><span class="ar-t">محفظة إلكترونية</span><span class="cn-t">移动钱包</span></span></label>
           </div>
           <input type="hidden" name="payment_methods" id="payment_methods_val">
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Accepted Currencies</label>
+          <label class="fw-label"><span class="en">Accepted Currencies</span><span class="ar-t">العملات المقبولة</span><span class="cn-t">接受的货币</span></label>
           <div class="fw-check-grid">
             <label class="fw-check-card" onclick="toggleCard(this,'currencies')"><span class="fw-check-card-ico">🇺🇸</span><span class="fw-check-card-lbl">USD</span></label>
-            <label class="fw-check-card" onclick="toggleCard(this,'currencies')"><span class="fw-check-card-ico">🇨🇳</span><span class="fw-check-card-lbl">CNY (Yuan)</span></label>
-            <label class="fw-check-card" onclick="toggleCard(this,'currencies')"><span class="fw-check-card-ico">🇦🇪</span><span class="fw-check-card-lbl">AED (Dirham)</span></label>
-            <label class="fw-check-card" onclick="toggleCard(this,'currencies')"><span class="fw-check-card-ico">🇸🇦</span><span class="fw-check-card-lbl">SAR (Riyal)</span></label>
-            <label class="fw-check-card" onclick="toggleCard(this,'currencies')"><span class="fw-check-card-ico">🌍</span><span class="fw-check-card-lbl">Other</span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'currencies')"><span class="fw-check-card-ico">🇨🇳</span><span class="fw-check-card-lbl">CNY</span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'currencies')"><span class="fw-check-card-ico">🇦🇪</span><span class="fw-check-card-lbl">AED</span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'currencies')"><span class="fw-check-card-ico">🇸🇦</span><span class="fw-check-card-lbl">SAR</span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'currencies')"><span class="fw-check-card-ico">🌍</span><span class="fw-check-card-lbl"><span class="en">Other</span><span class="ar-t">أخرى</span><span class="cn-t">其他</span></span></label>
           </div>
           <input type="hidden" name="currencies" id="currencies_val">
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Accept Deferred / Credit Payment?</label>
+          <label class="fw-label"><span class="en">Accept Deferred / Credit Payment?</span><span class="ar-t">قبول الدفع الآجل / الائتماني؟</span><span class="cn-t">是否接受延期/信用付款？</span></label>
           <div class="fw-toggle-group">
-            <button type="button" class="fw-toggle-btn" data-field="deferred_payment" data-val="Yes">Yes</button>
-            <button type="button" class="fw-toggle-btn" data-field="deferred_payment" data-val="No">No</button>
+            <button type="button" class="fw-toggle-btn" data-field="deferred_payment" data-val="Yes"><span class="en">Yes</span><span class="ar-t">نعم</span><span class="cn-t">是</span></button>
+            <button type="button" class="fw-toggle-btn" data-field="deferred_payment" data-val="No"><span class="en">No</span><span class="ar-t">لا</span><span class="cn-t">否</span></button>
           </div>
           <input type="hidden" name="deferred_payment" value="">
         </div>
       </div>
     </div>
 
-    <!-- ========== STEP 7: Quality & Technology ========== -->
+    <!-- STEP 7 -->
     <div class="fw-step" data-step="7">
       <div class="fw-card">
-        <div class="fw-step-heading">Quality & Technology</div>
-        <div class="fw-step-desc">Your operational systems and service standards</div>
+        <div class="fw-step-heading"><span class="en">Quality & Technology</span><span class="ar-t">الجودة والتقنية</span><span class="cn-t">质量与技术</span></div>
+        <div class="fw-step-desc"><span class="en">Your operational systems and service standards</span><span class="ar-t">أنظمتك التشغيلية ومعايير خدمتك</span><span class="cn-t">您的运营系统和服务标准</span></div>
 
         <div class="fw-field">
-          <label class="fw-label">Shipment Tracking System?</label>
+          <label class="fw-label"><span class="en">Shipment Tracking System?</span><span class="ar-t">نظام تتبع الشحنات؟</span><span class="cn-t">是否有货物追踪系统？</span></label>
           <div class="fw-toggle-group">
-            <button type="button" class="fw-toggle-btn" data-field="has_tracking" data-val="Yes">Yes</button>
-            <button type="button" class="fw-toggle-btn" data-field="has_tracking" data-val="No">No</button>
+            <button type="button" class="fw-toggle-btn" data-field="has_tracking" data-val="Yes"><span class="en">Yes</span><span class="ar-t">نعم</span><span class="cn-t">是</span></button>
+            <button type="button" class="fw-toggle-btn" data-field="has_tracking" data-val="No"><span class="en">No</span><span class="ar-t">لا</span><span class="cn-t">否</span></button>
           </div>
           <input type="hidden" name="has_tracking" value="">
-          <div class="fw-hint">📌 Note: All registered partners will be integrated into our unified real-time tracking platform. Details will be shared in your onboarding meeting.</div>
+          <div class="fw-hint">📌 <span class="en">All partners will be integrated into our unified tracking platform during onboarding.</span><span class="ar-t">جميع الشركاء سيُدمجون في منصة التتبع الموحدة خلال التأهيل.</span><span class="cn-t">所有合作伙伴将在入驻期间接入我们的统一追踪平台。</span></div>
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Mobile App or Web Platform?</label>
+          <label class="fw-label"><span class="en">Mobile App or Web Platform?</span><span class="ar-t">تطبيق جوال أو منصة إلكترونية؟</span><span class="cn-t">是否有移动应用或网络平台？</span></label>
           <div class="fw-toggle-group">
-            <button type="button" class="fw-toggle-btn" data-field="has_app" data-val="Yes">Yes</button>
-            <button type="button" class="fw-toggle-btn" data-field="has_app" data-val="No">No</button>
+            <button type="button" class="fw-toggle-btn" data-field="has_app" data-val="Yes"><span class="en">Yes</span><span class="ar-t">نعم</span><span class="cn-t">是</span></button>
+            <button type="button" class="fw-toggle-btn" data-field="has_app" data-val="No"><span class="en">No</span><span class="ar-t">لا</span><span class="cn-t">否</span></button>
           </div>
           <input type="hidden" name="has_app" value="">
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">24/7 Customer Support?</label>
+          <label class="fw-label"><span class="en">24/7 Customer Support?</span><span class="ar-t">دعم عملاء على مدار الساعة؟</span><span class="cn-t">是否提供24/7客户支持？</span></label>
           <div class="fw-toggle-group">
-            <button type="button" class="fw-toggle-btn" data-field="support_24" data-val="Yes">Yes</button>
-            <button type="button" class="fw-toggle-btn" data-field="support_24" data-val="No">No</button>
+            <button type="button" class="fw-toggle-btn" data-field="support_24" data-val="Yes"><span class="en">Yes</span><span class="ar-t">نعم</span><span class="cn-t">是</span></button>
+            <button type="button" class="fw-toggle-btn" data-field="support_24" data-val="No"><span class="en">No</span><span class="ar-t">لا</span><span class="cn-t">否</span></button>
           </div>
           <input type="hidden" name="support_24" value="">
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Languages Spoken by Your Team</label>
+          <label class="fw-label"><span class="en">Languages Spoken</span><span class="ar-t">اللغات المتحدث بها</span><span class="cn-t">团队语言能力</span></label>
           <div class="fw-check-grid">
-            <label class="fw-check-card" onclick="toggleCard(this,'languages')"><span class="fw-check-card-ico">🌍</span><span class="fw-check-card-lbl">Arabic</span></label>
-            <label class="fw-check-card" onclick="toggleCard(this,'languages')"><span class="fw-check-card-ico">🌐</span><span class="fw-check-card-lbl">English</span></label>
-            <label class="fw-check-card" onclick="toggleCard(this,'languages')"><span class="fw-check-card-ico">🇨🇳</span><span class="fw-check-card-lbl">Chinese</span></label>
-            <label class="fw-check-card" onclick="toggleCard(this,'languages')"><span class="fw-check-card-ico">🌏</span><span class="fw-check-card-lbl">Other</span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'languages')"><span class="fw-check-card-ico">🌍</span><span class="fw-check-card-lbl"><span class="en">Arabic</span><span class="ar-t">العربية</span><span class="cn-t">阿拉伯语</span></span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'languages')"><span class="fw-check-card-ico">🌐</span><span class="fw-check-card-lbl"><span class="en">English</span><span class="ar-t">الإنجليزية</span><span class="cn-t">英语</span></span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'languages')"><span class="fw-check-card-ico">🇨🇳</span><span class="fw-check-card-lbl"><span class="en">Chinese</span><span class="ar-t">الصينية</span><span class="cn-t">中文</span></span></label>
+            <label class="fw-check-card" onclick="toggleCard(this,'languages')"><span class="fw-check-card-ico">🌏</span><span class="fw-check-card-lbl"><span class="en">Other</span><span class="ar-t">أخرى</span><span class="cn-t">其他</span></span></label>
           </div>
           <input type="hidden" name="languages" id="languages_val">
         </div>
 
         <div class="fw-row">
           <div class="fw-field">
-            <label class="fw-label">Avg. Monthly Shipments</label>
-            <input class="fw-input" name="monthly_shipments" type="number" min="0" placeholder="e.g. 300">
+            <label class="fw-label"><span class="en">Avg. Monthly Shipments</span><span class="ar-t">متوسط الشحنات الشهرية</span><span class="cn-t">月均货运量</span></label>
+            <input class="fw-input" name="monthly_shipments" type="number" min="0" data-ph-en="e.g. 300" data-ph-ar="مثال: 300" data-ph-cn="例：300">
           </div>
           <div class="fw-field">
-            <label class="fw-label">Max Monthly Capacity</label>
-            <input class="fw-input" name="max_capacity" type="number" min="0" placeholder="e.g. 1000">
-          </div>
-        </div>
-
-        <div class="fw-row">
-          <div class="fw-field">
-            <label class="fw-label">Domestic Delivery Time</label>
-            <input class="fw-input" name="delivery_domestic" placeholder="e.g. 1–3 days">
-          </div>
-          <div class="fw-field">
-            <label class="fw-label">International Delivery Time</label>
-            <input class="fw-input" name="delivery_intl" placeholder="e.g. 7–15 days">
+            <label class="fw-label"><span class="en">Max Monthly Capacity</span><span class="ar-t">الطاقة الاستيعابية الشهرية</span><span class="cn-t">月最大承运量</span></label>
+            <input class="fw-input" name="max_capacity" type="number" min="0" data-ph-en="e.g. 1000" data-ph-ar="مثال: 1000" data-ph-cn="例：1000">
           </div>
         </div>
 
         <div class="fw-row">
           <div class="fw-field">
-            <label class="fw-label">Working Days</label>
-            <input class="fw-input" name="working_days" placeholder="e.g. Mon–Sat">
+            <label class="fw-label"><span class="en">Domestic Delivery Time</span><span class="ar-t">وقت التوصيل المحلي</span><span class="cn-t">国内配送时效</span></label>
+            <input class="fw-input" name="delivery_domestic" data-ph-en="e.g. 1–3 days" data-ph-ar="مثال: 1–3 أيام" data-ph-cn="例：1–3天">
           </div>
           <div class="fw-field">
-            <label class="fw-label">Working Hours</label>
-            <input class="fw-input" name="working_hours" placeholder="e.g. 8am – 6pm">
+            <label class="fw-label"><span class="en">International Delivery Time</span><span class="ar-t">وقت التوصيل الدولي</span><span class="cn-t">国际配送时效</span></label>
+            <input class="fw-input" name="delivery_intl" data-ph-en="e.g. 7–15 days" data-ph-ar="مثال: 7–15 يوماً" data-ph-cn="例：7–15天">
+          </div>
+        </div>
+
+        <div class="fw-row">
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">Working Days</span><span class="ar-t">أيام العمل</span><span class="cn-t">工作日</span></label>
+            <input class="fw-input" name="working_days" data-ph-en="e.g. Mon–Sat" data-ph-ar="مثال: الاثنين–السبت" data-ph-cn="例：周一至周六">
+          </div>
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">Working Hours</span><span class="ar-t">ساعات العمل</span><span class="cn-t">工作时间</span></label>
+            <input class="fw-input" name="working_hours" data-ph-en="e.g. 8am – 6pm" data-ph-ar="مثال: 8 صباحاً – 6 مساءً" data-ph-cn="例：上午8时至下午6时">
           </div>
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">What Makes You Different from Other Companies?</label>
-          <textarea class="fw-textarea" name="differentiator" placeholder="Tell us what sets your company apart — speed, coverage, specialization, technology, pricing..."></textarea>
+          <label class="fw-label"><span class="en">What Makes You Different?</span><span class="ar-t">ما الذي يميزكم؟</span><span class="cn-t">您的核心竞争优势是什么？</span></label>
+          <textarea class="fw-textarea" name="differentiator" data-ph-en="Speed, coverage, specialization, technology, pricing..." data-ph-ar="السرعة، التغطية، التخصص، التقنية، الأسعار..." data-ph-cn="速度、覆盖范围、专业化、技术、价格优势..."></textarea>
         </div>
       </div>
     </div>
 
-    <!-- ========== STEP 8: Platform Relationship ========== -->
+    <!-- STEP 8 -->
     <div class="fw-step" data-step="8">
       <div class="fw-card">
-        <div class="fw-step-heading">Platform Relationship</div>
-        <div class="fw-step-desc">How you'd like to work with Al Serawan Group's platform</div>
+        <div class="fw-step-heading"><span class="en">Platform Relationship</span><span class="ar-t">العلاقة مع المنصة</span><span class="cn-t">平台合作关系</span></div>
+        <div class="fw-step-desc"><span class="en">How you'd like to work with Al Serawan Group's platform</span><span class="ar-t">كيف تريد العمل مع منصة مجموعة السروان</span><span class="cn-t">您希望如何与阿尔塞拉万集团平台合作</span></div>
 
         <div class="fw-field">
-          <label class="fw-label">Do you want to appear on our platform?</label>
+          <label class="fw-label"><span class="en">Do you want to appear on our platform?</span><span class="ar-t">هل تريد الظهور في منصتنا؟</span><span class="cn-t">是否希望在我们的平台上展示？</span></label>
           <div class="fw-toggle-group">
-            <button type="button" class="fw-toggle-btn" data-field="appear_platform" data-val="Yes">Yes</button>
-            <button type="button" class="fw-toggle-btn" data-field="appear_platform" data-val="No">No</button>
+            <button type="button" class="fw-toggle-btn" data-field="appear_platform" data-val="Yes"><span class="en">Yes</span><span class="ar-t">نعم</span><span class="cn-t">是</span></button>
+            <button type="button" class="fw-toggle-btn" data-field="appear_platform" data-val="No"><span class="en">No</span><span class="ar-t">لا</span><span class="cn-t">否</span></button>
           </div>
           <input type="hidden" name="appear_platform" value="">
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Accept new clients referred from our platform?</label>
+          <label class="fw-label"><span class="en">Accept new clients referred from our platform?</span><span class="ar-t">قبول عملاء جدد من خلال منصتنا؟</span><span class="cn-t">是否接受来自我们平台的客户转介？</span></label>
           <div class="fw-toggle-group">
-            <button type="button" class="fw-toggle-btn" data-field="accept_referrals" data-val="Yes">Yes</button>
-            <button type="button" class="fw-toggle-btn" data-field="accept_referrals" data-val="No">No</button>
+            <button type="button" class="fw-toggle-btn" data-field="accept_referrals" data-val="Yes"><span class="en">Yes</span><span class="ar-t">نعم</span><span class="cn-t">是</span></button>
+            <button type="button" class="fw-toggle-btn" data-field="accept_referrals" data-val="No"><span class="en">No</span><span class="ar-t">لا</span><span class="cn-t">否</span></button>
           </div>
           <input type="hidden" name="accept_referrals" value="">
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Pricing Mechanism for Referred Clients</label>
-          <textarea class="fw-textarea" name="referral_pricing" placeholder="e.g. We'll offer platform clients a 5% discount off standard rates, or fixed rates for specific lanes..."></textarea>
+          <label class="fw-label"><span class="en">Pricing for Referred Clients</span><span class="ar-t">التسعير للعملاء المحولين</span><span class="cn-t">转介客户的定价方案</span></label>
+          <textarea class="fw-textarea" name="referral_pricing" data-ph-en="e.g. 5% discount off standard rates for platform clients..." data-ph-ar="مثال: خصم 5% للعملاء القادمين من المنصة..." data-ph-cn="例：为平台客户提供标准价格9.5折优惠..."></textarea>
         </div>
       </div>
     </div>
 
-    <!-- ========== STEP 9: Attachments ========== -->
+    <!-- STEP 9 -->
     <div class="fw-step" data-step="9">
       <div class="fw-card">
-        <div class="fw-step-heading">Attachments</div>
-        <div class="fw-step-desc">Upload supporting documents for your application</div>
+        <div class="fw-step-heading"><span class="en">Attachments</span><span class="ar-t">المرفقات</span><span class="cn-t">附件上传</span></div>
+        <div class="fw-step-desc"><span class="en">Upload supporting documents for your application</span><span class="ar-t">ارفع وثائق داعمة لطلبك</span><span class="cn-t">上传申请所需的支持文件</span></div>
 
         <div class="fw-field">
-          <label class="fw-label">Company Logo <span style="color:var(--muted);font-size:.6rem">(Optional)</span></label>
+          <label class="fw-label"><span class="en">Company Logo</span><span class="ar-t">شعار الشركة</span><span class="cn-t">公司标志</span> <span style="color:var(--muted);font-size:.6rem;text-transform:none">(<span class="en">Optional</span><span class="ar-t">اختياري</span><span class="cn-t">可选</span>)</span></label>
           <label class="fw-file-label" for="file-logo">
             <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-            <span>Click to upload logo (PNG, JPG, SVG)</span>
-            <span class="fw-file-name" id="logo-name">No file selected</span>
+            <span><span class="en">Click to upload logo (PNG, JPG, SVG)</span><span class="ar-t">اضغط لرفع الشعار (PNG، JPG، SVG)</span><span class="cn-t">点击上传标志（PNG、JPG、SVG）</span></span>
+            <span class="fw-file-name" id="logo-name"><span class="en">No file selected</span><span class="ar-t">لم يُختر ملف</span><span class="cn-t">未选择文件</span></span>
           </label>
           <input type="file" id="file-logo" name="file_logo" accept="image/*" onchange="showFileName(this,'logo-name')">
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Commercial Registration Photo <span class="req">*</span></label>
-          <label class="fw-file-label" for="file-cr" id="file-cr-label">
+          <label class="fw-label"><span class="en">Commercial Registration Photo</span><span class="ar-t">صورة السجل التجاري</span><span class="cn-t">营业执照照片</span> <span class="req">*</span></label>
+          <label class="fw-file-label" for="file-cr">
             <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-            <span>Click to upload CR photo (JPG, PNG, PDF)</span>
-            <span class="fw-file-name" id="cr-name">No file selected</span>
+            <span><span class="en">Click to upload CR photo (JPG, PNG, PDF)</span><span class="ar-t">اضغط لرفع صورة السجل التجاري</span><span class="cn-t">点击上传营业执照（JPG、PNG、PDF）</span></span>
+            <span class="fw-file-name" id="cr-name"><span class="en">No file selected</span><span class="ar-t">لم يُختر ملف</span><span class="cn-t">未选择文件</span></span>
           </label>
           <input type="file" id="file-cr" name="file_cr" accept="image/*,.pdf" onchange="showFileName(this,'cr-name')">
         </div>
 
         <div class="fw-field">
-          <label class="fw-label">Company Profile PDF <span style="color:var(--muted);font-size:.6rem">(Optional)</span></label>
+          <label class="fw-label"><span class="en">Company Profile PDF</span><span class="ar-t">ملف الشركة PDF</span><span class="cn-t">公司简介PDF</span> <span style="color:var(--muted);font-size:.6rem;text-transform:none">(<span class="en">Optional</span><span class="ar-t">اختياري</span><span class="cn-t">可选</span>)</span></label>
           <label class="fw-file-label" for="file-profile">
             <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            <span>Click to upload PDF profile</span>
-            <span class="fw-file-name" id="profile-name">No file selected</span>
+            <span><span class="en">Click to upload PDF profile</span><span class="ar-t">اضغط لرفع ملف PDF</span><span class="cn-t">点击上传PDF简介</span></span>
+            <span class="fw-file-name" id="profile-name"><span class="en">No file selected</span><span class="ar-t">لم يُختر ملف</span><span class="cn-t">未选择文件</span></span>
           </label>
           <input type="file" id="file-profile" name="file_profile" accept=".pdf" onchange="showFileName(this,'profile-name')">
         </div>
 
         <div class="fw-field" id="warehouse-upload-field" style="display:none">
-          <label class="fw-label">Warehouse / Vehicle Photos <span class="req">*</span></label>
+          <label class="fw-label"><span class="en">Warehouse / Vehicle Photos</span><span class="ar-t">صور المستودع / المركبات</span><span class="cn-t">仓库/车辆照片</span> <span class="req">*</span></label>
           <label class="fw-file-label" for="file-warehouse">
             <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Upload warehouse or fleet photos (JPG, PNG)</span>
-            <span class="fw-file-name" id="warehouse-name">No file selected</span>
+            <span><span class="en">Upload warehouse or fleet photos (JPG, PNG)</span><span class="ar-t">ارفع صور المستودع أو الأسطول</span><span class="cn-t">上传仓库或车队照片（JPG、PNG）</span></span>
+            <span class="fw-file-name" id="warehouse-name"><span class="en">No file selected</span><span class="ar-t">لم يُختر ملف</span><span class="cn-t">未选择文件</span></span>
           </label>
           <input type="file" id="file-warehouse" name="file_warehouse" accept="image/*" multiple onchange="showFileName(this,'warehouse-name')">
         </div>
       </div>
 
-      <!-- Summary preview -->
+      <!-- Summary -->
       <div class="fw-card" id="fw-summary">
-        <div class="fw-step-heading">Review Your Application</div>
-        <div class="fw-step-desc">Please review the information below before submitting</div>
+        <div class="fw-step-heading"><span class="en">Review Your Application</span><span class="ar-t">راجع طلبك</span><span class="cn-t">确认您的申请信息</span></div>
+        <div class="fw-step-desc"><span class="en">Please review before submitting</span><span class="ar-t">يرجى المراجعة قبل الإرسال</span><span class="cn-t">提交前请仔细核对</span></div>
         <div id="summary-content"></div>
       </div>
     </div>
 
-    <!-- Navigation -->
+    <!-- Nav buttons -->
     <div class="fw-nav">
-      <button type="button" class="fw-btn-back" id="fw-back" onclick="navigate(-1)" disabled>← Back</button>
-      <button type="button" class="fw-btn-next" id="fw-next" onclick="navigate(1)">Next →</button>
+      <button type="button" class="fw-btn-back" id="fw-back" onclick="navigate(-1)" disabled>
+        <span class="en">← Back</span><span class="ar-t">→ رجوع</span><span class="cn-t">← 返回</span>
+      </button>
+      <button type="button" class="fw-btn-next" id="fw-next" onclick="navigate(1)">
+        <span class="en">Next →</span><span class="ar-t">التالي ←</span><span class="cn-t">下一步 →</span>
+      </button>
     </div>
 
     </form>
   </div>
 </div>
 
+<script src="../app.js"></script>
 <script>
 var SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 
 var STEPS = [
-  {n:1, title:'Company Identity'},
-  {n:2, title:'Responsible Person'},
-  {n:3, title:'Legal & Credibility'},
-  {n:4, title:'Operational Capabilities'},
-  {n:5, title:'Cargo Types'},
-  {n:6, title:'Pricing & Payment'},
-  {n:7, title:'Quality & Technology'},
-  {n:8, title:'Platform Relationship'},
-  {n:9, title:'Attachments & Review'}
+  {n:1, en:'Company Identity',       ar:'هوية الشركة',                    cn:'公司基本信息'},
+  {n:2, en:'Responsible Person',     ar:'الشخص المسؤول',                  cn:'负责人信息'},
+  {n:3, en:'Legal & Credibility',    ar:'الوضع القانوني والمصداقية',       cn:'法律资质与信誉'},
+  {n:4, en:'Operational Capabilities',ar:'القدرات التشغيلية',              cn:'运营能力'},
+  {n:5, en:'Cargo Types',            ar:'أنواع البضائع المقبولة',           cn:'可接受的货物类型'},
+  {n:6, en:'Pricing & Payment',      ar:'التسعير والدفع',                  cn:'定价与付款'},
+  {n:7, en:'Quality & Technology',   ar:'الجودة والتقنية',                 cn:'质量与技术'},
+  {n:8, en:'Platform Relationship',  ar:'العلاقة مع المنصة',               cn:'平台合作关系'},
+  {n:9, en:'Attachments & Review',   ar:'المرفقات والمراجعة',              cn:'附件与审核'}
 ];
+
 var currentStep = 1;
-var formData = {};
+var cardGroups = {};
+var fromSelected = [], toSelected = [];
 
 // Init dots
 var dotsEl = document.getElementById('fw-dots');
@@ -872,176 +846,166 @@ STEPS.forEach(function(s,i){
   dotsEl.appendChild(d);
 });
 
+// Update step title with current language
+function updateStepTitle(stepNum) {
+  var s = STEPS[stepNum-1];
+  var lang = document.body.classList.contains('ar') ? 'ar' : document.body.classList.contains('cn') ? 'cn' : 'en';
+  document.getElementById('fw-step-title').innerHTML =
+    '<span class="en">'+s.en+'</span><span class="ar-t">'+s.ar+'</span><span class="cn-t">'+s.cn+'</span>';
+  var n = stepNum, total = 9;
+  document.getElementById('fw-step-count').innerHTML =
+    '<span class="en">Step '+n+' of '+total+'</span><span class="ar-t">خطوة '+n+' من '+total+'</span><span class="cn-t">第'+n+'步，共'+total+'步</span>';
+}
+
+// Placeholder translation
+function updatePlaceholders() {
+  var lang = document.body.classList.contains('ar') ? 'ar' : document.body.classList.contains('cn') ? 'cn' : 'en';
+  document.querySelectorAll('[data-ph-'+lang+']').forEach(function(el){
+    el.placeholder = el.getAttribute('data-ph-'+lang) || el.getAttribute('data-ph-en') || '';
+  });
+}
+
+// Hook into setLang
+var _origSetLang = window.setLang;
+window.setLang = function(l) {
+  if(_origSetLang) _origSetLang(l);
+  setTimeout(updatePlaceholders, 50);
+};
+
+// Init on load
+document.addEventListener('DOMContentLoaded', function(){
+  updatePlaceholders();
+});
+
 // Countries list
 var COUNTRIES = [
   'Afghanistan','Albania','Algeria','Angola','Argentina','Armenia','Australia','Austria','Azerbaijan',
-  'Bahrain','Bangladesh','Belarus','Belgium','Bolivia','Bosnia','Brazil','Bulgaria',
-  'Cambodia','Canada','Chile','China','Colombia','Croatia','Cuba','Czech Republic',
-  'Denmark','Dominican Republic','Ecuador','Egypt','Ethiopia',
-  'Finland','France','Georgia','Germany','Ghana','Greece','Guatemala',
+  'Bahrain','Bangladesh','Belarus','Belgium','Bolivia','Brazil','Bulgaria',
+  'Cambodia','Canada','Chile','China','Colombia','Croatia','Cyprus','Czech Republic',
+  'Denmark','Egypt','Ethiopia','Finland','France','Georgia','Germany','Ghana','Greece','Guatemala',
   'Hong Kong','Hungary','India','Indonesia','Iran','Iraq','Ireland','Israel','Italy',
-  'Japan','Jordan','Kazakhstan','Kenya','Kuwait','Kyrgyzstan',
-  'Lebanon','Libya','Malaysia','Mexico','Morocco','Myanmar',
-  'Nepal','Netherlands','New Zealand','Nigeria','North Korea','Norway',
+  'Japan','Jordan','Kazakhstan','Kenya','Kuwait','Kyrgyzstan','Lebanon','Libya',
+  'Malaysia','Mexico','Morocco','Myanmar','Nepal','Netherlands','New Zealand','Nigeria','Norway',
   'Oman','Pakistan','Panama','Peru','Philippines','Poland','Portugal','Qatar',
   'Romania','Russia','Saudi Arabia','Senegal','Serbia','Singapore','Slovakia',
   'South Africa','South Korea','Spain','Sri Lanka','Sudan','Sweden','Switzerland','Syria',
   'Taiwan','Tanzania','Thailand','Tunisia','Turkey','Turkmenistan',
-  'UAE','Uganda','UK','Ukraine','USA','Uzbekistan',
-  'Venezuela','Vietnam','Yemen','Zimbabwe'
+  'UAE','Uganda','UK','Ukraine','USA','Uzbekistan','Venezuela','Vietnam','Yemen','Zimbabwe'
 ];
-
-var fromSelected=[], toSelected=[];
 
 function filterCountries(dir){
   var search = document.getElementById(dir+'-search').value.toLowerCase();
   var drop = document.getElementById(dir+'-drop');
   var sel = dir==='from'?fromSelected:toSelected;
   drop.innerHTML='';
-  var filtered = COUNTRIES.filter(function(c){
-    return c.toLowerCase().indexOf(search)>-1 && sel.indexOf(c)===-1;
-  });
-  if(!filtered.length){
-    drop.innerHTML='<div class="fw-country-opt" style="color:var(--muted)">No results</div>';
-    return;
-  }
+  var filtered = COUNTRIES.filter(function(c){return c.toLowerCase().indexOf(search)>-1&&sel.indexOf(c)===-1;});
+  if(!filtered.length){drop.innerHTML='<div class="fw-country-opt" style="color:var(--muted)">—</div>';return;}
   filtered.slice(0,20).forEach(function(c){
-    var d = document.createElement('div');
-    d.className='fw-country-opt';
-    d.textContent=c;
+    var d=document.createElement('div');d.className='fw-country-opt';d.textContent=c;
     d.onmousedown=function(){addCountry(dir,c);};
     drop.appendChild(d);
   });
 }
-
-function openDrop(dir){
-  filterCountries(dir);
-  document.getElementById(dir+'-drop').classList.add('open');
-}
-function closeDrop(dir){
-  document.getElementById(dir+'-drop').classList.remove('open');
-}
-
+function openDrop(dir){filterCountries(dir);document.getElementById(dir+'-drop').classList.add('open');}
+function closeDrop(dir){document.getElementById(dir+'-drop').classList.remove('open');}
 function addCountry(dir,c){
-  var sel = dir==='from'?fromSelected:toSelected;
-  if(sel.indexOf(c)>-1) return;
-  sel.push(c);
-  renderTags(dir);
+  var sel=dir==='from'?fromSelected:toSelected;
+  if(sel.indexOf(c)>-1)return;
+  sel.push(c);renderTags(dir);
   document.getElementById(dir+'-search').value='';
-  document.getElementById(dir+'-'+dir==='from'?'from':'to'+'_val');
-  document.getElementById('ship_'+dir+'_val').value=sel.join(', ');
   closeDrop(dir);
 }
-
 function renderTags(dir){
-  var sel = dir==='from'?fromSelected:toSelected;
-  var tagsEl = document.getElementById(dir+'-tags');
+  var sel=dir==='from'?fromSelected:toSelected;
+  var tagsEl=document.getElementById(dir+'-tags');
   tagsEl.innerHTML='';
   sel.forEach(function(c){
-    var t = document.createElement('div');
-    t.className='fw-tag';
+    var t=document.createElement('div');t.className='fw-tag';
     t.innerHTML=c+'<span class="fw-tag-x" onclick="removeCountry(\''+dir+'\',\''+c+'\')">×</span>';
     tagsEl.appendChild(t);
   });
   document.getElementById('ship_'+dir+'_val').value=sel.join(', ');
 }
-
 function removeCountry(dir,c){
-  var sel = dir==='from'?fromSelected:toSelected;
-  var idx=sel.indexOf(c);
-  if(idx>-1) sel.splice(idx,1);
-  renderTags(dir);
+  var sel=dir==='from'?fromSelected:toSelected;
+  var idx=sel.indexOf(c);if(idx>-1)sel.splice(idx,1);renderTags(dir);
 }
 
 // Toggle buttons
 document.addEventListener('click',function(e){
-  var btn=e.target.closest('.fw-toggle-btn');
-  if(!btn) return;
-  var field=btn.getAttribute('data-field');
-  var val=btn.getAttribute('data-val');
-  var group=btn.closest('.fw-toggle-group');
-  group.querySelectorAll('.fw-toggle-btn').forEach(function(b){b.classList.remove('sel');});
+  var btn=e.target.closest('.fw-toggle-btn');if(!btn)return;
+  var field=btn.getAttribute('data-field');var val=btn.getAttribute('data-val');
+  btn.closest('.fw-toggle-group').querySelectorAll('.fw-toggle-btn').forEach(function(b){b.classList.remove('sel');});
   btn.classList.add('sel');
   var hidden=btn.closest('.fw-field').querySelector('input[type=hidden][name="'+field+'"]');
-  if(hidden) hidden.value=val;
+  if(hidden)hidden.value=val;
 });
 
 // Card multi-select
-var cardGroups={};
 function toggleCard(el,group){
   el.classList.toggle('sel');
-  if(!cardGroups[group]) cardGroups[group]=[];
-  var label=el.querySelector('.fw-check-card-lbl')||el.querySelector('.lbl');
-  var val=label?label.textContent.trim():'';
+  if(!cardGroups[group])cardGroups[group]=[];
+  // Get the visible text for current lang
+  var lbl=el.querySelector('.fw-check-card-lbl')||el.querySelector('.lbl');
+  var visibleSpan = lbl ? (lbl.querySelector('.en')||lbl) : el;
+  var val = visibleSpan.textContent.trim();
+  // Use en text always as value for consistency
+  var enSpan = lbl ? lbl.querySelector('.en') : null;
+  if(enSpan) val = enSpan.textContent.trim();
   var idx=cardGroups[group].indexOf(val);
-  if(idx>-1) cardGroups[group].splice(idx,1);
-  else cardGroups[group].push(val);
+  if(idx>-1)cardGroups[group].splice(idx,1);else cardGroups[group].push(val);
   var hidden=document.getElementById(group+'_val');
-  if(hidden) hidden.value=cardGroups[group].join(', ');
+  if(hidden)hidden.value=cardGroups[group].join(', ');
 }
 
-// Conditional show/hide
 function showCond(id){document.getElementById(id).classList.add('show');}
 function hideCond(id){document.getElementById(id).classList.remove('show');}
 
-// Dynamic add field
 function addField(wrapId,name,ph){
   var wrap=document.getElementById(wrapId);
-  var row=document.createElement('div');
-  row.className='fw-multi-row';
-  row.innerHTML='<input class="fw-input" name="'+name+'" placeholder="'+ph+'"><button type="button" class="fw-rm-btn" onclick="this.parentNode.remove()">−</button>';
+  var row=document.createElement('div');row.className='fw-multi-row';
+  var lang=document.body.classList.contains('ar')?'ar':document.body.classList.contains('cn')?'cn':'en';
+  row.innerHTML='<input class="fw-input" name="'+name+'" placeholder=""><button type="button" class="fw-rm-btn" onclick="this.parentNode.remove()">−</button>';
   wrap.appendChild(row);
 }
 
-// File name display
 function showFileName(input,spanId){
   var span=document.getElementById(spanId);
   if(input.files&&input.files.length){
     span.textContent=Array.from(input.files).map(function(f){return f.name;}).join(', ');
-  } else {
-    span.textContent='No file selected';
   }
-  // Show warehouse upload if needed
   checkWarehouseUpload();
 }
 
 function checkWarehouseUpload(){
-  var hw = document.querySelector('input[name="has_warehouse"]');
-  var hv = document.querySelector('input[name="has_vehicles"]');
-  var wf = document.getElementById('warehouse-upload-field');
-  if(wf && ((hw&&hw.value==='Yes')||(hv&&hv.value==='Yes'))){
-    wf.style.display='block';
-  }
+  var hw=document.querySelector('input[name="has_warehouse"]');
+  var hv=document.querySelector('input[name="has_vehicles"]');
+  var wf=document.getElementById('warehouse-upload-field');
+  if(wf)wf.style.display=((hw&&hw.value==='Yes')||(hv&&hv.value==='Yes'))?'block':'none';
 }
 
-// Navigation
 function navigate(dir){
-  if(dir===1 && !validateStep(currentStep)) return;
-  if(dir===1 && currentStep===9){
-    submitForm(); return;
-  }
-  var steps=document.querySelectorAll('.fw-step');
-  steps.forEach(function(s){s.classList.remove('active');});
+  if(dir===1&&!validateStep(currentStep))return;
+  if(dir===1&&currentStep===9){submitForm();return;}
+  document.querySelectorAll('.fw-step').forEach(function(s){s.classList.remove('active');});
   document.getElementById('dot-'+currentStep).className='fw-dot done';
   currentStep+=dir;
-  if(currentStep<1) currentStep=1;
-  if(currentStep>9) currentStep=9;
+  if(currentStep<1)currentStep=1;if(currentStep>9)currentStep=9;
   document.querySelector('[data-step="'+currentStep+'"]').classList.add('active');
   document.getElementById('dot-'+currentStep).className='fw-dot active';
-  document.getElementById('fw-step-count').textContent='Step '+currentStep+' of 9';
-  document.getElementById('fw-step-title').textContent=STEPS[currentStep-1].title;
+  updateStepTitle(currentStep);
   document.getElementById('fw-bar').style.width=Math.round((currentStep/9)*100)+'%';
   document.getElementById('fw-back').disabled=currentStep===1;
   var nextBtn=document.getElementById('fw-next');
   if(currentStep===9){
-    nextBtn.textContent='Submit Application ✓';
+    nextBtn.innerHTML='<span class="en">Submit Application ✓</span><span class="ar-t">إرسال الطلب ✓</span><span class="cn-t">提交申请 ✓</span>';
     nextBtn.classList.add('submit-btn');
-    buildSummary();
-    checkWarehouseUpload();
-  } else {
-    nextBtn.textContent='Next →';
+    buildSummary();checkWarehouseUpload();
+  }else{
+    nextBtn.innerHTML='<span class="en">Next →</span><span class="ar-t">التالي ←</span><span class="cn-t">下一步 →</span>';
     nextBtn.classList.remove('submit-btn');
   }
+  updatePlaceholders();
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -1049,33 +1013,24 @@ function validateStep(step){
   var stepEl=document.querySelector('[data-step="'+step+'"]');
   var required=stepEl.querySelectorAll('[required]');
   var ok=true;
-  required.forEach(function(el){
-    el.classList.remove('invalid');
-    if(!el.value.trim()){
-      el.classList.add('invalid');
-      ok=false;
-    }
-  });
-  if(!ok){
-    var first=stepEl.querySelector('.invalid');
-    if(first) first.scrollIntoView({behavior:'smooth',block:'center'});
-  }
+  required.forEach(function(el){el.classList.remove('invalid');if(!el.value.trim()){el.classList.add('invalid');ok=false;}});
+  if(!ok){var first=stepEl.querySelector('.invalid');if(first)first.scrollIntoView({behavior:'smooth',block:'center'});}
   return ok;
 }
 
 function buildSummary(){
-  var form=document.getElementById('fw-form');
-  var data=new FormData(form);
+  var form=document.getElementById('fw-form');var data=new FormData(form);
   var sections=[
-    {title:'Company Identity', fields:['company_name','brand_name','year_founded','city','office_address','website']},
-    {title:'Responsible Person', fields:['contact_name','position','whatsapp','email','is_owner']},
-    {title:'Legal', fields:['has_cr','cr_number','intl_licensed','has_agency','agency_name','has_certs','cert_names','has_network','network_name']},
-    {title:'Operations', fields:['shipping_scope','ship_from','ship_to','shipping_types','add_services','has_warehouse','has_vehicles','employee_count']},
-    {title:'Cargo', fields:['cargo_types','weight_min','weight_max','volume_min','volume_max']},
-    {title:'Pricing', fields:['pricing_type','has_insurance','payment_methods','currencies','deferred_payment']},
-    {title:'Technology', fields:['has_tracking','has_app','support_24','languages','monthly_shipments','delivery_domestic','delivery_intl','working_hours']},
-    {title:'Platform', fields:['appear_platform','accept_referrals']}
+    {en:'Company Identity',ar:'هوية الشركة',cn:'公司信息',fields:['company_name','brand_name','year_founded','city','office_address','website']},
+    {en:'Responsible Person',ar:'الشخص المسؤول',cn:'负责人',fields:['contact_name','position','whatsapp','email','is_owner']},
+    {en:'Legal',ar:'القانوني',cn:'法律资质',fields:['has_cr','cr_number','intl_licensed','has_agency','agency_name','has_certs','cert_names']},
+    {en:'Operations',ar:'العمليات',cn:'运营',fields:['shipping_scope','ship_from','ship_to','shipping_types','has_warehouse','has_vehicles','employee_count']},
+    {en:'Cargo',ar:'البضائع',cn:'货物',fields:['cargo_types','weight_min','weight_max']},
+    {en:'Pricing',ar:'التسعير',cn:'定价',fields:['pricing_type','has_insurance','payment_methods','currencies','deferred_payment']},
+    {en:'Technology',ar:'التقنية',cn:'技术',fields:['has_tracking','has_app','support_24','languages','monthly_shipments','delivery_domestic','working_hours']},
+    {en:'Platform',ar:'المنصة',cn:'平台',fields:['appear_platform','accept_referrals']}
   ];
+  var lang=document.body.classList.contains('ar')?'ar':document.body.classList.contains('cn')?'cn':'en';
   var html='';
   sections.forEach(function(sec){
     var items='';
@@ -1087,57 +1042,44 @@ function buildSummary(){
       }
     });
     if(items){
-      html+='<div class="fw-summary-section"><div class="fw-summary-section-title">'+sec.title+'</div><div class="fw-summary-grid">'+items+'</div></div>';
+      html+='<div class="fw-summary-section"><div class="fw-summary-section-title">'+sec[lang]+'</div><div class="fw-summary-grid">'+items+'</div></div>';
     }
   });
-  document.getElementById('summary-content').innerHTML=html||'<p style="color:var(--muted);font-size:.85rem;padding:1rem">Fill in the previous steps to see your summary here.</p>';
+  document.getElementById('summary-content').innerHTML=html||'<p style="color:var(--muted);font-size:.85rem;padding:1rem"><span class="en">Fill in previous steps to see your summary.</span><span class="ar-t">أكمل الخطوات السابقة لرؤية الملخص.</span><span class="cn-t">完成前面步骤后此处将显示摘要。</span></p>';
 }
 
 function submitForm(){
   var crFile=document.getElementById('file-cr');
   if(!crFile.files||!crFile.files.length){
-    alert('Please upload your Commercial Registration photo (required).');
+    var lang=document.body.classList.contains('ar')?'ar':document.body.classList.contains('cn')?'cn':'en';
+    var msgs={en:'Please upload your Commercial Registration photo (required).',ar:'يرجى رفع صورة السجل التجاري (مطلوب).',cn:'请上传营业执照照片（必填）。'};
+    alert(msgs[lang]);
     crFile.closest('.fw-field').scrollIntoView({behavior:'smooth',block:'center'});
     return;
   }
-
-  var loading=document.getElementById('fw-loading');
-  loading.classList.add('show');
-
-  var form=document.getElementById('fw-form');
-  var fd=new FormData(form);
-
-  // If no real script URL, show success anyway (demo mode)
+  document.getElementById('fw-loading').classList.add('show');
   if(SCRIPT_URL==='YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'){
-    setTimeout(function(){
-      loading.classList.remove('show');
-      showSuccess();
-    },1500);
+    setTimeout(function(){document.getElementById('fw-loading').classList.remove('show');showSuccess();},1500);
     return;
   }
-
+  var fd=new FormData(document.getElementById('fw-form'));
   fetch(SCRIPT_URL,{method:'POST',body:fd})
     .then(function(r){return r.json();})
     .then(function(res){
-      loading.classList.remove('show');
-      if(res.result==='success') showSuccess();
-      else alert('Error: '+(res.error||'Unknown error. Please try again.'));
+      document.getElementById('fw-loading').classList.remove('show');
+      if(res.result==='success')showSuccess();
+      else{var lang=document.body.classList.contains('ar')?'ar':document.body.classList.contains('cn')?'cn':'en';alert(res.error||'Error');}
     })
-    .catch(function(){
-      loading.classList.remove('show');
-      // Show success anyway — data logged client-side
-      showSuccess();
-    });
+    .catch(function(){document.getElementById('fw-loading').classList.remove('show');showSuccess();});
 }
 
 function showSuccess(){
-  document.querySelector('.fw-page').innerHTML='<div class="fw-container"><div class="fw-success"><div class="fw-success-ico">✅</div><h2 class="fw-success-title">Application Submitted!</h2><p class="fw-success-sub">Thank you for registering as a freight partner. Our team will review your application and contact you within 2–3 business days via WhatsApp or email.</p><a href="../" class="fw-btn-next" style="display:inline-block;text-decoration:none;margin-top:1rem">← Return to Homepage</a></div></div>';
+  document.querySelector('.fw-page').innerHTML='<div class="fw-container"><div style="text-align:center;padding:4rem 1rem"><div style="font-size:4rem;margin-bottom:1rem">✅</div><h2 style="font-size:1.5rem;font-weight:700;color:var(--lime);margin-bottom:.6rem"><span class="en">Application Submitted!</span><span class="ar-t">تم إرسال الطلب!</span><span class="cn-t">申请已提交！</span></h2><p style="font-size:.9rem;color:var(--muted);max-width:420px;margin:0 auto 2rem"><span class="en">Our team will review your application and contact you within 2–3 business days via WhatsApp or email.</span><span class="ar-t">سيراجع فريقنا طلبك ويتواصل معك خلال 2–3 أيام عمل عبر واتساب أو البريد الإلكتروني.</span><span class="cn-t">我们的团队将审核您的申请，并在2–3个工作日内通过WhatsApp或邮件与您联系。</span></p><a href="../" style="display:inline-block;padding:.85rem 2.5rem;background:var(--lime);color:var(--black);font-weight:700;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none"><span class="en">← Return to Homepage</span><span class="ar-t">→ العودة للرئيسية</span><span class="cn-t">← 返回首页</span></a></div></div>';
 }
 
-// Position select handler
-document.querySelector('select[name="position"]').addEventListener('change',function(){
-  var f=document.getElementById('owner-role-field');
-  f.style.display=this.value==='Other'?'block':'none';
+// Position select
+document.getElementById('position-select').addEventListener('change',function(){
+  document.getElementById('position-other-field').style.display=this.value==='Other'?'block':'none';
 });
 </script>
 </body>
