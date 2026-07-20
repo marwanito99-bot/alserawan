@@ -101,6 +101,12 @@ function show(id){
   var root=(typeof SITE_ROOT!=='undefined')?SITE_ROOT:'';
   window.location.href = root + (r?r+'/':'');
 }
+function spotActivate(i){
+  for(var j=0;j<3;j++){
+    var row=document.getElementById('spot-'+j);
+    if(row) row.classList.toggle('spot-on', j===i);
+  }
+}
 function goto(id){
   var el=document.getElementById(id);
   if(el){ el.scrollIntoView({behavior:'smooth'}); return; }

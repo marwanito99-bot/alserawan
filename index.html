@@ -88,22 +88,25 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"><img id="img-hero" src="" style="position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover;filter:brightness(.55) saturate(1.15) contrast(1.05)" alt="MWM global transport and logistics network"/></div>
+  <div class="hero-bg"><img id="img-hero" src="" style="position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover;filter:brightness(.45) saturate(1.15) contrast(1.05)" alt="MWM global transport and logistics network"/></div>
   <div class="hero-overlay"></div>
   <div class="hero-grid-lines"></div>
+  <div class="hero-glow-1"></div>
+  <div class="hero-glow-2"></div>
   <div class="hero-content">
     <div class="hero-badge"><div class="badge-dot"></div><span class="en">Est. 1999 · Yiwu, China · 义乌</span><span class="cn-t">创立1999年 · 义乌，中国</span><span class="ar-t">تأسست 1999 · يوو، الصين</span></div>
     <div class="hero-cn">义乌镘旺国际贸易有限公司</div>
     <h1 class="hero-title">Al <span class="hl">Serawan</span><br>Group</h1>
-    <p class="hero-sub"><span class="en">of Companies</span><span class="cn-t">旗下公司</span><span class="ar-t">مجموعة الشركات</span><span class="ar-t">مجموعة الشركات</span></p>
+    <p class="hero-sub"><span class="en">of Companies</span><span class="cn-t">旗下公司</span><span class="ar-t">مجموعة الشركات</span></p>
     <div class="hero-btns">
       <button class="btn-b" onclick="goto('companies')"><span class="en">Explore Companies</span><span class="ar-t">استعرض الشركات</span><span class="cn-t">探索旗下公司</span></button>
       <button class="btn-l" onclick="dlProfile(event)"><span class="en">Company Profile ↗</span><span class="ar-t">ملف الشركة ↗</span><span class="cn-t">公司简介 ↗</span></button>
       <button class="btn-o" onclick="goto('contact')"><span class="en">Contact Us</span><span class="ar-t">تواصل معنا</span><span class="cn-t">联系我们</span></button>
       <a href="tracking/" class="btn-o" style="border-color:var(--lime);color:var(--lime)">🔍 <span class="en">Track Your Container</span><span class="ar-t">تتبع حاويتك</span><span class="cn-t">追踪集装箱</span></a>
-      <a href="freight-register/" class="btn-o" style="border-color:rgba(204,253,27,.4);color:var(--lime);background:rgba(204,253,27,.06)">🤝 <span class="en">Join Our Network</span><span class="ar-t">انضم لشبكتنا</span><span class="cn-t">加入我们的网络</span></a>
+      <a href="freight-register/" class="btn-o" style="border-color:rgba(204,253,27,.4);color:var(--lime)">🤝 <span class="en">Join Our Network</span><span class="ar-t">انضم لشبكتنا</span><span class="cn-t">加入我们的网络</span></a>
     </div>
   </div>
+  <div class="hero-scroll-hint"><div class="hero-scroll-txt"><span class="en">Scroll</span></div><div class="hero-scroll-line"></div></div>
 </section>
 
 <!-- TICKER -->
@@ -126,10 +129,10 @@
 
 <!-- STATS -->
 <div class="stats">
-  <div class="stat"><div class="stat-n">1999</div><div class="stat-l"><span class="en">Founded</span><span class="ar-t">تأسست</span><span class="cn-t">创立年份</span></div></div>
-  <div class="stat"><div class="stat-n">25+</div><div class="stat-l"><span class="en">Years Experience</span><span class="ar-t">سنة خبرة</span><span class="cn-t">年经验</span></div></div>
-  <div class="stat"><div class="stat-n">3</div><div class="stat-l"><span class="en">Business Verticals</span><span class="ar-t">قطاعات أعمال</span><span class="cn-t">业务板块</span></div></div>
-  <div class="stat"><div class="stat-n" style="font-size:1.5rem;padding-top:.5rem">义乌</div><div class="stat-l"><span class="en">Yiwu HQ · China</span><span class="ar-t">مقر يوو · الصين</span><span class="cn-t">义乌总部·中国</span></div></div>
+  <div class="stat"><div class="stat-n">25<span>+</span></div><div class="stat-l"><span class="en">Years of Trade</span><span class="ar-t">سنة في التجارة</span><span class="cn-t">年贸易经验</span></div></div>
+  <div class="stat"><div class="stat-n">30<span>+</span></div><div class="stat-l"><span class="en">Countries Served</span><span class="ar-t">دولة نخدمها</span><span class="cn-t">服务国家</span></div></div>
+  <div class="stat"><div class="stat-n">3</div><div class="stat-l"><span class="en">Business Pillars</span><span class="ar-t">ركائز أعمال</span><span class="cn-t">业务板块</span></div></div>
+  <div class="stat"><div class="stat-n">1K<span>+</span></div><div class="stat-l"><span class="en">Clients Worldwide</span><span class="ar-t">عميل حول العالم</span><span class="cn-t">全球客户</span></div></div>
 </div>
 
 <!-- PHOTO BAND -->
@@ -140,38 +143,84 @@
 </div>
 
 <!-- COMPANIES -->
-<div id="companies" class="wrap">
-  <p class="sec-tag"><span class="en">Our Portfolio</span><span class="ar-t">محفظة أعمالنا</span><span class="cn-t">业务组合</span></p>
-  <h2 class="sec-h"><span class="en">Three <span class="ac">Pillars</span> of Excellence</span><span class="cn-t">三大<span class="ac">卓越</span>支柱</span><span class="ar-t">ثلاثة <span class="ac">ركائز</span> للتميز</span></h2>
-  <p class="sec-p"><span class="en">Each company under Al Serawan Group operates with deep sector expertise, unified by 25+ years of trade experience and our Yiwu headquarters at the heart of global commerce.</span><span class="ar-t">كل شركة تعمل بخبرة قطاعية عميقة، متحدة بأكثر من 25 عاماً من خبرة التجارة ومقرنا في يوو في قلب التجارة العالمية.</span><span class="cn-t">阿尔塞拉万集团旗下每家公司均深耕各自领域，以统一的卓越标准运营。</span></p>
-  <div class="co-grid">
-    <div class="co-card reveal reveal-delay-1" onclick="window.location.href='logistics/'">
-      <span class="co-num">01</span>
-      <div class="co-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-      <p class="co-tag"><span class="en">Supply Chain & Logistics</span><span class="ar-t">سلاسل التوريد واللوجستيات</span><span class="cn-t">供应链与物流</span></p>
-      <h3 class="co-name"><span class="en">Max Worldwide Mastering</span><span class="ar-t">ماكس وورلدوايد ماسترينج</span><span class="cn-t">Max Worldwide Mastering（镘旺国际）</span></h3>
-      <p class="co-desc"><span class="en">Integrated logistics — shipping, warehousing, customs clearance, and supply chain management from Yiwu to the world.</span><span class="cn-t">一体化物流——从义乌到全球的货运、仓储、报关和供应链管理。</span><span class="ar-t">لوجستيات متكاملة — شحن وتخزين وتخليص جمركي وإدارة سلاسل التوريد من يوو إلى العالم.</span></p>
-      <div class="co-pills"><span class="pill">Logistics</span><span class="pill">Cargo</span><span class="pill">Customs</span><span class="pill">3PL</span></div>
-      <button class="co-go"><span class="en">View Company</span><span class="ar-t">عرض الشركة</span><span class="cn-t">查看公司</span><span class="cn-t">查看公司</span><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+<div id="companies">
+  <div class="wrap" style="padding-bottom:2rem">
+    <div class="sec-split">
+      <div class="sec-split-left">
+        <div class="sec-split-eye"><span class="en">Our Portfolio</span><span class="ar-t">محفظة أعمالنا</span><span class="cn-t">业务组合</span></div>
+        <h2 class="sec-split-h"><span class="en">Three <span class="ac">Pillars</span><br>of Excellence</span><span class="ar-t">ثلاثة <span class="ac">ركائز</span><br>للتميز</span><span class="cn-t">三大<span class="ac">卓越</span><br>支柱</span></h2>
+      </div>
+      <div class="sec-split-right">
+        <p class="sec-split-desc"><span class="en">Each company operates with deep sector expertise, unified by 25+ years of trade experience and our Yiwu headquarters at the heart of global commerce.</span><span class="ar-t">كل شركة تعمل بخبرة قطاعية عميقة، متحدة بأكثر من 25 عاماً من خبرة التجارة ومقرنا في يوو.</span><span class="cn-t">每家公司均深耕各自领域，以25年+贸易经验统一运营。</span></p>
+        <button class="sec-split-lnk" onclick="window.location.href='companies/'"><span class="en">View All Companies</span><span class="ar-t">عرض كل الشركات</span><span class="cn-t">查看所有公司</span></button>
+      </div>
     </div>
-    <div class="co-card reveal reveal-delay-2" onclick="show('motors')">
-      <span class="co-num">02</span>
-      <div class="co-icon"><svg viewBox="0 0 24 24"><circle cx="6" cy="17" r="2"/><circle cx="18" cy="17" r="2"/><path d="M4 17H2V7l2-2h7l2 3h5l2 2v4h-2"/><path d="M8 17h8"/></svg></div>
-      <p class="co-tag"><span class="en">Automotive</span><span class="ar-t">قطاع السيارات</span><span class="cn-t">汽车</span></p>
-      <h3 class="co-name">MWM Motors</h3>
-      <p class="co-desc"><span class="en">Premium vehicle trading and distribution across the Gulf and Middle East — fleet solutions and import/export.</span><span class="cn-t">面向海湾和中东地区的高端汽车贸易与分销——车队解决方案及进出口服务。</span><span class="ar-t">تجارة وتوزيع السيارات في الخليج والشرق الأوسط — حلول أساطيل واستيراد وتصدير.</span></p>
-      <div class="co-pills"><span class="pill"><span class="en">Vehicle Trading</span><span class="ar-t">تجارة سيارات</span><span class="cn-t">车辆贸易</span></span><span class="pill">Fleet</span><span class="pill">Import/Export</span></div>
-      <button class="co-go"><span class="en">View Company</span><span class="ar-t">عرض الشركة</span><span class="cn-t">查看公司</span><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+  </div>
+
+  <div class="co-spotlight">
+    <!-- Row 1 -->
+    <div class="co-spot-row spot-on" id="spot-0" onclick="spotActivate(0)">
+      <div class="co-spot-bar"></div>
+      <div class="co-spot-num">01</div>
+      <div class="co-spot-icon">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      <div class="co-spot-info">
+        <div class="co-spot-sec"><span class="en">Supply Chain & Logistics</span><span class="ar-t">سلاسل التوريد واللوجستيات</span><span class="cn-t">供应链与物流</span></div>
+        <div class="co-spot-name"><span class="en">Max Worldwide Mastering</span><span class="ar-t">ماكس وورلدوايد ماسترينج</span><span class="cn-t">Max Worldwide Mastering</span></div>
+        <div class="co-spot-expand">
+          <p class="co-spot-desc"><span class="en">Integrated logistics — shipping, warehousing, customs clearance, and supply chain management from Yiwu to the world.</span><span class="ar-t">لوجستيات متكاملة — شحن وتخزين وتخليص جمركي وإدارة سلاسل التوريد من يوو إلى العالم.</span><span class="cn-t">一体化物流——从义乌到全球的货运、仓储、报关和供应链管理。</span></p>
+          <div class="co-spot-pills"><span class="co-spot-pill">Logistics</span><span class="co-spot-pill">Cargo</span><span class="co-spot-pill">Customs</span><span class="co-spot-pill">3PL</span></div>
+          <button class="co-spot-cta" onclick="event.stopPropagation();window.location.href='logistics/'"><div class="co-spot-cta-line"></div><span class="en">View Company</span><span class="ar-t">عرض الشركة</span><span class="cn-t">查看公司</span></button>
+        </div>
+      </div>
+      <div class="co-spot-bignum">01</div>
     </div>
-    <div class="co-card reveal reveal-delay-3" onclick="show('equip')">
-      <span class="co-num">03</span>
-      <div class="co-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-      <p class="co-tag"><span class="en">Heavy Equipment</span><span class="ar-t">المعدات الثقيلة</span><span class="cn-t">重型设备</span></p>
-      <h3 class="co-name">MWM Equipments</h3>
-      <p class="co-desc"><span class="en">Industrial and heavy equipment for construction and infrastructure sectors across the Middle East sourced from China & Europe.</span><span class="cn-t">从中国和欧洲采购，面向中东建筑和基础设施行业的工业重型设备。</span><span class="ar-t">معدات صناعية وثقيلة للبناء والبنية التحتية في الشرق الأوسط من الصين وأوروبا.</span></p>
-      <div class="co-pills"><span class="pill">Machinery</span><span class="pill">Construction</span><span class="pill">Industrial</span></div>
-      <button class="co-go"><span class="en">View Company</span><span class="ar-t">عرض الشركة</span><span class="cn-t">查看公司</span><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+
+    <!-- Row 2 -->
+    <div class="co-spot-row" id="spot-1" onclick="spotActivate(1)">
+      <div class="co-spot-bar"></div>
+      <div class="co-spot-num">02</div>
+      <div class="co-spot-icon">
+        <svg viewBox="0 0 24 24"><circle cx="6" cy="17" r="2"/><circle cx="18" cy="17" r="2"/><path d="M4 17H2V7l2-2h7l2 3h5l2 2v4h-2"/><path d="M8 17h8"/></svg>
+      </div>
+      <div class="co-spot-info">
+        <div class="co-spot-sec"><span class="en">Automotive</span><span class="ar-t">قطاع السيارات</span><span class="cn-t">汽车</span></div>
+        <div class="co-spot-name">MWM Motors</div>
+        <div class="co-spot-expand">
+          <p class="co-spot-desc"><span class="en">Premium vehicle trading and distribution across the Gulf and Middle East — fleet solutions and import/export.</span><span class="ar-t">تجارة وتوزيع السيارات في الخليج والشرق الأوسط — حلول أساطيل واستيراد وتصدير.</span><span class="cn-t">面向海湾和中东地区的高端汽车贸易与分销——车队解决方案及进出口服务。</span></p>
+          <div class="co-spot-pills"><span class="co-spot-pill"><span class="en">Vehicle Trading</span><span class="ar-t">تجارة سيارات</span><span class="cn-t">车辆贸易</span></span><span class="co-spot-pill">Fleet</span><span class="co-spot-pill">Import/Export</span></div>
+          <button class="co-spot-cta" onclick="event.stopPropagation();show('motors')"><div class="co-spot-cta-line"></div><span class="en">View Company</span><span class="ar-t">عرض الشركة</span><span class="cn-t">查看公司</span></button>
+        </div>
+      </div>
+      <div class="co-spot-bignum">02</div>
     </div>
+
+    <!-- Row 3 -->
+    <div class="co-spot-row" id="spot-2" onclick="spotActivate(2)">
+      <div class="co-spot-bar"></div>
+      <div class="co-spot-num">03</div>
+      <div class="co-spot-icon">
+        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      </div>
+      <div class="co-spot-info">
+        <div class="co-spot-sec"><span class="en">Heavy Equipment</span><span class="ar-t">المعدات الثقيلة</span><span class="cn-t">重型设备</span></div>
+        <div class="co-spot-name">MWM Equipments</div>
+        <div class="co-spot-expand">
+          <p class="co-spot-desc"><span class="en">Industrial and heavy equipment for construction and infrastructure sectors across the Middle East sourced from China & Europe.</span><span class="ar-t">معدات صناعية وثقيلة للبناء والبنية التحتية في الشرق الأوسط من الصين وأوروبا.</span><span class="cn-t">从中国和欧洲采购，面向中东建筑和基础设施行业的工业重型设备。</span></p>
+          <div class="co-spot-pills"><span class="co-spot-pill">Machinery</span><span class="co-spot-pill">Construction</span><span class="co-spot-pill">Industrial</span></div>
+          <button class="co-spot-cta" onclick="event.stopPropagation();show('equip')"><div class="co-spot-cta-line"></div><span class="en">View Company</span><span class="ar-t">عرض الشركة</span><span class="cn-t">查看公司</span></button>
+        </div>
+      </div>
+      <div class="co-spot-bignum">03</div>
+    </div>
+  </div>
+
+  <!-- Stats bar -->
+  <div class="co-stats-bar">
+    <div class="co-stat-cell"><div class="co-stat-val">25<span>+</span></div><div class="co-stat-lbl"><span class="en">Years of Trade</span><span class="ar-t">سنة في التجارة</span><span class="cn-t">年贸易经验</span></div></div>
+    <div class="co-stat-cell"><div class="co-stat-val">3</div><div class="co-stat-lbl"><span class="en">Business Pillars</span><span class="ar-t">ركائز أعمال</span><span class="cn-t">业务板块</span></div></div>
+    <div class="co-stat-cell"><div class="co-stat-val">30<span>+</span></div><div class="co-stat-lbl"><span class="en">Countries Served</span><span class="ar-t">دولة نخدمها</span><span class="cn-t">服务国家</span></div></div>
   </div>
 </div>
 
