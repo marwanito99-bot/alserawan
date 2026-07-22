@@ -546,6 +546,8 @@ function trackShipment(){
 
   document.getElementById('result').classList.remove('show');
   document.getElementById('errorMsg').classList.remove('show');
+  var _vs=document.getElementById('voyageSection');
+  if(_vs){ _vs.style.display='none'; _vs.innerHTML=''; }
   document.getElementById('loading').classList.add('show');
 
   fetchCSV(SHEET_CSV_URL).then(function(csv){
@@ -592,6 +594,260 @@ function trackShipment(){
   });
 }
 
+/* ══════════ MWM VOYAGE TRACKER ══════════ */
+var VOY_HEADER_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vSnWUeztrgT8MTiVVFZhVe0dVpcsyQXzHfS7H-DyN5GYSZ3GnCFJZCkJEflbLOyHA/pub?gid=357641936&single=true&output=csv';
+var VOY_MOVES_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vSnWUeztrgT8MTiVVFZhVe0dVpcsyQXzHfS7H-DyN5GYSZ3GnCFJZCkJEflbLOyHA/pub?gid=1532892577&single=true&output=csv';
+
+function voyNorm(s){ return (s||'').trim() }
+
+/* أيقونات */
+function voyIcoTruck(){return '<svg viewBox="0 0 24 24"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>'}
+function voyIcoShip(){return '<svg viewBox="0 0 24 24"><path d="M2 20a4 4 0 004-2 4 4 0 004 2 4 4 0 004-2 4 4 0 004 2 4 4 0 004-2"/><path d="M4 17l1-6h14l1 6"/><path d="M12 11V5M9 5h6"/></svg>'}
+function voyIcoPin(){return '<svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>'}
+function voyIcoPlane(){return '<svg viewBox="0 0 24 24"><path d="M17.8 19.2L16 11l3.5-3.5a2.1 2.1 0 00-3-3L13 8 4.8 6.2a1 1 0 00-.9 1.7L9 11l-2 3H4l-1 2 3.5 1L8 21l2-1v-3l3-2 3.1 5.1a1 1 0 001.7-.9z"/></svg>'}
+
+/* تحويل صف CSV إلى كائن حسب رؤوس الأعمدة */
+function voyRowsToObjects(rows){
+  var hi=-1;
+  for(var i=0;i<Math.min(6,rows.length);i++){
+    for(var j=0;j<rows[i].length;j++){
+      if(voyNorm(rows[i][j]).toLowerCase()==='tracking #'){ hi=i; break }
+    }
+    if(hi>=0) break;
+  }
+  if(hi<0) return [];
+  var H=rows[hi].map(function(c){return voyNorm(c)});
+  var out=[];
+  for(var r=hi+1;r<rows.length;r++){
+    var v=rows[r];
+    if(!v||!voyNorm(v[0])) continue;
+    var first=voyNorm(v[0]);
+    if(first==='رقم الشحنة') continue;   // صف الأسماء العربية المساعد
+    var o={};
+    for(var c=0;c<H.length;c++) o[H[c]]=voyNorm(v[c]);
+    out.push(o);
+  }
+  return out;
+}
+
+/* تنسيق التاريخ: 2026-09-10 -> Thu 10-SEP-2026 */
+function voyFmtDate(s){
+  s=voyNorm(s);
+  if(!s) return '';
+  var m=s.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if(!m) return s;
+  var MON=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+  var DAY=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var d=new Date(+m[1],+m[2]-1,+m[3]);
+  if(isNaN(d)) return s;
+  return DAY[d.getDay()]+' '+m[3]+'-'+MON[+m[2]-1]+'-'+m[1];
+}
+function voyFmtDateShort(s){
+  var f=voyFmtDate(s);
+  return f||voyNorm(s);
+}
+/* الأيام المتبقية */
+function voyDaysLeft(s){
+  var m=voyNorm(s).match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if(!m) return null;
+  var target=new Date(+m[1],+m[2]-1,+m[3]);
+  var now=new Date(); now.setHours(0,0,0,0);
+  var diff=Math.round((target-now)/86400000);
+  return diff;
+}
+
+/* بناء نقاط الخط تلقائياً من الحركات */
+function voyBuildPoints(moves){
+  var pts=[], seen={};
+  moves.forEach(function(m){
+    var loc=voyNorm(m['Location']);
+    if(!loc) return;
+    // للحركات البرّية ذات الشكل "من → إلى" نأخذ الوجهة
+    var label=loc, sub='';
+    if(loc.indexOf('→')>=0){
+      var parts=loc.split('→');
+      label=voyNorm(parts[parts.length-1]);
+    }
+    var isLand=voyNorm(m['Leg']).toLowerCase()==='land';
+    var key=label.toUpperCase();
+    if(seen[key]!==undefined){
+      // نحدّث الحالة إن كانت هذه الحركة أحدث
+      if(voyNorm(m['Current']).toLowerCase()==='yes') pts[seen[key]].now=true;
+      if(isLand) pts[seen[key]].land=true;
+      return;
+    }
+    seen[key]=pts.length;
+    pts.push({
+      label:label,
+      sub:isLand?'By Truck':'',
+      land:isLand,
+      now:voyNorm(m['Current']).toLowerCase()==='yes'
+    });
+  });
+  // نحدّد نقطة تحوّل البحر->البرّ
+  var firstLand=-1;
+  for(var i=0;i<pts.length;i++){ if(pts[i].land){ firstLand=i; break } }
+  if(firstLand>0){
+    pts[firstLand-1].sub='Port · Discharge';
+    pts[firstLand-1].portSw=true;
+  }
+  // توزيع المواضع
+  var n=pts.length;
+  pts.forEach(function(p,i){ p.pos = n<=1 ? 0 : Math.round(i*100/(n-1)) });
+  // النقاط المنجزة
+  var nowIdx=-1;
+  for(var i=0;i<n;i++){ if(pts[i].now){ nowIdx=i; break } }
+  pts.forEach(function(p,i){ p.done = nowIdx>=0 && i<=nowIdx });
+  return pts;
+}
+
+/* رسم القسم */
+function voyRender(hdr, moves){
+  var box=document.getElementById('voyageSection');
+  if(!box) return;
+  if(!hdr){ box.style.display='none'; box.innerHTML=''; return }
+
+  var pts=voyBuildPoints(moves);
+  var landStart=100;
+  for(var i=0;i<pts.length;i++){ if(pts[i].land){ landStart=pts[i-1]?pts[i-1].pos:pts[i].pos; break } }
+
+  var prog=parseFloat(voyNorm(hdr['Progress %']))||0;
+  if(prog<0)prog=0; if(prog>100)prog=100;
+
+  /* الرأس */
+  var status=voyNorm(hdr['Status']);
+  var cont=voyNorm(hdr['Container #']);
+  var ctype=voyNorm(hdr['Container Type']);
+  var h='<div class="voy"><div class="voy-head"><div class="voy-head-l">'
+    +'<span class="voy-title"><span class="en">Voyage Details</span><span class="ar-t">تفاصيل الرحلة</span><span class="cn-t">航程详情</span></span>'
+    +(status?'<span class="voy-status">'+status+'</span>':'')
+    +(cont?'<span class="voy-cont"><span class="en">Container</span><span class="ar-t">الحاوية</span><span class="cn-t">集装箱</span> <b>'+cont+'</b>'+(ctype?' · '+ctype:'')+'</span>':'')
+    +'</div></div>';
+
+  /* الخط الأفقي */
+  var pol=voyNorm(hdr['POL']), polC=voyNorm(hdr['POL Country']);
+  var dst=voyNorm(hdr['Final Destination']), dstC=voyNorm(hdr['Dest Country']);
+  var hasLand=pts.some(function(p){return p.land});
+
+  h+='<div class="route"><div class="route-ends">'
+    +'<div class="route-end"><span class="route-tag"><span class="en">POL · Origin</span><span class="ar-t">ميناء التحميل</span><span class="cn-t">起运港</span></span>'
+    +'<span class="route-port">'+pol+(polC?' ('+polC+')':'')+'</span>'
+    +'<span class="route-ico">'+voyIcoTruck()+'</span></div>'
+    +'<div class="route-end to"><span class="route-tag">'
+    +(hasLand?'<span class="en">Final Delivery · Inland</span><span class="ar-t">التسليم النهائي · برّي</span><span class="cn-t">最终交付</span>':'<span class="en">POD · Destination</span><span class="ar-t">ميناء الوصول</span><span class="cn-t">目的港</span>')
+    +'</span><span class="route-port">'+dst+(dstC?' ('+dstC+')':'')+'</span>'
+    +'<span class="route-ico dest">'+voyIcoPin()+'</span></div></div>';
+
+  if(hasLand){
+    h+='<div class="route-legend">'
+      +'<span class="lg"><i class="lg-sea"></i><span class="en">Sea Freight</span><span class="ar-t">شحن بحري</span><span class="cn-t">海运</span></span>'
+      +'<span class="lg"><i class="lg-land"></i><span class="en">Inland Haulage</span><span class="ar-t">نقل برّي</span><span class="cn-t">陆运</span></span>'
+      +'</div>';
+  }
+
+  h+='<div class="route-track">'
+    +'<div class="route-sea" style="width:'+landStart+'%"></div>'
+    +(hasLand?'<div class="route-land" style="left:'+landStart+'%;width:'+(100-landStart)+'%"></div>':'')
+    +'<div class="route-fill" style="width:'+prog+'%"></div>';
+  pts.forEach(function(p){
+    var cls='route-pt'+(p.done?' done':'')+(p.now?' now':'')+(p.portSw?' port-sw':'');
+    h+='<div class="'+cls+'" style="left:'+p.pos+'%">'
+      +'<div class="route-pt-dot'+(p.land?' land':'')+'"></div>'
+      +'<div class="route-pt-lbl">'+p.label+(p.sub?'<span class="lbl-sub'+(p.land?' land':'')+'">'+p.sub+'</span>':'')+'</div></div>';
+  });
+  h+='</div>';
+
+  /* صناديق ETA */
+  var etaP=voyNorm(hdr['ETA Port']), etaPT=voyNorm(hdr['ETA Port Time']);
+  var etaF=voyNorm(hdr['ETA Final']), etaFT=voyNorm(hdr['ETA Final Time']);
+  if(etaP||etaF){
+    h+='<div class="eta">';
+    if(etaP){
+      var dl=voyDaysLeft(etaP);
+      h+='<div class="eta-box"><div class="eta-lbl"><span class="en">ETA Port</span><span class="ar-t">وصول الميناء</span><span class="cn-t">预计到港</span></div>'
+        +'<div class="eta-date">'+voyFmtDate(etaP)+(etaPT?' · '+etaPT:'')+'</div>'
+        +(dl!==null?'<div class="eta-rem">'+(dl>0?dl+' days remaining':(dl===0?'Today':'Arrived'))+'</div>':'')
+        +'</div>';
+    }
+    if(etaF){
+      var dl2=voyDaysLeft(etaF);
+      h+='<div class="eta-box final"><div class="eta-lbl"><span class="en">ETA Final</span><span class="ar-t">التسليم النهائي</span><span class="cn-t">最终交付</span></div>'
+        +'<div class="eta-date">'+voyFmtDate(etaF)+(etaFT?' · '+etaFT:'')+'</div>'
+        +(dl2!==null?'<div class="eta-rem">'+(dl2>0?dl2+' days remaining':(dl2===0?'Today':'Delivered'))+'</div>':'')
+        +'</div>';
+    }
+    h+='</div>';
+  }
+  h+='</div>';
+
+  /* جدول الحركات */
+  if(moves.length){
+    h+='<div class="moves"><div class="moves-h">'
+      +'<div><span class="en">Date</span><span class="ar-t">التاريخ</span><span class="cn-t">日期</span></div>'
+      +'<div><span class="en">Time</span><span class="ar-t">الوقت</span><span class="cn-t">时间</span></div>'
+      +'<div><span class="en">Move</span><span class="ar-t">الحركة</span><span class="cn-t">动态</span></div>'
+      +'<div><span class="en">Location / Terminal</span><span class="ar-t">الموقع / المحطة</span><span class="cn-t">地点 / 码头</span></div>'
+      +'<div><span class="en">Vessel (Voyage)</span><span class="ar-t">السفينة (الرحلة)</span><span class="cn-t">船名 (航次)</span></div>'
+      +'</div>';
+    moves.forEach(function(m){
+      var leg=voyNorm(m['Leg']).toLowerCase();
+      var isLand=leg==='land', isAir=leg==='air';
+      var isNow=voyNorm(m['Current']).toLowerCase()==='yes';
+      var mt=voyNorm(m['Move Type']);
+      var ico = isAir?voyIcoPlane() : (isLand ? (mt.toLowerCase().indexOf('delivery')>=0?voyIcoPin():voyIcoTruck())
+                : (mt.toLowerCase().indexOf('ready')>=0||mt.toLowerCase().indexOf('gate')>=0?voyIcoTruck():voyIcoShip()));
+      var ves=voyNorm(m['Vessel']), voy=voyNorm(m['Voyage']);
+      h+='<div class="mv'+(isNow?' on':'')+(isLand?' inland':'')+'">'
+        +'<div class="mv-date"><span class="mv-ico">'+ico+'</span><span class="mv-d">'+voyFmtDateShort(m['Date'])+'</span></div>'
+        +'<div class="mv-t">'+voyNorm(m['Time'])+'</div>'
+        +'<div><span class="mv-badge'+(isLand?' land':'')+'">'+mt+'</span></div>'
+        +'<div><div class="mv-loc">'+voyNorm(m['Location'])+'</div>'
+        +(voyNorm(m['Terminal'])?'<div class="mv-term">'+voyNorm(m['Terminal'])+'</div>':'')+'</div>'
+        +'<div class="mv-ves">'+(ves?ves+(voy?' <span>('+voy+')</span>':''):'—')+'</div>'
+        +'</div>';
+    });
+    h+='</div>';
+  }
+
+  h+='<div class="voy-foot">'
+    +'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>'
+    +'<span><span class="en">Times shown are local. Provisional moves are for information only and may change without notice.</span>'
+    +'<span class="ar-t">الأوقات المعروضة محلية. الحركات المتوقّعة للعلم فقط وقد تتغيّر دون إشعار.</span>'
+    +'<span class="cn-t">显示时间为当地时间。预计动态仅供参考，可能随时变更。</span></span></div>';
+
+  h+='</div>';
+
+  box.innerHTML=h;
+  box.style.display='block';
+}
+
+/* تحميل بيانات الرحلة لشحنة معيّنة */
+function voyLoad(trackingNum){
+  var box=document.getElementById('voyageSection');
+  if(!box) return;
+  box.style.display='none'; box.innerHTML='';
+  if(!trackingNum) return;
+  var num=trackingNum.trim().toUpperCase();
+
+  Promise.all([ fetchCSV(VOY_HEADER_URL), fetchCSV(VOY_MOVES_URL) ]).then(function(res){
+    var hdrs=voyRowsToObjects(pcParseCSV(res[0]));
+    var mvs=voyRowsToObjects(pcParseCSV(res[1]));
+
+    var hdr=null;
+    for(var i=0;i<hdrs.length;i++){
+      if(voyNorm(hdrs[i]['Tracking #']).toUpperCase()===num){ hdr=hdrs[i]; break }
+    }
+    if(!hdr) return;                                   // لا بيانات رحلة لهذه الشحنة
+    if(voyNorm(hdr['Show Voyage']).toLowerCase()==='no') return;   // مخفي عمداً
+
+    var mine=mvs.filter(function(m){ return voyNorm(m['Tracking #']).toUpperCase()===num });
+    mine.sort(function(a,b){ return (parseFloat(a['Order'])||0)-(parseFloat(b['Order'])||0) });
+
+    voyRender(hdr, mine);
+  }).catch(function(){ /* فشل الجلب: نترك القسم مخفياً بصمت */ });
+}
+
+
 function displayResult(s,products){
   document.getElementById('loading').classList.remove('show');
   var stage=parseInt(s['Stage (1-10)'])||1;
@@ -603,6 +859,9 @@ function displayResult(s,products){
   document.getElementById('resCompany').textContent=s['Company'];
   document.getElementById('resStage').textContent=stN+' ('+stage+'/10)';
   document.getElementById('resUpdate').textContent='Last update: '+(s['Last Update']||'—');
+
+  // تحميل تفاصيل الرحلة (إن وُجدت)
+  if(typeof voyLoad==='function') voyLoad(s['Tracking #']);
 
   var tl=document.getElementById('timeline');tl.innerHTML='';
   for(var i=0;i<STAGES.length;i++){
