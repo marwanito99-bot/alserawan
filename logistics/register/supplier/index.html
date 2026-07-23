@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Supplier Registration — MWM Logistics | Al Serawan Group</title>
+<meta name="description" content="Are you a factory or supplier? Register with MWM Logistics to reach buyers across Saudi Arabia, the UAE and the wider Gulf market.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.alserawan.com/logistics/register/supplier">
+<style>
+.form-hero{background:var(--dark2);border-bottom:1px solid var(--border);position:relative;overflow:hidden;padding:3.5rem 0 3rem}
+.form-hero::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(29,0,244,.14) 0%,transparent 65%);top:-250px;right:-150px;pointer-events:none}
+.form-hero-inner{max-width:780px;margin:0 auto;padding:0 1.5rem;position:relative;z-index:1}
+.form-hero-back{display:inline-flex;align-items:center;gap:.5rem;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-decoration:none;margin-bottom:1.6rem;transition:color .2s}
+.form-hero-back:hover{color:var(--lime)}
+.form-hero-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+.form-hero-tag{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:.7rem;display:flex;align-items:center;gap:.6rem}
+.form-hero-tag::before{content:'';width:18px;height:1px;background:var(--blue);flex-shrink:0}
+.form-hero-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;margin-bottom:.8rem}
+.form-hero-title .ac{color:var(--lime)}
+.form-hero-sub{font-size:.9rem;color:var(--muted);line-height:1.9;max-width:560px;margin-bottom:2rem}
+.form-hero-benefits{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem}
+.fhb{display:flex;align-items:flex-start;gap:.75rem;background:var(--dark3);border:1px solid var(--border);padding:.9rem 1rem}
+.fhb-ico{width:32px;height:32px;background:rgba(29,0,244,.12);border:1px solid rgba(29,0,244,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.fhb-ico svg{width:16px;height:16px;stroke:var(--blue);fill:none;stroke-width:1.8}
+.fhb-txt{font-size:.78rem;color:var(--text);line-height:1.55;font-weight:500}
+.fhb-sub{font-size:.72rem;color:var(--muted);line-height:1.5;margin-top:.15rem}
+@media(max-width:600px){.form-hero-benefits{grid-template-columns:1fr}}
+</style>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Supplier Registration — MWM Logistics">
+<meta property="og:description" content="Register your factory with MWM and reach Gulf buyers.">
+<meta property="og:url" content="https://www.alserawan.com/logistics/supplier">
+<link rel="icon" type="image/png" href="../../../images/logo-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../style.css"/>
+</head>
+<body>
+
+<div class="lang-bar">
+  <button class="lb on" onclick="setLang('en')">EN</button>
+  <button class="lb" onclick="setLang('ar')">عربي</button>
+  <button class="lb" onclick="setLang('cn')">中文</button>
+</div>
+
+<nav>
+  <a class="nav-logo" href="../../../" style="text-decoration:none;cursor:pointer">
+    <img src="../../../images/logo.jpg" alt="MWM Logo" style="height:34px">
+  </a>
+  <div class="nav-links">
+    <a href="../../../"><span class="en">Home</span><span class="ar-t">الرئيسية</span><span class="cn-t">首页</span></a>
+    <a href="../../"><span class="en">Logistics</span><span class="ar-t">اللوجستيات</span><span class="cn-t">物流</span></a>
+    <a href="../../../tracking/"><span class="en">Tracking</span><span class="ar-t">التتبع</span><span class="cn-t">追踪</span></a>
+    <a href="../../../contact/"><span class="en">Contact</span><span class="ar-t">تواصل</span><span class="cn-t">联系</span></a>
+  </div>
+</nav>
+
+<!-- PREMIUM HERO HEADER -->
+<div class="form-hero">
+  <div class="form-hero-inner">
+    <a class="form-hero-back" href="../">
+      <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      <span class="en">Back to Register Hub</span><span class="ar-t">العودة للتسجيل</span><span class="cn-t">返回注册中心</span>
+    </a>
+    <div class="form-hero-tag"><span class="en">For Factories &amp; Suppliers — MWM Logistics</span><span class="ar-t">للمصانع والموردين — MWM لوجستيك</span><span class="cn-t">面向工厂与供应商 — MWM 物流</span></div>
+    <h1 class="form-hero-title">
+      <span class="en"><span class="ac">Supplier</span> Registration</span>
+      <span class="ar-t">تسجيل <span class="ac">المورّدين</span></span>
+      <span class="cn-t"><span class="ac">供应商</span>注册</span>
+    </h1>
+    <p class="form-hero-sub">
+      <span class="en">Register your factory or trading company with MWM and gain direct access to verified buyers across Saudi Arabia, the UAE and the broader Gulf market. We match your products to active buyer requests — no marketing cost, no middlemen.</span>
+      <span class="ar-t">سجّل مصنعك أو شركتك التجارية مع MWM واحصل على وصول مباشر لمشترين موثوقين في السعودية والإمارات وأسواق الخليج الواسعة. نطابق منتجاتك مع طلبات المشترين النشطة — بدون تكلفة تسويق، بدون وسطاء.</span>
+      <span class="cn-t">在MWM注册您的工厂或贸易公司，直接对接沙特、阿联酋及整个海湾地区的认证采购商。我们将您的产品与活跃采购需求精准匹配——零营销成本，无中间商。</span>
+    </p>
+    <div class="form-hero-benefits">
+      <div class="fhb">
+        <div class="fhb-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div><div class="fhb-txt"><span class="en">Access Gulf Buyers Directly</span><span class="ar-t">وصول مباشر لمشتري الخليج</span><span class="cn-t">直接对接海湾采购商</span></div><div class="fhb-sub"><span class="en">Saudi Arabia, UAE, Kuwait &amp; more</span><span class="ar-t">السعودية، الإمارات، الكويت والمزيد</span><span class="cn-t">沙特、阿联酋、科威特等</span></div></div>
+      </div>
+      <div class="fhb">
+        <div class="fhb-ico"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <div><div class="fhb-txt"><span class="en">No Fees, No Commission</span><span class="ar-t">بلا رسوم، بلا عمولة</span><span class="cn-t">零费用，零佣金</span></div><div class="fhb-sub"><span class="en">Listing and matching are completely free</span><span class="ar-t">الإدراج والتطابق مجانيان تماماً</span><span class="cn-t">上架与匹配完全免费</span></div></div>
+      </div>
+      <div class="fhb">
+        <div class="fhb-ico"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-4 0v2M8 7V5a2 2 0 014 0"/></svg></div>
+        <div><div class="fhb-txt"><span class="en">OEM &amp; Private Label</span><span class="ar-t">OEM والعلامة الخاصة</span><span class="cn-t">OEM及自有品牌</span></div><div class="fhb-sub"><span class="en">Gulf buyers actively seek branded products</span><span class="ar-t">مشترو الخليج يبحثون نشطاً عن منتجات بعلامات خاصة</span><span class="cn-t">海湾采购商积极寻求品牌定制产品</span></div></div>
+      </div>
+      <div class="fhb">
+        <div class="fhb-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></div>
+        <div><div class="fhb-txt"><span class="en">25+ Years in Gulf Trade</span><span class="ar-t">أكثر من 25 عاماً في تجارة الخليج</span><span class="cn-t">25年以上海湾贸易经验</span></div><div class="fhb-sub"><span class="en">Deep market knowledge — Yiwu to the Gulf</span><span class="ar-t">معرفة عميقة بالسوق — من يوو إلى الخليج</span><span class="cn-t">深度市场洞察——从义乌到海湾</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="fw-page" style="padding-top:2.5rem">
+  <div class="fw-container">
+
+    <div class="fw-progress">
+      <div class="fw-progress-top">
+        <div class="fw-step-label"><span class="en">Step</span><span class="ar-t">الخطوة</span><span class="cn-t">步骤</span></div>
+        <div class="fw-step-count" id="fw-step-count">1 / 5</div>
+      </div>
+      <div class="fw-step-title" id="fw-step-title">
+        <span class="en">Company Identity</span><span class="ar-t">هوية الشركة</span><span class="cn-t">公司基本信息</span>
+      </div>
+      <div class="fw-bar-track"><div class="fw-bar-fill" id="fw-bar" style="width:20%"></div></div>
+      <div class="fw-dots" id="fw-dots"></div>
+    </div>
+
+    <form id="fw-form" novalidate>
+    <input type="hidden" name="form_type" value="supplier_registration">
+
+    <!-- STEP 1 : IDENTITY -->
+    <div class="fw-step active" data-step="1">
+      <div class="fw-card">
+        <div class="fw-step-heading"><span class="en">Company Identity</span><span class="ar-t">هوية الشركة</span><span class="cn-t">公司基本信息</span></div>
+        <div class="fw-step-desc"><span class="en">Tell us about your factory or trading company</span><span class="ar-t">أخبرنا عن مصنعك أو شركتك التجارية</span><span class="cn-t">请介绍您的工厂或贸易公司</span></div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Company / Factory Name</span><span class="ar-t">اسم الشركة أو المصنع</span><span class="cn-t">公司 / 工厂名称</span> <span class="req">*</span></label>
+          <input class="fw-input" name="company_name" required data-ph-en="e.g. Yiwu Hongda Tools Co., Ltd." data-ph-ar="مثال: شركة ييوو هونغدا للعدد" data-ph-cn="例：义乌宏达工具有限公司">
+        </div>
+
+        <div class="fw-row">
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">Country</span><span class="ar-t">الدولة</span><span class="cn-t">国家</span> <span class="req">*</span></label>
+            <select class="fw-select" name="country" required>
+              <option value="">—</option>
+              <option>China</option><option>India</option><option>Turkey</option>
+              <option>Vietnam</option><option>Thailand</option><option>Malaysia</option>
+              <option>Indonesia</option><option>Pakistan</option><option>Bangladesh</option>
+              <option>United Arab Emirates</option><option>Saudi Arabia</option>
+              <option>Egypt</option><option>Jordan</option><option>Syria</option><option>Other</option>
+            </select>
+          </div>
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">City / Province</span><span class="ar-t">المدينة أو المحافظة</span><span class="cn-t">城市 / 省份</span> <span class="req">*</span></label>
+            <input class="fw-input" name="city" required data-ph-en="e.g. Yiwu, Zhejiang" data-ph-ar="مثال: ييوو، تشجيانغ" data-ph-cn="例：浙江义乌">
+          </div>
+        </div>
+
+        <div class="fw-row">
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">Year Established</span><span class="ar-t">سنة التأسيس</span><span class="cn-t">成立年份</span></label>
+            <input class="fw-input" name="year_founded" data-ph-en="e.g. 2010" data-ph-ar="مثال: 2010" data-ph-cn="例：2010">
+          </div>
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">Business Type</span><span class="ar-t">نوع النشاط</span><span class="cn-t">企业类型</span> <span class="req">*</span></label>
+            <select class="fw-select" name="business_type" required>
+              <option value="">—</option>
+              <option value="Manufacturer / Factory">Manufacturer / Factory</option>
+              <option value="Trading Company">Trading Company</option>
+              <option value="Manufacturer + Trader">Manufacturer + Trader</option>
+              <option value="Wholesaler">Wholesaler</option>
+              <option value="Agent / Distributor">Agent / Distributor</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Website / Alibaba / 1688 Store</span><span class="ar-t">الموقع أو متجر علي بابا / 1688</span><span class="cn-t">网站 / 阿里巴巴 / 1688 店铺</span></label>
+          <input class="fw-input" name="website" data-ph-en="https://" data-ph-ar="https://" data-ph-cn="https://">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Factory / Office Address</span><span class="ar-t">عنوان المصنع أو المكتب</span><span class="cn-t">工厂 / 办公地址</span></label>
+          <textarea class="fw-textarea" name="address" rows="2" data-ph-en="Full address" data-ph-ar="العنوان الكامل" data-ph-cn="详细地址"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 : CONTACT -->
+    <div class="fw-step" data-step="2">
+      <div class="fw-card">
+        <div class="fw-step-heading"><span class="en">Contact Person</span><span class="ar-t">جهة الاتصال</span><span class="cn-t">联系人</span></div>
+        <div class="fw-step-desc"><span class="en">Who handles export enquiries?</span><span class="ar-t">من المسؤول عن استفسارات التصدير؟</span><span class="cn-t">谁负责出口业务？</span></div>
+
+        <div class="fw-row">
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">Full Name</span><span class="ar-t">الاسم الكامل</span><span class="cn-t">姓名</span> <span class="req">*</span></label>
+            <input class="fw-input" name="contact_name" required data-ph-en="Contact name" data-ph-ar="اسم جهة الاتصال" data-ph-cn="联系人姓名">
+          </div>
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">Position</span><span class="ar-t">المنصب</span><span class="cn-t">职位</span></label>
+            <input class="fw-input" name="position" data-ph-en="e.g. Export Manager" data-ph-ar="مثال: مدير التصدير" data-ph-cn="例：外贸经理">
+          </div>
+        </div>
+
+        <div class="fw-row">
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">WhatsApp / Phone</span><span class="ar-t">واتساب / هاتف</span><span class="cn-t">WhatsApp / 电话</span> <span class="req">*</span></label>
+            <input class="fw-input" name="whatsapp" required data-ph-en="+86 1XX XXXX XXXX" data-ph-ar="+86 1XX XXXX XXXX" data-ph-cn="+86 1XX XXXX XXXX">
+          </div>
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">Email</span><span class="ar-t">البريد الإلكتروني</span><span class="cn-t">电子邮箱</span> <span class="req">*</span></label>
+            <input class="fw-input" type="email" name="email" required data-ph-en="sales@company.com" data-ph-ar="sales@company.com" data-ph-cn="sales@company.com">
+          </div>
+        </div>
+
+        <div class="fw-row">
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">WeChat ID (optional)</span><span class="ar-t">معرّف WeChat (اختياري)</span><span class="cn-t">微信号（选填）</span></label>
+            <input class="fw-input" name="wechat" data-ph-en="WeChat ID" data-ph-ar="معرّف WeChat" data-ph-cn="微信号">
+          </div>
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">Languages Spoken</span><span class="ar-t">اللغات</span><span class="cn-t">沟通语言</span></label>
+            <select class="fw-select" name="languages">
+              <option value="">—</option>
+              <option>English</option><option>Chinese</option><option>Arabic</option>
+              <option value="English + Chinese">English + Chinese</option>
+              <option value="English + Arabic">English + Arabic</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 : PRODUCTS -->
+    <div class="fw-step" data-step="3">
+      <div class="fw-card">
+        <div class="fw-step-heading"><span class="en">Products &amp; Capacity</span><span class="ar-t">المنتجات والطاقة الإنتاجية</span><span class="cn-t">产品与产能</span></div>
+        <div class="fw-step-desc"><span class="en">What do you produce or supply?</span><span class="ar-t">ماذا تنتج أو توّرد؟</span><span class="cn-t">您生产或供应什么？</span></div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Main Product Category</span><span class="ar-t">فئة المنتج الرئيسية</span><span class="cn-t">主营产品类别</span> <span class="req">*</span></label>
+          <select class="fw-select" name="product_category" required>
+            <option value="">—</option>
+            <option>Industrial Tools &amp; Equipment</option>
+            <option>Building &amp; Construction Materials</option>
+            <option>Electronics &amp; Electrical</option>
+            <option>Machinery</option>
+            <option>Furniture &amp; Home</option>
+            <option>Textiles &amp; Garments</option>
+            <option>Auto Parts</option>
+            <option>Packaging</option>
+            <option>Medical &amp; Lab</option>
+            <option>Food Equipment</option>
+            <option>Toys &amp; Gifts</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Product Details</span><span class="ar-t">تفاصيل المنتجات</span><span class="cn-t">产品详情</span> <span class="req">*</span></label>
+          <textarea class="fw-textarea" name="product_details" required rows="4" data-ph-en="List your main products, models and specifications..." data-ph-ar="اذكر منتجاتك الرئيسية والموديلات والمواصفات..." data-ph-cn="请列出主要产品、型号和规格……"></textarea>
+        </div>
+
+        <div class="fw-row">
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">Monthly Production Capacity</span><span class="ar-t">الطاقة الإنتاجية الشهرية</span><span class="cn-t">月产能</span></label>
+            <input class="fw-input" name="capacity" data-ph-en="e.g. 50,000 pieces" data-ph-ar="مثال: 50,000 قطعة" data-ph-cn="例：50,000 件">
+          </div>
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">Minimum Order (MOQ)</span><span class="ar-t">الحد الأدنى للطلب</span><span class="cn-t">最小起订量</span></label>
+            <input class="fw-input" name="moq" data-ph-en="e.g. 500 pieces" data-ph-ar="مثال: 500 قطعة" data-ph-cn="例：500 件">
+          </div>
+        </div>
+
+        <div class="fw-row">
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">Number of Employees</span><span class="ar-t">عدد الموظفين</span><span class="cn-t">员工人数</span></label>
+            <select class="fw-select" name="employees">
+              <option value="">—</option>
+              <option>1–10</option><option>11–50</option><option>51–100</option>
+              <option>101–500</option><option>500+</option>
+            </select>
+          </div>
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">Production Lead Time</span><span class="ar-t">مدة الإنتاج</span><span class="cn-t">生产周期</span></label>
+            <select class="fw-select" name="lead_time">
+              <option value="">—</option>
+              <option>Under 7 days</option><option>7–15 days</option>
+              <option>15–30 days</option><option>30–60 days</option><option>60+ days</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Do you accept OEM / private label?</span><span class="ar-t">هل تقبل التصنيع بعلامة العميل (OEM)؟</span><span class="cn-t">是否接受 OEM / 贴牌？</span></label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-group="oem" data-val="Yes"><span class="en">Yes</span><span class="ar-t">نعم</span><span class="cn-t">接受</span></button>
+            <button type="button" class="fw-toggle-btn" data-group="oem" data-val="No"><span class="en">No</span><span class="ar-t">لا</span><span class="cn-t">不接受</span></button>
+            <button type="button" class="fw-toggle-btn" data-group="oem" data-val="Negotiable"><span class="en">Negotiable</span><span class="ar-t">قابل للتفاوض</span><span class="cn-t">可协商</span></button>
+          </div>
+          <input type="hidden" name="oem" id="oem_val" value="">
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4 : QUALITY & EXPORT -->
+    <div class="fw-step" data-step="4">
+      <div class="fw-card">
+        <div class="fw-step-heading"><span class="en">Quality &amp; Export Experience</span><span class="ar-t">الجودة وخبرة التصدير</span><span class="cn-t">质量与出口经验</span></div>
+        <div class="fw-step-desc"><span class="en">Certifications build trust with Gulf buyers</span><span class="ar-t">الشهادات تبني الثقة مع مشتري الخليج</span><span class="cn-t">认证有助于赢得海湾采购商的信任</span></div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Do you hold quality certifications?</span><span class="ar-t">هل لديك شهادات جودة؟</span><span class="cn-t">是否持有质量认证？</span></label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-group="has_certs" data-val="Yes"><span class="en">Yes</span><span class="ar-t">نعم</span><span class="cn-t">有</span></button>
+            <button type="button" class="fw-toggle-btn" data-group="has_certs" data-val="No"><span class="en">No</span><span class="ar-t">لا</span><span class="cn-t">没有</span></button>
+          </div>
+          <input type="hidden" name="has_certs" id="has_certs_val" value="">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Which certifications? (ISO, CE, SASO, RoHS…)</span><span class="ar-t">أي شهادات؟ (ISO، CE، SASO، RoHS…)</span><span class="cn-t">哪些认证？（ISO、CE、SASO、RoHS…）</span></label>
+          <input class="fw-input" name="cert_names" data-ph-en="e.g. ISO 9001, CE, SASO" data-ph-ar="مثال: ISO 9001، CE، SASO" data-ph-cn="例：ISO 9001、CE、SASO">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Do you currently export?</span><span class="ar-t">هل تصدّر حالياً؟</span><span class="cn-t">目前是否出口？</span></label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-group="exports" data-val="Yes"><span class="en">Yes</span><span class="ar-t">نعم</span><span class="cn-t">是</span></button>
+            <button type="button" class="fw-toggle-btn" data-group="exports" data-val="No — domestic only"><span class="en">Domestic only</span><span class="ar-t">محلي فقط</span><span class="cn-t">仅内销</span></button>
+          </div>
+          <input type="hidden" name="exports" id="exports_val" value="">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Which markets do you export to?</span><span class="ar-t">إلى أي أسواق تصدّر؟</span><span class="cn-t">出口到哪些市场？</span></label>
+          <input class="fw-input" name="export_markets" data-ph-en="e.g. UAE, Saudi Arabia, Europe" data-ph-ar="مثال: الإمارات، السعودية، أوروبا" data-ph-cn="例：阿联酋、沙特、欧洲">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Do you have export documentation experience?</span><span class="ar-t">هل لديك خبرة بمستندات التصدير؟</span><span class="cn-t">是否具备出口单证经验？</span></label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-group="export_docs" data-val="Yes — full"><span class="en">Yes, full</span><span class="ar-t">نعم، كاملة</span><span class="cn-t">有，完整</span></button>
+            <button type="button" class="fw-toggle-btn" data-group="export_docs" data-val="Partial"><span class="en">Partial</span><span class="ar-t">جزئية</span><span class="cn-t">部分</span></button>
+            <button type="button" class="fw-toggle-btn" data-group="export_docs" data-val="No"><span class="en">No</span><span class="ar-t">لا</span><span class="cn-t">没有</span></button>
+          </div>
+          <input type="hidden" name="export_docs" id="export_docs_val" value="">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Accepted Payment Terms</span><span class="ar-t">شروط الدفع المقبولة</span><span class="cn-t">可接受的付款方式</span></label>
+          <input class="fw-input" name="payment_terms" data-ph-en="e.g. 30% deposit, 70% before shipping / LC / TT" data-ph-ar="مثال: 30% مقدّم، 70% قبل الشحن / اعتماد مستندي" data-ph-cn="例：30% 定金，70% 发货前 / 信用证 / 电汇">
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5 : ATTACHMENTS -->
+    <div class="fw-step" data-step="5">
+      <div class="fw-card">
+        <div class="fw-step-heading"><span class="en">Attachments &amp; Notes</span><span class="ar-t">المرفقات والملاحظات</span><span class="cn-t">附件与备注</span></div>
+        <div class="fw-step-desc"><span class="en">A catalogue and licence speed up our review</span><span class="ar-t">الكتالوج والرخصة يسرّعان مراجعتنا</span><span class="cn-t">产品目录与执照有助于加快审核</span></div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Product Catalogue</span><span class="ar-t">كتالوج المنتجات</span><span class="cn-t">产品目录</span></label>
+          <label class="fw-file-label" for="file-catalogue">
+            <span class="en">Choose file (PDF / Excel)</span><span class="ar-t">اختر ملفاً (PDF / Excel)</span><span class="cn-t">选择文件（PDF / Excel）</span>
+          </label>
+          <input type="file" id="file-catalogue" name="file_catalogue" accept=".pdf,.xlsx,.xls" style="display:none">
+          <div class="fw-file-name" id="name-catalogue"></div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Business Licence</span><span class="ar-t">الرخصة التجارية</span><span class="cn-t">营业执照</span></label>
+          <label class="fw-file-label" for="file-licence">
+            <span class="en">Choose file (PDF / JPG / PNG)</span><span class="ar-t">اختر ملفاً (PDF / JPG / PNG)</span><span class="cn-t">选择文件（PDF / JPG / PNG）</span>
+          </label>
+          <input type="file" id="file-licence" name="file_licence" accept="image/*,.pdf" style="display:none">
+          <div class="fw-file-name" id="name-licence"></div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Factory Photos (optional)</span><span class="ar-t">صور المصنع (اختياري)</span><span class="cn-t">工厂照片（选填）</span></label>
+          <label class="fw-file-label" for="file-factory">
+            <span class="en">Choose file (JPG / PNG / PDF)</span><span class="ar-t">اختر ملفاً (JPG / PNG / PDF)</span><span class="cn-t">选择文件（JPG / PNG / PDF）</span>
+          </label>
+          <input type="file" id="file-factory" name="file_factory" accept="image/*,.pdf" style="display:none">
+          <div class="fw-file-name" id="name-factory"></div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Why should we work with you?</span><span class="ar-t">لماذا نعمل معك؟</span><span class="cn-t">我们为何应与您合作？</span></label>
+          <textarea class="fw-textarea" name="differentiator" rows="3" data-ph-en="What makes your factory different — price, quality, speed, flexibility..." data-ph-ar="ما الذي يميّز مصنعك — السعر، الجودة، السرعة، المرونة..." data-ph-cn="您的工厂有何优势——价格、质量、交期、灵活性……"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="fw-nav">
+      <button type="button" class="fw-btn-back" id="fw-back" onclick="goStep(-1)"><span class="en">← Back</span><span class="ar-t">← السابق</span><span class="cn-t">← 上一步</span></button>
+      <button type="button" class="fw-btn-next" id="fw-next" onclick="goStep(1)"><span class="en">Next →</span><span class="ar-t">التالي →</span><span class="cn-t">下一步 →</span></button>
+    </div>
+
+    </form>
+
+    <div class="fw-loading" id="fw-loading">
+      <div class="fw-spinner"></div>
+      <div class="fw-loading-txt"><span class="en">Submitting your registration…</span><span class="ar-t">جارٍ إرسال تسجيلك…</span><span class="cn-t">正在提交您的注册……</span></div>
+    </div>
+
+    <div class="fw-success" id="fw-success">
+      <div class="fw-success-ico">✓</div>
+      <div class="fw-success-title"><span class="en">Registration Received</span><span class="ar-t">تم استلام تسجيلك</span><span class="cn-t">已收到您的注册</span></div>
+      <div class="fw-success-sub"><span class="en">Our sourcing team will review your profile and contact you if there is a match with our buyers.</span><span class="ar-t">سيراجع فريق التوريد ملفك ويتواصل معك عند توفّر طلب مناسب.</span><span class="cn-t">我们的采购团队将审核您的资料，如有匹配需求将与您联系。</span></div>
+      <a class="btn-b" href="../../" style="margin-top:1.5rem;display:inline-block;text-decoration:none"><span class="en">← Back to Logistics</span><span class="ar-t">← العودة للوجستيات</span><span class="cn-t">← 返回物流页</span></a>
+    </div>
+
+  </div>
+</div>
+
+<script src="../../../app.js"></script>
+<script>
+var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzXkmQ8b-1EXHUx0fKYMsRt2b0iRzy7bNg3B4NrvDEcdi9ED_WPmvXcfO1d7UC-E7vI/exec';
+
+var STEPS = [
+  {n:1, en:'Company Identity',   ar:'هوية الشركة',            cn:'公司基本信息'},
+  {n:2, en:'Contact Person',     ar:'جهة الاتصال',            cn:'联系人'},
+  {n:3, en:'Products & Capacity',ar:'المنتجات والطاقة',       cn:'产品与产能'},
+  {n:4, en:'Quality & Export',   ar:'الجودة والتصدير',        cn:'质量与出口'},
+  {n:5, en:'Attachments & Notes',ar:'المرفقات والملاحظات',    cn:'附件与备注'}
+];
+
+var currentStep = 1;
+
+var dotsEl=document.getElementById('fw-dots');
+STEPS.forEach(function(){ var d=document.createElement('div'); d.className='fw-dot'; dotsEl.appendChild(d); });
+
+function curLang(){
+  return document.body.classList.contains('ar')?'ar':document.body.classList.contains('cn')?'cn':'en';
+}
+function applyPlaceholders(){
+  var l=curLang();
+  document.querySelectorAll('[data-ph-en]').forEach(function(el){
+    el.placeholder = el.getAttribute('data-ph-'+l) || el.getAttribute('data-ph-en') || '';
+  });
+}
+function updateProgress(){
+  var s=STEPS[currentStep-1];
+  document.getElementById('fw-step-count').textContent=currentStep+' / '+STEPS.length;
+  var t=document.getElementById('fw-step-title');
+  t.innerHTML='<span class="en">'+s.en+'</span><span class="ar-t">'+s.ar+'</span><span class="cn-t">'+s.cn+'</span>';
+  document.getElementById('fw-bar').style.width=Math.round(currentStep/STEPS.length*100)+'%';
+  Array.prototype.forEach.call(dotsEl.children,function(d,i){
+    d.style.background = i<currentStep ? 'var(--lime)' : 'var(--border)';
+  });
+  document.getElementById('fw-back').style.visibility = currentStep===1 ? 'hidden' : 'visible';
+  var next=document.getElementById('fw-next');
+  if(currentStep===STEPS.length){
+    next.innerHTML='<span class="en">Submit Registration ✓</span><span class="ar-t">إرسال التسجيل ✓</span><span class="cn-t">提交注册 ✓</span>';
+  }else{
+    next.innerHTML='<span class="en">Next →</span><span class="ar-t">التالي →</span><span class="cn-t">下一步 →</span>';
+  }
+}
+function validateStep(n){
+  var box=document.querySelector('.fw-step[data-step="'+n+'"]');
+  var bad=null;
+  box.querySelectorAll('[required]').forEach(function(f){
+    if(!f.value.trim()){ if(!bad) bad=f; f.style.borderColor='#e03232'; }
+    else f.style.borderColor='';
+  });
+  if(bad){
+    bad.focus();
+    var m={en:'Please fill in the required fields.',ar:'يرجى تعبئة الحقول المطلوبة.',cn:'请填写必填字段。'};
+    alert(m[curLang()]);
+    return false;
+  }
+  return true;
+}
+function goStep(dir){
+  if(dir>0){
+    if(!validateStep(currentStep)) return;
+    if(currentStep===STEPS.length){ submitForm(); return; }
+  }
+  var next=currentStep+dir;
+  if(next<1||next>STEPS.length) return;
+  document.querySelector('.fw-step[data-step="'+currentStep+'"]').classList.remove('active');
+  currentStep=next;
+  document.querySelector('.fw-step[data-step="'+currentStep+'"]').classList.add('active');
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+document.querySelectorAll('.fw-toggle-btn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var g=b.getAttribute('data-group');
+    document.querySelectorAll('.fw-toggle-btn[data-group="'+g+'"]').forEach(function(x){x.classList.remove('active')});
+    b.classList.add('active');
+    var h=document.getElementById(g+'_val');
+    if(h) h.value=b.getAttribute('data-val');
+  });
+});
+
+[['file-catalogue','name-catalogue'],['file-licence','name-licence'],['file-factory','name-factory']].forEach(function(p){
+  var inp=document.getElementById(p[0]), out=document.getElementById(p[1]);
+  if(inp) inp.addEventListener('change',function(){
+    out.textContent = inp.files && inp.files.length ? inp.files[0].name : '';
+  });
+});
+
+function readFileAsBase64(file){
+  return new Promise(function(res){
+    if(!file){ res(null); return; }
+    var r=new FileReader();
+    r.onload=function(){ res(r.result.split(',')[1]); };
+    r.onerror=function(){ res(null); };
+    r.readAsDataURL(file);
+  });
+}
+function showSuccess(){
+  document.getElementById('fw-form').style.display='none';
+  document.querySelector('.fw-nav').style.display='none';
+  document.querySelector('.fw-progress').style.display='none';
+  document.getElementById('fw-success').classList.add('show');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function submitForm(){
+  document.getElementById('fw-loading').classList.add('show');
+
+  if(SCRIPT_URL.indexOf('PASTE_YOUR')===0){
+    setTimeout(function(){
+      document.getElementById('fw-loading').classList.remove('show');
+      showSuccess();
+    },1200);
+    return;
+  }
+
+  Promise.all([
+    readFileAsBase64((document.getElementById('file-catalogue').files||[])[0]||null),
+    readFileAsBase64((document.getElementById('file-licence').files||[])[0]||null),
+    readFileAsBase64((document.getElementById('file-factory').files||[])[0]||null)
+  ]).then(function(files){
+    var fd=new FormData(document.getElementById('fw-form'));
+    var textData={};
+    fd.forEach(function(val,key){
+      if(key.indexOf('file_')===0) return;
+      textData[key]=textData[key]?textData[key]+', '+val:val;
+    });
+    textData['submitted_at']=new Date().toISOString();
+
+    var uid='sp-'+Date.now();
+    var iframe=document.createElement('iframe');
+    iframe.name=uid; iframe.id=uid; iframe.style.display='none';
+    document.body.appendChild(iframe);
+
+    var hForm=document.createElement('form');
+    hForm.method='POST'; hForm.action=SCRIPT_URL;
+    hForm.target=uid; hForm.style.display='none';
+    Object.keys(textData).forEach(function(k){
+      var i=document.createElement('input');
+      i.type='hidden'; i.name=k; i.value=textData[k];
+      hForm.appendChild(i);
+    });
+    document.body.appendChild(hForm);
+
+    var done=false;
+    function finish(){
+      if(done) return; done=true;
+      document.getElementById('fw-loading').classList.remove('show');
+      showSuccess();
+      try{document.body.removeChild(hForm);}catch(x){}
+      try{document.body.removeChild(iframe);}catch(x){}
+    }
+    setTimeout(finish,8000);
+    iframe.onload=finish;
+    hForm.submit();
+
+    var cf=(document.getElementById('file-catalogue').files||[])[0];
+    var lf=(document.getElementById('file-licence').files||[])[0];
+    var ff=(document.getElementById('file-factory').files||[])[0];
+    if(files[0]||files[1]||files[2]){
+      setTimeout(function(){
+        var payload=JSON.stringify({
+          form_type:'supplier_registration_files',
+          company_name:textData.company_name||'',
+          file_catalogue:files[0], file_catalogue_name:cf?cf.name:'',
+          file_licence:files[1],   file_licence_name:lf?lf.name:'',
+          file_factory:files[2],   file_factory_name:ff?ff.name:''
+        });
+        fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:payload});
+      },3000);
+    }
+  });
+}
+
+var _origSetLang = window.setLang;
+window.setLang = function(l){
+  if(_origSetLang) _origSetLang(l);
+  applyPlaceholders();
+};
+
+applyPlaceholders();
+updateProgress();
+</script>
+
+</body>
+</html>

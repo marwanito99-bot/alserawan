@@ -1041,7 +1041,7 @@ body.ar .fw-step.active{animation:stepInRtl .35s cubic-bezier(.22,1,.36,1)}
 @media(max-width:600px){.fw-row{grid-template-columns:1fr}}
 .fw-toggle-group{display:flex;gap:.5rem;flex-wrap:wrap}
 .fw-toggle-btn{padding:.55rem 1.3rem;border:1px solid var(--border);background:var(--dark3);color:var(--muted);font-family:inherit;font-size:.75rem;font-weight:600;letter-spacing:.08em;cursor:pointer;transition:all .2s;text-transform:uppercase}
-.fw-toggle-btn.sel{background:var(--blue);color:#fff;border-color:var(--blue)}
+.fw-toggle-btn.sel,.fw-toggle-btn.active{background:var(--blue);color:#fff;border-color:var(--blue)}
 .fw-check-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.6rem}
 .fw-check-card{padding:.75rem 1rem;border:1px solid var(--border);background:var(--dark3);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:.6rem;user-select:none}
 .fw-check-card:hover{border-color:var(--blue)}

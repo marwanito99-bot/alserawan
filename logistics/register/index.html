@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Register with MWM — Join Our Network | Al Serawan Group</title>
+<meta name="description" content="Join the MWM network. Submit a sourcing request, register as a freight partner, or list your factory as a supplier — free of charge.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.alserawan.com/logistics/register">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Al Serawan Group | MWM">
+<meta property="og:title" content="Register with MWM — Join Our Network">
+<meta property="og:description" content="Sourcing request, freight partner, or supplier registration — choose your path.">
+<meta property="og:url" content="https://www.alserawan.com/logistics/register">
+<meta property="og:image" content="https://www.alserawan.com/images/transport.jpg">
+<link rel="icon" type="image/png" href="../../images/logo-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css"/>
+<style>
+.rg-page{min-height:100vh;background:var(--black);padding-top:66px;position:relative;overflow:hidden}
+.rg-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:var(--blue);filter:blur(160px);opacity:.13;top:-200px;right:-180px;pointer-events:none;z-index:0}
+.rg-glow2{position:absolute;width:500px;height:500px;border-radius:50%;background:var(--lime);filter:blur(180px);opacity:.055;bottom:-160px;left:-140px;pointer-events:none;z-index:0}
+.rg-grid{position:absolute;inset:0;pointer-events:none;opacity:.45;background-image:linear-gradient(rgba(29,0,244,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(29,0,244,.05) 1px,transparent 1px);background-size:58px 58px;z-index:0}
+.rg-wrap{max-width:1160px;margin:0 auto;padding:4.5rem 1.5rem 6rem;position:relative;z-index:2}
+
+/* HEAD */
+.rg-head{text-align:center;margin-bottom:4.5rem}
+.rg-tag{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--lime);font-weight:700;margin-bottom:1.1rem;display:flex;align-items:center;justify-content:center;gap:.9rem}
+.rg-tag::before,.rg-tag::after{content:'';width:36px;height:1px;background:var(--lime);opacity:.5}
+.rg-title{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;line-height:1.04;letter-spacing:-.03em;margin-bottom:1.1rem}
+.rg-title .ac{color:var(--lime)}
+.rg-sub{font-size:.95rem;color:var(--muted);line-height:1.9;max-width:520px;margin:0 auto}
+
+/* CARDS */
+.rg-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-bottom:3rem}
+.rg-card{background:var(--dark2);border:1px solid var(--border);padding:2.6rem 2rem;text-decoration:none;color:inherit;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform .35s,border-color .35s,background .35s}
+.rg-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top left,rgba(29,0,244,.07) 0%,transparent 60%);opacity:0;transition:opacity .4s}
+.rg-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--lime));transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.rg-card:hover{transform:translateY(-8px);border-color:rgba(29,0,244,.5);background:var(--dark3)}
+.rg-card:hover::before,.rg-card:hover::after{opacity:1;transform:scaleX(1)}
+.rg-card.lime-card{border-color:rgba(204,253,27,.3);background:rgba(204,253,27,.025)}
+.rg-card.lime-card::before{background:radial-gradient(ellipse at top left,rgba(204,253,27,.07) 0%,transparent 60%)}
+.rg-card.lime-card:hover{border-color:rgba(204,253,27,.7);background:rgba(204,253,27,.05)}
+
+.rg-num{position:absolute;top:1.2rem;right:1.6rem;font-size:3.8rem;font-weight:800;color:rgba(29,0,244,.08);line-height:1;pointer-events:none;font-variant-numeric:tabular-nums}
+.rg-card.lime-card .rg-num{color:rgba(204,253,27,.09)}
+body.ar .rg-num{right:auto;left:1.6rem}
+
+.rg-ico{width:58px;height:58px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;margin-bottom:1.6rem;transition:border-color .3s,background .3s;flex-shrink:0}
+.rg-card:hover .rg-ico{border-color:var(--blue);background:rgba(29,0,244,.1)}
+.rg-card.lime-card .rg-ico{border-color:rgba(204,253,27,.25)}
+.rg-card.lime-card:hover .rg-ico{border-color:var(--lime);background:rgba(204,253,27,.1)}
+.rg-ico svg{width:26px;height:26px;stroke:var(--blue);fill:none;stroke-width:1.6}
+.rg-card.lime-card .rg-ico svg{stroke:var(--lime)}
+
+.rg-for{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:.5rem}
+.rg-card.lime-card .rg-for{color:var(--lime)}
+.rg-name{font-size:1.35rem;font-weight:700;line-height:1.2;margin-bottom:.5rem;color:var(--text)}
+.rg-time{display:inline-flex;align-items:center;gap:.4rem;font-size:.6rem;color:var(--muted);border:1px solid var(--border);padding:.25rem .7rem;margin-bottom:1.1rem;letter-spacing:.05em}
+.rg-desc{font-size:.84rem;color:var(--muted);line-height:1.85;margin-bottom:1.4rem;flex:1}
+
+.rg-pts{list-style:none;padding:0;margin:0 0 1.8rem}
+.rg-pts li{font-size:.78rem;color:var(--muted);line-height:1.6;padding-left:1.2rem;position:relative;margin-bottom:.45rem}
+.rg-pts li::before{content:'';position:absolute;left:0;top:.52rem;width:5px;height:5px;background:var(--lime)}
+body.ar .rg-pts li{padding-left:0;padding-right:1.2rem}
+body.ar .rg-pts li::before{left:auto;right:0}
+
+.rg-go{display:inline-flex;align-items:center;gap:.6rem;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);transition:gap .3s;margin-top:auto}
+.rg-card.lime-card .rg-go{color:var(--lime)}
+.rg-card:hover .rg-go{gap:1.1rem}
+
+/* BOTTOM NOTE */
+.rg-note{border:1px solid var(--border);background:var(--dark2);padding:2.2rem;text-align:center;position:relative;overflow:hidden}
+.rg-note::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(29,0,244,.4),rgba(204,253,27,.4),transparent)}
+.rg-note-t{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:.5rem}
+.rg-note-d{font-size:.83rem;color:var(--muted);line-height:1.85;max-width:560px;margin:0 auto 1.5rem}
+.rg-note-btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.rg-note-btn{padding:.7rem 1.7rem;border:1px solid var(--border);color:var(--text);text-decoration:none;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:all .25s}
+.rg-note-btn:hover{border-color:var(--lime);color:var(--lime)}
+.rg-note-btn.wa{background:#25D366;border-color:#25D366;color:#fff}
+.rg-note-btn.wa:hover{opacity:.88;color:#fff;border-color:#25D366}
+
+@media(max-width:960px){.rg-cards{grid-template-columns:1fr;gap:1rem}.rg-wrap{padding:3rem 1.2rem 4rem}}
+@media(max-width:600px){.rg-card{padding:2rem 1.4rem}}
+</style>
+</head>
+<body>
+
+<div class="lang-bar">
+  <button class="lb on" onclick="setLang('en')">EN</button>
+  <button class="lb" onclick="setLang('ar')">عربي</button>
+  <button class="lb" onclick="setLang('cn')">中文</button>
+</div>
+
+<nav>
+  <a class="nav-logo" href="../../" style="text-decoration:none;cursor:pointer">
+    <img src="../../images/logo.jpg" alt="MWM Logo" style="height:34px">
+  </a>
+  <div class="nav-links">
+    <a href="../../"><span class="en">Home</span><span class="ar-t">الرئيسية</span><span class="cn-t">首页</span></a>
+    <a href="../"><span class="en">Logistics</span><span class="ar-t">اللوجستيات</span><span class="cn-t">物流</span></a>
+    <a href="../../tracking/"><span class="en">Tracking</span><span class="ar-t">التتبع</span><span class="cn-t">追踪</span></a>
+    <a href="../../contact/"><span class="en">Contact</span><span class="ar-t">تواصل</span><span class="cn-t">联سنا</span></a>
+  </div>
+</nav>
+
+<div class="rg-page">
+  <div class="rg-grid"></div>
+  <div class="rg-glow"></div>
+  <div class="rg-glow2"></div>
+
+  <div class="rg-wrap">
+
+    <div class="rg-head">
+      <div class="rg-tag">
+        <span class="en">MWM Logistics — Join Our Network</span>
+        <span class="ar-t">MWM لوجستيك — انضم إلى شبكتنا</span>
+        <span class="cn-t">MWM 物流 — 加入我们的网络</span>
+      </div>
+      <h1 class="rg-title">
+        <span class="en">Register with <span class="ac">MWM</span></span>
+        <span class="ar-t">سجّل مع <span class="ac">MWM</span></span>
+        <span class="cn-t">注册加入 <span class="ac">MWM</span></span>
+      </h1>
+      <p class="rg-sub">
+        <span class="en">Choose the path that fits you. Every registration is free, takes only a few minutes, and connects you directly to our trade network spanning China and the Gulf.</span>
+        <span class="ar-t">اختر المسار الذي يناسبك. كل تسجيل مجاني، يستغرق دقائق فقط، ويربطك مباشرةً بشبكة تجارية تمتد من الصين إلى الخليج.</span>
+        <span class="cn-t">选择适合您的方式，所有注册免费，仅需几分钟，即可接入覆盖中国与海湾地区的贸易网络。</span>
+      </p>
+    </div>
+
+    <div class="rg-cards">
+
+      <!-- 1: SOURCING -->
+      <a class="rg-card" href="sourcing/">
+        <div class="rg-num">01</div>
+        <div class="rg-ico">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </div>
+        <div class="rg-for"><span class="en">For Importers &amp; Buyers</span><span class="ar-t">للمستوردين والمشترين</span><span class="cn-t">面向进口商与采购商</span></div>
+        <div class="rg-name"><span class="en">Sourcing Request</span><span class="ar-t">طلب توريد</span><span class="cn-t">采购需求申请</span></div>
+        <div class="rg-time">⏱ <span class="en">~5 minutes</span><span class="ar-t">~5 دقائق</span><span class="cn-t">约 5 分钟</span></div>
+        <p class="rg-desc">
+          <span class="en">Need products from China? Tell us what you want and we handle everything — supplier search, price negotiation, quality inspection and shipping to your door.</span>
+          <span class="ar-t">تحتاج منتجات من الصين؟ أخبرنا بما تريد ونتولّى كل شيء — البحث عن المورّد، التفاوض على السعر، فحص الجودة، والشحن حتى بابك.</span>
+          <span class="cn-t">需要从中国采购产品？告诉我们您的需求，其余全部交给我们——寻源、议价、验货、送货上门。</span>
+        </p>
+        <ul class="rg-pts">
+          <li><span class="en">Free quotation within 24 hrs</span><span class="ar-t">عرض سعر مجاني خلال 24 ساعة</span><span class="cn-t">24小时内免费报价</span></li>
+          <li><span class="en">Quality inspection before shipping</span><span class="ar-t">فحص جودة قبل الشحن</span><span class="cn-t">发货前质量检验</span></li>
+          <li><span class="en">Door-to-door delivery to the Gulf</span><span class="ar-t">تسليم حتى الباب في الخليج</span><span class="cn-t">送达海湾地区门到门</span></li>
+          <li><span class="en">No sourcing fees on first order</span><span class="ar-t">لا رسوم توريد على الطلب الأول</span><span class="cn-t">首单免采购服务费</span></li>
+        </ul>
+        <div class="rg-go"><span class="en">Submit a Request →</span><span class="ar-t">← أرسل طلباً</span><span class="cn-t">提交需求 →</span></div>
+      </a>
+
+      <!-- 2: FREIGHT (highlighted) -->
+      <a class="rg-card lime-card" href="freight-register/">
+        <div class="rg-num">02</div>
+        <div class="rg-ico">
+          <svg viewBox="0 0 24 24"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div class="rg-for"><span class="en">For Freight &amp; Shipping Companies</span><span class="ar-t">لشركات الشحن والنقل</span><span class="cn-t">面向货运与运输公司</span></div>
+        <div class="rg-name"><span class="en">Freight Partner</span><span class="ar-t">شريك شحن</span><span class="cn-t">货运合作伙伴</span></div>
+        <div class="rg-time">⏱ <span class="en">~10 minutes</span><span class="ar-t">~10 دقائق</span><span class="cn-t">约 10 分钟</span></div>
+        <p class="rg-desc">
+          <span class="en">Are you a freight forwarder, carrier or customs agent? Join our verified partner network and receive qualified shipment requests from our growing client base across the Gulf.</span>
+          <span class="ar-t">هل أنت شركة شحن، ناقل، أو وكيل جمارك؟ انضم لشبكة شركائنا المعتمدين واستقبل طلبات شحن مؤهّلة من قاعدة عملائنا المتنامية في الخليج.</span>
+          <span class="cn-t">您是货代、承运商还是报关行？加入我们认证合作伙伴网络，接收来自海湾地区不断增长的客户群的优质货运委托。</span>
+        </p>
+        <ul class="rg-pts">
+          <li><span class="en">Free listing — zero commission</span><span class="ar-t">إدراج مجاني — بلا عمولة</span><span class="cn-t">免费入驻，零佣金</span></li>
+          <li><span class="en">Direct qualified shipment leads</span><span class="ar-t">طلبات شحن مؤهّلة ومباشرة</span><span class="cn-t">直接对接优质货运委托</span></li>
+          <li><span class="en">Feature in our partner network</span><span class="ar-t">ظهور في شبكة شركائنا الرسمية</span><span class="cn-t">出现在我们的官方合作网络中</span></li>
+          <li><span class="en">Access China–Gulf trade routes</span><span class="ar-t">وصول لمسارات تجارة الصين–الخليج</span><span class="cn-t">覆盖中国至海湾贸易航线</span></li>
+        </ul>
+        <div class="rg-go"><span class="en">Register Your Company →</span><span class="ar-t">← سجّل شركتك</span><span class="cn-t">注册您的公司 →</span></div>
+      </a>
+
+      <!-- 3: SUPPLIER -->
+      <a class="rg-card" href="supplier/">
+        <div class="rg-num">03</div>
+        <div class="rg-ico">
+          <svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l5-3v16M14 21V11l5-3v13"/><path d="M8 12h1M8 16h1M17 13h1M17 17h1"/></svg>
+        </div>
+        <div class="rg-for"><span class="en">For Factories &amp; Suppliers</span><span class="ar-t">للمصانع والموردين</span><span class="cn-t">面向工厂与供应商</span></div>
+        <div class="rg-name"><span class="en">Supplier Registration</span><span class="ar-t">تسجيل مورّد</span><span class="cn-t">供应商注册</span></div>
+        <div class="rg-time">⏱ <span class="en">~8 minutes</span><span class="ar-t">~8 دقائق</span><span class="cn-t">约 8 分钟</span></div>
+        <p class="rg-desc">
+          <span class="en">Are you a manufacturer or supplier? Register your factory with MWM and gain direct access to verified buyers across Saudi Arabia, the UAE and the broader Gulf market.</span>
+          <span class="ar-t">هل أنت مصنع أو مورّد؟ سجّل مصنعك مع MWM واحصل على وصول مباشر لمشترين موثوقين في السعودية والإمارات وأسواق الخليج الواسعة.</span>
+          <span class="cn-t">您是制造商或供应商吗？在MWM注册您的工厂，直接对接沙特、阿联酋及海湾地区的认证采购商。</span>
+        </p>
+        <ul class="rg-pts">
+          <li><span class="en">No listing or subscription fees</span><span class="ar-t">لا رسوم إدراج أو اشتراك</span><span class="cn-t">无上架费或订阅费</span></li>
+          <li><span class="en">Access verified Gulf buyers</span><span class="ar-t">وصول لمشترين خليجيين موثوقين</span><span class="cn-t">对接认证海湾采购商</span></li>
+          <li><span class="en">OEM &amp; private label opportunities</span><span class="ar-t">فرص OEM والعلامة الخاصة</span><span class="cn-t">OEM及自有品牌合作机会</span></li>
+          <li><span class="en">Priority matching on buyer requests</span><span class="ar-t">أولوية في مطابقة طلبات المشترين</span><span class="cn-t">优先匹配采购商需求</span></li>
+        </ul>
+        <div class="rg-go"><span class="en">Register as a Supplier →</span><span class="ar-t">← سجّل كمورّد</span><span class="cn-t">注册成为供应商 →</span></div>
+      </a>
+
+    </div>
+
+    <div class="rg-note">
+      <div class="rg-note-t">
+        <span class="en">Not sure which one fits you?</span>
+        <span class="ar-t">غير متأكد أي مسار يناسبك؟</span>
+        <span class="cn-t">不确定哪一项适合您？</span>
+      </div>
+      <div class="rg-note-d">
+        <span class="en">Talk to our team directly. We will point you to the right path and answer any question about working with MWM Logistics.</span>
+        <span class="ar-t">تحدّث مع فريقنا مباشرة. سنرشدك للمسار الصحيح ونجيب عن أي سؤال حول العمل مع MWM لوجستيك.</span>
+        <span class="cn-t">直接联系我们的团队。我们会为您指明合适方向并解答任何关于与MWM物流合作的疑问。</span>
+      </div>
+      <div class="rg-note-btns">
+        <a class="rg-note-btn wa" href="https://wa.me/963994483331?text=Hi%20MWM%2C%20I%20need%20help%20choosing%20the%20right%20registration" target="_blank" rel="noopener">
+          <span class="en">WhatsApp Us</span><span class="ar-t">واتساب</span><span class="cn-t">WhatsApp 联系</span>
+        </a>
+        <a class="rg-note-btn" href="mailto:info.mwm@alserawan.com?subject=Registration%20Enquiry">
+          <span class="en">Email Us</span><span class="ar-t">راسلنا</span><span class="cn-t">发送邮件</span>
+        </a>
+        <a class="rg-note-btn" href="../">
+          <span class="en">← Back to Logistics</span><span class="ar-t">← العودة للوجستيات</span><span class="cn-t">← 返回物流页</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>var SITE_ROOT="../../";var CURRENT_PAGE="register";</script>
+<script src="../../app.js"></script>
+</body>
+</html>
