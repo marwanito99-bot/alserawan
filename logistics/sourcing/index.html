@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Sourcing Request — MWM Logistics | Al Serawan Group</title>
+<meta name="description" content="Submit your sourcing request to MWM Logistics. Tell us what you need from China and we will find the supplier, negotiate the price, inspect the quality and ship it to your door in the Gulf.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.alserawan.com/logistics/sourcing">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sourcing Request — MWM Logistics">
+<meta property="og:description" content="Tell us what you need from China. We source, inspect and ship it to the Gulf.">
+<meta property="og:url" content="https://www.alserawan.com/logistics/sourcing">
+<link rel="icon" type="image/png" href="../../images/logo-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css"/>
+</head>
+<body>
+
+<!-- LANG -->
+<div class="lang-bar">
+  <button class="lb on" onclick="setLang('en')">EN</button>
+  <button class="lb" onclick="setLang('ar')">عربي</button>
+  <button class="lb" onclick="setLang('cn')">中文</button>
+</div>
+
+<nav>
+  <a class="nav-logo" href="../../" style="text-decoration:none;cursor:pointer">
+    <img src="../../images/logo.jpg" alt="MWM Logo" style="height:34px">
+  </a>
+  <div class="nav-links">
+    <a href="../../"><span class="en">Home</span><span class="ar-t">الرئيسية</span><span class="cn-t">首页</span></a>
+    <a href="../"><span class="en">Logistics</span><span class="ar-t">اللوجستيات</span><span class="cn-t">物流</span></a>
+    <a href="../../tracking/"><span class="en">Tracking</span><span class="ar-t">التتبع</span><span class="cn-t">追踪</span></a>
+    <a href="../../contact/"><span class="en">Contact</span><span class="ar-t">تواصل</span><span class="cn-t">联系</span></a>
+  </div>
+</nav>
+
+<div class="fw-page">
+  <div class="fw-container">
+
+    <div class="fw-header">
+      <div class="fw-header-tag"><span class="en">MWM Logistics</span><span class="ar-t">إم دبليو إم لوجستيك</span><span class="cn-t">MWM 物流</span></div>
+      <div class="fw-header-title"><span class="en">Sourcing Request</span><span class="ar-t">طلب توريد</span><span class="cn-t">采购需求申请</span></div>
+      <div class="fw-header-sub"><span class="en">Tell us what you need from China. We find the supplier, negotiate the price, inspect the quality and ship it to your door.</span><span class="ar-t">أخبرنا بما تحتاجه من الصين. نجد المورّد، ونتفاوض على السعر، ونفحص الجودة، ونشحنه إلى بابك.</span><span class="cn-t">告诉我们您需要从中国采购什么。我们负责寻找供应商、议价、验货并送达。</span></div>
+    </div>
+
+    <div class="fw-progress">
+      <div class="fw-progress-top">
+        <div class="fw-step-label"><span class="en">Step</span><span class="ar-t">الخطوة</span><span class="cn-t">步骤</span></div>
+        <div class="fw-step-count" id="fw-step-count">1 / 5</div>
+      </div>
+      <div class="fw-step-title" id="fw-step-title">
+        <span class="en">Your Company</span><span class="ar-t">شركتك</span><span class="cn-t">您的公司</span>
+      </div>
+      <div class="fw-bar-track"><div class="fw-bar-fill" id="fw-bar" style="width:20%"></div></div>
+      <div class="fw-dots" id="fw-dots"></div>
+    </div>
+
+    <form id="fw-form" novalidate>
+    <input type="hidden" name="form_type" value="sourcing_request">
+
+    <!-- STEP 1 : COMPANY -->
+    <div class="fw-step active" data-step="1">
+      <div class="fw-card">
+        <div class="fw-step-heading"><span class="en">Your Company</span><span class="ar-t">شركتك</span><span class="cn-t">您的公司</span></div>
+        <div class="fw-step-desc"><span class="en">Basic information so we know who we are working with</span><span class="ar-t">معلومات أساسية لنعرف مع من نعمل</span><span class="cn-t">基本信息，以便我们了解合作方</span></div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Company Name</span><span class="ar-t">اسم الشركة</span><span class="cn-t">公司名称</span> <span class="req">*</span></label>
+          <input class="fw-input" name="company_name" required data-ph-en="e.g. Al Rashid Trading Co." data-ph-ar="مثال: شركة الراشد التجارية" data-ph-cn="例：拉希德贸易公司">
+        </div>
+
+        <div class="fw-row">
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">Country</span><span class="ar-t">الدولة</span><span class="cn-t">国家</span> <span class="req">*</span></label>
+            <select class="fw-select" name="country" required>
+              <option value="">—</option>
+              <option>Saudi Arabia</option><option>United Arab Emirates</option><option>Kuwait</option>
+              <option>Qatar</option><option>Bahrain</option><option>Oman</option>
+              <option>Iraq</option><option>Jordan</option><option>Syria</option>
+              <option>Lebanon</option><option>Egypt</option><option>Yemen</option>
+              <option>Libya</option><option>Turkey</option><option>Other</option>
+            </select>
+          </div>
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">City</span><span class="ar-t">المدينة</span><span class="cn-t">城市</span></label>
+            <input class="fw-input" name="city" data-ph-en="e.g. Riyadh" data-ph-ar="مثال: الرياض" data-ph-cn="例：利雅得">
+          </div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Business Type</span><span class="ar-t">نوع النشاط</span><span class="cn-t">业务类型</span></label>
+          <select class="fw-select" name="business_type">
+            <option value="">—</option>
+            <option value="Importer / Trader">Importer / Trader</option>
+            <option value="Wholesaler">Wholesaler</option>
+            <option value="Retailer">Retailer</option>
+            <option value="Manufacturer">Manufacturer</option>
+            <option value="Contractor">Contractor</option>
+            <option value="E-commerce">E-commerce</option>
+            <option value="Individual">Individual</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Website / Social (optional)</span><span class="ar-t">الموقع أو حساب التواصل (اختياري)</span><span class="cn-t">网站 / 社交账号（选填）</span></label>
+          <input class="fw-input" name="website" data-ph-en="https://" data-ph-ar="https://" data-ph-cn="https://">
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 : CONTACT -->
+    <div class="fw-step" data-step="2">
+      <div class="fw-card">
+        <div class="fw-step-heading"><span class="en">Contact Person</span><span class="ar-t">جهة الاتصال</span><span class="cn-t">联系人</span></div>
+        <div class="fw-step-desc"><span class="en">Who should we reply to?</span><span class="ar-t">من نتواصل معه؟</span><span class="cn-t">我们应与谁联系？</span></div>
+
+        <div class="fw-row">
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">Full Name</span><span class="ar-t">الاسم الكامل</span><span class="cn-t">姓名</span> <span class="req">*</span></label>
+            <input class="fw-input" name="contact_name" required data-ph-en="Your name" data-ph-ar="اسمك" data-ph-cn="您的姓名">
+          </div>
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">Position</span><span class="ar-t">المنصب</span><span class="cn-t">职位</span></label>
+            <input class="fw-input" name="position" data-ph-en="e.g. Purchasing Manager" data-ph-ar="مثال: مدير المشتريات" data-ph-cn="例：采购经理">
+          </div>
+        </div>
+
+        <div class="fw-row">
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">WhatsApp</span><span class="ar-t">واتساب</span><span class="cn-t">WhatsApp</span> <span class="req">*</span></label>
+            <input class="fw-input" name="whatsapp" required data-ph-en="+966 5X XXX XXXX" data-ph-ar="+966 5X XXX XXXX" data-ph-cn="+966 5X XXX XXXX">
+          </div>
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">Email</span><span class="ar-t">البريد الإلكتروني</span><span class="cn-t">电子邮箱</span></label>
+            <input class="fw-input" type="email" name="email" data-ph-en="name@company.com" data-ph-ar="name@company.com" data-ph-cn="name@company.com">
+          </div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Preferred Contact Method</span><span class="ar-t">وسيلة التواصل المفضّلة</span><span class="cn-t">首选联系方式</span></label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn active" data-group="contact_method" data-val="WhatsApp">WhatsApp</button>
+            <button type="button" class="fw-toggle-btn" data-group="contact_method" data-val="Email"><span class="en">Email</span><span class="ar-t">إيميل</span><span class="cn-t">邮箱</span></button>
+            <button type="button" class="fw-toggle-btn" data-group="contact_method" data-val="Phone Call"><span class="en">Phone Call</span><span class="ar-t">اتصال</span><span class="cn-t">电话</span></button>
+          </div>
+          <input type="hidden" name="contact_method" id="contact_method_val" value="WhatsApp">
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 : PRODUCT -->
+    <div class="fw-step" data-step="3">
+      <div class="fw-card">
+        <div class="fw-step-heading"><span class="en">What Do You Need?</span><span class="ar-t">ما الذي تحتاجه؟</span><span class="cn-t">您需要什么？</span></div>
+        <div class="fw-step-desc"><span class="en">The more detail you give, the more accurate our quote</span><span class="ar-t">كلما زادت التفاصيل، كان عرض السعر أدق</span><span class="cn-t">信息越详细，报价越准确</span></div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Product Category</span><span class="ar-t">فئة المنتج</span><span class="cn-t">产品类别</span> <span class="req">*</span></label>
+          <select class="fw-select" name="product_category" required>
+            <option value="">—</option>
+            <option>Industrial Tools &amp; Equipment</option>
+            <option>Building &amp; Construction Materials</option>
+            <option>Electronics &amp; Electrical</option>
+            <option>Machinery</option>
+            <option>Furniture &amp; Home</option>
+            <option>Textiles &amp; Garments</option>
+            <option>Auto Parts</option>
+            <option>Packaging</option>
+            <option>Medical &amp; Lab</option>
+            <option>Food Equipment</option>
+            <option>Toys &amp; Gifts</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Product Description</span><span class="ar-t">وصف المنتج</span><span class="cn-t">产品描述</span> <span class="req">*</span></label>
+          <textarea class="fw-textarea" name="product_description" required rows="4" data-ph-en="Describe the product: specifications, material, size, colour, model, brand reference..." data-ph-ar="صف المنتج: المواصفات، المادة، المقاس، اللون، الموديل، ماركة مرجعية..." data-ph-cn="描述产品：规格、材质、尺寸、颜色、型号、参考品牌……"></textarea>
+          <div class="fw-hint"><span class="en">If you have a reference link (Alibaba, 1688, a competitor product), paste it here.</span><span class="ar-t">إن كان لديك رابط مرجعي (علي بابا، 1688، منتج منافس) ضعه هنا.</span><span class="cn-t">如有参考链接（阿里巴巴、1688、竞品）请贴在此处。</span></div>
+        </div>
+
+        <div class="fw-row">
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">Quantity</span><span class="ar-t">الكمية</span><span class="cn-t">数量</span> <span class="req">*</span></label>
+            <input class="fw-input" name="quantity" required data-ph-en="e.g. 500" data-ph-ar="مثال: 500" data-ph-cn="例：500">
+          </div>
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">Unit</span><span class="ar-t">الوحدة</span><span class="cn-t">单位</span></label>
+            <select class="fw-select" name="unit">
+              <option value="">—</option>
+              <option>Pieces</option><option>Cartons</option><option>Sets</option>
+              <option>Kilograms</option><option>Tons</option><option>Meters</option>
+              <option>Square Meters</option><option>Containers (20ft)</option>
+              <option>Containers (40ft)</option><option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="fw-row">
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">Target Price per Unit (optional)</span><span class="ar-t">السعر المستهدف للوحدة (اختياري)</span><span class="cn-t">目标单价（选填）</span></label>
+            <input class="fw-input" name="target_price" data-ph-en="e.g. USD 12" data-ph-ar="مثال: 12 دولار" data-ph-cn="例：12 美元">
+          </div>
+          <div class="fw-field">
+            <label class="fw-label"><span class="en">Total Budget (optional)</span><span class="ar-t">الميزانية الإجمالية (اختياري)</span><span class="cn-t">总预算（选填）</span></label>
+            <input class="fw-input" name="total_budget" data-ph-en="e.g. USD 20,000" data-ph-ar="مثال: 20,000 دولار" data-ph-cn="例：20,000 美元">
+          </div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Is this a repeat order?</span><span class="ar-t">هل هو طلب متكرّر؟</span><span class="cn-t">是否为长期订单？</span></label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-group="repeat_order" data-val="One-time"><span class="en">One-time</span><span class="ar-t">مرة واحدة</span><span class="cn-t">一次性</span></button>
+            <button type="button" class="fw-toggle-btn" data-group="repeat_order" data-val="Monthly"><span class="en">Monthly</span><span class="ar-t">شهري</span><span class="cn-t">每月</span></button>
+            <button type="button" class="fw-toggle-btn" data-group="repeat_order" data-val="Quarterly"><span class="en">Quarterly</span><span class="ar-t">ربع سنوي</span><span class="cn-t">每季度</span></button>
+            <button type="button" class="fw-toggle-btn" data-group="repeat_order" data-val="Not sure"><span class="en">Not sure</span><span class="ar-t">غير محدّد</span><span class="cn-t">尚未确定</span></button>
+          </div>
+          <input type="hidden" name="repeat_order" id="repeat_order_val" value="">
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4 : SHIPPING -->
+    <div class="fw-step" data-step="4">
+      <div class="fw-card">
+        <div class="fw-step-heading"><span class="en">Shipping &amp; Delivery</span><span class="ar-t">الشحن والتسليم</span><span class="cn-t">运输与交付</span></div>
+        <div class="fw-step-desc"><span class="en">Where and how should it arrive?</span><span class="ar-t">إلى أين وكيف تريد وصولها؟</span><span class="cn-t">货物应运往何处、以何种方式？</span></div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Destination Port / City</span><span class="ar-t">ميناء أو مدينة الوصول</span><span class="cn-t">目的港 / 城市</span> <span class="req">*</span></label>
+          <input class="fw-input" name="destination" required data-ph-en="e.g. Jeddah Islamic Port / Riyadh" data-ph-ar="مثال: ميناء جدة الإسلامي / الرياض" data-ph-cn="例：吉达伊斯兰港 / 利雅得">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Preferred Shipping Method</span><span class="ar-t">طريقة الشحن المفضّلة</span><span class="cn-t">首选运输方式</span></label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn" data-group="shipping_method" data-val="Sea Freight"><span class="en">Sea</span><span class="ar-t">بحري</span><span class="cn-t">海运</span></button>
+            <button type="button" class="fw-toggle-btn" data-group="shipping_method" data-val="Air Freight"><span class="en">Air</span><span class="ar-t">جوي</span><span class="cn-t">空运</span></button>
+            <button type="button" class="fw-toggle-btn" data-group="shipping_method" data-val="Land Freight"><span class="en">Land</span><span class="ar-t">برّي</span><span class="cn-t">陆运</span></button>
+            <button type="button" class="fw-toggle-btn" data-group="shipping_method" data-val="Advise me"><span class="en">Advise me</span><span class="ar-t">انصحوني</span><span class="cn-t">请为我建议</span></button>
+          </div>
+          <input type="hidden" name="shipping_method" id="shipping_method_val" value="">
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Incoterms (optional)</span><span class="ar-t">شروط التسليم (اختياري)</span><span class="cn-t">贸易术语（选填）</span></label>
+          <select class="fw-select" name="incoterms">
+            <option value="">—</option>
+            <option>EXW — Ex Works</option>
+            <option>FOB — Free On Board</option>
+            <option>CIF — Cost, Insurance &amp; Freight</option>
+            <option>DDP — Delivered Duty Paid</option>
+            <option>Not sure — advise me</option>
+          </select>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Required Delivery Timeframe</span><span class="ar-t">الموعد المطلوب للتسليم</span><span class="cn-t">要求交付时间</span></label>
+          <select class="fw-select" name="timeframe">
+            <option value="">—</option>
+            <option value="Urgent (within 2 weeks)">Urgent — within 2 weeks</option>
+            <option value="1 month">Within 1 month</option>
+            <option value="2-3 months">2–3 months</option>
+            <option value="Flexible">Flexible</option>
+          </select>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Do you need quality inspection before shipping?</span><span class="ar-t">هل تحتاج فحص جودة قبل الشحن؟</span><span class="cn-t">发货前是否需要质检？</span></label>
+          <div class="fw-toggle-group">
+            <button type="button" class="fw-toggle-btn active" data-group="need_inspection" data-val="Yes"><span class="en">Yes</span><span class="ar-t">نعم</span><span class="cn-t">需要</span></button>
+            <button type="button" class="fw-toggle-btn" data-group="need_inspection" data-val="No"><span class="en">No</span><span class="ar-t">لا</span><span class="cn-t">不需要</span></button>
+          </div>
+          <input type="hidden" name="need_inspection" id="need_inspection_val" value="Yes">
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5 : ATTACHMENTS -->
+    <div class="fw-step" data-step="5">
+      <div class="fw-card">
+        <div class="fw-step-heading"><span class="en">Attachments &amp; Notes</span><span class="ar-t">المرفقات والملاحظات</span><span class="cn-t">附件与备注</span></div>
+        <div class="fw-step-desc"><span class="en">A photo or spec sheet helps us find the exact product</span><span class="ar-t">صورة أو ورقة مواصفات تساعدنا في إيجاد المنتج بدقة</span><span class="cn-t">图片或规格书有助于我们精准找到产品</span></div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Product Photo or Reference</span><span class="ar-t">صورة المنتج أو مرجع</span><span class="cn-t">产品图片或参考</span></label>
+          <label class="fw-file-label" for="file-product">
+            <span class="en">Choose file (JPG / PNG / PDF)</span><span class="ar-t">اختر ملفاً (JPG / PNG / PDF)</span><span class="cn-t">选择文件（JPG / PNG / PDF）</span>
+          </label>
+          <input type="file" id="file-product" name="file_product" accept="image/*,.pdf" style="display:none">
+          <div class="fw-file-name" id="name-product"></div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Specification Sheet (optional)</span><span class="ar-t">ورقة المواصفات (اختياري)</span><span class="cn-t">规格书（选填）</span></label>
+          <label class="fw-file-label" for="file-spec">
+            <span class="en">Choose file (PDF / Excel / Word)</span><span class="ar-t">اختر ملفاً (PDF / Excel / Word)</span><span class="cn-t">选择文件（PDF / Excel / Word）</span>
+          </label>
+          <input type="file" id="file-spec" name="file_spec" accept=".pdf,.xlsx,.xls,.doc,.docx" style="display:none">
+          <div class="fw-file-name" id="name-spec"></div>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">Additional Notes</span><span class="ar-t">ملاحظات إضافية</span><span class="cn-t">补充说明</span></label>
+          <textarea class="fw-textarea" name="notes" rows="3" data-ph-en="Anything else we should know..." data-ph-ar="أي شيء آخر تودّ إخبارنا به..." data-ph-cn="其他需要我们了解的信息……"></textarea>
+        </div>
+
+        <div class="fw-field">
+          <label class="fw-label"><span class="en">How did you hear about us?</span><span class="ar-t">كيف عرفت عنّا؟</span><span class="cn-t">您如何了解到我们？</span></label>
+          <select class="fw-select" name="referral">
+            <option value="">—</option>
+            <option>Google Search</option><option>Instagram</option><option>Facebook</option>
+            <option>LinkedIn</option><option>Referral from a client</option>
+            <option>Exhibition / Trade fair</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="fw-nav">
+      <button type="button" class="fw-btn-back" id="fw-back" onclick="goStep(-1)"><span class="en">← Back</span><span class="ar-t">← السابق</span><span class="cn-t">← 上一步</span></button>
+      <button type="button" class="fw-btn-next" id="fw-next" onclick="goStep(1)"><span class="en">Next →</span><span class="ar-t">التالي →</span><span class="cn-t">下一步 →</span></button>
+    </div>
+
+    </form>
+
+    <div class="fw-loading" id="fw-loading">
+      <div class="fw-spinner"></div>
+      <div class="fw-loading-txt"><span class="en">Submitting your request…</span><span class="ar-t">جارٍ إرسال طلبك…</span><span class="cn-t">正在提交您的申请……</span></div>
+    </div>
+
+    <div class="fw-success" id="fw-success">
+      <div class="fw-success-ico">✓</div>
+      <div class="fw-success-title"><span class="en">Request Received</span><span class="ar-t">تم استلام طلبك</span><span class="cn-t">已收到您的申请</span></div>
+      <div class="fw-success-sub"><span class="en">Our sourcing team will review your request and reply within 24–48 hours.</span><span class="ar-t">سيراجع فريق التوريد طلبك ويردّ عليك خلال 24–48 ساعة.</span><span class="cn-t">我们的采购团队将在 24–48 小时内回复您。</span></div>
+      <a class="btn-b" href="../" style="margin-top:1.5rem;display:inline-block;text-decoration:none"><span class="en">← Back to Logistics</span><span class="ar-t">← العودة للوجستيات</span><span class="cn-t">← 返回物流页</span></a>
+    </div>
+
+  </div>
+</div>
+
+<script src="../../app.js"></script>
+<script>
+var SCRIPT_URL = 'PASTE_YOUR_SOURCING_SCRIPT_URL_HERE';
+
+var STEPS = [
+  {n:1, en:'Your Company',        ar:'شركتك',              cn:'您的公司'},
+  {n:2, en:'Contact Person',      ar:'جهة الاتصال',        cn:'联系人'},
+  {n:3, en:'What Do You Need?',   ar:'ما الذي تحتاجه؟',    cn:'您需要什么？'},
+  {n:4, en:'Shipping & Delivery', ar:'الشحن والتسليم',     cn:'运输与交付'},
+  {n:5, en:'Attachments & Notes', ar:'المرفقات والملاحظات', cn:'附件与备注'}
+];
+
+var currentStep = 1;
+
+/* dots */
+var dotsEl=document.getElementById('fw-dots');
+STEPS.forEach(function(){ var d=document.createElement('div'); d.className='fw-dot'; dotsEl.appendChild(d); });
+
+function curLang(){
+  return document.body.classList.contains('ar')?'ar':document.body.classList.contains('cn')?'cn':'en';
+}
+function applyPlaceholders(){
+  var l=curLang();
+  document.querySelectorAll('[data-ph-en]').forEach(function(el){
+    el.placeholder = el.getAttribute('data-ph-'+l) || el.getAttribute('data-ph-en') || '';
+  });
+}
+function updateProgress(){
+  var s=STEPS[currentStep-1], l=curLang();
+  document.getElementById('fw-step-count').textContent=currentStep+' / '+STEPS.length;
+  var t=document.getElementById('fw-step-title');
+  t.innerHTML='<span class="en">'+s.en+'</span><span class="ar-t">'+s.ar+'</span><span class="cn-t">'+s.cn+'</span>';
+  document.getElementById('fw-bar').style.width=Math.round(currentStep/STEPS.length*100)+'%';
+  Array.prototype.forEach.call(dotsEl.children,function(d,i){
+    d.style.background = i<currentStep ? 'var(--lime)' : 'var(--border)';
+  });
+  var back=document.getElementById('fw-back');
+  back.style.visibility = currentStep===1 ? 'hidden' : 'visible';
+  var next=document.getElementById('fw-next');
+  if(currentStep===STEPS.length){
+    next.innerHTML='<span class="en">Submit Request ✓</span><span class="ar-t">إرسال الطلب ✓</span><span class="cn-t">提交申请 ✓</span>';
+  }else{
+    next.innerHTML='<span class="en">Next →</span><span class="ar-t">التالي →</span><span class="cn-t">下一步 →</span>';
+  }
+}
+function validateStep(n){
+  var box=document.querySelector('.fw-step[data-step="'+n+'"]');
+  var bad=null;
+  box.querySelectorAll('[required]').forEach(function(f){
+    if(!f.value.trim()){ if(!bad) bad=f; f.style.borderColor='#e03232'; }
+    else f.style.borderColor='';
+  });
+  if(bad){
+    bad.focus();
+    var m={en:'Please fill in the required fields.',ar:'يرجى تعبئة الحقول المطلوبة.',cn:'请填写必填字段。'};
+    alert(m[curLang()]);
+    return false;
+  }
+  return true;
+}
+function goStep(dir){
+  if(dir>0){
+    if(!validateStep(currentStep)) return;
+    if(currentStep===STEPS.length){ submitForm(); return; }
+  }
+  var next=currentStep+dir;
+  if(next<1||next>STEPS.length) return;
+  document.querySelector('.fw-step[data-step="'+currentStep+'"]').classList.remove('active');
+  currentStep=next;
+  document.querySelector('.fw-step[data-step="'+currentStep+'"]').classList.add('active');
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* toggle button groups */
+document.querySelectorAll('.fw-toggle-btn').forEach(function(b){
+  b.addEventListener('click',function(){
+    var g=b.getAttribute('data-group');
+    document.querySelectorAll('.fw-toggle-btn[data-group="'+g+'"]').forEach(function(x){x.classList.remove('active')});
+    b.classList.add('active');
+    var h=document.getElementById(g+'_val');
+    if(h) h.value=b.getAttribute('data-val');
+  });
+});
+
+/* file name display */
+[['file-product','name-product'],['file-spec','name-spec']].forEach(function(p){
+  var inp=document.getElementById(p[0]), out=document.getElementById(p[1]);
+  if(inp) inp.addEventListener('change',function(){
+    out.textContent = inp.files && inp.files.length ? inp.files[0].name : '';
+  });
+});
+
+function readFileAsBase64(file){
+  return new Promise(function(res){
+    if(!file){ res(null); return; }
+    var r=new FileReader();
+    r.onload=function(){ res(r.result.split(',')[1]); };
+    r.onerror=function(){ res(null); };
+    r.readAsDataURL(file);
+  });
+}
+function showSuccess(){
+  document.getElementById('fw-form').style.display='none';
+  document.querySelector('.fw-nav').style.display='none';
+  document.querySelector('.fw-progress').style.display='none';
+  document.getElementById('fw-success').classList.add('show');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function submitForm(){
+  document.getElementById('fw-loading').classList.add('show');
+
+  if(SCRIPT_URL.indexOf('PASTE_YOUR')===0){
+    setTimeout(function(){
+      document.getElementById('fw-loading').classList.remove('show');
+      showSuccess();
+    },1200);
+    return;
+  }
+
+  Promise.all([
+    readFileAsBase64((document.getElementById('file-product').files||[])[0]||null),
+    readFileAsBase64((document.getElementById('file-spec').files||[])[0]||null)
+  ]).then(function(files){
+    var fd=new FormData(document.getElementById('fw-form'));
+    var textData={};
+    fd.forEach(function(val,key){
+      if(key.indexOf('file_')===0) return;
+      textData[key]=textData[key]?textData[key]+', '+val:val;
+    });
+    textData['submitted_at']=new Date().toISOString();
+
+    var uid='sr-'+Date.now();
+    var iframe=document.createElement('iframe');
+    iframe.name=uid; iframe.id=uid; iframe.style.display='none';
+    document.body.appendChild(iframe);
+
+    var hForm=document.createElement('form');
+    hForm.method='POST'; hForm.action=SCRIPT_URL;
+    hForm.target=uid; hForm.style.display='none';
+    Object.keys(textData).forEach(function(k){
+      var i=document.createElement('input');
+      i.type='hidden'; i.name=k; i.value=textData[k];
+      hForm.appendChild(i);
+    });
+    document.body.appendChild(hForm);
+
+    var done=false;
+    function finish(){
+      if(done) return; done=true;
+      document.getElementById('fw-loading').classList.remove('show');
+      showSuccess();
+      try{document.body.removeChild(hForm);}catch(x){}
+      try{document.body.removeChild(iframe);}catch(x){}
+    }
+    setTimeout(finish,8000);
+    iframe.onload=finish;
+    hForm.submit();
+
+    /* files sent separately */
+    var pf=(document.getElementById('file-product').files||[])[0];
+    var sf=(document.getElementById('file-spec').files||[])[0];
+    if(files[0]||files[1]){
+      setTimeout(function(){
+        var payload=JSON.stringify({
+          form_type:'sourcing_request_files',
+          company_name:textData.company_name||'',
+          file_product:files[0], file_product_name:pf?pf.name:'',
+          file_spec:files[1], file_spec_name:sf?sf.name:''
+        });
+        fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:payload});
+      },3000);
+    }
+  });
+}
+
+/* language-aware placeholders */
+var _origSetLang = window.setLang;
+window.setLang = function(l){
+  if(_origSetLang) _origSetLang(l);
+  applyPlaceholders();
+};
+
+applyPlaceholders();
+updateProgress();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+احذف مجلد freight-register القديم من جذر المستودع
+(الموجود على المسار: alserawan/freight-register/)
+
+صار مكانه: alserawan/logistics/freight-register/
