@@ -94,7 +94,7 @@ function setLang(l){
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',restore);
   else restore();
 })();
-var MWM_ROUTES={home:'',companies:'companies',aboutus:'about',services:'services',monitor:'tracking',feedback:'feedback',news:'news',careers:'careers',contact:'contact',mwm:'mwm-logistics',motors:'mwm-motors',equip:'mwm-equipments',sourcing:'sourcing'};
+var MWM_ROUTES={home:'',companies:'companies',aboutus:'about',services:'services',monitor:'tracking',feedback:'feedback',news:'news',careers:'careers',contact:'contact',mwm:'mwm-logistics',motors:'mwm-motors',equip:'mwm-equipments',sourcing:'sourcing',logistics:'logistics'};
 function show(id){
   var r=MWM_ROUTES[id];
   if(r===undefined) return;
