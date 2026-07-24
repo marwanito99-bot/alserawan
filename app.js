@@ -171,7 +171,7 @@ function renderNewsFallback(){
   var fb=[
     {title:'Global container freight rates shift as carriers adjust capacity on key trade lanes',source:'Industry Wire'},
     {title:'Red Sea diversions continue to reshape Asia–Europe shipping schedules',source:'Maritime Brief'},
-    {title:'Major ports report rising throughput on China–Gulf logistics corridor',source:'Trade Daily'},
+    {title:'Major ports report rising throughput on China–MENA logistics corridor',source:'Trade Daily'},
     {title:'Air cargo demand strengthens ahead of peak shipping season',source:'Cargo Watch'},
     {title:'Digitalization and live tracking become standard in modern freight forwarding',source:'Logistics Today'}
   ];
@@ -487,7 +487,7 @@ function loadVesselMap(){
   window.__vfLoaded=true;
   var f=document.getElementById('vesselMapIframe');
   if(!f) return;
-  // Primary: MarineTraffic live AIS embed (Gulf / UAE focus) - renders in-page, no redirect
+  // Primary: MarineTraffic live AIS embed (MENA / UAE focus) - renders in-page, no redirect
   var MT='https://www.marinetraffic.com/en/ais/embed/zoom:7/centery:25.3/centerx:55.2/maptype:4/shownames:true/mmsi:0/shipid:0/fleet:/fleet_id:/vtypes:/showmenu:false/remember:false';
   f.src=MT;
   // Fallback chain: if MarineTraffic is blocked, try VesselFinder embed; if that fails too, show a tappable link

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Track Your Shipment | MWM Live Cargo & Vessel Monitoring</title>
 <meta name="description" content="Track your MWM shipment in real time across 10 stages, and monitor live vessel positions on the AIS map. Enter your MWM tracking number to begin.">
-<meta name="keywords" content="sourcing agent China, Yiwu sourcing company, import from China to Gulf, China shipping to UAE, logistics China Saudi Arabia, freight forwarding, customs clearance, MWM, Al Serawan, وكيل استيراد من الصين, شركة توريد ييوو, شحن من الصين">
+<meta name="keywords" content="sourcing agent China, Yiwu sourcing company, import from China to MENA, China shipping to UAE, logistics China Saudi Arabia, freight forwarding, customs clearance, MWM, Al Serawan, وكيل استيراد من الصين, شركة توريد ييوو, شحن من الصين">
 <meta name="author" content="Al Serawan Group - Max Worldwide Mastering">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.alserawan.com/tracking">
@@ -34,7 +34,7 @@
   "name": "Al Serawan Group - Max Worldwide Mastering",
   "alternateName": "MWM",
   "url": "https://www.alserawan.com",
-  "description": "Sourcing, shipping and logistics partner connecting China with the Gulf markets. Product sourcing, inspection, freight and customs clearance from Yiwu, China.",
+  "description": "Sourcing, shipping and logistics partner connecting China with the MENA markets. Product sourcing, inspection, freight and customs clearance from Yiwu, China.",
   "foundingDate": "1999",
   "address": {
     "@type": "PostalAddress",
@@ -44,7 +44,7 @@
     "addressCountry": "CN"
   },
   "email": "info.mwm@alserawan.com",
-  "areaServed": ["China", "United Arab Emirates", "Saudi Arabia", "Syria", "Gulf"],
+  "areaServed": ["China", "United Arab Emirates", "Saudi Arabia", "Syria", "MENA"],
   "sameAs": [
     "https://www.instagram.com/alserawan_mwm_logistics/",
     "https://www.facebook.com/profile.php?id=61574171417116",
@@ -381,7 +381,7 @@ body{font-family:"Space Grotesk",sans-serif;background:var(--black);color:var(--
   <div class="wrap" style="padding-top:2rem;padding-bottom:2rem">
     <div class="mon-info-grid">
       <div class="mon-info-item"><div class="mon-info-ico">🌍</div><div class="mon-info-label">Global</div><div class="mon-info-desc">100,000+ vessels</div></div>
-      <div class="mon-info-item"><div class="mon-info-ico">📍</div><div class="mon-info-label">Gulf Focus</div><div class="mon-info-desc">UAE & Gulf lanes</div></div>
+      <div class="mon-info-item"><div class="mon-info-ico">📍</div><div class="mon-info-label">MENA Focus</div><div class="mon-info-desc">UAE & MENA lanes</div></div>
       <div class="mon-info-item"><div class="mon-info-ico">🔄</div><div class="mon-info-label">Live</div><div class="mon-info-desc">Updates every min</div></div>
       <div class="mon-info-item"><div class="mon-info-ico">🚢</div><div class="mon-info-label">Details</div><div class="mon-info-desc">Click any vessel</div></div>
     </div>
@@ -418,7 +418,7 @@ function loadVesselMap(){
   window.__vfLoaded=true;
   var f=document.getElementById('vesselMapIframe');
   if(!f) return;
-  // Primary: MarineTraffic live AIS embed (Gulf / UAE focus) - renders in-page, no redirect
+  // Primary: MarineTraffic live AIS embed (MENA / UAE focus) - renders in-page, no redirect
   var MT='https://www.marinetraffic.com/en/ais/embed/zoom:7/centery:25.3/centerx:55.2/maptype:4/shownames:true/mmsi:0/shipid:0/fleet:/fleet_id:/vtypes:/showmenu:false/remember:false';
   f.src=MT;
   // Fallback chain: if MarineTraffic is blocked, try VesselFinder embed; if that fails too, show a tappable link
