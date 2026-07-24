@@ -40,7 +40,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:66px;display:flex;ali
 
 /* ── HERO ── */
 .hero{min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:6rem 2rem 4rem;overflow:hidden}
-.hero-bg{position:absolute;inset:0;overflow:hidden}
+.hero-bg{position:absolute;inset:0;overflow:hidden;background:#0a0a0f}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,8,14,.5) 0%,rgba(8,8,14,.15) 40%,rgba(8,8,14,.4) 60%,rgba(8,8,14,.92) 100%)}
 .hero-grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(29,0,244,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(29,0,244,.06) 1px,transparent 1px);background-size:55px 55px}
 .hero-content{position:relative;z-index:2}
