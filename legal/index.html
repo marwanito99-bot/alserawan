@@ -17,6 +17,7 @@
 .legal-wrap{max-width:860px;margin:0 auto;padding:7rem 2rem 5rem}
 .legal-hero{margin-bottom:3.5rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
 .legal-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border-l);padding:.35rem 1.1rem;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);margin-bottom:1.2rem}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--lime)}
 .legal-title{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;line-height:1;letter-spacing:-.02em;margin-bottom:.8rem}
 .legal-updated{font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
 .legal-toc{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:3rem}
@@ -26,37 +27,33 @@
 .legal-section:last-child{border-bottom:none}
 .legal-section-tag{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);margin-bottom:.6rem;font-weight:600}
 .legal-section h2{font-size:1.4rem;font-weight:600;margin-bottom:1.2rem;letter-spacing:-.01em}
-.legal-section h3{font-size:.95rem;font-weight:600;color:var(--text);margin:1.6rem 0 .6rem;letter-spacing:.02em}
-.legal-section p{font-size:.88rem;color:rgba(240,237,230,.7);line-height:1.9;margin-bottom:.9rem}
-.legal-section ul{margin:.5rem 0 1rem 1.2rem}
-.legal-section ul li{font-size:.88rem;color:rgba(240,237,230,.7);line-height:1.8;margin-bottom:.3rem}
-.legal-section ul li::marker{color:var(--lime)}
-.legal-divider{display:flex;align-items:center;gap:1rem;margin:3.5rem 0;opacity:.3}
-.legal-divider::before,.legal-divider::after{content:"";flex:1;height:1px;background:var(--border)}
-.legal-divider span{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap}
-.legal-contact-box{background:var(--dark2);border:1px solid var(--border);padding:1.8rem 2rem;margin-top:2rem}
-.legal-contact-box h3{font-size:.95rem;font-weight:600;margin-bottom:.8rem}
-.legal-contact-box p{font-size:.85rem;color:var(--muted);line-height:1.8;margin:0}
-.legal-contact-box a{color:var(--lime);text-decoration:none}
-.legal-lang-note{background:rgba(29,0,244,.07);border:1px solid rgba(29,0,244,.2);padding:1rem 1.4rem;font-size:.78rem;color:var(--muted);line-height:1.7;margin-bottom:2.5rem}
+.legal-section h3{font-size:.85rem;font-weight:600;color:var(--text);margin:1.4rem 0 .6rem;letter-spacing:.02em;text-transform:uppercase}
+.legal-section p{font-size:.88rem;color:rgba(240,237,230,.75);line-height:1.75;margin-bottom:.9rem}
+.legal-section ul{margin:.5rem 0 .9rem 1.3rem;padding:0}
+.legal-section ul li{font-size:.88rem;color:rgba(240,237,230,.75);line-height:1.7;margin-bottom:.35rem}
+.legal-lang-note{background:rgba(29,0,244,.08);border:1px solid rgba(29,0,244,.25);padding:1.2rem 1.5rem;margin-bottom:2.5rem;font-size:.8rem;color:var(--muted);line-height:1.7}
 .legal-lang-note strong{color:var(--text)}
-@media(max-width:600px){
-  .legal-wrap{padding:5.5rem 1.2rem 3rem}
-  .legal-title{font-size:2rem}
-}
+.legal-divider{text-align:center;margin:3.5rem 0;position:relative}
+.legal-divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:var(--border)}
+.legal-divider span{position:relative;background:var(--black);padding:0 1.5rem;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--lime)}
+.legal-contact-box{background:var(--dark2);border:1px solid var(--border);padding:1.5rem;margin-top:1rem}
+.legal-contact-box h3{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--lime);margin-bottom:.8rem}
+.legal-contact-box p{font-size:.85rem;line-height:1.9}
+.legal-contact-box a{color:var(--lime);text-decoration:none}
+@media(max-width:640px){.legal-wrap{padding:5.5rem 1.2rem 4rem}.legal-title{font-size:1.9rem}}
 </style>
 </head>
 <body>
 
 <!-- WHATSAPP -->
-<a class="wa-btn" href="https://wa.me/963994483331" target="_blank" title="WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<a class="wa-btn" href="https://wa.me/963994483331" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.531 5.862L.057 23.486c-.076.305.198.58.504.504l5.701-1.462A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.032-1.386l-.361-.214-3.733.957.99-3.64-.236-.374A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182c5.42 0 9.818 4.398 9.818 9.818 0 5.42-4.398 9.818-9.818 9.818z"/></svg>
 </a>
 
+<!-- NAV -->
 <nav>
-  <a class="nav-logo" href="../" style="text-decoration:none;cursor:pointer">
-    <img id="ph-__IMG_LOGO-1" alt="MWM Logo" src="" data-imgvar="__IMG_LOGO">
-    <div><div class="nav-brand-cn">义乌镘旺国际贸易有限公司</div></div>
+  <a class="nav-logo" href="../">
+    <img id="ph-__IMG_LOGO" src="" alt="MWM" data-imgvar="__IMG_LOGO">
   </a>
   <button class="nav-hamburger" id="navHam" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></button>
   <div class="nav-links" id="navLinks">
@@ -82,239 +79,436 @@
 
   <!-- HEADER -->
   <div class="legal-hero">
-    <div class="legal-badge"><div class="badge-dot"></div>Legal Documents</div>
-    <h1 class="legal-title">Privacy Policy &<br>Terms of Service</h1>
-    <p class="legal-updated">Last updated: July 25, 2026 · Effective immediately · Applies to alserawan.com</p>
+    <div class="legal-badge">
+      <div class="badge-dot"></div>
+      <span class="en">Legal Documents</span><span class="ar-t">الوثائق القانونية</span><span class="cn-t">法律文件</span>
+    </div>
+    <h1 class="legal-title">
+      <span class="en">Privacy Policy &amp;<br>Terms of Service</span>
+      <span class="ar-t">سياسة الخصوصية<br>وشروط الخدمة</span>
+      <span class="cn-t">隐私政策与<br>服务条款</span>
+    </h1>
+    <p class="legal-updated">
+      <span class="en">Last updated: July 25, 2026 · Effective immediately · Applies to alserawan.com</span>
+      <span class="ar-t">آخر تحديث: 25 يوليو 2026 · سارية فوراً · تنطبق على alserawan.com</span>
+      <span class="cn-t">最后更新：2026年7月25日 · 即时生效 · 适用于 alserawan.com</span>
+    </p>
   </div>
 
   <div class="legal-lang-note">
-    <strong>Language note:</strong> This document is provided in English as the governing version. Arabic and Chinese translations are for reference only. In case of any conflict, the English version prevails.
-    <br><br>
-    <strong>ملاحظة:</strong> هذه الوثيقة باللغة الإنجليزية هي النسخة المرجعية. الترجمة العربية والصينية لأغراض المعلومات فقط.
+    <span class="en"><strong>Language note:</strong> This document is provided in English as the governing version. Arabic and Chinese translations are for reference only. In case of any conflict, the English version prevails.</span>
+    <span class="ar-t"><strong>ملاحظة لغوية:</strong> هذه الوثيقة باللغة الإنجليزية هي النسخة المرجعية الرسمية. الترجمة العربية والصينية لأغراض المعلومات فقط. في حالة أي تعارض، تسود النسخة الإنجليزية.</span>
+    <span class="cn-t"><strong>语言说明：</strong>本文件以英文版本为准。阿拉伯文和中文译本仅供参考。如有任何冲突，以英文版本为准。</span>
   </div>
 
   <!-- TABLE OF CONTENTS -->
   <div class="legal-toc">
-    <a href="#privacy">Privacy Policy</a>
-    <a href="#data-collection">Data We Collect</a>
-    <a href="#data-use">How We Use It</a>
-    <a href="#data-sharing">Data Sharing</a>
-    <a href="#cookies">Cookies</a>
-    <a href="#rights">Your Rights</a>
-    <a href="#terms">Terms of Service</a>
-    <a href="#services">Our Services</a>
-    <a href="#shipping">Shipping Terms</a>
-    <a href="#liability">Liability</a>
-    <a href="#governing">Governing Law</a>
-    <a href="#contact-legal">Contact</a>
+    <a href="#privacy"><span class="en">Privacy Policy</span><span class="ar-t">سياسة الخصوصية</span><span class="cn-t">隐私政策</span></a>
+    <a href="#data-collection"><span class="en">Data We Collect</span><span class="ar-t">البيانات التي نجمع</span><span class="cn-t">数据收集</span></a>
+    <a href="#data-use"><span class="en">How We Use It</span><span class="ar-t">كيف نستخدمها</span><span class="cn-t">数据使用</span></a>
+    <a href="#data-sharing"><span class="en">Data Sharing</span><span class="ar-t">مشاركة البيانات</span><span class="cn-t">数据共享</span></a>
+    <a href="#cookies"><span class="en">Cookies</span><span class="ar-t">ملفات الارتباط</span><span class="cn-t">Cookie</span></a>
+    <a href="#rights"><span class="en">Your Rights</span><span class="ar-t">حقوقك</span><span class="cn-t">您的权利</span></a>
+    <a href="#terms"><span class="en">Terms of Service</span><span class="ar-t">شروط الخدمة</span><span class="cn-t">服务条款</span></a>
+    <a href="#services"><span class="en">Our Services</span><span class="ar-t">خدماتنا</span><span class="cn-t">服务范围</span></a>
+    <a href="#shipping"><span class="en">Shipping Terms</span><span class="ar-t">شروط الشحن</span><span class="cn-t">运输条款</span></a>
+    <a href="#liability"><span class="en">Liability</span><span class="ar-t">المسؤولية</span><span class="cn-t">责任限制</span></a>
+    <a href="#governing"><span class="en">Governing Law</span><span class="ar-t">القانون الحاكم</span><span class="cn-t">适用法律</span></a>
+    <a href="#contact-legal"><span class="en">Contact</span><span class="ar-t">تواصل</span><span class="cn-t">联系我们</span></a>
   </div>
 
   <!-- ══════════════════ PRIVACY POLICY ══════════════════ -->
   <div class="legal-section" id="privacy">
-    <div class="legal-section-tag">Part One</div>
-    <h2>Privacy Policy</h2>
-    <p>Al Serawan Group and its subsidiary Max Worldwide Mastering L.L.C ("MWM", "we", "us", "our") are committed to protecting your personal information. This Privacy Policy explains what data we collect, why we collect it, how we use it, and your rights regarding that data.</p>
-    <p>This policy applies to all users of <strong>alserawan.com</strong> and any registration forms, tracking tools, or contact methods provided through our platform.</p>
+    <div class="legal-section-tag"><span class="en">Part One</span><span class="ar-t">الجزء الأول</span><span class="cn-t">第一部分</span></div>
+    <h2><span class="en">Privacy Policy</span><span class="ar-t">سياسة الخصوصية</span><span class="cn-t">隐私政策</span></h2>
+    <p>
+      <span class="en">Al Serawan Group and its subsidiary Max Worldwide Mastering L.L.C ("MWM", "we", "us", "our") are committed to protecting your personal information. This Privacy Policy explains what data we collect, why we collect it, how we use it, and your rights regarding that data.</span>
+      <span class="ar-t">مجموعة السيروان وشركتها التابعة ماكس وورلدوايد ماسترينغ ("MWM"، "نحن"، "لنا") ملتزمة بحماية معلوماتك الشخصية. توضح سياسة الخصوصية هذه البيانات التي نجمعها، وسبب جمعها، وكيفية استخدامها، وحقوقك المتعلقة بها.</span>
+      <span class="cn-t">阿尔塞拉万集团及其子公司 Max Worldwide Mastering L.L.C（"MWM"、"我们"）致力于保护您的个人信息。本隐私政策说明我们收集哪些数据、为何收集、如何使用，以及您对相关数据的权利。</span>
+    </p>
+    <p>
+      <span class="en">This policy applies to all users of <strong>alserawan.com</strong> and any registration forms, tracking tools, or contact methods provided through our platform.</span>
+      <span class="ar-t">تنطبق هذه السياسة على جميع مستخدمي <strong>alserawan.com</strong> وأي نماذج تسجيل أو أدوات تتبع أو وسائل تواصل متاحة عبر منصتنا.</span>
+      <span class="cn-t">本政策适用于 <strong>alserawan.com</strong> 的所有用户，包括通过本平台提交的任何注册表、追踪工具或联系方式。</span>
+    </p>
   </div>
 
   <div class="legal-section" id="data-collection">
-    <div class="legal-section-tag">Privacy — Section 1</div>
-    <h2>Data We Collect</h2>
+    <div class="legal-section-tag"><span class="en">Privacy — Section 1</span><span class="ar-t">الخصوصية — القسم 1</span><span class="cn-t">隐私 — 第1条</span></div>
+    <h2><span class="en">Data We Collect</span><span class="ar-t">البيانات التي نجمعها</span><span class="cn-t">我们收集的数据</span></h2>
 
-    <h3>Information you provide directly</h3>
+    <h3><span class="en">Information you provide directly</span><span class="ar-t">المعلومات التي تقدمها مباشرةً</span><span class="cn-t">您直接提供的信息</span></h3>
     <ul>
-      <li>Full name, company name, job title</li>
-      <li>Email address and phone number</li>
-      <li>Country and city of operation</li>
-      <li>Product descriptions, quantities, and shipping requirements (Sourcing Requests)</li>
-      <li>Company registration details and trade licences (Supplier & Freight registrations)</li>
-      <li>Shipment tracking numbers (Tracking page)</li>
-      <li>Messages submitted via contact and feedback forms</li>
+      <li><span class="en">Full name, company name, job title</span><span class="ar-t">الاسم الكامل، اسم الشركة، المسمى الوظيفي</span><span class="cn-t">全名、公司名称、职位</span></li>
+      <li><span class="en">Email address and phone number</span><span class="ar-t">البريد الإلكتروني ورقم الهاتف</span><span class="cn-t">电子邮件地址和电话号码</span></li>
+      <li><span class="en">Country and city of operation</span><span class="ar-t">البلد والمدينة التي تعمل فيها</span><span class="cn-t">所在国家和城市</span></li>
+      <li><span class="en">Product descriptions, quantities, and shipping requirements (Sourcing Requests)</span><span class="ar-t">أوصاف المنتجات والكميات ومتطلبات الشحن (طلبات التوريد)</span><span class="cn-t">产品描述、数量及运输需求（采购请求）</span></li>
+      <li><span class="en">Company registration details and trade licences (Supplier &amp; Freight registrations)</span><span class="ar-t">تفاصيل تسجيل الشركة والتراخيص التجارية (تسجيلات الموردين والشحن)</span><span class="cn-t">公司注册信息和贸易许可证（供应商与货代注册）</span></li>
+      <li><span class="en">Shipment tracking numbers (Tracking page)</span><span class="ar-t">أرقام تتبع الشحنات (صفحة التتبع)</span><span class="cn-t">货物追踪号码（追踪页面）</span></li>
+      <li><span class="en">Messages submitted via contact and feedback forms</span><span class="ar-t">الرسائل المرسلة عبر نماذج الاتصال والتغذية الراجعة</span><span class="cn-t">通过联系和反馈表提交的消息</span></li>
     </ul>
 
-    <h3>Information collected automatically</h3>
+    <h3><span class="en">Information collected automatically</span><span class="ar-t">المعلومات التي تُجمع تلقائياً</span><span class="cn-t">自动收集的信息</span></h3>
     <ul>
-      <li>Browser type and device information</li>
-      <li>Pages visited and time spent on site</li>
-      <li>Referring URL (how you arrived at our site)</li>
-      <li>IP address and approximate location (country/city level)</li>
+      <li><span class="en">Browser type and device information</span><span class="ar-t">نوع المتصفح ومعلومات الجهاز</span><span class="cn-t">浏览器类型和设备信息</span></li>
+      <li><span class="en">Pages visited and time spent on site</span><span class="ar-t">الصفحات المزارة والوقت المقضي في الموقع</span><span class="cn-t">访问的页面及停留时间</span></li>
+      <li><span class="en">Referring URL (how you arrived at our site)</span><span class="ar-t">رابط الإحالة (كيف وصلت إلى موقعنا)</span><span class="cn-t">引荐来源URL（您如何访问本站）</span></li>
+      <li><span class="en">IP address and approximate location (country/city level)</span><span class="ar-t">عنوان IP والموقع التقريبي (على مستوى البلد/المدينة)</span><span class="cn-t">IP地址及大致位置（国家/城市级别）</span></li>
     </ul>
 
-    <h3>Information we do not collect</h3>
+    <h3><span class="en">Information we do not collect</span><span class="ar-t">المعلومات التي لا نجمعها</span><span class="cn-t">我们不收集的信息</span></h3>
     <ul>
-      <li>Payment card numbers or banking details</li>
-      <li>Government-issued ID numbers</li>
-      <li>Biometric data</li>
-      <li>Data from minors under 18 years of age</li>
+      <li><span class="en">Payment card numbers or banking details</span><span class="ar-t">أرقام بطاقات الدفع أو التفاصيل المصرفية</span><span class="cn-t">支付卡号或银行信息</span></li>
+      <li><span class="en">Government-issued ID numbers</span><span class="ar-t">أرقام الهوية الحكومية</span><span class="cn-t">政府颁发的身份证号码</span></li>
+      <li><span class="en">Biometric data</span><span class="ar-t">البيانات البيومترية</span><span class="cn-t">生物特征数据</span></li>
+      <li><span class="en">Data from minors under 18 years of age</span><span class="ar-t">بيانات من هم دون 18 عاماً</span><span class="cn-t">18岁以下未成年人的数据</span></li>
     </ul>
   </div>
 
   <div class="legal-section" id="data-use">
-    <div class="legal-section-tag">Privacy — Section 2</div>
-    <h2>How We Use Your Data</h2>
-    <p>We use your information strictly for legitimate business and operational purposes:</p>
+    <div class="legal-section-tag"><span class="en">Privacy — Section 2</span><span class="ar-t">الخصوصية — القسم 2</span><span class="cn-t">隐私 — 第2条</span></div>
+    <h2><span class="en">How We Use Your Data</span><span class="ar-t">كيف نستخدم بياناتك</span><span class="cn-t">我们如何使用您的数据</span></h2>
+    <p>
+      <span class="en">We use your information strictly for legitimate business and operational purposes:</span>
+      <span class="ar-t">نستخدم معلوماتك حصراً لأغراض تجارية وتشغيلية مشروعة:</span>
+      <span class="cn-t">我们仅将您的信息用于合法的商业和运营目的：</span>
+    </p>
     <ul>
-      <li><strong>Processing your requests</strong> — Sourcing, freight, and supplier registrations require your data to connect you with the right parties and deliver our services.</li>
-      <li><strong>Shipment tracking</strong> — Tracking numbers and associated order data are used to provide real-time shipment status.</li>
-      <li><strong>Communication</strong> — We use your contact details to respond to enquiries, send quotations, and provide service updates.</li>
-      <li><strong>Improving our services</strong> — Aggregate, anonymised usage data helps us understand how the site is used and improve the user experience.</li>
-      <li><strong>Legal compliance</strong> — We may use data to comply with customs authorities, shipping regulations, and applicable law in China and other jurisdictions we operate in.</li>
+      <li>
+        <span class="en"><strong>Processing your requests</strong> — Sourcing, freight, and supplier registrations require your data to connect you with the right parties and deliver our services.</span>
+        <span class="ar-t"><strong>معالجة طلباتك</strong> — تسجيلات التوريد والشحن والموردين تستلزم بياناتك لربطك بالأطراف المناسبة وتقديم خدماتنا.</span>
+        <span class="cn-t"><strong>处理您的请求</strong> — 采购、货运和供应商注册需要您的数据，以便将您与合适的合作方对接并交付服务。</span>
+      </li>
+      <li>
+        <span class="en"><strong>Shipment tracking</strong> — Tracking numbers and associated order data are used to provide real-time shipment status.</span>
+        <span class="ar-t"><strong>تتبع الشحنات</strong> — تُستخدم أرقام التتبع وبيانات الطلبات المرتبطة لتوفير حالة الشحنة في الوقت الفعلي.</span>
+        <span class="cn-t"><strong>货物追踪</strong> — 追踪号码和相关订单数据用于提供实时货物状态。</span>
+      </li>
+      <li>
+        <span class="en"><strong>Communication</strong> — We use your contact details to respond to enquiries, send quotations, and provide service updates.</span>
+        <span class="ar-t"><strong>التواصل</strong> — نستخدم بيانات اتصالك للرد على الاستفسارات وإرسال عروض الأسعار وتحديثات الخدمة.</span>
+        <span class="cn-t"><strong>沟通联系</strong> — 我们使用您的联系方式回复咨询、发送报价和提供服务更新。</span>
+      </li>
+      <li>
+        <span class="en"><strong>Improving our services</strong> — Aggregate, anonymised usage data helps us understand how the site is used and improve the user experience.</span>
+        <span class="ar-t"><strong>تحسين خدماتنا</strong> — تساعدنا البيانات المجمّعة وغير المحددة الهوية على فهم كيفية استخدام الموقع وتحسين تجربة المستخدم.</span>
+        <span class="cn-t"><strong>改善服务</strong> — 汇总匿名使用数据帮助我们了解网站使用情况并提升用户体验。</span>
+      </li>
+      <li>
+        <span class="en"><strong>Legal compliance</strong> — We may use data to comply with customs authorities, shipping regulations, and applicable law in China and other jurisdictions we operate in.</span>
+        <span class="ar-t"><strong>الامتثال القانوني</strong> — قد نستخدم البيانات للامتثال لسلطات الجمارك ولوائح الشحن والقوانين المعمول بها في الصين وغيرها من الولايات القضائية التي نعمل فيها.</span>
+        <span class="cn-t"><strong>法律合规</strong> — 我们可能使用数据以遵守海关当局、运输法规以及中国及其他运营地区的适用法律。</span>
+      </li>
     </ul>
-    <p>We do <strong>not</strong> sell, rent, or trade your personal data. We do not use your data for unsolicited marketing without your prior consent.</p>
+    <p>
+      <span class="en">We do <strong>not</strong> sell, rent, or trade your personal data. We do not use your data for unsolicited marketing without your prior consent.</span>
+      <span class="ar-t">لا نبيع بياناتك الشخصية ولا نؤجرها ولا نتاجر بها. ولا نستخدم بياناتك في التسويق غير المرغوب فيه دون موافقتك المسبقة.</span>
+      <span class="cn-t">我们<strong>不会</strong>出售、出租或交易您的个人数据。未经您事先同意，我们不会将您的数据用于未经请求的营销活动。</span>
+    </p>
   </div>
 
   <div class="legal-section" id="data-sharing">
-    <div class="legal-section-tag">Privacy — Section 3</div>
-    <h2>Data Sharing</h2>
-    <p>We may share your data only in the following limited circumstances:</p>
+    <div class="legal-section-tag"><span class="en">Privacy — Section 3</span><span class="ar-t">الخصوصية — القسم 3</span><span class="cn-t">隐私 — 第3条</span></div>
+    <h2><span class="en">Data Sharing</span><span class="ar-t">مشاركة البيانات</span><span class="cn-t">数据共享</span></h2>
+    <p>
+      <span class="en">We may share your data only in the following limited circumstances:</span>
+      <span class="ar-t">قد نشارك بياناتك في الحالات المحدودة التالية فقط:</span>
+      <span class="cn-t">我们仅在以下有限情况下共享您的数据：</span>
+    </p>
 
-    <h3>Operational partners</h3>
-    <p>To fulfil your sourcing or shipping request, relevant details (product specifications, quantities, destination) may be shared with verified suppliers, freight partners, or customs agents. We only share what is operationally necessary.</p>
+    <h3><span class="en">Operational partners</span><span class="ar-t">الشركاء التشغيليون</span><span class="cn-t">运营合作伙伴</span></h3>
+    <p>
+      <span class="en">To fulfil your sourcing or shipping request, relevant details (product specifications, quantities, destination) may be shared with verified suppliers, freight partners, or customs agents. We only share what is operationally necessary.</span>
+      <span class="ar-t">لتنفيذ طلب التوريد أو الشحن الخاص بك، قد تُشارَك التفاصيل ذات الصلة (مواصفات المنتج والكميات والوجهة) مع موردين معتمدين أو شركاء شحن أو وكلاء جمارك. نشارك فقط ما هو ضروري تشغيلياً.</span>
+      <span class="cn-t">为履行您的采购或运输请求，相关详情（产品规格、数量、目的地）可能与经过验证的供应商、货运合作伙伴或报关代理共享。我们仅共享运营所必需的信息。</span>
+    </p>
 
-    <h3>Service providers</h3>
-    <p>We use <strong>Google Workspace</strong> (Forms, Sheets) to manage form submissions and data storage. These services are governed by Google's privacy policy. No data is shared with any other third-party platform without your knowledge.</p>
+    <h3><span class="en">Service providers</span><span class="ar-t">مزودو الخدمات</span><span class="cn-t">服务提供商</span></h3>
+    <p>
+      <span class="en">We use <strong>Google Workspace</strong> (Forms, Sheets) to manage form submissions and data storage. These services are governed by Google's privacy policy. No data is shared with any other third-party platform without your knowledge.</span>
+      <span class="ar-t">نستخدم <strong>Google Workspace</strong> (النماذج وجداول البيانات) لإدارة تقديم النماذج وتخزين البيانات. تخضع هذه الخدمات لسياسة خصوصية Google. لا تُشارَك أي بيانات مع أي منصة طرف ثالث أخرى دون علمك.</span>
+      <span class="cn-t">我们使用 <strong>Google Workspace</strong>（表单、表格）管理表单提交和数据存储。这些服务受Google隐私政策约束。未经您知晓，不会与任何其他第三方平台共享数据。</span>
+    </p>
 
-    <h3>Legal requirements</h3>
-    <p>We may disclose data if required by law, court order, or governmental authority in China, Syria, or any other jurisdiction where we operate.</p>
+    <h3><span class="en">Legal requirements</span><span class="ar-t">المتطلبات القانونية</span><span class="cn-t">法律要求</span></h3>
+    <p>
+      <span class="en">We may disclose data if required by law, court order, or governmental authority in China, Syria, or any other jurisdiction where we operate.</span>
+      <span class="ar-t">قد نُفصح عن البيانات إذا اقتضى ذلك القانون أو أمر المحكمة أو السلطة الحكومية في الصين أو سوريا أو أي ولاية قضائية أخرى نعمل فيها.</span>
+      <span class="cn-t">如中国、叙利亚或我们运营的任何其他司法管辖区的法律、法院命令或政府机构要求，我们可能披露数据。</span>
+    </p>
 
-    <h3>Business transfers</h3>
-    <p>In the event of a merger, acquisition, or sale of our business, your data may be transferred as part of that transaction. We will notify you in advance of any such change.</p>
+    <h3><span class="en">Business transfers</span><span class="ar-t">نقل الأعمال</span><span class="cn-t">业务转让</span></h3>
+    <p>
+      <span class="en">In the event of a merger, acquisition, or sale of our business, your data may be transferred as part of that transaction. We will notify you in advance of any such change.</span>
+      <span class="ar-t">في حالة الاندماج أو الاستحواذ أو بيع أعمالنا، قد تُنقل بياناتك كجزء من تلك المعاملة. سنخطرك مسبقاً بأي تغيير من هذا القبيل.</span>
+      <span class="cn-t">如发生合并、收购或出售业务，您的数据可能作为交易的一部分被转让。我们将提前通知您任何此类变更。</span>
+    </p>
   </div>
 
   <div class="legal-section" id="cookies">
-    <div class="legal-section-tag">Privacy — Section 4</div>
-    <h2>Cookies &amp; Local Storage</h2>
-    <p>Our website uses minimal browser storage for functional purposes only:</p>
+    <div class="legal-section-tag"><span class="en">Privacy — Section 4</span><span class="ar-t">الخصوصية — القسم 4</span><span class="cn-t">隐私 — 第4条</span></div>
+    <h2><span class="en">Cookies &amp; Local Storage</span><span class="ar-t">ملفات الارتباط والتخزين المحلي</span><span class="cn-t">Cookie与本地存储</span></h2>
+    <p>
+      <span class="en">Our website uses minimal browser storage for functional purposes only:</span>
+      <span class="ar-t">يستخدم موقعنا الإلكتروني الحد الأدنى من تخزين المتصفح للأغراض الوظيفية فقط:</span>
+      <span class="cn-t">我们的网站仅出于功能目的使用最少量的浏览器存储：</span>
+    </p>
     <ul>
-      <li><strong>Language preference</strong> — We store your selected language (English / Arabic / Chinese) in browser localStorage so it persists across pages. No tracking cookies are set.</li>
-      <li><strong>No advertising cookies</strong> — We do not use Google AdSense, Facebook Pixel, or any advertising tracking technologies on this site.</li>
-      <li><strong>No third-party analytics cookies</strong> — We do not currently run cookie-based analytics (e.g. Google Analytics with cookies).</li>
+      <li>
+        <span class="en"><strong>Language preference</strong> — We store your selected language (English / Arabic / Chinese) in browser localStorage so it persists across pages. No tracking cookies are set.</span>
+        <span class="ar-t"><strong>تفضيل اللغة</strong> — نحفظ لغتك المختارة (إنجليزي / عربي / صيني) في ذاكرة المتصفح المحلية لتستمر عبر الصفحات. لا يتم تعيين ملفات تتبع.</span>
+        <span class="cn-t"><strong>语言偏好</strong> — 我们将您选择的语言（英文/阿拉伯文/中文）存储在浏览器localStorage中，以便在页面间保持。不设置追踪Cookie。</span>
+      </li>
+      <li>
+        <span class="en"><strong>No advertising cookies</strong> — We do not use Google AdSense, Facebook Pixel, or any advertising tracking technologies on this site.</span>
+        <span class="ar-t"><strong>لا ملفات إعلانية</strong> — لا نستخدم Google AdSense أو Facebook Pixel أو أي تقنيات تتبع إعلانية على هذا الموقع.</span>
+        <span class="cn-t"><strong>无广告Cookie</strong> — 我们不在本网站使用Google AdSense、Facebook Pixel或任何广告追踪技术。</span>
+      </li>
+      <li>
+        <span class="en"><strong>No third-party analytics cookies</strong> — We do not currently run cookie-based analytics (e.g. Google Analytics with cookies).</span>
+        <span class="ar-t"><strong>لا ملفات تحليل طرف ثالث</strong> — لا نشغّل حالياً تحليلات قائمة على ملفات الارتباط (مثل Google Analytics بالكوكيز).</span>
+        <span class="cn-t"><strong>无第三方分析Cookie</strong> — 我们目前不运行基于Cookie的分析（如带Cookie的Google Analytics）。</span>
+      </li>
     </ul>
-    <p>You can clear your browser's localStorage at any time through your browser settings. This will reset your language preference to English.</p>
+    <p>
+      <span class="en">You can clear your browser's localStorage at any time through your browser settings. This will reset your language preference to English.</span>
+      <span class="ar-t">يمكنك مسح ذاكرة المتصفح المحلية في أي وقت من خلال إعدادات المتصفح. سيؤدي ذلك إلى إعادة تعيين تفضيل اللغة إلى الإنجليزية.</span>
+      <span class="cn-t">您可以随时通过浏览器设置清除localStorage。这将把语言偏好重置为英文。</span>
+    </p>
   </div>
 
   <div class="legal-section" id="rights">
-    <div class="legal-section-tag">Privacy — Section 5</div>
-    <h2>Your Rights</h2>
-    <p>Depending on your country of residence, you may have the following rights regarding your personal data:</p>
+    <div class="legal-section-tag"><span class="en">Privacy — Section 5</span><span class="ar-t">الخصوصية — القسم 5</span><span class="cn-t">隐私 — 第5条</span></div>
+    <h2><span class="en">Your Rights</span><span class="ar-t">حقوقك</span><span class="cn-t">您的权利</span></h2>
+    <p>
+      <span class="en">Depending on your country of residence, you may have the following rights regarding your personal data:</span>
+      <span class="ar-t">بحسب بلد إقامتك، قد تتمتع بالحقوق التالية فيما يتعلق ببياناتك الشخصية:</span>
+      <span class="cn-t">根据您的居住国，您可能对您的个人数据享有以下权利：</span>
+    </p>
     <ul>
-      <li><strong>Access</strong> — Request a copy of the personal data we hold about you.</li>
-      <li><strong>Correction</strong> — Request correction of inaccurate or incomplete data.</li>
-      <li><strong>Deletion</strong> — Request deletion of your personal data, subject to any legal obligations we must fulfil.</li>
-      <li><strong>Objection</strong> — Object to processing of your data for specific purposes.</li>
-      <li><strong>Data portability</strong> — Request your data in a structured, machine-readable format.</li>
+      <li>
+        <span class="en"><strong>Access</strong> — Request a copy of the personal data we hold about you.</span>
+        <span class="ar-t"><strong>الوصول</strong> — طلب نسخة من البيانات الشخصية التي نحتفظ بها عنك.</span>
+        <span class="cn-t"><strong>访问权</strong> — 请求获取我们持有的您的个人数据副本。</span>
+      </li>
+      <li>
+        <span class="en"><strong>Correction</strong> — Request correction of inaccurate or incomplete data.</span>
+        <span class="ar-t"><strong>التصحيح</strong> — طلب تصحيح البيانات غير الدقيقة أو غير المكتملة.</span>
+        <span class="cn-t"><strong>更正权</strong> — 请求更正不准确或不完整的数据。</span>
+      </li>
+      <li>
+        <span class="en"><strong>Deletion</strong> — Request deletion of your personal data, subject to any legal obligations we must fulfil.</span>
+        <span class="ar-t"><strong>الحذف</strong> — طلب حذف بياناتك الشخصية، مع مراعاة أي التزامات قانونية يجب علينا الوفاء بها.</span>
+        <span class="cn-t"><strong>删除权</strong> — 请求删除您的个人数据，但须遵守我们必须履行的法律义务。</span>
+      </li>
+      <li>
+        <span class="en"><strong>Objection</strong> — Object to processing of your data for specific purposes.</span>
+        <span class="ar-t"><strong>الاعتراض</strong> — الاعتراض على معالجة بياناتك لأغراض محددة.</span>
+        <span class="cn-t"><strong>反对权</strong> — 对特定目的的数据处理提出异议。</span>
+      </li>
+      <li>
+        <span class="en"><strong>Data portability</strong> — Request your data in a structured, machine-readable format.</span>
+        <span class="ar-t"><strong>قابلية نقل البيانات</strong> — طلب بياناتك بتنسيق منظم وقابل للقراءة آلياً.</span>
+        <span class="cn-t"><strong>数据可携带权</strong> — 以结构化、机器可读的格式请求您的数据。</span>
+      </li>
     </ul>
-    <p>To exercise any of these rights, contact us at <a href="mailto:info.mwm@alserawan.com" style="color:var(--lime)">info.mwm@alserawan.com</a>. We will respond within 14 business days.</p>
+    <p>
+      <span class="en">To exercise any of these rights, contact us at <a href="mailto:info.mwm@alserawan.com" style="color:var(--lime)">info.mwm@alserawan.com</a>. We will respond within 14 business days.</span>
+      <span class="ar-t">لممارسة أي من هذه الحقوق، تواصل معنا على <a href="mailto:info.mwm@alserawan.com" style="color:var(--lime)">info.mwm@alserawan.com</a>. سنرد خلال 14 يوم عمل.</span>
+      <span class="cn-t">如需行使上述任何权利，请通过 <a href="mailto:info.mwm@alserawan.com" style="color:var(--lime)">info.mwm@alserawan.com</a> 联系我们。我们将在14个工作日内回复。</span>
+    </p>
 
-    <h3>Data Retention</h3>
-    <p>We retain your personal data for as long as necessary to provide our services and comply with legal obligations — typically no longer than 5 years from your last interaction with us. Shipment records may be retained longer for customs and regulatory compliance.</p>
+    <h3><span class="en">Data Retention</span><span class="ar-t">الاحتفاظ بالبيانات</span><span class="cn-t">数据保留</span></h3>
+    <p>
+      <span class="en">We retain your personal data for as long as necessary to provide our services and comply with legal obligations — typically no longer than 5 years from your last interaction with us. Shipment records may be retained longer for customs and regulatory compliance.</span>
+      <span class="ar-t">نحتفظ ببياناتك الشخصية طالما كان ذلك ضرورياً لتقديم خدماتنا والامتثال للالتزامات القانونية — عادةً لا يتجاوز 5 سنوات من آخر تفاعل لك معنا. قد يتم الاحتفاظ بسجلات الشحن لفترة أطول للامتثال الجمركي والتنظيمي.</span>
+      <span class="cn-t">我们保留您的个人数据的时间以提供服务和遵守法律义务所必需为准——通常不超过您最后一次与我们互动后5年。运输记录可能因海关和监管合规要求而保留更长时间。</span>
+    </p>
   </div>
 
   <!-- DIVIDER -->
-  <div class="legal-divider"><span>Terms of Service</span></div>
+  <div class="legal-divider">
+    <span><span class="en">Terms of Service</span><span class="ar-t">شروط الخدمة</span><span class="cn-t">服务条款</span></span>
+  </div>
 
   <!-- ══════════════════ TERMS OF SERVICE ══════════════════ -->
   <div class="legal-section" id="terms">
-    <div class="legal-section-tag">Part Two</div>
-    <h2>Terms of Service</h2>
-    <p>These Terms of Service ("Terms") govern your use of the alserawan.com website and any services provided by Al Serawan Group and Max Worldwide Mastering L.L.C ("MWM"). By using our website or submitting any registration or request form, you agree to these Terms in full.</p>
-    <p>If you do not agree to these Terms, please do not use our website or services.</p>
+    <div class="legal-section-tag"><span class="en">Part Two</span><span class="ar-t">الجزء الثاني</span><span class="cn-t">第二部分</span></div>
+    <h2><span class="en">Terms of Service</span><span class="ar-t">شروط الخدمة</span><span class="cn-t">服务条款</span></h2>
+    <p>
+      <span class="en">These Terms of Service ("Terms") govern your use of the alserawan.com website and any services provided by Al Serawan Group and Max Worldwide Mastering L.L.C ("MWM"). By using our website or submitting any registration or request form, you agree to these Terms in full.</span>
+      <span class="ar-t">تحكم شروط الخدمة هذه ("الشروط") استخدامك لموقع alserawan.com وأي خدمات تقدمها مجموعة السيروان وMWM. باستخدامك لموقعنا أو تقديم أي نموذج تسجيل أو طلب، فأنت توافق على هذه الشروط كاملةً.</span>
+      <span class="cn-t">本服务条款（"条款"）规范您对 alserawan.com 网站及阿尔塞拉万集团和MWM所提供服务的使用。使用本网站或提交任何注册或申请表，即表示您完全同意本条款。</span>
+    </p>
+    <p>
+      <span class="en">If you do not agree to these Terms, please do not use our website or services.</span>
+      <span class="ar-t">إذا كنت لا توافق على هذه الشروط، يرجى عدم استخدام موقعنا أو خدماتنا.</span>
+      <span class="cn-t">如果您不同意本条款，请勿使用我们的网站或服务。</span>
+    </p>
   </div>
 
   <div class="legal-section" id="services">
-    <div class="legal-section-tag">Terms — Section 1</div>
-    <h2>Our Services</h2>
-    <p>Al Serawan Group and MWM provide the following services, subject to separate service agreements where applicable:</p>
+    <div class="legal-section-tag"><span class="en">Terms — Section 1</span><span class="ar-t">الشروط — القسم 1</span><span class="cn-t">条款 — 第1条</span></div>
+    <h2><span class="en">Our Services</span><span class="ar-t">خدماتنا</span><span class="cn-t">我们的服务</span></h2>
+    <p>
+      <span class="en">Al Serawan Group and MWM provide the following services, subject to separate service agreements where applicable:</span>
+      <span class="ar-t">تقدم مجموعة السيروان وMWM الخدمات التالية، وفقاً لاتفاقيات خدمة منفصلة حيثما ينطبق ذلك:</span>
+      <span class="cn-t">阿尔塞拉万集团和MWM提供以下服务，在适用情况下须另签服务协议：</span>
+    </p>
     <ul>
-      <li>Product sourcing and procurement from China (primarily Yiwu) to MENA markets</li>
-      <li>International freight coordination — air, sea, and land</li>
-      <li>Customs clearance and documentation support</li>
-      <li>Warehousing and third-party logistics (3PL)</li>
-      <li>Supplier and freight partner network registration</li>
-      <li>Commercial brokerage and trade representation</li>
-      <li>Business consulting and market research</li>
-      <li>Automotive and heavy equipment trading</li>
+      <li><span class="en">Product sourcing and procurement from China (primarily Yiwu) to MENA markets</span><span class="ar-t">تحديد مصادر المنتجات وشرائها من الصين (في المقام الأول يوو) إلى أسواق منطقة الشرق الأوسط وشمال أفريقيا</span><span class="cn-t">从中国（主要是义乌）向中东北非市场进行产品采购</span></li>
+      <li><span class="en">International freight coordination — air, sea, and land</span><span class="ar-t">تنسيق الشحن الدولي — جواً وبحراً وبراً</span><span class="cn-t">国际货运协调——空运、海运和陆运</span></li>
+      <li><span class="en">Customs clearance and documentation support</span><span class="ar-t">التخليص الجمركي ودعم التوثيق</span><span class="cn-t">报关和单据支持</span></li>
+      <li><span class="en">Warehousing and third-party logistics (3PL)</span><span class="ar-t">التخزين واللوجستيات من طرف ثالث (3PL)</span><span class="cn-t">仓储和第三方物流（3PL）</span></li>
+      <li><span class="en">Supplier and freight partner network registration</span><span class="ar-t">تسجيل شبكة الموردين وشركاء الشحن</span><span class="cn-t">供应商和货运合作伙伴网络注册</span></li>
+      <li><span class="en">Commercial brokerage and trade representation</span><span class="ar-t">الوساطة التجارية والتمثيل التجاري</span><span class="cn-t">商业经纪和贸易代理</span></li>
+      <li><span class="en">Business consulting and market research</span><span class="ar-t">الاستشارات التجارية وأبحاث السوق</span><span class="cn-t">商业咨询和市场研究</span></li>
+      <li><span class="en">Automotive and heavy equipment trading</span><span class="ar-t">تجارة السيارات والمعدات الثقيلة</span><span class="cn-t">汽车和重型设备贸易</span></li>
     </ul>
-    <p>All services are subject to availability, applicable regulations, and separate written agreements between MWM and the client. Submission of a form on this website constitutes an enquiry only and does not constitute a binding contract.</p>
+    <p>
+      <span class="en">All services are subject to availability, applicable regulations, and separate written agreements between MWM and the client. Submission of a form on this website constitutes an enquiry only and does not constitute a binding contract.</span>
+      <span class="ar-t">تخضع جميع الخدمات للتوفر واللوائح المعمول بها والاتفاقيات المكتوبة المنفصلة بين MWM والعميل. تقديم نموذج على هذا الموقع يُعدّ استفساراً فقط ولا يُشكّل عقداً ملزماً.</span>
+      <span class="cn-t">所有服务均须视供应情况、适用法规以及MWM与客户之间另签的书面协议而定。在本网站提交表单仅构成询价，不构成具有约束力的合同。</span>
+    </p>
 
-    <h3>Free Services</h3>
-    <p>Registration as a Sourcing Client, Freight Partner, or Supplier on this website is currently free of charge. We reserve the right to introduce fees for premium listings or services with 30 days' advance notice.</p>
+    <h3><span class="en">Free Services</span><span class="ar-t">الخدمات المجانية</span><span class="cn-t">免费服务</span></h3>
+    <p>
+      <span class="en">Registration as a Sourcing Client, Freight Partner, or Supplier on this website is currently free of charge. We reserve the right to introduce fees for premium listings or services with 30 days' advance notice.</span>
+      <span class="ar-t">التسجيل كعميل توريد أو شريك شحن أو مورّد على هذا الموقع مجاني حالياً. نحتفظ بالحق في تقديم رسوم للقوائم أو الخدمات المميزة مع إشعار مسبق لمدة 30 يوماً.</span>
+      <span class="cn-t">目前，在本网站注册为采购客户、货运合作伙伴或供应商是免费的。我们保留在提前30天通知的情况下对高级列表或服务收费的权利。</span>
+    </p>
   </div>
 
   <div class="legal-section" id="shipping">
-    <div class="legal-section-tag">Terms — Section 2</div>
-    <h2>Shipping &amp; Sourcing Terms</h2>
+    <div class="legal-section-tag"><span class="en">Terms — Section 2</span><span class="ar-t">الشروط — القسم 2</span><span class="cn-t">条款 — 第2条</span></div>
+    <h2><span class="en">Shipping &amp; Sourcing Terms</span><span class="ar-t">شروط الشحن والتوريد</span><span class="cn-t">运输与采购条款</span></h2>
 
-    <h3>Quotations</h3>
-    <p>All price quotations provided by MWM are estimates based on information provided by the client. Final pricing is confirmed in writing before any order is placed. Quotes are valid for 7 calendar days unless otherwise stated.</p>
+    <h3><span class="en">Quotations</span><span class="ar-t">عروض الأسعار</span><span class="cn-t">报价</span></h3>
+    <p>
+      <span class="en">All price quotations provided by MWM are estimates based on information provided by the client. Final pricing is confirmed in writing before any order is placed. Quotes are valid for 7 calendar days unless otherwise stated.</span>
+      <span class="ar-t">جميع عروض الأسعار المقدمة من MWM تقديرية بناءً على المعلومات التي يقدمها العميل. يُؤكَّد التسعير النهائي كتابةً قبل تقديم أي طلب. تسري عروض الأسعار لمدة 7 أيام تقويمية ما لم يُذكر خلاف ذلك.</span>
+      <span class="cn-t">MWM提供的所有价格报价均为基于客户提供信息的估算。最终价格在下单前以书面形式确认。报价有效期为7个日历日，另有说明除外。</span>
+    </p>
 
-    <h3>Order confirmation</h3>
-    <p>A sourcing or shipping order is only confirmed upon receipt of written confirmation from MWM and, where applicable, receipt of an agreed deposit or full payment. MWM reserves the right to decline any order at its sole discretion.</p>
+    <h3><span class="en">Order confirmation</span><span class="ar-t">تأكيد الطلب</span><span class="cn-t">订单确认</span></h3>
+    <p>
+      <span class="en">A sourcing or shipping order is only confirmed upon receipt of written confirmation from MWM and, where applicable, receipt of an agreed deposit or full payment. MWM reserves the right to decline any order at its sole discretion.</span>
+      <span class="ar-t">لا يُؤكَّد طلب التوريد أو الشحن إلا عند استلام تأكيد مكتوب من MWM وعند الاقتضاء استلام دفعة مقدمة متفق عليها أو السداد الكامل. تحتفظ MWM بالحق في رفض أي طلب وفق تقديرها المطلق.</span>
+      <span class="cn-t">采购或运输订单须在收到MWM的书面确认以及（如适用）收到约定定金或全额付款后方可确认。MWM保留自行决定拒绝任何订单的权利。</span>
+    </p>
 
-    <h3>Delivery timelines</h3>
-    <p>Estimated delivery times are provided in good faith based on typical transit times and supplier lead times. MWM is not liable for delays caused by:</p>
+    <h3><span class="en">Delivery timelines</span><span class="ar-t">مواعيد التسليم</span><span class="cn-t">交货时间</span></h3>
+    <p>
+      <span class="en">Estimated delivery times are provided in good faith based on typical transit times and supplier lead times. MWM is not liable for delays caused by:</span>
+      <span class="ar-t">تُقدَّم أوقات التسليم المقدرة بحسن نية بناءً على أوقات العبور النموذجية ومهل تسليم الموردين. لا تتحمل MWM المسؤولية عن التأخيرات الناجمة عن:</span>
+      <span class="cn-t">预计交货时间系基于典型运输时间和供应商交货期善意提供。MWM不对以下原因造成的延误负责：</span>
+    </p>
     <ul>
-      <li>Customs clearance hold-ups in any country</li>
-      <li>Force majeure events (natural disasters, port strikes, pandemics, war)</li>
-      <li>Supplier or carrier delays beyond MWM's direct control</li>
-      <li>Inaccurate or incomplete information provided by the client</li>
+      <li><span class="en">Customs clearance hold-ups in any country</span><span class="ar-t">تأخيرات التخليص الجمركي في أي بلد</span><span class="cn-t">任何国家的海关通关延误</span></li>
+      <li><span class="en">Force majeure events (natural disasters, port strikes, pandemics, war)</span><span class="ar-t">أحداث القوة القاهرة (الكوارث الطبيعية وإضرابات الموانئ والأوبئة والحرب)</span><span class="cn-t">不可抗力事件（自然灾害、港口罢工、疫情、战争）</span></li>
+      <li><span class="en">Supplier or carrier delays beyond MWM's direct control</span><span class="ar-t">تأخيرات الموردين أو الناقلين خارج نطاق سيطرة MWM المباشرة</span><span class="cn-t">MWM直接控制范围之外的供应商或承运人延误</span></li>
+      <li><span class="en">Inaccurate or incomplete information provided by the client</span><span class="ar-t">معلومات غير دقيقة أو غير مكتملة مقدمة من العميل</span><span class="cn-t">客户提供的信息不准确或不完整</span></li>
     </ul>
 
-    <h3>Quality inspection</h3>
-    <p>Where included in the agreed service, MWM will conduct or arrange pre-shipment quality inspection. MWM's inspection is conducted on a sample basis and does not guarantee the quality of the entire shipment. Clients are advised to specify quality standards in writing before order confirmation.</p>
+    <h3><span class="en">Quality inspection</span><span class="ar-t">فحص الجودة</span><span class="cn-t">质量检验</span></h3>
+    <p>
+      <span class="en">Where included in the agreed service, MWM will conduct or arrange pre-shipment quality inspection. MWM's inspection is conducted on a sample basis and does not guarantee the quality of the entire shipment. Clients are advised to specify quality standards in writing before order confirmation.</span>
+      <span class="ar-t">إذا كان ذلك مدرجاً في الخدمة المتفق عليها، ستُجري MWM أو ترتب لإجراء فحص جودة ما قبل الشحن. يُجرى فحص MWM على أساس عينات ولا يضمن جودة الشحنة بأكملها. يُنصح العملاء بتحديد معايير الجودة كتابةً قبل تأكيد الطلب.</span>
+      <span class="cn-t">如协议服务中包含此项，MWM将进行或安排装运前质量检验。MWM的检验以抽样方式进行，不保证整批货物的质量。建议客户在确认订单前以书面形式规定质量标准。</span>
+    </p>
 
-    <h3>Client responsibilities</h3>
-    <p>The client is responsible for:</p>
+    <h3><span class="en">Client responsibilities</span><span class="ar-t">مسؤوليات العميل</span><span class="cn-t">客户责任</span></h3>
+    <p><span class="en">The client is responsible for:</span><span class="ar-t">يتحمل العميل مسؤولية:</span><span class="cn-t">客户须负责：</span></p>
     <ul>
-      <li>Ensuring that the products requested comply with import regulations in their country</li>
-      <li>Providing accurate delivery addresses, consignee details, and import licences where required</li>
-      <li>Paying all applicable import duties, taxes, and customs fees at the destination</li>
-      <li>Notifying MWM of any special handling, storage, or regulatory requirements in advance</li>
+      <li><span class="en">Ensuring that the products requested comply with import regulations in their country</span><span class="ar-t">التأكد من أن المنتجات المطلوبة تمتثل للوائح الاستيراد في بلدهم</span><span class="cn-t">确保所请求的产品符合其所在国的进口法规</span></li>
+      <li><span class="en">Providing accurate delivery addresses, consignee details, and import licences where required</span><span class="ar-t">تقديم عناوين تسليم دقيقة وتفاصيل المرسل إليه وتراخيص الاستيراد عند الاقتضاء</span><span class="cn-t">提供准确的交货地址、收货人信息以及所需的进口许可证</span></li>
+      <li><span class="en">Paying all applicable import duties, taxes, and customs fees at the destination</span><span class="ar-t">دفع جميع رسوم الاستيراد والضرائب والرسوم الجمركية المعمول بها في وجهة الوصول</span><span class="cn-t">支付目的地所有适用的进口关税、税款和海关费用</span></li>
+      <li><span class="en">Notifying MWM of any special handling, storage, or regulatory requirements in advance</span><span class="ar-t">إخطار MWM مسبقاً بأي متطلبات خاصة للمناولة أو التخزين أو التنظيم</span><span class="cn-t">提前通知MWM任何特殊搬运、存储或监管要求</span></li>
     </ul>
   </div>
 
   <div class="legal-section" id="liability">
-    <div class="legal-section-tag">Terms — Section 3</div>
-    <h2>Limitation of Liability</h2>
-    <p>To the maximum extent permitted by applicable law:</p>
+    <div class="legal-section-tag"><span class="en">Terms — Section 3</span><span class="ar-t">الشروط — القسم 3</span><span class="cn-t">条款 — 第3条</span></div>
+    <h2><span class="en">Limitation of Liability</span><span class="ar-t">حدود المسؤولية</span><span class="cn-t">责任限制</span></h2>
+    <p><span class="en">To the maximum extent permitted by applicable law:</span><span class="ar-t">إلى أقصى حد يسمح به القانون المعمول به:</span><span class="cn-t">在适用法律允许的最大范围内：</span></p>
     <ul>
-      <li>MWM's total liability for any claim arising from our services shall not exceed the amount paid by the client for the specific service giving rise to the claim.</li>
-      <li>MWM is not liable for indirect, consequential, or special damages including loss of profit, loss of business, or reputational damage.</li>
-      <li>MWM acts as an intermediary and agent in many sourcing and shipping transactions. Liability for goods in transit is governed by the applicable carrier's terms and any cargo insurance in place.</li>
-      <li>This website and its content are provided "as is" without warranties of any kind. MWM does not warrant that the site will be available at all times or free from errors.</li>
+      <li>
+        <span class="en">MWM's total liability for any claim arising from our services shall not exceed the amount paid by the client for the specific service giving rise to the claim.</span>
+        <span class="ar-t">لا تتجاوز المسؤولية الإجمالية لـ MWM عن أي مطالبة ناشئة عن خدماتنا المبلغ الذي دفعه العميل مقابل الخدمة المحددة التي أدت إلى المطالبة.</span>
+        <span class="cn-t">MWM因服务引起的任何索赔的总责任不超过客户为引发索赔的具体服务所支付的金额。</span>
+      </li>
+      <li>
+        <span class="en">MWM is not liable for indirect, consequential, or special damages including loss of profit, loss of business, or reputational damage.</span>
+        <span class="ar-t">لا تتحمل MWM المسؤولية عن الأضرار غير المباشرة أو التبعية أو الخاصة بما فيها فقدان الأرباح أو الأعمال أو الضرر بالسمعة.</span>
+        <span class="cn-t">MWM不对间接、后果性或特殊损害负责，包括利润损失、业务损失或声誉损害。</span>
+      </li>
+      <li>
+        <span class="en">MWM acts as an intermediary and agent in many sourcing and shipping transactions. Liability for goods in transit is governed by the applicable carrier's terms and any cargo insurance in place.</span>
+        <span class="ar-t">تعمل MWM بوصفها وسيطاً ووكيلاً في كثير من معاملات التوريد والشحن. تخضع المسؤولية عن البضائع أثناء النقل لشروط الناقل المعمول بها وأي تأمين شحن سارٍ.</span>
+        <span class="cn-t">MWM在许多采购和运输交易中充当中介和代理人。运输途中货物的责任由适用承运人的条款和任何货物保险规定。</span>
+      </li>
+      <li>
+        <span class="en">This website and its content are provided "as is" without warranties of any kind. MWM does not warrant that the site will be available at all times or free from errors.</span>
+        <span class="ar-t">يُقدَّم هذا الموقع ومحتواه "كما هو" دون أي ضمانات من أي نوع. لا تضمن MWM أن يكون الموقع متاحاً في جميع الأوقات أو خالياً من الأخطاء.</span>
+        <span class="cn-t">本网站及其内容以"现状"提供，不附任何形式的保证。MWM不保证网站随时可用或无任何错误。</span>
+      </li>
     </ul>
 
-    <h3>Cargo Insurance</h3>
-    <p>MWM strongly recommends that clients arrange cargo insurance for all shipments. MWM can assist in arranging insurance upon request. In the absence of cargo insurance, MWM's liability for lost or damaged goods is limited to the carrier's standard liability terms.</p>
+    <h3><span class="en">Cargo Insurance</span><span class="ar-t">تأمين الشحن</span><span class="cn-t">货物保险</span></h3>
+    <p>
+      <span class="en">MWM strongly recommends that clients arrange cargo insurance for all shipments. MWM can assist in arranging insurance upon request. In the absence of cargo insurance, MWM's liability for lost or damaged goods is limited to the carrier's standard liability terms.</span>
+      <span class="ar-t">توصي MWM بشدة بأن يرتب العملاء تأمين شحن لجميع الشحنات. يمكن لـ MWM المساعدة في ترتيب التأمين عند الطلب. في غياب تأمين الشحن، تقتصر مسؤولية MWM عن البضائع المفقودة أو التالفة على شروط المسؤولية القياسية للناقل.</span>
+      <span class="cn-t">MWM强烈建议客户为所有货物安排货物保险。MWM可应要求协助安排保险。在没有货物保险的情况下，MWM对丢失或损坏货物的责任仅限于承运人的标准责任条款。</span>
+    </p>
   </div>
 
   <div class="legal-section" id="governing">
-    <div class="legal-section-tag">Terms — Section 4</div>
-    <h2>Governing Law &amp; Dispute Resolution</h2>
-    <p>These Terms are governed by the laws of the <strong>People's Republic of China</strong>, without regard to its conflict of law provisions. All transactions conducted through our Yiwu entity (义乌镘旺国际贸易有限公司) are subject to Chinese law.</p>
+    <div class="legal-section-tag"><span class="en">Terms — Section 4</span><span class="ar-t">الشروط — القسم 4</span><span class="cn-t">条款 — 第4条</span></div>
+    <h2><span class="en">Governing Law &amp; Dispute Resolution</span><span class="ar-t">القانون الحاكم وحل النزاعات</span><span class="cn-t">适用法律与争议解决</span></h2>
+    <p>
+      <span class="en">These Terms are governed by the laws of the <strong>People's Republic of China</strong>, without regard to its conflict of law provisions. All transactions conducted through our Yiwu entity (义乌镘旺国际贸易有限公司) are subject to Chinese law.</span>
+      <span class="ar-t">تخضع هذه الشروط لقوانين <strong>جمهورية الصين الشعبية</strong>، بصرف النظر عن أحكام تعارض القوانين فيها. تخضع جميع المعاملات التي تُجرى من خلال كياننا في يوو (义乌镘旺国际贸易有限公司) للقانون الصيني.</span>
+      <span class="cn-t">本条款受<strong>中华人民共和国</strong>法律管辖，不考虑其法律冲突条款。通过我们义乌实体（义乌镘旺国际贸易有限公司）进行的所有交易均受中国法律约束。</span>
+    </p>
 
-    <h3>Dispute resolution</h3>
-    <p>In the event of any dispute, the parties agree to first attempt resolution through good-faith negotiation. If no resolution is reached within 30 days, disputes shall be referred to arbitration under the rules of the <strong>China International Economic and Trade Arbitration Commission (CIETAC)</strong>, or such other body as mutually agreed in writing.</p>
+    <h3><span class="en">Dispute resolution</span><span class="ar-t">حل النزاعات</span><span class="cn-t">争议解决</span></h3>
+    <p>
+      <span class="en">In the event of any dispute, the parties agree to first attempt resolution through good-faith negotiation. If no resolution is reached within 30 days, disputes shall be referred to arbitration under the rules of the <strong>China International Economic and Trade Arbitration Commission (CIETAC)</strong>, or such other body as mutually agreed in writing.</span>
+      <span class="ar-t">في حالة أي نزاع، يتفق الطرفان على محاولة الحل أولاً عبر التفاوض بحسن نية. إذا لم يُتوصل إلى حل خلال 30 يوماً، يُحال النزاع إلى التحكيم وفق قواعد <strong>هيئة التحكيم الاقتصادي والتجاري الدولي الصينية (CIETAC)</strong>، أو أي هيئة أخرى يُتفق عليها كتابةً.</span>
+      <span class="cn-t">如发生任何争议，双方同意首先通过善意协商解决。如在30天内未能解决，争议应提交<strong>中国国际经济贸易仲裁委员会（CIETAC）</strong>按照其规则进行仲裁，或提交双方书面同意的其他机构。</span>
+    </p>
 
-    <h3>Amendments</h3>
-    <p>MWM reserves the right to update these Terms at any time. Changes will be published on this page with an updated effective date. Continued use of our website or services after changes are posted constitutes acceptance of the revised Terms.</p>
+    <h3><span class="en">Amendments</span><span class="ar-t">التعديلات</span><span class="cn-t">修改条款</span></h3>
+    <p>
+      <span class="en">MWM reserves the right to update these Terms at any time. Changes will be published on this page with an updated effective date. Continued use of our website or services after changes are posted constitutes acceptance of the revised Terms.</span>
+      <span class="ar-t">تحتفظ MWM بالحق في تحديث هذه الشروط في أي وقت. ستُنشر التغييرات على هذه الصفحة مع تاريخ نفاذ محدَّث. يُعدّ الاستمرار في استخدام موقعنا أو خدماتنا بعد نشر التغييرات قبولاً للشروط المعدلة.</span>
+      <span class="cn-t">MWM保留随时更新本条款的权利。变更将在本页面发布并附更新后的生效日期。在变更发布后继续使用我们的网站或服务即表示接受修订后的条款。</span>
+    </p>
 
-    <h3>Severability</h3>
-    <p>If any provision of these Terms is found to be unenforceable by a court of competent jurisdiction, the remaining provisions shall continue in full force and effect.</p>
+    <h3><span class="en">Severability</span><span class="ar-t">قابلية الفصل</span><span class="cn-t">可分割性</span></h3>
+    <p>
+      <span class="en">If any provision of these Terms is found to be unenforceable by a court of competent jurisdiction, the remaining provisions shall continue in full force and effect.</span>
+      <span class="ar-t">إذا وجدت محكمة ذات اختصاص أن أي حكم من أحكام هذه الشروط غير قابل للتنفيذ، تستمر الأحكام المتبقية في السريان والنفاذ الكاملين.</span>
+      <span class="cn-t">如有管辖权的法院认定本条款的任何条文不可执行，其余条文应继续完全有效。</span>
+    </p>
   </div>
 
   <!-- CONTACT -->
   <div class="legal-section" id="contact-legal">
-    <div class="legal-section-tag">Contact</div>
-    <h2>Legal &amp; Privacy Contact</h2>
-    <p>For any questions, requests, or concerns regarding this Privacy Policy or Terms of Service, please contact us:</p>
+    <div class="legal-section-tag"><span class="en">Contact</span><span class="ar-t">تواصل</span><span class="cn-t">联系</span></div>
+    <h2><span class="en">Legal &amp; Privacy Contact</span><span class="ar-t">التواصل القانوني والخصوصية</span><span class="cn-t">法律与隐私联系方式</span></h2>
+    <p>
+      <span class="en">For any questions, requests, or concerns regarding this Privacy Policy or Terms of Service, please contact us:</span>
+      <span class="ar-t">لأي أسئلة أو طلبات أو مخاوف بشأن سياسة الخصوصية هذه أو شروط الخدمة، يرجى التواصل معنا:</span>
+      <span class="cn-t">如对本隐私政策或服务条款有任何疑问、请求或关切，请联系我们：</span>
+    </p>
     <div class="legal-contact-box">
-      <h3>Al Serawan Group — Legal & Privacy</h3>
+      <h3><span class="en">Al Serawan Group — Legal &amp; Privacy</span><span class="ar-t">مجموعة السيروان — القانوني والخصوصية</span><span class="cn-t">阿尔塞拉万集团 — 法律与隐私</span></h3>
       <p>
-        <strong>Email:</strong> <a href="mailto:info.mwm@alserawan.com">info.mwm@alserawan.com</a><br>
+        <strong><span class="en">Email</span><span class="ar-t">البريد الإلكتروني</span><span class="cn-t">电子邮件</span>:</strong> <a href="mailto:info.mwm@alserawan.com">info.mwm@alserawan.com</a><br>
         <strong>WhatsApp:</strong> <a href="https://wa.me/963994483331">+963 994 483 331</a><br>
-        <strong>Yiwu Office:</strong> Room 301, No. 5, Building 9, Wuji Village, Futian Street, Yiwu City, Zhejiang, China<br>
-        <strong>Response time:</strong> Within 14 business days for data requests · Within 3 business days for general enquiries
+        <strong><span class="en">Yiwu Office</span><span class="ar-t">مكتب يوو</span><span class="cn-t">义乌办公室</span>:</strong> <span class="en">Room 301, No. 5, Building 9, Wuji Village, Futian Street, Yiwu City, Zhejiang, China</span><span class="ar-t">غرفة 301، رقم 5، مبنى 9، قرية وجي، شارع فوتيان، مدينة يوو، تشيجيانغ، الصين</span><span class="cn-t">中国浙江省义乌市福田街道吴基村9幢5号301室</span><br>
+        <strong><span class="en">Response time</span><span class="ar-t">وقت الاستجابة</span><span class="cn-t">响应时间</span>:</strong> <span class="en">Within 14 business days for data requests · Within 3 business days for general enquiries</span><span class="ar-t">خلال 14 يوم عمل لطلبات البيانات · خلال 3 أيام عمل للاستفسارات العامة</span><span class="cn-t">数据请求14个工作日内 · 一般咨询3个工作日内</span>
       </p>
     </div>
   </div>
@@ -325,27 +519,33 @@
 <footer>
   <div class="footer-in">
     <div>
-      <div class="footer-logo"><img id="ph-__IMG_LOGO-2" src="" alt="MWM" data-imgvar="__IMG_LOGO" style="height:36px"></div>
+      <div class="footer-logo"><img id="ph-__IMG_LOGO-2" src="" alt="MWM" data-imgvar="__IMG_LOGO_ICON" style="height:36px"></div>
       <div class="footer-logo-sub"><span class="en">al serawan group · Since 1999</span><span class="ar-t">مجموعة السيروان · منذ 1999</span><span class="cn-t">阿尔塞拉万集团 · 自1999年</span></div>
     </div>
-    <div>
-      <div class="footer-col-t"><span class="en">Quick Links</span><span class="ar-t">روابط سريعة</span><span class="cn-t">快速链接</span></div>
+    <div class="footer-col">
+      <h4><span class="en">Quick Links</span><span class="ar-t">روابط سريعة</span><span class="cn-t">快速链接</span></h4>
       <a href="../about/"><span class="en">About Us</span><span class="ar-t">من نحن</span><span class="cn-t">关于我们</span></a>
       <a href="../services/"><span class="en">Services</span><span class="ar-t">الخدمات</span><span class="cn-t">服务</span></a>
       <a href="../logistics/register/"><span class="en">Register</span><span class="ar-t">سجّل</span><span class="cn-t">注册</span></a>
       <a href="../contact/"><span class="en">Contact</span><span class="ar-t">اتصل بنا</span><span class="cn-t">联系我们</span></a>
-      <a href="../legal/" style="color:var(--lime)"><span class="en">Legal</span><span class="ar-t">القانونية</span><span class="cn-t">法律</span></a>
     </div>
-    <div>
-      <div class="footer-col-t"><span class="en">Contact</span><span class="ar-t">تواصل</span><span class="cn-t">联系</span></div>
+    <div class="footer-col">
+      <h4><span class="en">Legal</span><span class="ar-t">قانوني</span><span class="cn-t">法务</span></h4>
+      <a href="../legal/"><span class="en">Privacy Policy</span><span class="ar-t">سياسة الخصوصية</span><span class="cn-t">隐私政策</span></a>
+      <a href="../legal/"><span class="en">Terms of Service</span><span class="ar-t">شروط الخدمة</span><span class="cn-t">服务条款</span></a>
+    </div>
+    <div class="footer-col">
+      <h4><span class="en">Contact</span><span class="ar-t">تواصل</span><span class="cn-t">联系</span></h4>
       <a href="mailto:info.mwm@alserawan.com">info.mwm@alserawan.com</a>
       <a href="https://wa.me/963994483331">WhatsApp</a>
     </div>
   </div>
-  <div class="footer-b">
-    <span class="en">© 2026 Al Serawan Group. All rights reserved. · <a href="../legal/" style="color:var(--muted);text-decoration:none">Privacy & Terms</a></span>
-    <span class="ar-t">© 2026 مجموعة السيروان. جميع الحقوق محفوظة.</span>
-    <span class="cn-t">© 2026 阿尔塞拉万集团。保留所有权利。</span>
+  <div class="footer-bot">
+    <div class="footer-copy">
+      <span class="en">© 2026 al serawan group · 义乌镘旺国际贸易有限公司 · Yiwu, Zhejiang, China · <a href="../legal/" style="color:var(--muted);text-decoration:none;font-size:.75em">Privacy &amp; Terms</a></span>
+      <span class="ar-t">© 2026 مجموعة السيروان · 义乌镘旺国际贸易有限公司 · يوو، تشيجيانغ، الصين</span>
+      <span class="cn-t">© 2026 阿尔塞拉万集团 · 义乌镘旺国际贸易有限公司 · 中国浙江义乌</span>
+    </div>
   </div>
 </footer>
 <script>var SITE_ROOT="../";var CURRENT_PAGE="legal";</script>
