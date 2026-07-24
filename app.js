@@ -439,7 +439,7 @@ function jumpSvc(n){
 }
 function dlProfile(e){
   e.preventDefault();
-  alert('Company Profile PDF\n\nTo receive the full company profile, please contact us:\n\n📧 info.mwm@alserawan.com\n📱 +963 994 483 331 (UAE)\n💬 WeChat: wxid_xbg1ew2vblr812');
+  alert('Company Profile PDF\n\nTo receive the full company profile, please contact us:\n\n📧 info.mwm@alserawan.com\n📱 +963 994 483 331\n💬 WeChat: wxid_xbg1ew2vblr812');
 }
 
 
