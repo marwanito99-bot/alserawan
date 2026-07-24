@@ -1179,3 +1179,14 @@ body.ar .hr-fill{animation-direction:reverse}
   .hr-fill{animation:none;width:100%}
   .btn-b:hover,.btn-l:hover,.btn-o:hover{transform:none}
 }
+
+/* — NAV TRACKING LINK — */
+.nav-track{display:flex!important;flex-direction:column;gap:0;line-height:1;padding:4px 0}
+.nav-track .en,.nav-track .ar-t,.nav-track .cn-t{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--lime)!important;font-weight:700;line-height:1}
+.nav-track-sub{font-size:.45rem;letter-spacing:.09em;text-transform:uppercase;color:rgba(204,253,27,.4);border-top:1px solid rgba(204,253,27,.2);padding-top:3px;margin-top:4px;display:block}
+
+/* — HERO TRACKING BUTTON — */
+.btn-track{padding:.68rem 1.4rem;background:transparent;border:1px solid rgba(204,253,27,.3);display:inline-flex;flex-direction:column;align-items:center;gap:0;text-decoration:none;cursor:pointer;transition:border-color .25s ease,background .25s ease}
+.btn-track:hover{border-color:rgba(204,253,27,.7);background:rgba(204,253,27,.05)}
+.btn-track-main{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lime);line-height:1;font-family:inherit}
+.btn-track-sub{font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(204,253,27,.45);border-top:1px solid rgba(204,253,27,.2);padding-top:3px;margin-top:4px}
