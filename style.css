@@ -1105,3 +1105,77 @@ input[type=file]{display:none}
 .fw-spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--lime);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .fw-loading-txt{font-size:.8rem;color:var(--muted);letter-spacing:.1em}
+
+
+/* ═══════════════════════════════════════════════════
+   DESIGN REFINEMENTS v2 — Precision & Visual Polish
+   ═══════════════════════════════════════════════════ */
+
+/* — Global transition upgrade — */
+.btn-b,.btn-l,.btn-o{
+  transition:transform .28s cubic-bezier(.25,.46,.45,.94),
+             background .22s ease,border-color .22s ease,
+             opacity .22s ease,box-shadow .3s ease}
+.btn-b:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.4)}
+.btn-l:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(204,253,27,.16);opacity:1}
+.btn-o:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.3)}
+.nav-links a{transition:color .18s cubic-bezier(.25,.46,.45,.94)}
+.co-spot-row{transition:background .22s cubic-bezier(.25,.46,.45,.94)}
+.co-spot-expand{transition:max-height .5s cubic-bezier(.4,0,.2,1)}
+
+/* — Lime restraint: ticker dots → barely-there — */
+.td{background:rgba(255,255,255,.2);width:3px;height:3px}
+
+/* — Stats: remove lime gradient → blue glow — */
+.stat::after{background:linear-gradient(90deg,transparent,rgba(29,0,244,.3),transparent)}
+.stat:hover{background:rgba(29,0,244,.035)}
+
+/* — Register hub cards: glow hover, not heavy lift — */
+.rg-card{transition:transform .3s cubic-bezier(.25,.46,.45,.94),border-color .3s ease,background .3s ease,box-shadow .3s ease}
+.rg-card:hover{transform:translateY(-5px);box-shadow:0 24px 64px rgba(29,0,244,.14)}
+.rg-card.lime-card:hover{box-shadow:0 24px 64px rgba(204,253,27,.08)}
+
+/* — Photo band: richer contrast treatment — */
+.pb-item img{filter:brightness(.68) saturate(1.25) contrast(1.08)}
+.pb-item:hover img{transform:scale(1.04);filter:brightness(.82) saturate(1.2)}
+.pb-item{transition:filter .35s ease}
+
+/* — Core values: SVG icon container — */
+.val-ico{width:34px;height:34px;margin-bottom:.8rem;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.08);background:rgba(29,0,244,.07);font-size:0}
+.val-ico svg{width:18px;height:18px;stroke:rgba(204,253,27,.75);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.val{transition:background .25s cubic-bezier(.25,.46,.45,.94)}
+.val:hover .val-ico{border-color:rgba(204,253,27,.25);background:rgba(204,253,27,.06)}
+
+/* — HERO ROUTE — Trade lane: the signature element — */
+.hero-route{display:flex;align-items:center;justify-content:center;gap:0;margin-top:2.6rem;animation:fu 1s .65s ease both}
+.hr-point{display:flex;flex-direction:column;align-items:center;gap:.55rem}
+.hr-dot{width:7px;height:7px;border-radius:50%;border:1.5px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06)}
+.hr-dot-dest{border-color:rgba(204,253,27,.8);background:var(--lime);box-shadow:0 0 12px rgba(204,253,27,.5),0 0 24px rgba(204,253,27,.2)}
+.hr-label{font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.25);white-space:nowrap}
+.hr-line{flex:1;min-width:120px;max-width:240px;height:1px;background:rgba(255,255,255,.07);margin:0 .8rem;margin-top:-1.3rem;position:relative;overflow:hidden}
+.hr-fill{position:absolute;inset:0;width:0;background:linear-gradient(90deg,rgba(29,0,244,.8),rgba(204,253,27,.6));animation:hrFill 2.4s 1.5s cubic-bezier(.25,.46,.45,.94) forwards}
+@keyframes hrFill{to{width:100%}}
+body.ar .hr-fill{animation-direction:reverse}
+
+/* — Section wrap: more generous breathing room — */
+.wrap{padding:6.5rem 3.5rem}
+
+/* — Hero title: stronger weight — */
+.hero-title{font-weight:800}
+
+/* — Scroll hint: more refined — */
+.hero-scroll-txt{font-size:.52rem;color:rgba(255,255,255,.25);letter-spacing:.22em}
+.hero-scroll-line{height:44px;background:linear-gradient(to bottom,rgba(255,255,255,.3),transparent)}
+
+/* — Nav: slightly crisper — */
+.nav-links{gap:1.6rem}
+
+/* — Image divider quote: larger, bolder — */
+.img-divider-title{font-size:clamp(1.4rem,2.8vw,2.2rem);font-weight:300;font-style:italic;letter-spacing:.01em;line-height:1.4;opacity:.92}
+.img-divider-tag{color:rgba(204,253,27,.75)}
+
+/* — Reduced motion respect — */
+@media(prefers-reduced-motion:reduce){
+  .hr-fill{animation:none;width:100%}
+  .btn-b:hover,.btn-l:hover,.btn-o:hover{transform:none}
+}

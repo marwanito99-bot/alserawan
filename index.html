@@ -76,7 +76,7 @@
     <a href="companies/"><span class="en">Companies</span><span class="ar-t">الشركات</span><span class="cn-t">公司</span></a>
     <a href="about/"><span class="en">About Us</span><span class="ar-t">من نحن</span><span class="cn-t">关于我们</span></a>
     <a href="services/"><span class="en">Services</span><span class="ar-t">الخدمات</span><span class="cn-t">服务</span></a>
-    <a href="tracking/" style="color:var(--lime)!important"><span class="en">Monitoring</span><span class="ar-t">التتبع</span><span class="cn-t">监控</span></a>
+    <a href="tracking/"><span class="en">Monitoring</span><span class="ar-t">التتبع</span><span class="cn-t">监控</span></a>
     <a href="feedback/"><span class="en">Feedback</span><span class="ar-t">آراء العملاء</span><span class="cn-t">客户评价</span></a>
     <a href="news/"><span class="en">News</span><span class="ar-t">الأخبار</span><span class="cn-t">新闻</span></a>
     <a href="careers/"><span class="en">Careers</span><span class="ar-t">وظائف</span><span class="cn-t">招聘</span></a>
@@ -101,11 +101,21 @@
     <h1 class="hero-title">Al <span class="hl">Serawan</span><br>Group</h1>
     <p class="hero-sub"><span class="en">of Companies</span><span class="cn-t">旗下公司</span><span class="ar-t">مجموعة الشركات</span></p>
     <div class="hero-btns">
+      <a href="logistics/register/" class="btn-l"><span class="en">Join Our Network</span><span class="ar-t">انضم لشبكتنا</span><span class="cn-t">加入我们的网络</span></a>
       <button class="btn-b" onclick="goto('companies')"><span class="en">Explore Companies</span><span class="ar-t">استعرض الشركات</span><span class="cn-t">探索旗下公司</span></button>
-      <button class="btn-l" onclick="dlProfile(event)"><span class="en">Company Profile ↗</span><span class="ar-t">ملف الشركة ↗</span><span class="cn-t">公司简介 ↗</span></button>
-      <button class="btn-o" onclick="goto('contact')"><span class="en">Contact Us</span><span class="ar-t">تواصل معنا</span><span class="cn-t">联系我们</span></button>
-      <a href="tracking/" class="btn-o" style="border-color:var(--lime);color:var(--lime)">🔍 <span class="en">Track Your Container</span><span class="ar-t">تتبع حاويتك</span><span class="cn-t">追踪集装箱</span></a>
-      <a href="logistics/register/" class="btn-o" style="border-color:rgba(204,253,27,.4);color:var(--lime)">🤝 <span class="en">Join Our Network</span><span class="ar-t">انضم لشبكتنا</span><span class="cn-t">加入我们的网络</span></a>
+      <button class="btn-o" onclick="dlProfile(event)"><span class="en">Company Profile ↓</span><span class="ar-t">ملف الشركة ↓</span><span class="cn-t">公司简介 ↓</span></button>
+    </div>
+    <!-- TRADE ROUTE — China to Gulf signature element -->
+    <div class="hero-route" aria-hidden="true">
+      <div class="hr-point">
+        <div class="hr-dot"></div>
+        <div class="hr-label">义乌 · Yiwu</div>
+      </div>
+      <div class="hr-line"><div class="hr-fill"></div></div>
+      <div class="hr-point">
+        <div class="hr-dot hr-dot-dest"></div>
+        <div class="hr-label"><span class="en">Gulf · خليج</span><span class="ar-t">الخليج</span><span class="cn-t">海湾</span></div>
+      </div>
     </div>
   </div>
   <div class="hero-scroll-hint"><div class="hero-scroll-txt"><span class="en">Scroll</span></div><div class="hero-scroll-line"></div></div>
@@ -250,10 +260,10 @@
     <div>
       <p class="sec-tag" style="margin-bottom:1rem"><span class="en">Core Values</span><span class="ar-t">قيمنا</span><span class="cn-t">核心价值观</span></p>
       <div class="vals reveal-right">
-        <div class="val"><div class="val-ico">⚡</div><div class="val-n"><span class="en">Fast</span><span class="ar-t">السرعة</span><span class="cn-t">快速</span></div><div class="val-t"><span class="en">Speed at every step of delivery</span><span class="ar-t">السرعة في كل خطوة</span><span class="cn-t">交付每一步都追求速度</span></div></div>
-        <div class="val"><div class="val-ico">🔍</div><div class="val-n"><span class="en">Transparent</span><span class="ar-t">الشفافية</span><span class="cn-t">透明</span></div><div class="val-t"><span class="en">Open, clear communication always</span><span class="ar-t">تواصل صريح وواضح دائماً</span><span class="cn-t">始终保持开放、清晰的沟通</span></div></div>
-        <div class="val"><div class="val-ico">🛡</div><div class="val-n"><span class="en">Safe</span><span class="ar-t">الأمان</span><span class="cn-t">安全</span></div><div class="val-t"><span class="en">Secure, compliant operations</span><span class="ar-t">عمليات آمنة ومتوافقة</span><span class="cn-t">安全、合规的运营</span></div></div>
-        <div class="val"><div class="val-ico">🎯</div><div class="val-n"><span class="en">Professional</span><span class="ar-t">الاحترافية</span><span class="cn-t">专业</span></div><div class="val-t"><span class="en">Highest standards, no compromise</span><span class="ar-t">أعلى المعايير بلا تنازل</span><span class="cn-t">最高标准，绝不妥协</span></div></div>
+        <div class="val"><div class="val-ico"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div><div class="val-n"><span class="en">Fast</span><span class="ar-t">السرعة</span><span class="cn-t">快速</span></div><div class="val-t"><span class="en">Speed at every step of delivery</span><span class="ar-t">السرعة في كل خطوة</span><span class="cn-t">交付每一步都追求速度</span></div></div>
+        <div class="val"><div class="val-ico"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div><div class="val-n"><span class="en">Transparent</span><span class="ar-t">الشفافية</span><span class="cn-t">透明</span></div><div class="val-t"><span class="en">Open, clear communication always</span><span class="ar-t">تواصل صريح وواضح دائماً</span><span class="cn-t">始终保持开放、清晰的沟通</span></div></div>
+        <div class="val"><div class="val-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="val-n"><span class="en">Safe</span><span class="ar-t">الأمان</span><span class="cn-t">安全</span></div><div class="val-t"><span class="en">Secure, compliant operations</span><span class="ar-t">عمليات آمنة ومتوافقة</span><span class="cn-t">安全、合规的运营</span></div></div>
+        <div class="val"><div class="val-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><div class="val-n"><span class="en">Professional</span><span class="ar-t">الاحترافية</span><span class="cn-t">专业</span></div><div class="val-t"><span class="en">Highest standards, no compromise</span><span class="ar-t">أعلى المعايير بلا تنازل</span><span class="cn-t">最高标准，绝不妥协</span></div></div>
       </div>
       <div style="background:var(--dark3);border:1px solid var(--border);padding:1.5rem;margin-top:1.5rem;border-left:3px solid var(--lime)">
         <p class="sec-tag" style="margin-bottom:.5rem"><span class="en">Vision</span><span class="ar-t">رؤيتنا</span><span class="cn-t">愿景</span></p>
