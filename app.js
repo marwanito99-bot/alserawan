@@ -71,6 +71,25 @@ else mwmLoadImages();
 })();
 
 
+function toggleNav(){
+  var ham=document.getElementById('navHam');
+  var links=document.getElementById('navLinks');
+  if(!ham||!links) return;
+  var open=ham.classList.toggle('open');
+  links.classList.toggle('open',open);
+  document.body.style.overflow=open?'hidden':'';
+}
+// Close nav on link click (mobile)
+document.addEventListener('click',function(e){
+  var links=document.getElementById('navLinks');
+  var ham=document.getElementById('navHam');
+  if(!links||!ham) return;
+  if(links.classList.contains('open')&&e.target.closest('a')&&e.target.closest('#navLinks')){
+    ham.classList.remove('open');
+    links.classList.remove('open');
+    document.body.style.overflow='';
+  }
+});
 function setLang(l){
   document.body.classList.remove('ar','cn');
   if(l==='ar') document.body.classList.add('ar');
