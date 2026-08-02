@@ -216,7 +216,8 @@ window.gcRender=function(){
     var en=gcGetEn(d.ar);
     return '<div style="background:var(--dark2);border:1px solid var(--border);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px;transition:border-color .2s,transform .2s;cursor:default" onmouseover="this.style.borderColor=\'' + col + '\';this.style.transform=\'translateY(-2px)\'" onmouseout="this.style.borderColor=\'\';this.style.transform=\'\'">'+
       '<div style="display:flex;align-items:center;gap:5px"><span style="width:5px;height:5px;border-radius:50%;background:' + col + ';flex-shrink:0;display:inline-block"></span><span style="font-size:.6rem;color:' + col + ';font-weight:600;letter-spacing:.05em">' + d.ar + ' / ' + en + '</span></div>'+
-      '<div style="font-size:.78rem;color:var(--text);line-height:1.55">' + (document.body.classList.contains('ar') ? d.n : (d.ne||d.n)) + '</div>'+
+      '<div style="font-size:.78rem;color:var(--text);line-height:1.55;direction:rtl;text-align:right">' + d.n + '</div>' +
+      (d.ne ? '<div style="font-size:.72rem;color:var(--muted);line-height:1.45;margin-top:2px">' + d.ne + '</div>' : '')+
       '<div style="font-size:.6rem;color:var(--muted);border-top:1px solid var(--border);padding-top:6px;font-family:Space Grotesk,sans-serif">#' + String(i+1).padStart(3,'0') + '</div>'+
       '</div>';
   }).join('');
