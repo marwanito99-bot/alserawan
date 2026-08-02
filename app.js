@@ -965,7 +965,7 @@ function displayResult(s,products){
   else init();
 })();
 
-/* ── Page exit fade (fast, no layout shift) ── */
+/* ── Page exit fade ── */
 (function(){
   function isInternal(a){
     if(!a||!a.href) return false;
@@ -989,6 +989,12 @@ function displayResult(s,products){
     document.body.classList.add('page-leaving');
     setTimeout(function(){_show&&_show(id);},130);
   };
+
+  /* Fix bfcache black screen: when browser restores page from cache, clear leaving state */
+  window.addEventListener('pageshow',function(e){
+    document.body.classList.remove('page-leaving');
+    document.body.style.opacity='1';
+  });
 }());
 
 /* ── Global back button (all sub-pages) ── */
@@ -1002,7 +1008,7 @@ function displayResult(s,products){
     var btn=document.createElement('button');
     btn.id='globalBack';
     btn.setAttribute('aria-label','Go back');
-    btn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12l7-7M5 12l7 7"/></svg>';
+    btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M5 12l7-7M5 12l7 7"/></svg><span class="en">Back</span><span class="ar-t">رجوع</span>';
     btn.onclick=function(){
       if(history.length>1){ document.body.classList.add('page-leaving'); setTimeout(function(){history.back();},130); }
       else{ document.body.classList.add('page-leaving'); setTimeout(function(){window.location.href=root||'/';},130); }
@@ -1011,7 +1017,7 @@ function displayResult(s,products){
   }
 
   var style=document.createElement('style');
-  style.textContent='#globalBack{position:fixed;left:1.4rem;top:50%;transform:translateY(-50%);z-index:199;width:42px;height:42px;border-radius:50%;background:rgba(15,15,24,.85);border:1px solid rgba(29,0,244,.3);color:#f0ede6;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:all .25s cubic-bezier(.22,1,.36,1);box-shadow:0 4px 20px rgba(0,0,0,.4)}#globalBack:hover{background:rgba(29,0,244,.18);border-color:rgba(204,253,27,.5);color:#ccfd1b;transform:translateY(-50%) scale(1.08);box-shadow:0 6px 28px rgba(29,0,244,.3)}body.ar #globalBack{left:auto;right:1.4rem}@media(max-width:768px){#globalBack{left:.8rem;width:36px;height:36px}body.ar #globalBack{left:auto;right:.8rem}}';
+  style.textContent='#globalBack{position:fixed;left:1.2rem;top:82px;z-index:199;display:flex;align-items:center;gap:7px;padding:0 14px 0 10px;height:38px;border-radius:50px;background:rgba(13,13,24,.9);border:1px solid rgba(29,0,244,.35);color:rgba(240,237,230,.75);cursor:pointer;font-family:"Space Grotesk","IBM Plex Sans Arabic",sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:all .25s cubic-bezier(.22,1,.36,1);box-shadow:0 4px 18px rgba(0,0,0,.5);white-space:nowrap}#globalBack svg{flex-shrink:0;transition:transform .25s cubic-bezier(.22,1,.36,1)}#globalBack:hover{background:rgba(29,0,244,.2);border-color:rgba(204,253,27,.5);color:#ccfd1b;box-shadow:0 6px 28px rgba(29,0,244,.25)}#globalBack:hover svg{transform:translateX(-3px)}body.ar #globalBack{left:auto;right:1.2rem;flex-direction:row-reverse}body.ar #globalBack:hover svg{transform:translateX(3px)}@media(max-width:768px){#globalBack{top:76px;left:.8rem;height:34px;padding:0 10px 0 8px;font-size:.6rem}body.ar #globalBack{left:auto;right:.8rem}}';
   document.head.appendChild(style);
 
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',injectBackBtn);
