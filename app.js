@@ -964,3 +964,35 @@ function displayResult(s,products){
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
   else init();
 })();
+
+/* ── Fluid page exit transition ── */
+(function(){
+  var SKIP=['#','javascript','mailto','tel','whatsapp'];
+  function isExternal(href){return href.startsWith('http')&&href.indexOf(location.hostname)===-1;}
+  function shouldTransition(a){
+    if(!a||!a.href) return false;
+    var h=a.href;
+    if(a.target==='_blank') return false;
+    if(isExternal(h)) return false;
+    for(var i=0;i<SKIP.length;i++) if(h.startsWith(SKIP[i])||a.getAttribute('href').startsWith(SKIP[i])) return false;
+    return true;
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href]');
+    if(!shouldTransition(a)) return;
+    // Same page hash scroll — skip
+    var href=a.getAttribute('href');
+    if(href&&href.startsWith('#')) return;
+    e.preventDefault();
+    var dest=a.href;
+    document.body.classList.add('page-leaving');
+    setTimeout(function(){window.location.href=dest;},230);
+  },true);
+
+  /* Wrap show() for smooth nav */
+  var _show=window.show;
+  window.show=function(id){
+    document.body.classList.add('page-leaving');
+    setTimeout(function(){if(_show) _show(id); else window.location.href=id+'/';},230);
+  };
+}());

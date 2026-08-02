@@ -1234,3 +1234,151 @@ body.ar .hr-fill{animation-direction:reverse}
   .nav-track-sub{border-top:none;padding-top:0;margin-top:0;border-left:1px solid rgba(204,253,27,.2);padding-left:.6rem}
   .nav-links a::after{display:none!important}
 }
+
+
+/* ══════════════════════════════════════════════
+   MODERN REFRESH — fluid, rounded, animated
+   ══════════════════════════════════════════════ */
+
+/* ── Page transitions ── */
+@keyframes pgIn{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+body{animation:pgIn .5s cubic-bezier(.22,1,.36,1) both}
+body.page-leaving{
+  opacity:0!important;
+  transform:translateY(-10px)!important;
+  transition:opacity .22s ease,transform .22s ease!important;
+  pointer-events:none;
+}
+
+/* ── Buttons — rounded & fluid ── */
+.btn-b,.btn-l,.btn-o{border-radius:8px}
+.nav-cta{border-radius:7px}
+.career-apply{border-radius:8px}
+.pc-ask,.wa-submit,.email-submit{border-radius:8px}
+.svc-num-btn{border-radius:5px}
+
+/* Fluid button transitions */
+.btn-b,.btn-l,.btn-o,.nav-cta,.career-apply,.pc-ask,.wa-submit,.email-submit{
+  transition:all .32s cubic-bezier(.22,1,.36,1);
+}
+.btn-b:hover{box-shadow:0 6px 24px rgba(29,0,244,.35)}
+.btn-l:hover{box-shadow:0 6px 24px rgba(204,253,27,.3)}
+
+/* ── Cards — standalone ones get radius ── */
+.tst-card,.team-card,.cert-card,.cnews-card,.career-card,.market-card,.cat-card,.qr-box,.fb-cta{
+  border-radius:12px;
+  transition:transform .36s cubic-bezier(.22,1,.36,1),
+             border-color .3s ease,
+             box-shadow .36s cubic-bezier(.22,1,.36,1),
+             background .3s ease;
+}
+.co-card{border-radius:12px}
+.pc-card{border-radius:10px;overflow:hidden}
+.pc-box{border-radius:14px;overflow:hidden}
+.req-form{border-radius:12px}
+
+/* ── Tags / Badges / Pills ── */
+.pill,.loc-tag,.co-spot-pill,.career-tag,.market-tag{border-radius:4px}
+.cert-badge,.svc-tab,.news-tab{border-radius:7px}
+.cat-badge{border-radius:5px}
+.svc-tab{border-radius:9px}
+.svc-panel{border-radius:10px}
+.hero-badge{border-radius:6px}
+.loc-soon-badge{border-radius:3px}
+
+/* ── Form inputs ── */
+.form-input,.form-select,.form-textarea,.pc-search{border-radius:7px}
+.upload-area{border-radius:10px}
+.faq-item:first-child{border-radius:8px 8px 0 0}
+.faq-item:last-child{border-radius:0 0 8px 8px}
+
+/* ── Back button — modern pill style ── */
+.back-b{
+  padding:.45rem 1rem .45rem .7rem;
+  border-radius:7px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  transition:all .28s cubic-bezier(.22,1,.36,1)!important;
+  gap:6px;
+}
+.back-b:hover{
+  background:rgba(204,253,27,.08);
+  border-color:rgba(204,253,27,.25);
+  color:var(--lime);
+  gap:10px;
+}
+
+/* ── Nav CTA — slightly softer ── */
+.nav-links a:not(.nav-cta){
+  padding:.2rem .1rem;
+  border-radius:4px;
+}
+.nav-cta{
+  border-radius:7px;
+  padding:.45rem 1.3rem;
+}
+
+/* ── Section split eye-line — gradient ── */
+.sec-split-eye::before{
+  width:28px;height:2px;border-radius:1px;
+  background:linear-gradient(90deg,var(--blue),var(--lime));
+}
+.src-tag::before{
+  height:2px;border-radius:1px;
+  background:linear-gradient(90deg,var(--lime),rgba(204,253,27,.3));
+}
+
+/* ── Social icons ── */
+.footer-social a,.ct-social a{border-radius:8px}
+
+/* ── Smoother all card hovers ── */
+.tst-card:hover{transform:translateY(-6px);box-shadow:0 16px 50px rgba(29,0,244,.22)}
+.career-card:hover{transform:translateY(-5px);box-shadow:0 12px 40px rgba(29,0,244,.18)}
+.cnews-card:hover{transform:translateY(-4px)}
+.market-card:hover{transform:translateY(-3px)}
+.cat-card:hover{transform:translateY(-5px);box-shadow:0 10px 36px rgba(204,253,27,.12)}
+.team-card:hover{transform:translateY(-7px);box-shadow:0 24px 60px rgba(29,0,244,.22)}
+.co-card:hover{transform:translateY(-5px)}
+
+/* ── WhatsApp button — smoother ── */
+.wa-btn{border-radius:14px;transition:all .3s cubic-bezier(.22,1,.36,1)}
+.wa-btn:hover{border-radius:18px;transform:scale(1.08) translateY(-2px)}
+
+/* ── Ticker ── */
+.ticker{border-radius:0} /* intentionally sharp — band */
+
+/* ── Stat cards on homepage grid ── */
+.stat{transition:background .3s cubic-bezier(.22,1,.36,1)}
+
+/* ── PC modal close button ── */
+.pc-close{border-radius:6px}
+
+/* ── Nav hamburger ── */
+#navHam span{border-radius:2px}
+
+/* ── Svc tracker buttons ── */
+.svc-num-btn{border-radius:5px;transition:all .25s cubic-bezier(.22,1,.36,1)}
+
+/* ── Link CTA arrows — smooth slide ── */
+.sec-split-lnk,.co-spot-cta,.co-go{
+  transition:gap .25s cubic-bezier(.22,1,.36,1),color .2s ease;
+}
+
+/* ── Form focus glow ── */
+.form-input:focus,.form-textarea:focus{
+  box-shadow:0 0 0 3px rgba(29,0,244,.18);
+}
+.pc-search:focus{
+  box-shadow:0 0 0 3px rgba(29,0,244,.15);
+}
+
+/* ── Testimonials quote mark ── */
+.tst-card{overflow:hidden}
+
+/* ── Photo band items — rounded on mobile ── */
+@media(max-width:600px){
+  .pb-item{border-radius:10px;overflow:hidden}
+}
