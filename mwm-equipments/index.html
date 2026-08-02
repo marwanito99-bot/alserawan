@@ -200,123 +200,105 @@
 .bm-close.open{display:flex;}
 .bm-close:hover{background:rgba(29,0,244,.5);transform:scale(1.05);}
 
-/* Modal body */
-.bm-body{
-  background:var(--black);flex:1;
-  display:grid;grid-template-columns:1fr 1.6fr;
-  gap:0;
+/* ── MODAL FEATURED BODY (MAKUTE style) ── */
+.bm-featured{
+  background:var(--black);
+  padding:3.5rem 3.5rem 2.5rem;
+  border-bottom:1px solid var(--border);
 }
-.bm-info{
-  padding:2.5rem 2.5rem;
-  border-right:1px solid var(--border);
-  display:flex;flex-direction:column;gap:1.5rem;
+.bm-featured-header{
+  display:flex;align-items:flex-start;gap:2.5rem;
+  margin-bottom:2rem;flex-wrap:wrap;
 }
-.bm-desc{font-size:.88rem;color:rgba(240,237,230,.75);line-height:1.85;font-weight:300;}
-.bm-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
-.bm-tag{
-  font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
-  border:1px solid var(--border);padding:.25rem .7rem;color:var(--muted);
+.bm-logo-box{
+  flex-shrink:0;width:200px;height:90px;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--border);background:var(--dark2);
+  padding:1rem 1.5rem;
 }
-.bm-website{
-  font-size:.68rem;letter-spacing:.1em;color:var(--blue);text-decoration:none;
-  display:inline-flex;align-items:center;gap:.4rem;transition:color .2s;
-}
+.bm-logo-box img{max-width:100%;max-height:100%;object-fit:contain;filter:brightness(1.05);}
+.bm-logo-text{font-size:1.5rem;font-weight:900;letter-spacing:.05em;}
+.bm-meta{flex:1;min-width:220px;display:flex;flex-direction:column;gap:.6rem;}
+.bm-origin{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);display:flex;align-items:center;gap:.5rem;}
+.bm-name{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;letter-spacing:-.02em;}
+.bm-desc{font-size:.88rem;color:rgba(240,237,230,.7);line-height:1.8;max-width:600px;}
+.bm-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.3rem;}
+.bm-tag{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--border);padding:.25rem .65rem;color:var(--muted);}
+.bm-actions{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;margin-top:.8rem;}
+.bm-website{font-size:.68rem;letter-spacing:.1em;color:var(--blue);text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:color .2s;}
 .bm-website:hover{color:var(--lime);}
 .bm-inquire{
   display:inline-block;text-decoration:none;
   background:var(--lime);color:var(--black);
   font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
-  padding:.75rem 1.8rem;transition:opacity .2s;font-family:inherit;border:none;cursor:pointer;
+  padding:.7rem 1.8rem;transition:opacity .2s;font-family:inherit;border:none;cursor:pointer;
 }
 .bm-inquire:hover{opacity:.88;}
 
-/* Products panel */
-.bm-products{padding:2.5rem 2.5rem;background:var(--dark2);}
-.bm-prod-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:1.2rem;}
-.bm-prod-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));
-  gap:1px;background:var(--border);border:1px solid var(--border);
+/* ── MODAL PRODUCT GRID (cat-grid style) ── */
+.bm-catgrid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border);border-top:1px solid var(--border);
 }
-.bm-prod-card{
-  background:var(--dark3);
+.bm-cat-card{
   position:relative;overflow:hidden;
+  background:var(--dark2);aspect-ratio:4/3;
 }
-.bm-prod-card img{
-  width:100%;aspect-ratio:4/3;object-fit:cover;display:block;
-  filter:brightness(.75);transition:transform .4s,filter .4s;
+.bm-cat-card img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .5s cubic-bezier(.22,1,.36,1),filter .5s;
+  filter:brightness(.7) saturate(1.1);
 }
-.bm-prod-card:hover img{transform:scale(1.06);filter:brightness(.95);}
-.bm-prod-label-over{
+.bm-cat-card:hover img{transform:scale(1.06);filter:brightness(.88) saturate(1.2);}
+.bm-cat-label{
   position:absolute;bottom:0;left:0;right:0;
-  padding:1rem .8rem .55rem;
-  background:linear-gradient(to top,rgba(6,6,12,.95) 0%,transparent 100%);
+  background:linear-gradient(to top,rgba(8,8,14,.95) 0%,transparent 100%);
+  padding:2rem 1.2rem .85rem;
 }
-.bm-prod-label-over .en{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
-.bm-prod-label-over .ar-t{font-size:.72rem;display:block;margin-top:2px;}
-/* No-image product card */
-.bm-prod-card-text{
-  background:var(--dark3);
-  padding:1.2rem 1rem;
-  display:flex;flex-direction:column;gap:.5rem;min-height:100px;
-  border-left:2px solid;
-  transition:background .2s;
+.bm-cat-label .en{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+.bm-cat-label .ar-t{font-size:.82rem;font-weight:600;display:block;margin-top:2px;}
+.bm-cat-accent{position:absolute;top:.7rem;right:.7rem;width:6px;height:6px;border-radius:50%;background:var(--lime);}
+/* Text-only product card for brands with no images */
+.bm-text-card{
+  background:var(--dark3);padding:1.8rem 1.4rem;
+  display:flex;flex-direction:column;gap:.5rem;
+  border-left:2px solid;transition:background .2s;aspect-ratio:unset;
 }
-.bm-prod-card-text:hover{background:var(--dark2);}
-.bm-pct-cat{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;}
-.bm-pct-name{font-size:.78rem;font-weight:600;line-height:1.3;}
-.bm-pct-name-ar{font-size:.8rem;color:rgba(240,237,230,.6);}
-
-/* NEW ARRIVALS SECTION */
-.na-section{padding:4rem 3.5rem 3.5rem;border-bottom:1px solid var(--border);background:var(--dark2);}
-.na-empty{
-  border:1px dashed rgba(204,253,27,.25);
-  padding:3rem 2rem;text-align:center;
-  display:flex;flex-direction:column;align-items:center;gap:.8rem;
-  margin-top:1.5rem;
-}
-.na-empty-icon{width:40px;height:40px;border:1px solid rgba(204,253,27,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;}
-.na-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-top:1.5rem;}
-.na-card{
-  background:var(--dark3);border:1px solid var(--border);border-radius:8px;
-  overflow:hidden;transition:border-color .2s,transform .2s;
-}
-.na-card:hover{border-color:var(--lime);transform:translateY(-2px);}
-.na-card img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:brightness(.8);}
-.na-card-body{padding:10px 12px 12px;}
-.na-card-badge{display:inline-block;background:var(--lime);color:#0a0a0f;font-size:.55rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;margin-bottom:6px;}
-.na-card-name{font-size:.78rem;font-weight:600;line-height:1.4;}
-.na-card-brand{font-size:.62rem;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:.08em;}
+.bm-text-card:hover{background:var(--dark2);}
+.bm-tc-cat{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.2rem;}
+.bm-tc-name{font-size:.85rem;font-weight:700;line-height:1.3;}
+.bm-tc-ar{font-size:.82rem;color:rgba(240,237,230,.55);margin-top:.2rem;}
 
 /* RESPONSIVE */
 @media(max-width:1100px){.brands-grid{grid-template-columns:repeat(4,1fr);}}
 @media(max-width:800px){
-  .brands-section,.na-section{padding:3rem 1.5rem;}
+  .brands-section{padding:3rem 1.5rem;}
   .brands-grid{grid-template-columns:repeat(3,1fr);}
   .bm-hero-content{padding:1.5rem 1.5rem 1.2rem;}
-  .bm-body{grid-template-columns:1fr;}
-  .bm-info{border-right:none;border-bottom:1px solid var(--border);}
-  .bm-info,.bm-products{padding:1.8rem 1.5rem;}
+  .bm-featured{padding:2.5rem 1.5rem 2rem;}
+  .bm-catgrid{grid-template-columns:repeat(2,1fr);}
+  .bm-featured-header{gap:1.5rem;}
+  .bm-logo-box{width:160px;height:72px;}
 }
 @media(max-width:520px){
   .brands-grid{grid-template-columns:repeat(2,1fr);}
   .bm-close{top:.8rem;right:.8rem;}
+  .bm-catgrid{grid-template-columns:repeat(2,1fr);}
 }
-body.ar .bm-body{direction:rtl;}
-body.ar .bm-info{border-right:none;border-left:1px solid var(--border);}
-body.ar .bm-hero-content{flex-direction:row-reverse;}
+body.ar .bm-featured{direction:rtl;}
+body.ar .bm-featured-header{flex-direction:row-reverse;}
 body.ar .bm-tags{flex-direction:row-reverse;}
+body.ar .bm-cat-label{text-align:right;}
 </style>
 
 <!-- ══════════════════════════════════
-     BRAND MODAL — overlay & close btn
+     BRAND MODAL
 ══════════════════════════════════════ -->
 <div id="bmOverlay" onclick="bmClose()"></div>
 <div id="bmPanel">
   <div class="bm-hero" id="bmHero"><!-- hero filled by JS --></div>
-  <div class="bm-body">
-    <div class="bm-info" id="bmInfo"><!-- info filled by JS --></div>
-    <div class="bm-products" id="bmProds"><!-- products filled by JS --></div>
-  </div>
+  <div class="bm-featured" id="bmFeatured"><!-- brand header filled by JS --></div>
+  <div class="bm-catgrid" id="bmCatGrid"><!-- product grid filled by JS --></div>
 </div>
 <button class="bm-close" id="bmClose" onclick="bmClose()" aria-label="Close">✕</button>
 
@@ -338,45 +320,36 @@ body.ar .bm-tags{flex-direction:row-reverse;}
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     NEW ARRIVALS
-══════════════════════════════════════ -->
-<div class="na-section">
-  <p class="sec-tag"><span class="en">Just In</span><span class="ar-t">وصل حديثاً</span><span class="cn-t">新品上架</span></p>
-  <h2 class="sec-h"><span class="en">New <span class="ac">Arrivals</span></span><span class="ar-t">الوافدون <span class="ac">الجدد</span></span><span class="cn-t">新<span class="ac">上架</span></span></h2>
-  <div id="naGrid"><!-- filled by JS --></div>
-</div>
-
 <script>
 /* ══════════════════════════════════════════
    BRANDS DATA LOADER + MODAL SYSTEM
 ══════════════════════════════════════════ */
 (function(){
-  var SITE='../';
   var ROOT='../';
   var data=null;
+  function img(p){return p?ROOT+p:'';}
 
-  function img(path){return path?ROOT+path:'';}
-
-  // ── Load JSON ──
   fetch('./brands-data.json?v='+Date.now())
     .then(function(r){return r.json();})
-    .then(function(d){data=d;renderBrands();renderNewArrivals();})
-    .catch(function(){console.warn('brands-data.json not found');renderBrands();renderNewArrivals();});
+    .then(function(d){data=d;renderBrands();})
+    .catch(function(){console.warn('brands-data.json not found');renderBrands();});
 
-  // ── RENDER BRAND GRID ──
+  // ── BRAND GRID ──
   function renderBrands(){
     var brands=data?data.brands:[];
     var grid=document.getElementById('brandsGrid');
     var badge=document.getElementById('brandsTotalBadge');
     if(badge) badge.textContent=brands.length+' brands';
-    if(!brands.length){grid.innerHTML='<div style="grid-column:1/-1;padding:2rem;text-align:center;color:var(--muted)">No brands found</div>';return;}
+    if(!brands.length){
+      grid.innerHTML='<div style="grid-column:1/-1;padding:2rem;text-align:center;color:var(--muted)">No brands found</div>';
+      return;
+    }
     grid.innerHTML=brands.map(function(b,i){
+      var accent=b.color||'#1d00f4';
       var logoHtml=b.logo_path
         ?'<img class="bc-logo" src="'+img(b.logo_path)+'" alt="'+b.name_en+'" onerror="this.style.display=\'none\';this.nextSibling.style.display=\'block\'">'
          +'<div class="bc-name" style="display:none"><span>'+b.name_en.slice(0,2)+'</span>'+b.name_en.slice(2)+'</div>'
         :'<div class="bc-name"><span>'+b.name_en.slice(0,2)+'</span>'+b.name_en.slice(2)+'</div>';
-      var accent=b.color||'#1d00f4';
       return '<button class="brand-card'+(b.featured?' featured':'')+'" onclick="bmOpen('+i+')" style="--bc:'+accent+'" title="'+b.name_en+'">'
         +logoHtml
         +'<div class="bc-tag">'+b.tagline_en+'</div>'
@@ -386,30 +359,7 @@ body.ar .bm-tags{flex-direction:row-reverse;}
     }).join('');
   }
 
-  // ── RENDER NEW ARRIVALS ──
-  function renderNewArrivals(){
-    var items=data&&data.new_arrivals?data.new_arrivals:[];
-    var grid=document.getElementById('naGrid');
-    if(!items.length){
-      grid.innerHTML='<div class="na-empty">'
-        +'<div class="na-empty-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--lime)" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>'
-        +'<p style="font-size:.82rem;color:var(--muted);max-width:360px;line-height:1.7"><span class="en">New arrivals will appear here — add products to the <strong style="color:var(--text)">New Arrivals</strong> sheet in brands.xlsx and run update-brands.py.</span>'
-        +'<span class="ar-t">المنتجات الجديدة ستظهر هنا — أضف منتجات في شيت <strong style="color:var(--text)">New Arrivals</strong> بملف brands.xlsx وشغّل update-brands.py.</span></p>'
-        +'</div>';
-      return;
-    }
-    grid.innerHTML='<div class="na-grid">'+items.map(function(p){
-      return '<div class="na-card">'
-        +(p.image_path?'<img src="'+img(p.image_path)+'" alt="'+p.name_en+'">':'')
-        +'<div class="na-card-body">'
-        +'<span class="na-card-badge"><span class="en">New</span><span class="ar-t">جديد</span></span>'
-        +'<div class="na-card-name"><span class="en">'+p.name_en+'</span><span class="ar-t">'+p.name_ar+'</span></div>'
-        +'<div class="na-card-brand">'+p.brand_id+'</div>'
-        +'</div></div>';
-    }).join('')+'</div>';
-  }
-
-  // ── OPEN MODAL ──
+  // ── OPEN MODAL (MAKUTE featured style) ──
   window.bmOpen=function(idx){
     if(!data||!data.brands[idx]) return;
     var b=data.brands[idx];
@@ -417,58 +367,69 @@ body.ar .bm-tags{flex-direction:row-reverse;}
     var products=b.products||[];
     var isAr=document.body.classList.contains('ar');
 
-    // Hero
+    // ① HERO — darkened full-width image
     var hero=document.getElementById('bmHero');
     if(b.hero_path){
       hero.innerHTML='<img src="'+img(b.hero_path)+'" alt="'+b.name_en+'">'
         +'<div class="bm-hero-overlay"></div>';
     } else {
       hero.innerHTML='<div class="bm-hero-no-img" style="background:linear-gradient(135deg,#131320 0%,'+accent+'22 100%)">'
-        +'<div style="font-size:5rem;font-weight:900;letter-spacing:-.03em;color:'+accent+';opacity:.25">'+b.name_en+'</div>'
+        +'<div style="font-size:5rem;font-weight:900;letter-spacing:-.03em;color:'+accent+';opacity:.2">'+b.name_en+'</div>'
         +'</div>';
     }
-    hero.innerHTML+='<div class="bm-hero-content">'
-      +(b.logo_path?'<div class="bm-logo-box"><img src="'+img(b.logo_path)+'" alt="'+b.name_en+'" onerror="this.parentNode.innerHTML=\'<div class=bm-logo-text style=color:'+accent+'>'+b.name_en+'</div>\'"></div>'
-                  :'<div class="bm-logo-box"><div class="bm-logo-text" style="color:'+accent+'">'+b.name_en+'</div></div>')
-      +'<div class="bm-title-block">'
-      +'<div class="bm-country">'+b.flag+' '+b.country_en+'</div>'
-      +'<div class="bm-title">'+b.name_en+'</div>'
-      +'<div class="bm-tagline">'+(isAr?b.tagline_ar:b.tagline_en)+'</div>'
-      +'</div></div>';
 
-    // Info
-    document.getElementById('bmInfo').innerHTML=
-      '<div class="bm-desc">'+(isAr?b.description_ar:b.description_en)+'</div>'
-      +'<div class="bm-tags">'
-      +(products.map(function(p){return '<span class="bm-tag" style="border-color:'+accent+'44;color:'+accent+'">'+
-        (isAr?p.category_ar:p.category_en)+'</span>';}).filter(function(v,i,a){return a.indexOf(v)===i;}).join(''))
-      +'</div>'
-      +(b.website?'<a class="bm-website" href="'+b.website+'" target="_blank" rel="noopener">↗ '+b.website.replace('https://','')+'</a>':'')
-      +'<div><a class="bm-inquire" href="../contact/">'
-      +'<span class="en">Request Pricing</span><span class="ar-t">طلب عرض سعر</span>'
-      +'</a></div>';
+    // ② FEATURED HEADER — logo box + brand meta (MAKUTE layout)
+    var cats=[];
+    products.forEach(function(p){
+      var c=isAr?p.category_ar:p.category_en;
+      if(c&&cats.indexOf(c)<0) cats.push(c);
+    });
+    var logoBox=b.logo_path
+      ?'<div class="bm-logo-box"><img src="'+img(b.logo_path)+'" alt="'+b.name_en+'" onerror="this.parentNode.innerHTML=\'<div class=bm-logo-text style=color:'+accent+'>'+b.name_en+'</div>\'"></div>'
+      :'<div class="bm-logo-box"><div class="bm-logo-text" style="color:'+accent+'">'+b.name_en+'</div></div>';
 
-    // Products
-    var prodHtml=products.length
-      ?'<div class="bm-prod-grid">'+products.map(function(p){
-          if(p.image_path){
-            return '<div class="bm-prod-card">'
-              +'<img src="'+img(p.image_path)+'" alt="'+p.name_en+'" loading="lazy">'
-              +'<div class="bm-prod-label-over">'
+    document.getElementById('bmFeatured').innerHTML=
+      '<div class="bm-featured-header">'
+        +logoBox
+        +'<div class="bm-meta">'
+          +'<div class="bm-origin">'+b.flag+' '+b.country_en+'</div>'
+          +'<div class="bm-name">'+b.name_en+'</div>'
+          +'<div class="bm-desc">'+(isAr?b.description_ar:b.description_en)+'</div>'
+          +'<div class="bm-tags">'
+            +cats.map(function(c){return '<span class="bm-tag" style="border-color:'+accent+'55;color:'+accent+'">'+c+'</span>';}).join('')
+          +'</div>'
+          +'<div class="bm-actions">'
+            +(b.website?'<a class="bm-website" href="'+b.website+'" target="_blank" rel="noopener">↗ '+b.website.replace(/https?:\/\//,'')+'</a>':'')
+            +'<a class="bm-inquire" href="../contact/"><span class="en">Request Pricing</span><span class="ar-t">طلب عرض سعر</span></a>'
+          +'</div>'
+        +'</div>'
+      +'</div>';
+
+    // ③ PRODUCT / CATEGORY GRID (cat-grid style)
+    var catGrid=document.getElementById('bmCatGrid');
+    if(products.length){
+      catGrid.style.display='';
+      catGrid.innerHTML=products.map(function(p){
+        if(p.image_path){
+          return '<div class="bm-cat-card">'
+            +'<img src="'+img(p.image_path)+'" alt="'+(isAr?p.name_ar:p.name_en)+'" loading="lazy">'
+            +'<div class="bm-cat-label">'
               +'<span class="en">'+p.name_en+'</span>'
               +'<span class="ar-t">'+p.name_ar+'</span>'
-              +'</div></div>';
-          } else {
-            return '<div class="bm-prod-card-text" style="border-color:'+accent+'">'
-              +'<div class="bm-pct-cat" style="color:'+accent+'">'+p.category_en+'</div>'
-              +'<div class="bm-pct-name"><span class="en">'+p.name_en+'</span></div>'
-              +'<div class="bm-pct-name-ar"><span class="ar-t">'+p.name_ar+'</span></div>'
-              +'</div>';
-          }
-        }).join('')+'</div>'
-      :'<p style="color:var(--muted);font-size:.82rem"><span class="en">Product catalogue coming soon.</span><span class="ar-t">كتالوج المنتجات قريباً.</span></p>';
-    document.getElementById('bmProds').innerHTML=
-      '<p class="bm-prod-label"><span class="en">Products & Categories</span><span class="ar-t">المنتجات والفئات</span></p>'+prodHtml;
+            +'</div>'
+            +'<div class="bm-cat-accent"></div>'
+            +'</div>';
+        } else {
+          return '<div class="bm-cat-card bm-text-card" style="border-left-color:'+accent+'">'
+            +'<div class="bm-tc-cat" style="color:'+accent+'">'+(isAr?p.category_ar:p.category_en)+'</div>'
+            +'<div class="bm-tc-name"><span class="en">'+p.name_en+'</span></div>'
+            +'<div class="bm-tc-ar"><span class="ar-t">'+p.name_ar+'</span></div>'
+            +'</div>';
+        }
+      }).join('');
+    } else {
+      catGrid.style.display='none';
+    }
 
     // Open
     document.getElementById('bmOverlay').classList.add('open');
@@ -482,7 +443,6 @@ body.ar .bm-tags{flex-direction:row-reverse;}
     document.getElementById('bmOverlay').classList.remove('open');
     document.getElementById('bmPanel').classList.remove('open');
     document.getElementById('bmClose').classList.remove('open');
-    setTimeout(function(){document.getElementById('bmOverlay').style.display='';},0);
     document.body.style.overflow='';
   };
 
