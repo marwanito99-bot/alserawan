@@ -181,7 +181,7 @@ var gcActive='الكل';
 function gcGetColor(ar){var c=GC_CATS.find(function(x){return x.ar===ar});return c?c.c:'#5b7cf7';}
 function gcGetEn(ar){var c=GC_CATS.find(function(x){return x.ar===ar});return c?c.en:'';}
 
-function gcBuildCats(){
+window.gcBuildCats=function(){
   var el=document.getElementById('gcCatBtns'); if(!el) return;
   el.innerHTML=GC_CATS.map(function(cat){
     var cnt=cat.ar==='الكل'?GC_DATA.length:GC_DATA.filter(function(d){return d.ar===cat.ar;}).length;
@@ -222,16 +222,8 @@ window.gcRender=function(){
   }).join('');
 };
 
-// Init when tab is opened
+// Init flag — actual init is triggered by switchView below
 window._gcInited=false;
-var _origSwitch=window.switchView;
-window.switchView=function(v){
-  _origSwitch(v);
-  if(v==='catalog'&&!window._gcInited){
-    window._gcInited=true;
-    gcBuildCats(); gcRender();
-  }
-};
 })();
 </script>
 
@@ -257,6 +249,12 @@ function switchView(v){
     b1.style.background='transparent'; b1.style.color='var(--muted)'; b1.style.borderColor='var(--border)';
     // scroll to catalog section
     document.getElementById('pc-section').scrollIntoView({behavior:'smooth',block:'start'});
+    // init inline catalog on first open
+    if(!window._gcInited){
+      window._gcInited=true;
+      if(window.gcBuildCats) window.gcBuildCats();
+      if(window.gcRender) window.gcRender();
+    }
   }
 }
 </script>
