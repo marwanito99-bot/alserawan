@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Brands | MWM Equipments — MAKUTE, SICAM, RAASM & More</title>
+<meta name="description" content="Explore the brands carried by MWM Equipments: MAKUTE power tools, SICAM tyre equipment, RAASM garage systems, and more — sourced for MENA professionals.">
+<meta name="keywords" content="MAKUTE tools, SICAM tyre changer, RAASM lubricant equipment, KZUBR, power tools Syria, MENA industrial brands, MWM Equipments brands">
+<meta name="author" content="al serawan group - Max Worldwide Mastering">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.alserawan.com/brands/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="al serawan group | MWM">
+<meta property="og:title" content="Our Brands | MWM Equipments">
+<meta property="og:description" content="Explore the brands carried by MWM Equipments — power tools, garage equipment, tyre systems and more for MENA professionals.">
+<meta property="og:url" content="https://www.alserawan.com/brands/">
+<meta property="og:image" content="https://www.alserawan.com/images/brands/makute/hero-banner.webp">
+<link rel="icon" type="image/png" href="../images/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=IBM+Plex+Sans+Arabic:wght@300;400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+/* ── BRANDS PAGE ── */
+.brands-hero{
+  min-height:55vh;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:8rem 3.5rem 4.5rem;
+  overflow:hidden;
+  border-bottom:1px solid var(--border);
+}
+.brands-hero-bg{
+  position:absolute;inset:0;
+}
+.brands-hero-bg img{
+  width:100%;height:100%;object-fit:cover;
+  filter:brightness(.22) saturate(1.3);
+}
+.brands-hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(8,8,14,.97) 35%,rgba(29,0,244,.12) 100%);
+}
+.brands-hero-grid{
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(29,0,244,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(29,0,244,.05) 1px,transparent 1px);
+  background-size:55px 55px;
+}
+.brands-hero-content{position:relative;z-index:2;max-width:700px;}
+.brands-hero-tag{font-size:.63rem;letter-spacing:.28em;text-transform:uppercase;color:var(--lime);margin-bottom:.8rem;}
+.brands-hero-title{font-size:clamp(2.8rem,6vw,5.5rem);font-weight:700;line-height:1;margin-bottom:1rem;letter-spacing:-.03em;}
+.brands-hero-desc{font-size:.95rem;color:rgba(240,237,230,.65);font-weight:300;line-height:1.85;max-width:560px;}
+
+/* Brand count strip */
+.brand-strip{
+  display:flex;gap:0;
+  border-bottom:1px solid var(--border);
+  overflow-x:auto;
+  background:var(--dark2);
+  scrollbar-width:none;
+}
+.brand-strip::-webkit-scrollbar{display:none;}
+.brand-pill{
+  flex-shrink:0;
+  padding:.85rem 1.6rem;
+  font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);
+  border-right:1px solid var(--border);
+  white-space:nowrap;
+  cursor:pointer;
+  transition:color .2s,background .2s;
+  text-decoration:none;
+  display:block;
+}
+.brand-pill:hover{color:var(--lime);background:rgba(204,253,27,.04);}
+
+/* ── FEATURED BRAND (MAKUTE) ── */
+.brand-featured{
+  border-bottom:1px solid var(--border);
+  background:var(--black);
+}
+.brand-featured-inner{
+  max-width:1280px;margin:0 auto;
+  padding:5rem 3.5rem;
+}
+.brand-featured-header{
+  display:flex;align-items:flex-start;gap:3rem;
+  margin-bottom:3.5rem;
+  flex-wrap:wrap;
+}
+.brand-logo-box{
+  flex-shrink:0;
+  width:200px;height:90px;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--border);
+  background:var(--dark2);
+  padding:1rem 1.5rem;
+}
+.brand-logo-box img{
+  max-width:100%;max-height:100%;
+  object-fit:contain;
+  filter:brightness(1.05);
+}
+.brand-meta{flex:1;min-width:220px;}
+.brand-name{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.4rem;}
+.brand-origin{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
+.brand-desc{font-size:.88rem;color:rgba(240,237,230,.7);line-height:1.8;max-width:600px;}
+.brand-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem;}
+.btag{
+  font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid var(--border);
+  padding:.25rem .65rem;
+  color:var(--muted);
+}
+
+/* Category grid */
+.cat-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+}
+.cat-card{
+  position:relative;overflow:hidden;
+  background:var(--dark2);
+  aspect-ratio:4/3;
+  cursor:default;
+}
+.cat-card img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .5s cubic-bezier(.22,1,.36,1),filter .5s;
+  filter:brightness(.7) saturate(1.1);
+}
+.cat-card:hover img{
+  transform:scale(1.06);
+  filter:brightness(.85) saturate(1.2);
+}
+.cat-card-label{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(8,8,14,.95) 0%,transparent 100%);
+  padding:2rem 1.2rem .85rem;
+}
+.cat-card-label .en{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+.cat-card-label .ar-t{font-size:.82rem;font-weight:600;display:block;margin-top:2px;}
+.cat-card-label .cn-t{font-size:.72rem;color:var(--muted);}
+.cat-accent{
+  position:absolute;top:.7rem;right:.7rem;
+  width:6px;height:6px;border-radius:50%;
+  background:var(--lime);
+}
+
+/* ── STANDARD BRAND SECTION ── */
+.brand-section{
+  border-bottom:1px solid var(--border);
+}
+.brand-section.alt{background:var(--dark2);}
+.brand-section-inner{
+  max-width:1280px;margin:0 auto;
+  padding:4.5rem 3.5rem;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;
+  align-items:start;
+}
+.brand-section-inner.wide{grid-template-columns:1.2fr 1fr;}
+.brand-info{display:flex;flex-direction:column;gap:1.4rem;}
+.brand-products-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+}
+.bprod-card{
+  position:relative;overflow:hidden;
+  background:var(--dark3);
+  aspect-ratio:16/10;
+}
+.bprod-card img{
+  width:100%;height:100%;
+  object-fit:cover;
+  filter:brightness(.75) saturate(1.1);
+  transition:transform .5s cubic-bezier(.22,1,.36,1),filter .4s;
+}
+.bprod-card:hover img{transform:scale(1.05);filter:brightness(.9) saturate(1.2);}
+.bprod-label{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:1.2rem .85rem .6rem;
+  background:linear-gradient(to top,rgba(8,8,14,.92) 0%,transparent 100%);
+  font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+}
+.bprod-label .ar-t{font-size:.78rem;display:block;margin-top:2px;}
+
+/* ── OEM GRID ── */
+.oem-section{background:var(--black);border-bottom:1px solid var(--border);}
+.oem-section-inner{max-width:1280px;margin:0 auto;padding:5rem 3.5rem;}
+.oem-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  margin-top:2.5rem;
+}
+.oem-card{
+  background:var(--dark2);
+  padding:2.5rem 1.5rem;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:1rem;
+  text-align:center;
+  min-height:180px;
+  position:relative;
+  overflow:hidden;
+  transition:background .25s;
+}
+.oem-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--blue),transparent);
+  opacity:0;transition:opacity .3s;
+}
+.oem-card:hover{background:var(--dark3);}
+.oem-card:hover::before{opacity:1;}
+.oem-logo-text{
+  font-size:1.5rem;font-weight:800;letter-spacing:.06em;
+  color:var(--text);line-height:1;
+}
+.oem-logo-text span{color:var(--lime);}
+.oem-spec{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
+.oem-spec-ar{font-size:.72rem;color:rgba(240,237,230,.45);margin-top:.25rem;}
+.oem-flag{font-size:.72rem;opacity:.5;}
+
+/* ── INQUIRY CTA ── */
+.brands-cta{
+  background:var(--dark2);
+  border-bottom:1px solid var(--border);
+}
+.brands-cta-inner{
+  max-width:1280px;margin:0 auto;padding:5rem 3.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:2rem;flex-wrap:wrap;
+}
+.brands-cta h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;line-height:1.2;}
+.brands-cta h2 .ac{color:var(--lime);}
+.brands-cta p{font-size:.88rem;color:rgba(240,237,230,.6);margin-top:.6rem;max-width:480px;line-height:1.7;}
+.cta-btns{display:flex;gap:.8rem;flex-wrap:wrap;}
+
+/* RTL overrides */
+body.ar .brands-hero-overlay{background:linear-gradient(225deg,rgba(8,8,14,.97) 35%,rgba(29,0,244,.12) 100%);}
+body.ar .brand-featured-header{flex-direction:row-reverse;}
+body.ar .brand-section-inner{direction:rtl;}
+body.ar .brands-cta-inner{direction:rtl;}
+body.ar .cat-card-label{text-align:right;}
+body.ar .brand-tags{flex-direction:row-reverse;}
+
+/* Responsive */
+@media(max-width:900px){
+  .brands-hero{padding:7rem 1.5rem 3rem;}
+  .brand-featured-inner,.oem-section-inner,.brands-cta-inner{padding:3.5rem 1.5rem;}
+  .brand-section-inner{grid-template-columns:1fr;padding:3.5rem 1.5rem;gap:2.5rem;}
+  .cat-grid{grid-template-columns:repeat(2,1fr);}
+  .oem-grid{grid-template-columns:repeat(2,1fr);}
+  .brands-cta-inner{flex-direction:column;align-items:flex-start;}
+}
+@media(max-width:560px){
+  .cat-grid{grid-template-columns:1fr 1fr;}
+  .oem-grid{grid-template-columns:repeat(2,1fr);}
+  .brand-featured-header{flex-direction:column;}
+  .brand-logo-box{width:160px;}
+}
+</style>
+</head>
+<body>
+
+<!-- WHATSAPP -->
+<a class="wa-btn" href="https://wa.me/963994483331" target="_blank" title="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="../" style="text-decoration:none;cursor:pointer">
+    <img alt="MWM Logo" src="" data-imgvar="__IMG_LOGO">
+    <div>
+      <div class="nav-brand-cn">义乌镘旺国际贸易有限公司</div>
+    </div>
+  </a>
+  <button class="nav-hamburger" id="navHam" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+  <div class="nav-links" id="navLinks">
+    <a href="../"><span class="en">Home</span><span class="ar-t">الرئيسية</span><span class="cn-t">首页</span></a>
+    <a href="../companies/"><span class="en">Companies</span><span class="ar-t">الشركات</span><span class="cn-t">公司</span></a>
+    <a href="../about/"><span class="en">About Us</span><span class="ar-t">من نحن</span><span class="cn-t">关于我们</span></a>
+    <a href="../services/"><span class="en">Services</span><span class="ar-t">الخدمات</span><span class="cn-t">服务</span></a>
+    <a href="../tracking/" class="nav-track"><span class="en">Tracking</span><span class="ar-t">التتبع</span><span class="cn-t">监控</span><span class="nav-track-sub">Order · Shipment · Container</span></a>
+    <a href="../feedback/"><span class="en">Feedback</span><span class="ar-t">آراء العملاء</span><span class="cn-t">客户评价</span></a>
+    <a href="../news/"><span class="en">News</span><span class="ar-t">الأخبار</span><span class="cn-t">新闻</span></a>
+    <a href="../careers/"><span class="en">Careers</span><span class="ar-t">وظائف</span><span class="cn-t">招聘</span></a>
+    <a href="../contact/"><span class="en">Contact</span><span class="ar-t">اتصل بنا</span><span class="cn-t">联系我们</span></a>
+    <a href="../logistics/register/" style="color:var(--lime)!important;font-weight:700"><span class="en">Register</span><span class="ar-t">سجّل</span><span class="cn-t">注册</span></a>
+  </div>
+  <div class="nav-lang">
+    <button class="lb on" onclick="setLang('en')">EN</button>
+    <button class="lb" onclick="setLang('ar')">عربي</button>
+    <button class="lb" onclick="setLang('cn')">中文</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<div class="brands-hero">
+  <div class="brands-hero-bg">
+    <img src="../images/brands/makute/hero-banner.webp" alt="MWM Brands — Industrial Tools & Equipment">
+  </div>
+  <div class="brands-hero-overlay"></div>
+  <div class="brands-hero-grid"></div>
+  <div class="brands-hero-content">
+    <a href="../mwm-equipments/" class="back-b">
+      <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      <span class="en">MWM Equipments</span><span class="ar-t">معدات MWM</span><span class="cn-t">MWM 设备</span>
+    </a>
+    <div class="brands-hero-tag"><span class="en">Our Portfolio</span><span class="ar-t">محفظة علاماتنا</span><span class="cn-t">品牌组合</span></div>
+    <h1 class="brands-hero-title">
+      <span class="en">Brands We <span style="color:var(--lime)">Carry</span></span>
+      <span class="ar-t">العلامات التي <span style="color:var(--lime)">نوفرها</span></span>
+      <span class="cn-t">我们代理的<span style="color:var(--lime)">品牌</span></span>
+    </h1>
+    <p class="brands-hero-desc">
+      <span class="en">Professional-grade power tools, tyre workshop equipment, lubrication systems, and automotive lifts — sourced from China and Italy for the MENA market.</span>
+      <span class="ar-t">عدد كهربائية احترافية، معدات ورش الإطارات، أنظمة التشحيم، ورافعات السيارات — مصدرها الصين وإيطاليا للسوق العربي.</span>
+      <span class="cn-t">专业级电动工具、轮胎车间设备、润滑系统及汽车举升机 — 源自中国与意大利，面向中东北非市场。</span>
+    </p>
+  </div>
+</div>
+
+<!-- Brand quick nav -->
+<div class="brand-strip">
+  <a class="brand-pill" href="#makute">MAKUTE</a>
+  <a class="brand-pill" href="#sicam">SICAM</a>
+  <a class="brand-pill" href="#raasm">RAASM</a>
+  <a class="brand-pill" href="#oem-brands">KZUBR</a>
+  <a class="brand-pill" href="#oem-brands">MAEKIDA</a>
+  <a class="brand-pill" href="#oem-brands">MATIKA</a>
+  <a class="brand-pill" href="#oem-brands">MEGA</a>
+  <a class="brand-pill" href="#oem-brands">MIGA</a>
+  <a class="brand-pill" href="#oem-brands">PARKSIT</a>
+  <a class="brand-pill" href="#oem-brands">SHARP</a>
+  <a class="brand-pill" href="#oem-brands">DUNKO</a>
+</div>
+
+<!-- ═══════════════════════════════════════
+     MAKUTE — FEATURED
+════════════════════════════════════════ -->
+<div class="brand-featured reveal" id="makute">
+  <div class="brand-featured-inner">
+
+    <div class="brand-featured-header">
+      <div class="brand-logo-box">
+        <img src="../images/brands/makute/logo.webp" alt="MAKUTE Logo">
+      </div>
+      <div class="brand-meta">
+        <div class="brand-origin">
+          <span>🇨🇳</span>
+          <span class="en">China — Professional Power Tools</span>
+          <span class="ar-t">الصين — عدد كهربائية احترافية</span>
+          <span class="cn-t">中国 — 专业电动工具</span>
+        </div>
+        <div class="brand-name">MAKUTE</div>
+        <p class="brand-desc">
+          <span class="en">MAKUTE is a professional power tools brand engineered for demanding trades and construction work. With a comprehensive range spanning corded and cordless tools, outdoor equipment, fuel-powered machinery, hand tools, and accessories — MAKUTE delivers industrial-grade performance at competitive cost for MENA professionals.</span>
+          <span class="ar-t">ماكوتي علامة تجارية متخصصة في العدد الكهربائية الاحترافية، مصممة للأعمال الصعبة والبناء. تشمل تشكيلتها الواسعة العدد السلكية واللاسلكية، معدات الهواء الطلق، المحركات، العدد اليدوية والملحقات — بأداء صناعي وبتكلفة تنافسية للمحترفين في منطقتنا.</span>
+          <span class="cn-t">MAKUTE 是一个专业电动工具品牌，专为严苛的行业和建筑作业而设计，提供全面的有线、无线工具、户外设备、动力机械、手工具及配件系列。</span>
+        </p>
+        <div class="brand-tags">
+          <span class="btag"><span class="en">Power Tools</span><span class="ar-t">عدد كهربائية</span></span>
+          <span class="btag"><span class="en">Cordless</span><span class="ar-t">لاسلكية</span></span>
+          <span class="btag"><span class="en">Hand Tools</span><span class="ar-t">عدد يدوية</span></span>
+          <span class="btag"><span class="en">Outdoor</span><span class="ar-t">هواء طلق</span></span>
+          <span class="btag"><span class="en">Fuel Equipment</span><span class="ar-t">معدات وقود</span></span>
+          <span class="btag"><span class="en">Accessories</span><span class="ar-t">ملحقات</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6-category grid -->
+    <div class="cat-grid">
+
+      <div class="cat-card">
+        <img src="../images/brands/makute/power-tools-ac.jpg" alt="MAKUTE Power Tools AC">
+        <div class="cat-card-label">
+          <div class="cat-accent"></div>
+          <div class="en">Power Tools — AC</div>
+          <div class="ar-t">عدد كهربائية — سلكية</div>
+          <div class="cn-t">交流电动工具</div>
+        </div>
+      </div>
+
+      <div class="cat-card">
+        <img src="../images/brands/makute/cordless-tools.jpg" alt="MAKUTE Cordless Tools">
+        <div class="cat-card-label">
+          <div class="cat-accent"></div>
+          <div class="en">Cordless Tools</div>
+          <div class="ar-t">عدد لاسلكية</div>
+          <div class="cn-t">无线电动工具</div>
+        </div>
+      </div>
+
+      <div class="cat-card">
+        <img src="../images/brands/makute/hand-tools.jpg" alt="MAKUTE Hand Tools">
+        <div class="cat-card-label">
+          <div class="cat-accent"></div>
+          <div class="en">Hand Tools</div>
+          <div class="ar-t">عدد يدوية</div>
+          <div class="cn-t">手动工具</div>
+        </div>
+      </div>
+
+      <div class="cat-card">
+        <img src="../images/brands/makute/outdoor-tools.jpg" alt="MAKUTE Outdoor Equipment">
+        <div class="cat-card-label">
+          <div class="cat-accent"></div>
+          <div class="en">Outdoor Equipment</div>
+          <div class="ar-t">معدات هواء طلق</div>
+          <div class="cn-t">户外设备</div>
+        </div>
+      </div>
+
+      <div class="cat-card">
+        <img src="../images/brands/makute/fuel-equipment.jpg" alt="MAKUTE Fuel Equipment">
+        <div class="cat-card-label">
+          <div class="cat-accent"></div>
+          <div class="en">Fuel Equipment</div>
+          <div class="ar-t">معدات وقود</div>
+          <div class="cn-t">燃油设备</div>
+        </div>
+      </div>
+
+      <div class="cat-card">
+        <img src="../images/brands/makute/accessories.jpg" alt="MAKUTE Accessories">
+        <div class="cat-card-label">
+          <div class="cat-accent"></div>
+          <div class="en">Accessories</div>
+          <div class="ar-t">ملحقات وقطع غيار</div>
+          <div class="cn-t">配件</div>
+        </div>
+      </div>
+
+    </div>
+    <!-- / cat-grid -->
+
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
+      <a href="../mwm-equipments/" class="btn-b" style="font-size:.7rem;padding:.65rem 1.6rem">
+        <span class="en">Browse MAKUTE Catalogue</span>
+        <span class="ar-t">تصفح كتالوج ماكوتي</span>
+        <span class="cn-t">浏览 MAKUTE 目录</span>
+      </a>
+      <a href="../contact/" class="btn-o" style="font-size:.7rem;padding:.65rem 1.6rem">
+        <span class="en">Request Pricing</span>
+        <span class="ar-t">طلب عرض سعر</span>
+        <span class="cn-t">询价</span>
+      </a>
+    </div>
+
+  </div>
+</div>
+<!-- / MAKUTE -->
+
+<!-- ═══════════════════════════════════════
+     SICAM — Italian Tyre Equipment
+════════════════════════════════════════ -->
+<div class="brand-section alt reveal" id="sicam">
+  <div class="brand-section-inner wide">
+
+    <div class="brand-info">
+      <div>
+        <div class="brand-logo-box" style="width:180px;height:75px;margin-bottom:1.4rem;">
+          <img src="../images/brands/sicam/logo.png" alt="SICAM Logo" style="filter:brightness(1.1) contrast(1.05);">
+        </div>
+        <div class="brand-origin">
+          <span>🇮🇹</span>
+          <span class="en">Italy — Tyre Workshop Equipment</span>
+          <span class="ar-t">إيطاليا — معدات ورشة الإطارات</span>
+          <span class="cn-t">意大利 — 轮胎车间设备</span>
+        </div>
+        <div class="brand-name">SICAM</div>
+      </div>
+      <p class="brand-desc">
+        <span class="en">SICAM is an Italian manufacturer of professional tyre workshop equipment with over 40 years of engineering experience. Their range covers tyre changers and wheel balancers built to serve high-volume tyre workshops, automotive service centres, and fleet maintenance operations across the MENA region.</span>
+        <span class="ar-t">سيكام شركة إيطالية متخصصة في تصنيع معدات ورش الإطارات الاحترافية، بخبرة هندسية تتجاوز 40 عاماً. تشمل منتجاتها ماكينات تغيير الإطارات وموازنة العجلات، مصممة لخدمة ورش الإطارات المتخصصة ومراكز الصيانة في منطقتنا.</span>
+        <span class="cn-t">SICAM 是一家拥有40多年工程经验的意大利专业轮胎车间设备制造商，产品涵盖换胎机和动平衡机。</span>
+      </p>
+      <div class="brand-tags">
+        <span class="btag"><span class="en">Tyre Changers</span><span class="ar-t">ماكينات إطارات</span></span>
+        <span class="btag"><span class="en">Wheel Balancers</span><span class="ar-t">موازنة عجلات</span></span>
+        <span class="btag"><span class="en">Made in Italy</span><span class="ar-t">صنع في إيطاليا</span></span>
+        <span class="btag"><span class="en">CE Certified</span><span class="ar-t">معتمد CE</span></span>
+      </div>
+      <div>
+        <a href="../contact/" class="btn-o" style="font-size:.7rem;padding:.65rem 1.6rem;display:inline-block;text-decoration:none;">
+          <span class="en">Inquire About SICAM</span>
+          <span class="ar-t">الاستفسار عن سيكام</span>
+          <span class="cn-t">咨询 SICAM 产品</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="brand-products-grid">
+      <div class="bprod-card" style="aspect-ratio:unset;min-height:200px;">
+        <img src="../images/brands/sicam/tyre-changer.png" alt="SICAM Tyre Changer">
+        <div class="bprod-label">
+          <span class="en">Tyre Changers</span>
+          <span class="ar-t">ماكينات تغيير الإطارات</span>
+        </div>
+      </div>
+      <div class="bprod-card" style="aspect-ratio:unset;min-height:200px;">
+        <img src="../images/brands/sicam/wheel-balancer.png" alt="SICAM Wheel Balancer">
+        <div class="bprod-label">
+          <span class="en">Wheel Balancers</span>
+          <span class="ar-t">أجهزة موازنة العجلات</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- / SICAM -->
+
+<!-- ═══════════════════════════════════════
+     RAASM — Italian Garage Equipment
+════════════════════════════════════════ -->
+<div class="brand-section reveal" id="raasm">
+  <div class="brand-section-inner">
+
+    <div class="brand-info">
+      <div>
+        <div class="brand-logo-box" style="width:180px;height:75px;margin-bottom:1.4rem;background:var(--dark3);">
+          <img src="../images/brands/raasm/logo.png" alt="RAASM Logo" style="object-fit:contain;max-height:55px;filter:brightness(1.15);">
+        </div>
+        <div class="brand-origin">
+          <span>🇮🇹</span>
+          <span class="en">Italy — Garage & Lubrication Systems</span>
+          <span class="ar-t">إيطاليا — أنظمة الكراج والتشحيم</span>
+          <span class="cn-t">意大利 — 车库润滑系统</span>
+        </div>
+        <div class="brand-name">RAASM</div>
+      </div>
+      <p class="brand-desc">
+        <span class="en">RAASM is an Italian specialist in professional garage equipment and fluid handling systems. Their product range includes oil dispensing systems, grease pumps, pneumatic reels, fuel management equipment, and workshop fluid management tools — designed for automotive workshops, service stations, and industrial facilities requiring reliable fluid distribution.</span>
+        <span class="ar-t">راسم شركة إيطالية متخصصة في معدات ورش السيارات وأنظمة توزيع السوائل الصناعية. تشمل منتجاتها أنظمة توزيع الزيت، مضخات الشحم، بكرات الهواء الضغطي، ومعدات إدارة الوقود — مصممة لورش السيارات ومحطات الخدمة والمنشآت الصناعية.</span>
+        <span class="cn-t">RAASM 是意大利专业车库设备和流体处理系统专家，产品涵盖供油系统、润滑脂泵、气动卷盘和燃油管理设备。</span>
+      </p>
+      <div class="brand-tags">
+        <span class="btag"><span class="en">Oil Systems</span><span class="ar-t">أنظمة زيت</span></span>
+        <span class="btag"><span class="en">Grease Pumps</span><span class="ar-t">مضخات شحم</span></span>
+        <span class="btag"><span class="en">Pneumatic Reels</span><span class="ar-t">بكرات هوائية</span></span>
+        <span class="btag"><span class="en">Fluid Management</span><span class="ar-t">إدارة السوائل</span></span>
+        <span class="btag"><span class="en">Made in Italy</span><span class="ar-t">صنع في إيطاليا</span></span>
+      </div>
+      <div>
+        <a href="../contact/" class="btn-o" style="font-size:.7rem;padding:.65rem 1.6rem;display:inline-block;text-decoration:none;">
+          <span class="en">Inquire About RAASM</span>
+          <span class="ar-t">الاستفسار عن راسم</span>
+          <span class="cn-t">咨询 RAASM 产品</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- RAASM visual panel — branded info card since logo image may vary -->
+    <div style="border:1px solid var(--border);background:var(--dark2);display:flex;flex-direction:column;gap:0;overflow:hidden;">
+      <div style="padding:2rem 2rem 1.5rem;border-bottom:1px solid var(--border);">
+        <div style="font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:.6rem;">
+          <span class="en">Product Highlights</span><span class="ar-t">أبرز المنتجات</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:.85rem;">
+          <div style="display:flex;align-items:flex-start;gap:.75rem;">
+            <div style="width:3px;height:3px;border-radius:50%;background:var(--lime);margin-top:.5rem;flex-shrink:0;"></div>
+            <div>
+              <div style="font-size:.78rem;font-weight:600;"><span class="en">Oil Dispensing Units</span><span class="ar-t">وحدات توزيع الزيت</span></div>
+              <div style="font-size:.72rem;color:var(--muted);margin-top:2px;"><span class="en">Pump systems for 20L–200L drums and IBC tanks</span><span class="ar-t">أنظمة ضخ لبراميل 20–200 لتر وخزانات IBC</span></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:.75rem;">
+            <div style="width:3px;height:3px;border-radius:50%;background:var(--lime);margin-top:.5rem;flex-shrink:0;"></div>
+            <div>
+              <div style="font-size:.78rem;font-weight:600;"><span class="en">Grease Pumps & Systems</span><span class="ar-t">مضخات ووحدات الشحم</span></div>
+              <div style="font-size:.72rem;color:var(--muted);margin-top:2px;"><span class="en">Pneumatic and electric grease dispensing for workshops</span><span class="ar-t">مضخات شحم هوائية وكهربائية لورش الصيانة</span></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:.75rem;">
+            <div style="width:3px;height:3px;border-radius:50%;background:var(--lime);margin-top:.5rem;flex-shrink:0;"></div>
+            <div>
+              <div style="font-size:.78rem;font-weight:600;"><span class="en">Pneumatic Hose Reels</span><span class="ar-t">بكرات خرطوم الهواء</span></div>
+              <div style="font-size:.72rem;color:var(--muted);margin-top:2px;"><span class="en">Spring-return and motor-driven reels for air, oil & water</span><span class="ar-t">بكرات بنابض وكهربائية للهواء والزيت والماء</span></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:.75rem;">
+            <div style="width:3px;height:3px;border-radius:50%;background:var(--lime);margin-top:.5rem;flex-shrink:0;"></div>
+            <div>
+              <div style="font-size:.78rem;font-weight:600;"><span class="en">Fuel Management</span><span class="ar-t">إدارة الوقود</span></div>
+              <div style="font-size:.72rem;color:var(--muted);margin-top:2px;"><span class="en">Diesel & AdBlue transfer pumps and meters</span><span class="ar-t">مضخات وعدادات نقل الديزل وسائل AdBlue</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:1.2rem 2rem;display:flex;align-items:center;gap:.7rem;">
+        <div style="width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0;"></div>
+        <div style="font-size:.68rem;color:var(--muted);letter-spacing:.06em;">
+          <span class="en">Italian engineering · ISO certified · B2B supply available</span>
+          <span class="ar-t">هندسة إيطالية · معتمد ISO · التوريد بالجملة متاح</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- / RAASM -->
+
+<!-- ═══════════════════════════════════════
+     OEM BRANDS — Chinese Manufacturers
+════════════════════════════════════════ -->
+<div class="oem-section" id="oem-brands">
+  <div class="oem-section-inner">
+
+    <p class="sec-tag"><span class="en">OEM & Private Label</span><span class="ar-t">علامات المصنّع والخاصة</span><span class="cn-t">OEM 与自有品牌</span></p>
+    <h2 class="sec-h">
+      <span class="en">Extended <span class="ac">Brand Portfolio</span></span>
+      <span class="ar-t">محفظة العلامات <span class="ac">الممتدة</span></span>
+      <span class="cn-t">延伸<span class="ac">品牌组合</span></span>
+    </h2>
+    <p style="font-size:.85rem;color:var(--muted);max-width:600px;line-height:1.75;margin-top:.5rem;">
+      <span class="en">In addition to our flagship brands, MWM Equipments carries a range of professional Chinese-manufactured OEM brands — covering specialised tools, welding, parking systems, and more for the MENA market.</span>
+      <span class="ar-t">إضافة إلى علاماتنا الرئيسية، توفر معدات MWM تشكيلة من العلامات الصينية OEM المتخصصة — تغطي العدد المتخصصة، اللحام، أنظمة الوقوف، والمزيد.</span>
+      <span class="cn-t">除旗舰品牌外，MWM 设备还提供多个专业中国制造 OEM 品牌，涵盖专业工具、焊接、停车系统等。</span>
+    </p>
+
+    <div class="oem-grid">
+
+      <!-- KZUBR -->
+      <div class="oem-card">
+        <div class="oem-logo-text">KZUBR</div>
+        <div class="oem-spec"><span class="en">Power Tools & Grinders</span><span class="ar-t">عدد كهربائية وطواحين</span></div>
+        <div class="oem-spec-ar"><span class="en">كيزوبر</span></div>
+        <div class="oem-flag">🇨🇳</div>
+      </div>
+
+      <!-- MAEKIDA -->
+      <div class="oem-card">
+        <div class="oem-logo-text">MA<span>EK</span>IDA</div>
+        <div class="oem-spec"><span class="en">Electric Drills & Tools</span><span class="ar-t">مثاقب وعدد كهربائية</span></div>
+        <div class="oem-spec-ar"><span class="en">ماكيدا</span></div>
+        <div class="oem-flag">🇨🇳</div>
+      </div>
+
+      <!-- MATIKA -->
+      <div class="oem-card">
+        <div class="oem-logo-text">MA<span>TI</span>KA</div>
+        <div class="oem-spec"><span class="en">Welding Equipment</span><span class="ar-t">معدات لحام</span></div>
+        <div class="oem-spec-ar"><span class="en">ماتيكا</span></div>
+        <div class="oem-flag">🇨🇳</div>
+      </div>
+
+      <!-- MEGA -->
+      <div class="oem-card">
+        <div class="oem-logo-text"><span>ME</span>GA</div>
+        <div class="oem-spec"><span class="en">Workshop Machinery</span><span class="ar-t">ماكينات الورشة</span></div>
+        <div class="oem-spec-ar"><span class="en">ميغا</span></div>
+        <div class="oem-flag">🇨🇳</div>
+      </div>
+
+      <!-- MIGA -->
+      <div class="oem-card">
+        <div class="oem-logo-text">MI<span>GA</span></div>
+        <div class="oem-spec"><span class="en">Power & Electric Tools</span><span class="ar-t">عدد كهربائية وآلية</span></div>
+        <div class="oem-spec-ar"><span class="en">ميغا</span></div>
+        <div class="oem-flag">🇨🇳</div>
+      </div>
+
+      <!-- PARKSIT -->
+      <div class="oem-card">
+        <div class="oem-logo-text">PARK<span>SIT</span></div>
+        <div class="oem-spec"><span class="en">Vehicle Parking Lifts</span><span class="ar-t">رافعات وقوف السيارات</span></div>
+        <div class="oem-spec-ar"><span class="en">باركسيت</span></div>
+        <div class="oem-flag">🇨🇳</div>
+      </div>
+
+      <!-- SHARP -->
+      <div class="oem-card">
+        <div class="oem-logo-text">SHARP</div>
+        <div class="oem-spec"><span class="en">Cutting Tools & Blades</span><span class="ar-t">أدوات قطع وشفرات</span></div>
+        <div class="oem-spec-ar"><span class="en">شارب</span></div>
+        <div class="oem-flag">🇨🇳</div>
+      </div>
+
+      <!-- DUNKO -->
+      <div class="oem-card">
+        <div class="oem-logo-text">DUN<span>KO</span></div>
+        <div class="oem-spec"><span class="en">Pneumatic & Air Tools</span><span class="ar-t">عدد هوائية وهواء مضغوط</span></div>
+        <div class="oem-spec-ar"><span class="en">دانكو</span></div>
+        <div class="oem-flag">🇨🇳</div>
+      </div>
+
+    </div>
+    <!-- / oem-grid -->
+
+    <p style="font-size:.72rem;color:var(--muted);margin-top:1.5rem;line-height:1.7;max-width:620px;">
+      <span class="en">All OEM brands are sourced, quality-checked, and imported directly through MWM's Yiwu supply chain. Bulk orders, custom labelling, and sample procurement available on request.</span>
+      <span class="ar-t">جميع العلامات OEM يتم توريدها، مراقبة جودتها، واستيرادها مباشرة عبر سلسلة توريد MWM في يوو. الطلبات بالجملة، التخصيص، وعينات المنتجات متاحة عند الطلب.</span>
+      <span class="cn-t">所有 OEM 品牌均通过 MWM 义乌供应链直接采购、质检和进口。可提供大批量订单、定制贴标及样品采购。</span>
+    </p>
+
+  </div>
+</div>
+<!-- / OEM -->
+
+<!-- ═══════════════════════════════════════
+     CTA
+════════════════════════════════════════ -->
+<div class="brands-cta reveal">
+  <div class="brands-cta-inner">
+    <div>
+      <h2>
+        <span class="en">Need a Brand or <span class="ac">Custom Sourcing?</span></span>
+        <span class="ar-t">تحتاج علامة أو <span class="ac">توريد مخصص؟</span></span>
+        <span class="cn-t">需要品牌或<span class="ac">定制采购？</span></span>
+      </h2>
+      <p>
+        <span class="en">Don't see what you need? MWM sources from across China's Yiwu and manufacturing hubs. Contact us with your product specifications and we'll find the right supplier.</span>
+        <span class="ar-t">لم تجد ما تبحث عنه؟ تتخصص MWM في التوريد من يوو وكبرى مناطق التصنيع الصينية. تواصل معنا بمواصفات المنتج وسنجد لك المورّد المناسب.</span>
+        <span class="cn-t">没找到所需产品？MWM 从义乌及全国主要制造基地采购。请联系我们并提供产品规格，我们将为您寻找合适的供应商。</span>
+      </p>
+    </div>
+    <div class="cta-btns">
+      <a href="../contact/" class="btn-l" style="font-size:.72rem;padding:.75rem 2rem;text-decoration:none;">
+        <span class="en">Contact Us</span><span class="ar-t">تواصل معنا</span><span class="cn-t">联系我们</span>
+      </a>
+      <a href="../mwm-equipments/" class="btn-b" style="font-size:.72rem;padding:.75rem 2rem;text-decoration:none;">
+        <span class="en">Browse Catalogue</span><span class="ar-t">تصفح الكتالوج</span><span class="cn-t">浏览目录</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-in">
+    <div>
+      <div class="footer-logo"><img alt="MWM" src="" data-imgvar="__IMG_LOGO_ICON"></div>
+      <div class="footer-logo-cn">义乌镘旺国际贸易有限公司</div>
+      <div class="footer-logo-sub" style="margin-top:4px"><span class="en">al serawan group · Since 1999</span><span class="ar-t">مجموعة السيروان · منذ 1999</span><span class="cn-t">阿尔塞拉万集团 · 自1999年</span></div>
+    </div>
+    <div class="footer-col">
+      <h4><span class="en">Companies</span><span class="ar-t">شركاتنا</span><span class="cn-t">公司</span></h4>
+      <a href="../mwm-logistics/">Max Worldwide Mastering</a>
+      <a href="../mwm-motors/">MWM Motors</a>
+      <a href="../mwm-equipments/">MWM Equipments</a>
+    </div>
+    <div class="footer-col">
+      <h4><span class="en">Quick Links</span><span class="ar-t">روابط سريعة</span><span class="cn-t">快速链接</span></h4>
+      <a href="../about/"><span class="en">About the Group</span><span class="ar-t">عن المجموعة</span><span class="cn-t">关于集团</span></a>
+      <a href="../services/"><span class="en">Services</span><span class="ar-t">الخدمات</span><span class="cn-t">服务项目</span></a>
+      <a href="../contact/"><span class="en">Contact</span><span class="ar-t">تواصل</span><span class="cn-t">联系我们</span></a>
+      <a href="../mwm-equipments/"><span class="en">MWM Catalogue</span><span class="ar-t">كتالوج MWM</span><span class="cn-t">MWM 目录</span></a>
+    </div>
+    <div class="footer-col">
+      <h4><span class="en">Legal</span><span class="ar-t">قانوني</span><span class="cn-t">法务</span></h4>
+      <a href="../legal/"><span class="en">Privacy Policy</span><span class="ar-t">سياسة الخصوصية</span><span class="cn-t">隐私政策</span></a>
+      <a href="../legal/"><span class="en">Terms of Service</span><span class="ar-t">شروط الخدمة</span><span class="cn-t">服务条款</span></a>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <div class="footer-copy">© 2026 al serawan group · 义乌镘旺国际贸易有限公司 · Yiwu, Zhejiang, China · <a href="../legal/" style="color:var(--muted);text-decoration:none;font-size:.75em">Privacy &amp; Terms</a></div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/alserawan_mwm_logistics/" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.facebook.com/profile.php?id=61574171417116" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="https://www.linkedin.com/company/al-serawan-group-max-worldwide-mastering" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0zM7.5 8H12v2.2h.07c.63-1.2 2.17-2.47 4.47-2.47 4.78 0 5.66 3.15 5.66 7.24V24h-5v-6.8c0-1.62-.03-3.7-2.25-3.7s-2.6 1.76-2.6 3.58V24h-5z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script>var SITE_ROOT="../";var CURRENT_PAGE="brands";</script>
+<script src="../app.js"></script>
+
+</body>
+</html>

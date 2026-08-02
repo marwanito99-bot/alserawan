@@ -86,30 +86,409 @@
 </nav>
 <div id="pg-equip" class="pg on">
 
-<div class="co-hero">
-  <div class="co-hero-bg"><img id="img-equip-hero" src="" alt="MWM heavy equipment trading"/></div>
-  <div class="co-hero-overlay"></div>
-  <div class="co-hero-content">
-    <a href="../" class="back-b"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg><span class="en">al serawan group</span><span class="ar-t">مجموعة السيروان</span><span class="cn-t">阿尔塞拉万集团</span></a>
-    <div class="co-hero-tag">03 — <span class="en">Heavy Equipment</span><span class="ar-t">المعدات الثقيلة</span><span class="cn-t">重型设备</span></div>
-    <h1 class="co-hero-title">MWM <span style="color:var(--lime)">Equipments</span></h1>
-    <p class="co-hero-desc"><span class="en">Industrial and heavy equipment trading for construction, infrastructure, and industrial sectors — sourced from China, Germany & Italy with 25+ years of expertise.</span><span class="ar-t">تجارة المعدات الصناعية والثقيلة للبناء والبنية التحتية — مصدرها الصين وألمانيا وإيطاليا بخبرة أكثر من 25 عاماً.</span><span class="cn-t">面向建筑、基础设施及工业领域的工业与重型设备贸易。</span></p>
+<style>
+/* ══════════════════════════════════════════════
+   BRANDS SECTION + MODAL SYSTEM
+══════════════════════════════════════════════ */
+.brands-section{padding:4rem 3.5rem 3rem;border-bottom:1px solid var(--border);background:var(--black);}
+.brands-section-header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.2rem;}
+.brands-section-header h2{font-size:clamp(1.4rem,2.8vw,2.2rem);font-weight:700;letter-spacing:-.025em;margin:0;}
+.brands-section-header h2 span{color:var(--lime);}
+.brands-count-badge{font-size:.63rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:.3rem .75rem;}
+
+/* Brand grid */
+.brands-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
+.brand-card{
+  background:var(--dark2);
+  padding:1.6rem 1.2rem 1.2rem;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.65rem;text-align:center;min-height:155px;
+  cursor:pointer;position:relative;overflow:hidden;
+  transition:background .25s;
+  border:none;font-family:inherit;color:var(--text);
+}
+.brand-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--bc,var(--blue));
+  opacity:0;transition:opacity .3s;
+}
+.brand-card::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 0%,color-mix(in srgb,var(--bc,var(--blue)) 10%,transparent) 0%,transparent 70%);
+  opacity:0;transition:opacity .3s;
+}
+.brand-card:hover{background:var(--dark3);}
+.brand-card:hover::before,.brand-card:hover::after{opacity:1;}
+.brand-card:focus-visible{outline:2px solid var(--lime);outline-offset:-2px;}
+.bc-logo{width:80px;height:40px;object-fit:contain;filter:brightness(1.05)contrast(1.05);transition:filter .3s;}
+.brand-card:hover .bc-logo{filter:brightness(1.2)contrast(1.1);}
+.bc-name{font-size:.95rem;font-weight:800;letter-spacing:.04em;line-height:1;}
+.bc-name span{color:var(--bc,var(--lime));}
+.bc-tag{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.1rem;}
+.bc-tag-ar{font-size:.65rem;color:rgba(240,237,230,.4);}
+.bc-flag{font-size:.72rem;opacity:.5;margin-top:.2rem;}
+.brand-card.featured{min-height:175px;}
+
+/* ── BRAND MODAL ── */
+#bmOverlay{
+  position:fixed;inset:0;z-index:900;
+  background:rgba(6,6,12,.0);
+  backdrop-filter:blur(0px);
+  display:none;
+  transition:background .35s,backdrop-filter .35s;
+}
+#bmOverlay.open{
+  display:flex;
+  background:rgba(6,6,12,.92);
+  backdrop-filter:blur(12px);
+}
+#bmPanel{
+  position:fixed;inset:0;z-index:901;
+  display:flex;flex-direction:column;
+  overflow-y:auto;
+  opacity:0;transform:scale(.97) translateY(12px);
+  transition:opacity .35s cubic-bezier(.22,1,.36,1),transform .35s cubic-bezier(.22,1,.36,1);
+  pointer-events:none;
+}
+#bmPanel.open{
+  opacity:1;transform:scale(1) translateY(0);
+  pointer-events:auto;
+}
+.bm-hero{
+  position:relative;min-height:38vh;max-height:52vh;
+  flex-shrink:0;overflow:hidden;
+  background:var(--dark3);
+}
+.bm-hero img{width:100%;height:100%;object-fit:cover;filter:brightness(.35) saturate(1.3);}
+.bm-hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(6,6,12,.2) 0%,rgba(6,6,12,.85) 100%);
+}
+.bm-hero-no-img{
+  width:100%;height:100%;min-height:280px;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--dark3) 0%,rgba(29,0,244,.12) 100%);
+}
+.bm-hero-content{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:2.5rem 3.5rem 2rem;
+  display:flex;align-items:flex-end;gap:2rem;flex-wrap:wrap;
+}
+.bm-logo-box{
+  width:130px;height:58px;background:rgba(10,10,15,.7);
+  border:1px solid rgba(255,255,255,.12);
+  display:flex;align-items:center;justify-content:center;padding:.6rem 1rem;
+  flex-shrink:0;backdrop-filter:blur(8px);
+}
+.bm-logo-box img{max-width:100%;max-height:100%;object-fit:contain;}
+.bm-logo-text{font-size:1.6rem;font-weight:900;letter-spacing:.06em;}
+.bm-title-block{flex:1;}
+.bm-country{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--lime);margin-bottom:.3rem;}
+.bm-title{font-size:clamp(2rem,4vw,3.2rem);font-weight:800;line-height:1;letter-spacing:-.03em;}
+.bm-tagline{font-size:.88rem;color:rgba(240,237,230,.7);margin-top:.35rem;font-weight:300;}
+
+/* Modal close button */
+.bm-close{
+  position:fixed;top:1.4rem;right:1.5rem;z-index:902;
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(10,10,15,.8);border:1px solid rgba(255,255,255,.15);
+  color:#fff;cursor:pointer;
+  display:none;align-items:center;justify-content:center;
+  backdrop-filter:blur(8px);transition:background .2s,transform .2s;
+  font-size:1.2rem;font-family:inherit;
+}
+.bm-close.open{display:flex;}
+.bm-close:hover{background:rgba(29,0,244,.5);transform:scale(1.05);}
+
+/* Modal body */
+.bm-body{
+  background:var(--black);flex:1;
+  display:grid;grid-template-columns:1fr 1.6fr;
+  gap:0;
+}
+.bm-info{
+  padding:2.5rem 2.5rem;
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;gap:1.5rem;
+}
+.bm-desc{font-size:.88rem;color:rgba(240,237,230,.75);line-height:1.85;font-weight:300;}
+.bm-tags{display:flex;flex-wrap:wrap;gap:.4rem;}
+.bm-tag{
+  font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid var(--border);padding:.25rem .7rem;color:var(--muted);
+}
+.bm-website{
+  font-size:.68rem;letter-spacing:.1em;color:var(--blue);text-decoration:none;
+  display:inline-flex;align-items:center;gap:.4rem;transition:color .2s;
+}
+.bm-website:hover{color:var(--lime);}
+.bm-inquire{
+  display:inline-block;text-decoration:none;
+  background:var(--lime);color:var(--black);
+  font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  padding:.75rem 1.8rem;transition:opacity .2s;font-family:inherit;border:none;cursor:pointer;
+}
+.bm-inquire:hover{opacity:.88;}
+
+/* Products panel */
+.bm-products{padding:2.5rem 2.5rem;background:var(--dark2);}
+.bm-prod-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:1.2rem;}
+.bm-prod-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));
+  gap:1px;background:var(--border);border:1px solid var(--border);
+}
+.bm-prod-card{
+  background:var(--dark3);
+  position:relative;overflow:hidden;
+}
+.bm-prod-card img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;display:block;
+  filter:brightness(.75);transition:transform .4s,filter .4s;
+}
+.bm-prod-card:hover img{transform:scale(1.06);filter:brightness(.95);}
+.bm-prod-label-over{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:1rem .8rem .55rem;
+  background:linear-gradient(to top,rgba(6,6,12,.95) 0%,transparent 100%);
+}
+.bm-prod-label-over .en{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
+.bm-prod-label-over .ar-t{font-size:.72rem;display:block;margin-top:2px;}
+/* No-image product card */
+.bm-prod-card-text{
+  background:var(--dark3);
+  padding:1.2rem 1rem;
+  display:flex;flex-direction:column;gap:.5rem;min-height:100px;
+  border-left:2px solid;
+  transition:background .2s;
+}
+.bm-prod-card-text:hover{background:var(--dark2);}
+.bm-pct-cat{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;}
+.bm-pct-name{font-size:.78rem;font-weight:600;line-height:1.3;}
+.bm-pct-name-ar{font-size:.8rem;color:rgba(240,237,230,.6);}
+
+/* NEW ARRIVALS SECTION */
+.na-section{padding:4rem 3.5rem 3.5rem;border-bottom:1px solid var(--border);background:var(--dark2);}
+.na-empty{
+  border:1px dashed rgba(204,253,27,.25);
+  padding:3rem 2rem;text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:.8rem;
+  margin-top:1.5rem;
+}
+.na-empty-icon{width:40px;height:40px;border:1px solid rgba(204,253,27,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.na-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-top:1.5rem;}
+.na-card{
+  background:var(--dark3);border:1px solid var(--border);border-radius:8px;
+  overflow:hidden;transition:border-color .2s,transform .2s;
+}
+.na-card:hover{border-color:var(--lime);transform:translateY(-2px);}
+.na-card img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:brightness(.8);}
+.na-card-body{padding:10px 12px 12px;}
+.na-card-badge{display:inline-block;background:var(--lime);color:#0a0a0f;font-size:.55rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;margin-bottom:6px;}
+.na-card-name{font-size:.78rem;font-weight:600;line-height:1.4;}
+.na-card-brand{font-size:.62rem;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:.08em;}
+
+/* RESPONSIVE */
+@media(max-width:1100px){.brands-grid{grid-template-columns:repeat(4,1fr);}}
+@media(max-width:800px){
+  .brands-section,.na-section{padding:3rem 1.5rem;}
+  .brands-grid{grid-template-columns:repeat(3,1fr);}
+  .bm-hero-content{padding:1.5rem 1.5rem 1.2rem;}
+  .bm-body{grid-template-columns:1fr;}
+  .bm-info{border-right:none;border-bottom:1px solid var(--border);}
+  .bm-info,.bm-products{padding:1.8rem 1.5rem;}
+}
+@media(max-width:520px){
+  .brands-grid{grid-template-columns:repeat(2,1fr);}
+  .bm-close{top:.8rem;right:.8rem;}
+}
+body.ar .bm-body{direction:rtl;}
+body.ar .bm-info{border-right:none;border-left:1px solid var(--border);}
+body.ar .bm-hero-content{flex-direction:row-reverse;}
+body.ar .bm-tags{flex-direction:row-reverse;}
+</style>
+
+<!-- ══════════════════════════════════
+     BRAND MODAL — overlay & close btn
+══════════════════════════════════════ -->
+<div id="bmOverlay" onclick="bmClose()"></div>
+<div id="bmPanel">
+  <div class="bm-hero" id="bmHero"><!-- hero filled by JS --></div>
+  <div class="bm-body">
+    <div class="bm-info" id="bmInfo"><!-- info filled by JS --></div>
+    <div class="bm-products" id="bmProds"><!-- products filled by JS --></div>
   </div>
 </div>
-<div class="wrap">
-  <div class="diff-grid" style="margin-bottom:3rem">
-    <div class="diff-item"><div class="diff-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><div class="diff-t"><span class="en">Industrial machinery from China, Germany & Italy</span><span class="ar-t">آلات صناعية من الصين وألمانيا وإيطاليا</span><span class="cn-t">来自中国、德国和意大利的工业机械</span></div></div>
-    <div class="diff-item"><div class="diff-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><div class="diff-t"><span class="en">Construction and infrastructure sector supply chain solutions</span><span class="ar-t">حلول سلاسل التوريد لقطاعي البناء والبنية التحتية</span><span class="cn-t">建筑与基础设施行业的供应链解决方案</span></div></div>
-    <div class="diff-item"><div class="diff-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><div class="diff-t"><span class="en">International quality standards — certified and compliant</span><span class="ar-t">معايير جودة دولية — معتمدة ومتوافقة</span><span class="cn-t">国际质量标准——经认证且合规</span></div></div>
-    <div class="diff-item"><div class="diff-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><div class="diff-t"><span class="en">Full import, logistics, and delivery to MENA and MENA</span><span class="ar-t">استيراد كامل ولوجستيات وتسليم للمنطقة الشرق الأوسط وشمال أفريقيا والشرق الأوسط</span><span class="cn-t">面向海湾及中东北非地区的完整进口、物流与交付</span></div></div>
-    <div class="diff-item"><div class="diff-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><div class="diff-t"><span class="en">25+ years of equipment sourcing expertise since 1999</span><span class="ar-t">خبرة أكثر من 25 عاماً في توريد المعدات منذ 1999</span><span class="cn-t">自1999年起25年以上的设备采购经验</span></div></div>
-    <div class="diff-item"><div class="diff-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><div class="diff-t"><span class="en">Tailored sourcing for specific industrial and project requirements</span><span class="ar-t">توريد مخصص للمتطلبات الصناعية والمشاريع المحددة</span><span class="cn-t">针对特定工业与项目需求的定制采购</span></div></div>
+<button class="bm-close" id="bmClose" onclick="bmClose()" aria-label="Close">✕</button>
+
+<!-- ══════════════════════════════════
+     OUR BRANDS
+══════════════════════════════════════ -->
+<div class="brands-section">
+  <div class="brands-section-header">
+    <div>
+      <p class="sec-tag" style="margin-bottom:.4rem"><span class="en">What We Carry</span><span class="ar-t">ما نوفره</span><span class="cn-t">我们代理的品牌</span></p>
+      <h2><span class="en">Our <span>Brands</span></span><span class="ar-t">علاماتنا <span>التجارية</span></span><span class="cn-t">我们的<span>品牌</span></span></h2>
+    </div>
+    <span class="brands-count-badge" id="brandsTotalBadge">— brands</span>
   </div>
-  <div style="text-align:center;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-    <a href="../contact/" class="btn-b"><span class="en">Inquire About Equipment</span><span class="ar-t">استفسر عن المعدات</span><span class="cn-t">设备询价</span></a>
-    <a href="../" class="btn-o"><span class="en">← Back to Group</span><span class="ar-t">العودة للمجموعة</span><span class="cn-t">← 返回集团</span></a>
+  <div class="brands-grid" id="brandsGrid">
+    <div style="grid-column:1/-1;padding:2rem;text-align:center;color:var(--muted);font-size:.8rem;">
+      <span class="en">Loading brands...</span><span class="ar-t">جارٍ التحميل...</span>
+    </div>
   </div>
 </div>
+
+<!-- ══════════════════════════════════
+     NEW ARRIVALS
+══════════════════════════════════════ -->
+<div class="na-section">
+  <p class="sec-tag"><span class="en">Just In</span><span class="ar-t">وصل حديثاً</span><span class="cn-t">新品上架</span></p>
+  <h2 class="sec-h"><span class="en">New <span class="ac">Arrivals</span></span><span class="ar-t">الوافدون <span class="ac">الجدد</span></span><span class="cn-t">新<span class="ac">上架</span></span></h2>
+  <div id="naGrid"><!-- filled by JS --></div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════
+   BRANDS DATA LOADER + MODAL SYSTEM
+══════════════════════════════════════════ */
+(function(){
+  var SITE='../';
+  var ROOT='../';
+  var data=null;
+
+  function img(path){return path?ROOT+path:'';}
+
+  // ── Load JSON ──
+  fetch('./brands-data.json?v='+Date.now())
+    .then(function(r){return r.json();})
+    .then(function(d){data=d;renderBrands();renderNewArrivals();})
+    .catch(function(){console.warn('brands-data.json not found');renderBrands();renderNewArrivals();});
+
+  // ── RENDER BRAND GRID ──
+  function renderBrands(){
+    var brands=data?data.brands:[];
+    var grid=document.getElementById('brandsGrid');
+    var badge=document.getElementById('brandsTotalBadge');
+    if(badge) badge.textContent=brands.length+' brands';
+    if(!brands.length){grid.innerHTML='<div style="grid-column:1/-1;padding:2rem;text-align:center;color:var(--muted)">No brands found</div>';return;}
+    grid.innerHTML=brands.map(function(b,i){
+      var logoHtml=b.logo_path
+        ?'<img class="bc-logo" src="'+img(b.logo_path)+'" alt="'+b.name_en+'" onerror="this.style.display=\'none\';this.nextSibling.style.display=\'block\'">'
+         +'<div class="bc-name" style="display:none"><span>'+b.name_en.slice(0,2)+'</span>'+b.name_en.slice(2)+'</div>'
+        :'<div class="bc-name"><span>'+b.name_en.slice(0,2)+'</span>'+b.name_en.slice(2)+'</div>';
+      var accent=b.color||'#1d00f4';
+      return '<button class="brand-card'+(b.featured?' featured':'')+'" onclick="bmOpen('+i+')" style="--bc:'+accent+'" title="'+b.name_en+'">'
+        +logoHtml
+        +'<div class="bc-tag">'+b.tagline_en+'</div>'
+        +'<div class="bc-tag-ar">'+b.tagline_ar+'</div>'
+        +'<div class="bc-flag">'+b.flag+'</div>'
+        +'</button>';
+    }).join('');
+  }
+
+  // ── RENDER NEW ARRIVALS ──
+  function renderNewArrivals(){
+    var items=data&&data.new_arrivals?data.new_arrivals:[];
+    var grid=document.getElementById('naGrid');
+    if(!items.length){
+      grid.innerHTML='<div class="na-empty">'
+        +'<div class="na-empty-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--lime)" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>'
+        +'<p style="font-size:.82rem;color:var(--muted);max-width:360px;line-height:1.7"><span class="en">New arrivals will appear here — add products to the <strong style="color:var(--text)">New Arrivals</strong> sheet in brands.xlsx and run update-brands.py.</span>'
+        +'<span class="ar-t">المنتجات الجديدة ستظهر هنا — أضف منتجات في شيت <strong style="color:var(--text)">New Arrivals</strong> بملف brands.xlsx وشغّل update-brands.py.</span></p>'
+        +'</div>';
+      return;
+    }
+    grid.innerHTML='<div class="na-grid">'+items.map(function(p){
+      return '<div class="na-card">'
+        +(p.image_path?'<img src="'+img(p.image_path)+'" alt="'+p.name_en+'">':'')
+        +'<div class="na-card-body">'
+        +'<span class="na-card-badge"><span class="en">New</span><span class="ar-t">جديد</span></span>'
+        +'<div class="na-card-name"><span class="en">'+p.name_en+'</span><span class="ar-t">'+p.name_ar+'</span></div>'
+        +'<div class="na-card-brand">'+p.brand_id+'</div>'
+        +'</div></div>';
+    }).join('')+'</div>';
+  }
+
+  // ── OPEN MODAL ──
+  window.bmOpen=function(idx){
+    if(!data||!data.brands[idx]) return;
+    var b=data.brands[idx];
+    var accent=b.color||'#1d00f4';
+    var products=b.products||[];
+    var isAr=document.body.classList.contains('ar');
+
+    // Hero
+    var hero=document.getElementById('bmHero');
+    if(b.hero_path){
+      hero.innerHTML='<img src="'+img(b.hero_path)+'" alt="'+b.name_en+'">'
+        +'<div class="bm-hero-overlay"></div>';
+    } else {
+      hero.innerHTML='<div class="bm-hero-no-img" style="background:linear-gradient(135deg,#131320 0%,'+accent+'22 100%)">'
+        +'<div style="font-size:5rem;font-weight:900;letter-spacing:-.03em;color:'+accent+';opacity:.25">'+b.name_en+'</div>'
+        +'</div>';
+    }
+    hero.innerHTML+='<div class="bm-hero-content">'
+      +(b.logo_path?'<div class="bm-logo-box"><img src="'+img(b.logo_path)+'" alt="'+b.name_en+'" onerror="this.parentNode.innerHTML=\'<div class=bm-logo-text style=color:'+accent+'>'+b.name_en+'</div>\'"></div>'
+                  :'<div class="bm-logo-box"><div class="bm-logo-text" style="color:'+accent+'">'+b.name_en+'</div></div>')
+      +'<div class="bm-title-block">'
+      +'<div class="bm-country">'+b.flag+' '+b.country_en+'</div>'
+      +'<div class="bm-title">'+b.name_en+'</div>'
+      +'<div class="bm-tagline">'+(isAr?b.tagline_ar:b.tagline_en)+'</div>'
+      +'</div></div>';
+
+    // Info
+    document.getElementById('bmInfo').innerHTML=
+      '<div class="bm-desc">'+(isAr?b.description_ar:b.description_en)+'</div>'
+      +'<div class="bm-tags">'
+      +(products.map(function(p){return '<span class="bm-tag" style="border-color:'+accent+'44;color:'+accent+'">'+
+        (isAr?p.category_ar:p.category_en)+'</span>';}).filter(function(v,i,a){return a.indexOf(v)===i;}).join(''))
+      +'</div>'
+      +(b.website?'<a class="bm-website" href="'+b.website+'" target="_blank" rel="noopener">↗ '+b.website.replace('https://','')+'</a>':'')
+      +'<div><a class="bm-inquire" href="../contact/">'
+      +'<span class="en">Request Pricing</span><span class="ar-t">طلب عرض سعر</span>'
+      +'</a></div>';
+
+    // Products
+    var prodHtml=products.length
+      ?'<div class="bm-prod-grid">'+products.map(function(p){
+          if(p.image_path){
+            return '<div class="bm-prod-card">'
+              +'<img src="'+img(p.image_path)+'" alt="'+p.name_en+'" loading="lazy">'
+              +'<div class="bm-prod-label-over">'
+              +'<span class="en">'+p.name_en+'</span>'
+              +'<span class="ar-t">'+p.name_ar+'</span>'
+              +'</div></div>';
+          } else {
+            return '<div class="bm-prod-card-text" style="border-color:'+accent+'">'
+              +'<div class="bm-pct-cat" style="color:'+accent+'">'+p.category_en+'</div>'
+              +'<div class="bm-pct-name"><span class="en">'+p.name_en+'</span></div>'
+              +'<div class="bm-pct-name-ar"><span class="ar-t">'+p.name_ar+'</span></div>'
+              +'</div>';
+          }
+        }).join('')+'</div>'
+      :'<p style="color:var(--muted);font-size:.82rem"><span class="en">Product catalogue coming soon.</span><span class="ar-t">كتالوج المنتجات قريباً.</span></p>';
+    document.getElementById('bmProds').innerHTML=
+      '<p class="bm-prod-label"><span class="en">Products & Categories</span><span class="ar-t">المنتجات والفئات</span></p>'+prodHtml;
+
+    // Open
+    document.getElementById('bmOverlay').classList.add('open');
+    document.getElementById('bmPanel').classList.add('open');
+    document.getElementById('bmClose').classList.add('open');
+    document.getElementById('bmPanel').scrollTop=0;
+    document.body.style.overflow='hidden';
+  };
+
+  window.bmClose=function(){
+    document.getElementById('bmOverlay').classList.remove('open');
+    document.getElementById('bmPanel').classList.remove('open');
+    document.getElementById('bmClose').classList.remove('open');
+    setTimeout(function(){document.getElementById('bmOverlay').style.display='';},0);
+    document.body.style.overflow='';
+  };
+
+  document.addEventListener('keydown',function(e){if(e.key==='Escape') window.bmClose();});
+})();
+</script>
 
 <!-- ===== PRODUCTS CATALOGUE ===== -->
 <div class="wrap" id="pc-section">

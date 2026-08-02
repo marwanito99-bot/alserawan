@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="it-IT">
+<head>
+	<meta charset="UTF-8" />
+	
+				<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+		            <link rel="shortcut icon" type="image/x-icon" href="https://www.sicam.it/wp-content/uploads/2020/03/favicon_sicam.png">
+            <link rel="apple-touch-icon" href="https://www.sicam.it/wp-content/uploads/2020/03/favicon_sicam.png"/>
+        
+	<link rel="profile" href="https://gmpg.org/xfn/11" />
+	<link rel="pingback" href="https://www.sicam.it/xmlrpc.php" />
+
+	<meta name='robots' content='noindex, follow' />
+
+	<!-- This site is optimized with the Yoast SEO plugin v28.0 - https://yoast.com/product/yoast-seo-wordpress/ -->
+	<title>Pagina non trovata - Sicam</title><link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin/><link rel="preconnect" href="https://fonts.googleapis.com"/><style type="text/css">@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 100;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiAyp8kv8JHgFVrJJLmE0tMMPc.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiDyp8kv8JHgFVrJJLm21lVGdeL.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiGyp8kv8JHgFVrJJLufntF.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiDyp8kv8JHgFVrJJLmy15VGdeL.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiGyp8kv8JHgFVrLPTufntF.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLFj_Z1JlEA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLDz8Z1JlEA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiEyp8kv8JHgFVrJJnedw.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLGT9Z1JlEA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLEj6Z1JlEA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLCz7Z1JlEA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLDD4Z1JlEA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLBT5Z1JlEA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: italic;
+  font-weight: 100;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v37/1Pt_g8zYS_SKggPNyCgSQamb1W0lwk4S4WjNDr0fJQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v37/1Pt_g8zYS_SKggPNyCgSQamb1W0lwk4S4TbMDr0fJQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v37/1Pt_g8zYS_SKggPNyCgSQamb1W0lwk4S4WjMDr0fJQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v37/1Pt_g8zYS_SKggPNyCgSQamb1W0lwk4S4Y_LDr0fJQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v37/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVvao7CGPrQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v37/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVtaorCGPrQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v37/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVuEorCGPrQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v37/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVvaorCGPrQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v37/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVvoorCGPrQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v37/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVsEpbCGPrQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v37/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVs9pbCGPrQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v37/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVtapbCGPrQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v37/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVtzpbCGPrQ.ttf) format('truetype');
+}
+</style>
+	<meta property="og:locale" content="it_IT" />
+	<meta property="og:title" content="Pagina non trovata - Sicam" />
+	<meta property="og:site_name" content="Sicam" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebSite","@id":"https:\/\/www.sicam.it\/#website","url":"https:\/\/www.sicam.it\/","name":"Sicam","description":"Equipped for Success","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https:\/\/www.sicam.it\/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"it-IT"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//cdn.iubenda.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel="alternate" type="application/rss+xml" title="Sicam &raquo; Feed" href="https://www.sicam.it/feed/" />
+<style type="text/css">.brave_popup{display:none}</style><script data-no-optimize="1"> var brave_popup_data = {}; var bravepop_emailValidation=false; var brave_popup_videos = {};  var brave_popup_formData = {};var brave_popup_adminUser = false; var brave_popup_pageInfo = {"type":"notfound","pageID":"","singleType":""};  var bravepop_emailSuggestions={};</script><style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-color]){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='contact-form-7-css' href='https://www.sicam.it/wp-content/plugins/contact-form-7/includes/css/contact-form-7.min.css' media='all' />
+<link rel='stylesheet' id='sr7css-css' href='https://www.sicam.it/wp-content/plugins/revslider/public/css/sr7css.min.css' media='all' />
+<link rel='stylesheet' id='wpml-legacy-dropdown-0-css' href='https://www.sicam.it/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/legacy-dropdown/style.min.css' media='all' />
+<link rel='stylesheet' id='wpml-menu-item-0-css' href='https://www.sicam.it/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/menu-item/style.min.css' media='all' />
+<link rel='stylesheet' id='megamenu-css' href='https://www.sicam.it/wp-content/uploads/maxmegamenu/megamenu.min.css' media='all' />
+<link rel='stylesheet' id='dashicons-css' href='https://www.sicam.it/wp-includes/css/dashicons.min.css' media='all' />
+<link rel='stylesheet' id='mediaelement-css' href='https://www.sicam.it/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css' media='all' />
+<link rel='stylesheet' id='wp-mediaelement-css' href='https://www.sicam.it/wp-includes/js/mediaelement/wp-mediaelement.min.css' media='all' />
+<link rel='stylesheet' id='bridge-default-style-css' href='https://www.sicam.it/wp-content/themes/bridge/bridge-default-style.min.css' media='all' />
+<link rel='stylesheet' id='bridge-qode-font_awesome-css' href='https://www.sicam.it/wp-content/themes/bridge/css/font-awesome/css/font-awesome.min.css' media='all' />
+<link rel='stylesheet' id='bridge-qode-font_elegant-css' href='https://www.sicam.it/wp-content/themes/bridge/css/elegant-icons/style.min.css' media='all' />
+<link rel='stylesheet' id='bridge-qode-linea_icons-css' href='https://www.sicam.it/wp-content/themes/bridge/css/linea-icons/bridge-qode-linea_icons.min.css' media='all' />
+<link rel='stylesheet' id='bridge-qode-dripicons-css' href='https://www.sicam.it/wp-content/themes/bridge/css/dripicons/bridge-qode-dripicons.min.css' media='all' />
+<link rel='stylesheet' id='bridge-qode-kiko-css' href='https://www.sicam.it/wp-content/themes/bridge/css/kiko/bridge-qode-kiko.min.css' media='all' />
+<link rel='stylesheet' id='bridge-qode-font_awesome_5-css' href='https://www.sicam.it/wp-content/themes/bridge/css/font-awesome-5/css/font-awesome-5.min.css' media='all' />
+<link rel='stylesheet' id='bridge-stylesheet-css' href='https://www.sicam.it/wp-content/themes/bridge/css/stylesheet.min.css' media='all' />
+<style id="bridge-stylesheet-inline-css">
+   .error404.disabled_footer_top .footer_top_holder, .error404.disabled_footer_bottom .footer_bottom_holder { display: none;}
+
+
+/*# sourceURL=bridge-stylesheet-inline-css */
+</style>
+<link rel='stylesheet' id='bridge-print-css' href='https://www.sicam.it/wp-content/themes/bridge/css/bridge-print.min.css' media='all' />
+<link rel='stylesheet' id='bridge-style-dynamic-css' href='https://www.sicam.it/wp-content/themes/bridge/css/bridge-style-dynamic.min.css' media='all' />
+<link rel='stylesheet' id='bridge-responsive-css' href='https://www.sicam.it/wp-content/themes/bridge/css/responsive.min.css' media='all' />
+<link rel='stylesheet' id='bridge-style-dynamic-responsive-css' href='https://www.sicam.it/wp-content/themes/bridge/css/bridge-style-dynamic-responsive.min.css' media='all' />
+<style id="bridge-style-dynamic-responsive-inline-css">
+svg{width:100%;}
+
+.content .container .container_inner.page_container_inner, .full_page_container_inner {
+    padding: 0px 0 0;
+}
+
+/* MENU*/
+li#nav-menu-item-30 .second span {
+    display: none;
+}
+li#nav-menu-item-30  .vc_column_container>.vc_column-inner {
+    padding: 0;
+}
+li#nav-menu-item-30 .second .inner .widget {
+    padding: 0!important;
+}
+.drop_down .second .inner ul li {
+    width: 17.8%!important;
+    border: 0;
+    display: inline-block!important;
+    float: none;
+}
+li#nav-menu-item-30 .second ul {
+    display: block;
+    width: 1080px!important;
+    height: 300px;
+    left: -120px;
+}
+.drop_down .wide .second ul li .qbutton {
+    border: 0;
+    border-radius: 0;
+    color: #fff;
+    width: 184px;
+    padding: 0;
+    text-align: center;
+    text-transform: none;
+    box-shadow: inset 0px 0px 0px #c02319;
+    transition: 0.3s ease-in;
+}
+.drop_down .wide .second ul li .qbutton:hover {
+    box-shadow: inset 200px 0px 0px #c02319;
+}
+span.plus_label {
+    color: #000;
+    position: absolute;
+    margin-left: 5px;
+    font-size: 1.4rem;
+    margin-top: 0px;
+}
+span.plus_label_en {
+    color: #000;
+    position: absolute;
+    margin-left: 5px;
+    font-size: 1.4rem;
+    margin-top: 0px;
+}
+span.plus_label_es {
+    color: #000;
+    position: absolute;
+    margin-left: 5px;
+    font-size: 1.4rem;
+    margin-top: 0px;
+}
+span.plus_label_fr {
+    color: #000;
+    position: absolute;
+    margin-left: 5px;
+    font-size: 1.4rem;
+    margin-top: 0px;
+}
+li#nav-menu-item-30:hover span.plus_label {
+    color: #c02319;
+}
+li#nav-menu-item-1171:hover span.plus_label_en {
+    color: #c02319;
+}
+li#nav-menu-item-1371:hover span.plus_label_es {
+    color: #c02319;
+}
+li#nav-menu-item-1557:hover span.plus_label_es {
+    color: #c02319;
+}
+li#nav-menu-item-33 a {
+    padding: 0 17px 0 25px;
+}
+li#nav-menu-item-1157 a {
+    padding: 0 17px 0 25px;
+}
+li#nav-menu-item-1543 a {
+    padding: 0 17px 0 25px;
+}
+@media (max-width: 1112px) {
+    nav.main_menu > ul > li > a {
+        padding: 0 10px;
+        font-size: 15px;
+    }
+}
+
+/* FINE MENU */
+
+.thelibrary img {
+    position: relative;
+    top: 4px;
+}
+/* SELETTORE LINGUA */
+
+.wpml-ls-legacy-dropdown {
+    width: 15.5em;
+    max-width: 65px;
+}
+
+.wpml-ls-legacy-dropdown a {
+    border: none;
+    line-height: 1.7;
+}
+
+.wpml-ls-legacy-dropdown .wpml-ls-sub-menu {
+    border-top: none;
+}
+
+/* FINE SELETTORE LINGUA */
+
+/*BOTTONI*/
+.qbutton, .qbutton.medium, #submit_comment, .load_more a, .blog_load_more_button a, .post-password-form input[type='submit'], input.wpcf7-form-control.wpcf7-submit,  .woocommerce table.cart td.actions input[type="submit"], .woocommerce input#place_order, .woocommerce-page input[type="submit"], .woocommerce .button {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    box-shadow: inset 0 0 0 0 #c02319;
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+}
+.qbutton:hover, .qbutton.medium:hover, #submit_comment:hover, .load_more a:hover, .blog_load_more_button a:hover, .post-password-form input[type='submit']:hover,  .woocommerce table.cart td.actions input[type="submit"]:hover, .woocommerce input#place_order:hover, .woocommerce-page input[type="submit"]:hover, .woocommerce .button:hover {
+    box-shadow: inset 400px 0 0 0 #c02319;
+}
+
+input.wpcf7-form-control.wpcf7-submit, input.wpcf7-form-control.wpcf7-submit:not([disabled]), .qbutton.white {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    box-shadow: inset 0 0 0 0 #000;
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+    background-color: #c02319;
+    color: #fff;
+}
+input.wpcf7-form-control.wpcf7-submit:not([disabled]):hover, .qbutton.white:hover {
+    box-shadow: inset 400px 0 0 0 #000;
+    color: #fff;
+}
+@media (max-width: 768px) {
+    a.qbutton.default {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}
+/*FINE BOTTONI*/
+
+h1.titolo-absolute {
+    font-size: 162px;
+    position: absolute;
+    top: -250px;
+    left: -10px;
+    z-index: -1;
+    font-weight: 700;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #b0b0b0;
+}
+.menu_button a {
+    padding: 0!important;
+}
+.mobile_menu_button {
+    float: right;
+    margin: 0 0 0 20px;
+}
+.mobile_menu_button span {
+    color: #c02519;
+    font-size: 3rem;
+}
+@media (max-width: 1000px) {
+    .logo_wrapper {
+        left: 10%;
+    }
+}
+@media (max-width: 480px) {
+    .logo_wrapper {
+        left: 25%;
+    }
+}
+/*singolo articolo*/
+.post_content_holder img.attachment-full.size-full.wp-post-image {
+    width: auto;
+}
+.post_content_holder h2.entry_title {
+    font-size: 2rem;
+    line-height: 2.5rem;
+}
+.post_content_holder .post_info {
+    visibility: hidden;
+}
+.post_content_holder {
+    margin: 50px 0;
+}
+
+@media (max-width: 1079px) {
+    li#nav-menu-item-30 .second ul {
+        width: 1024px!important;
+        left: -118px;
+    }
+    .drop_down .second .inner ul li {
+        width: 16.8%!important;
+    }
+    .drop_down .wide .second ul li .qbutton {
+        width: 168px;
+    }
+}
+
+.qode-search-results-three-columns h2.entry_title a {
+    font-size: 1.6rem;
+    line-height: 0rem;
+}
+.qode-search-results-three-columns span.date.entry_date.updated {
+    font-size: 1.2rem;
+}
+
+/*cookie_policy_consent*/
+div#cookie-notice {
+    background-color: transparent!important;
+}
+span#cn-notice-text:before {
+    content: url(https://www.sicam.it/wp-content/uploads/2020/03/logo_sicam.png);
+    display: block;
+    margin-bottom: 10px;
+}
+#cookie-notice .cookie-notice-container {
+    display: block;
+    width: fit-content!important;
+    margin: 80px auto;
+    padding: 70px 40px;
+    background-color: #fff;
+    box-shadow: 15px 15px 0px rgba(0,0,0,0.4);
+    border: 1px solid #000;
+}
+span#cn-notice-text {
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 1%;
+    text-align: left;
+}
+span#cn-notice-buttons {
+    display: block;
+    float: right;
+}
+.cn-button.bootstrap {
+    background: #000;
+}
+
+/*megamenu*/
+nav.main_menu.drop_down.right {
+    width: 100%!important;
+}
+#mega-menu-item-30 a.mega-menu-link {
+    padding-right: 20px!important;
+}
+#mega-menu-item-1371 a.mega-menu-link {
+    padding-right: 20px!important;
+}
+#mega-menu-item-1171 a.mega-menu-link {
+    padding-right: 20px!important;
+}
+#mega-menu-item-1557 a.mega-menu-link {
+    padding-right: 20px!important;
+}
+#mega-menu-item-1157 a.mega-menu-link {
+    padding-left: 20px!important;
+}
+#mega-menu-item-1358 a.mega-menu-link {
+    padding-left: 20px!important;
+}
+#mega-menu-item-1543 a.mega-menu-link {
+    padding-left: 20px!important;
+}
+.header_inner_left {
+    z-index: 99999;
+}
+a.qbutton.center.default.bottone_menu {
+    display: block;
+    margin: 0 auto!important;
+    position: relative;
+    height: auto;
+    font-size: 14px;
+    line-height: 35px;
+    width: 83.5%;
+    height: 36px;
+    text-align: center;
+}
+.mega-menu-item .textwidget.custom-html-widget {
+    margin-top: -43px;
+    position: absolute;
+    width: 100%;
+}
+.mega-menu-item.widget_media_image a {
+    line-height: 0px;
+}
+@media (max-width: 1024px) {
+     h1.titolo-absolute {
+          top: -210px;
+     }
+     #mega-menu-wrap-top-navigation #mega-menu-top-navigation > li.mega-menu-item > a.mega-menu-link {
+          padding: 0 9px;
+     }
+}
+span.date.entry_date.updated {
+    display: none;
+}
+header.has_top.scroll_top.stick.scrolled_not_transparent.with_border.page_header.sticky.sticky_animate .q_logo img {
+    top: -20%;
+}
+
+.left .textwidget.custom-html-widget a {
+    color: #c02419;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    transition: all 0.3s ease-in-out;
+}
+.left .textwidget.custom-html-widget a:hover {
+    text-decoration: underline;
+}
+
+a.qbutton.default.brochure {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    font-size: 0.9rem;
+}
+a.qbutton.default.brochure:before {
+    content: '\f1c1';
+    font-family: FontAwesome;
+    margin-right: 10px;
+}
+
+img.img-infoscheda {
+    max-width: 148px!important;
+}
+
+/*BUG FIX Search*/
+.header-widget.widget_search.header-left-widget {
+    display: flex;
+}
+form#searchform {
+    margin-left: -50px;
+    background: #fff;
+}
+
+
+
+span.wpcf7-form-control.wpcf7-acceptance {
+    display: none;
+}
+.fake_accept {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    border: 1px solid #999999;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px !important;
+}
+.fake_accept:after {
+    content: '\f00c';
+    font-family: Fontawesome;
+    color: #c02419;
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+.fake_accept.active:after {
+    opacity: 1;
+}
+/*# sourceURL=bridge-style-dynamic-responsive-inline-css */
+</style>
+<link rel='stylesheet' id='js_composer_front-css' href='https://www.sicam.it/wp-content/plugins/js_composer/assets/css/js_composer.min.css' media='all' />
+
+<link rel='stylesheet' id='bridge-core-dashboard-style-css' href='https://www.sicam.it/wp-content/plugins/bridge-core/modules/core-dashboard/assets/css/core-dashboard.min.css' media='all' />
+<link rel='stylesheet' id='bridge-childstyle-css' href='https://www.sicam.it/wp-content/themes/bridge-child/bridge-childstyle.min.css' media='all' />
+
+<script  type="text/javascript" class=" _iub_cs_skip" id="iubenda-head-inline-scripts-0">
+var _iub = _iub || [];
+_iub.csConfiguration = {"consentOnContinuedBrowsing":false,"countryDetection":true,"enableCcpa":true,"floatingPreferencesButtonDisplay":"anchored-bottom-left","invalidateConsentWithoutLog":true,"perPurposeConsent":true,"siteId":2481102,"cookiePolicyId":45304151,"lang":"it", "banner":{ "acceptButtonCaptionColor":"white","acceptButtonColor":"#c02419","acceptButtonDisplay":true,"backgroundColor":"white","brandBackgroundColor":"#FFFFFF","brandTextColor":"black","closeButtonRejects":true,"customizeButtonCaptionColor":"#ffffff","customizeButtonColor":"#c02419","customizeButtonDisplay":true,"explicitWithdrawal":true,"listPurposes":true,"logo":"https://www.sicam.it/wp-content/uploads/2020/03/logo_sicam.png","position":"float-bottom-left","rejectButtonCaptionColor":"white","rejectButtonColor":"#c02419","rejectButtonDisplay":true,"textColor":"black" }};
+
+//# sourceURL=iubenda-head-inline-scripts-0
+</script>
+<script  type="text/javascript" class=" _iub_cs_skip" id="iubenda-head-scripts-0-js" src="//cdn.iubenda.com/cs/ccpa/stub.js?ver=3.13.2"></script>
+<script  type="text/javascript" charset="UTF-8" async="" class=" _iub_cs_skip" id="iubenda-head-scripts-1-js" src="//cdn.iubenda.com/cs/iubenda_cs.js?ver=3.13.2"></script>
+<script id="jquery-core-js" src="https://www.sicam.it/wp-includes/js/jquery/jquery.min.js"></script>
+<script id="jquery-migrate-js" src="https://www.sicam.it/wp-includes/js/jquery/jquery-migrate.min.js"></script>
+<script async data-wp-strategy="async" id="tp-tools-js" src="//www.sicam.it/wp-content/plugins/revslider/public/js/libs/tptools.js"></script>
+<script async data-wp-strategy="async" id="sr7-js" src="//www.sicam.it/wp-content/plugins/revslider/public/js/sr7.js"></script>
+<script id="wpml-legacy-dropdown-0-js" src="https://www.sicam.it/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/legacy-dropdown/script.min.js"></script>
+<script></script><link rel="https://api.w.org/" href="https://www.sicam.it/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.sicam.it/xmlrpc.php?rsd" />
+
+<meta name="generator" content="WPML ver:4.9.5 stt:1,4,27,2;" />
+<meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<meta name="generator" content="Powered by Slider Revolution 6.7.58 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface." />
+<script>
+	window._tpt			??= {};
+	window.SR7			??= {};
+	_tpt.R				??= {};
+	_tpt.R.fonts		??= {};
+	_tpt.R.fonts.customFonts??= {};
+	SR7.devMode			=  false;
+	SR7.F 				??= {};
+	SR7.G				??= {};
+	SR7.LIB				??= {};
+	SR7.E				??= {};
+	SR7.E.gAddons		??= {};
+	SR7.E.php 			??= {};
+	SR7.E.nonce			= '60efbd4b66';
+	SR7.E.ajaxurl		= 'https://www.sicam.it/wp-admin/admin-ajax.php';
+	SR7.E.resturl		= 'https://www.sicam.it/wp-json/';
+	SR7.E.slug_path		= 'revslider/revslider.php';
+	SR7.E.slug			= 'revslider';
+	SR7.E.plugin_url	= 'https://www.sicam.it/wp-content/plugins/revslider/';
+	SR7.E.wp_plugin_url = 'https://www.sicam.it/wp-content/plugins/';
+	SR7.E.revision		= '6.7.58';
+	SR7.E.fontBaseUrl	= '//fonts.googleapis.com/css2?family=';
+	SR7.G.breakPoints 	= [1601,1281,769,480];
+	SR7.G.fSUVW 		= false;
+	SR7.E.modules 		= ['module','page','slide','layer','draw','animate','srtools','canvas','defaults','carousel','navigation','media','modifiers','migration'];
+	SR7.E.libs 			= ['WEBGL'];
+	SR7.E.css 			= ['csslp','cssbtns','cssfilters','cssnav','cssmedia'];
+	SR7.E.resources		= {};
+	SR7.E.ytnc			= false;
+	SR7.E.wpml			??= {};
+	SR7.E.wpml.lang		= 'it';
+	SR7.JSON			??= {};
+/*! Slider Revolution 7.0 - Page Processor */
+!function(){"use strict";window.SR7??={},window._tpt??={},SR7.version="Slider Revolution 6.7.40",_tpt.getMobileZoom=()=>_tpt.is_mobile?document.documentElement.clientWidth/window.innerWidth:1,_tpt.getWinDim=function(t){_tpt.screenHeightWithUrlBar??=window.innerHeight;let e=SR7.F?.modal?.visible&&SR7.M[SR7.F.module.getIdByAlias(SR7.F.modal.requested)];_tpt.scrollBar=window.innerWidth!==document.documentElement.clientWidth||e&&window.innerWidth!==e.c.module.clientWidth,_tpt.winW=_tpt.getMobileZoom()*window.innerWidth-(_tpt.scrollBar||"prepare"==t?_tpt.scrollBarW??_tpt.mesureScrollBar():0),_tpt.winH=_tpt.getMobileZoom()*window.innerHeight,_tpt.winWAll=document.documentElement.clientWidth},_tpt.getResponsiveLevel=function(t,e){return SR7.G.fSUVW?_tpt.closestGE(t,window.innerWidth):_tpt.closestGE(t,_tpt.winWAll)},_tpt.mesureScrollBar=function(){let t=document.createElement("div");return t.className="RSscrollbar-measure",t.style.width="100px",t.style.height="100px",t.style.overflow="scroll",t.style.position="absolute",t.style.top="-9999px",document.body.appendChild(t),_tpt.scrollBarW=t.offsetWidth-t.clientWidth,document.body.removeChild(t),_tpt.scrollBarW},_tpt.loadCSS=async function(t,e,s){return s?_tpt.R.fonts.required[e].status=1:(_tpt.R[e]??={},_tpt.R[e].status=1),new Promise((i,n)=>{if(_tpt.isStylesheetLoaded(t))s?_tpt.R.fonts.required[e].status=2:_tpt.R[e].status=2,i();else{const o=document.createElement("link");o.rel="stylesheet";let l="text",r="css";o["type"]=l+"/"+r,o.href=t,o.onload=()=>{s?_tpt.R.fonts.required[e].status=2:_tpt.R[e].status=2,i()},o.onerror=()=>{s?_tpt.R.fonts.required[e].status=3:_tpt.R[e].status=3,n(new Error(`Failed to load CSS: ${t}`))},document.head.appendChild(o)}})},_tpt.addContainer=function(t){const{tag:e="div",id:s,class:i,datas:n,textContent:o,iHTML:l}=t,r=document.createElement(e);if(s&&""!==s&&(r.id=s),i&&""!==i&&(r.className=i),n)for(const[t,e]of Object.entries(n))"style"==t?r.style.cssText=e:r.setAttribute(`data-${t}`,e);return o&&(r.textContent=o),l&&(r.innerHTML=l),r},_tpt.collector=function(){return{fragment:new DocumentFragment,add(t){var e=_tpt.addContainer(t);return this.fragment.appendChild(e),e},append(t){t.appendChild(this.fragment)}}},_tpt.isStylesheetLoaded=function(t){let e=t.split("?")[0];return Array.from(document.querySelectorAll('link[rel="stylesheet"], link[rel="preload"]')).some(t=>t.href.split("?")[0]===e)},_tpt.preloader={requests:new Map,preloaderTemplates:new Map,show:function(t,e){if(!e||!t)return;const{type:s,color:i}=e;if(s<0||"off"==s)return;const n=`preloader_${s}`;let o=this.preloaderTemplates.get(n);o||(o=this.build(s,i),this.preloaderTemplates.set(n,o)),this.requests.has(t)||this.requests.set(t,{count:0});const l=this.requests.get(t);clearTimeout(l.timer),l.count++,1===l.count&&(l.timer=setTimeout(()=>{l.preloaderClone=o.cloneNode(!0),l.anim&&l.anim.kill(),void 0!==_tpt.gsap?l.anim=_tpt.gsap.fromTo(l.preloaderClone,1,{opacity:0},{opacity:1}):l.preloaderClone.classList.add("sr7-fade-in"),t.appendChild(l.preloaderClone)},150))},hide:function(t){if(!this.requests.has(t))return;const e=this.requests.get(t);e.count--,e.count<0&&(e.count=0),e.anim&&e.anim.kill(),0===e.count&&(clearTimeout(e.timer),e.preloaderClone&&(e.preloaderClone.classList.remove("sr7-fade-in"),e.anim=_tpt.gsap.to(e.preloaderClone,.3,{opacity:0,onComplete:function(){e.preloaderClone.remove()}})))},state:function(t){if(!this.requests.has(t))return!1;return this.requests.get(t).count>0},build:(t,e="#ffffff",s="")=>{if(t<0||"off"===t)return null;const i=parseInt(t);if(t="prlt"+i,isNaN(i))return null;if(_tpt.loadCSS(SR7.E.plugin_url+"public/css/preloaders/t"+i+".css","preloader_"+t),isNaN(i)||i<6){const n=`background-color:${e}`,o=1===i||2==i?n:"",l=3===i||4==i?n:"",r=_tpt.collector();["dot1","dot2","bounce1","bounce2","bounce3"].forEach(t=>r.add({tag:"div",class:t,datas:{style:l}}));const d=_tpt.addContainer({tag:"sr7-prl",class:`${t} ${s}`,datas:{style:o}});return r.append(d),d}{let n={};if(7===i){let t;e.startsWith("#")?(t=e.replace("#",""),t=`rgba(${parseInt(t.substring(0,2),16)}, ${parseInt(t.substring(2,4),16)}, ${parseInt(t.substring(4,6),16)}, `):e.startsWith("rgb")&&(t=e.slice(e.indexOf("(")+1,e.lastIndexOf(")")).split(",").map(t=>t.trim()),t=`rgba(${t[0]}, ${t[1]}, ${t[2]}, `),t&&(n.style=`border-top-color: ${t}0.65); border-bottom-color: ${t}0.15); border-left-color: ${t}0.65); border-right-color: ${t}0.15)`)}else 12===i&&(n.style=`background:${e}`);const o=[10,0,4,2,5,9,0,4,4,2][i-6],l=_tpt.collector(),r=l.add({tag:"div",class:"sr7-prl-inner",datas:n});Array.from({length:o}).forEach(()=>r.appendChild(l.add({tag:"span",datas:{style:`background:${e}`}})));const d=_tpt.addContainer({tag:"sr7-prl",class:`${t} ${s}`});return l.append(d),d}}},SR7.preLoader={show:(t,e)=>{"off"!==(SR7.M[t]?.settings?.pLoader?.type??"off")&&_tpt.preloader.show(e||SR7.M[t].c.module,SR7.M[t]?.settings?.pLoader??{color:"#fff",type:10})},hide:(t,e)=>{"off"!==(SR7.M[t]?.settings?.pLoader?.type??"off")&&_tpt.preloader.hide(e||SR7.M[t].c.module)},state:(t,e)=>_tpt.preloader.state(e||SR7.M[t].c.module)},_tpt.prepareModuleHeight=function(t){window.SR7.M??={},window.SR7.M[t.id]??={},"ignore"==t.googleFont&&(SR7.E.ignoreGoogleFont=!0);let e=window.SR7.M[t.id];if(null==_tpt.scrollBarW&&_tpt.mesureScrollBar(),e.c??={},e.states??={},e.settings??={},e.settings.size??={},t.fixed&&(e.settings.fixed=!0),e.c.module=document.querySelector("sr7-module#"+t.id),e.c.adjuster=e.c.module.getElementsByTagName("sr7-adjuster")[0],e.c.content=e.c.module.getElementsByTagName("sr7-content")[0],"carousel"==t.type&&(e.c.carousel=e.c.content.getElementsByTagName("sr7-carousel")[0]),null==e.c.module||null==e.c.module)return;t.plType&&t.plColor&&(e.settings.pLoader={type:t.plType,color:t.plColor}),void 0===t.plType||"off"===t.plType||SR7.preLoader.state(t.id)&&SR7.preLoader.state(t.id,e.c.module)||SR7.preLoader.show(t.id,e.c.module),_tpt.winW||_tpt.getWinDim("prepare"),_tpt.getWinDim();let s=""+e.c.module.dataset?.modal;"modal"==s||"true"==s||"undefined"!==s&&"false"!==s||(e.settings.size.fullWidth=t.size.fullWidth,e.LEV??=_tpt.getResponsiveLevel(window.SR7.G.breakPoints,t.id),t.vpt=_tpt.fillArray(t.vpt,5),e.settings.vPort=t.vpt[e.LEV],void 0!==t.el&&"720"==t.el[4]&&t.gh[4]!==t.el[4]&&"960"==t.el[3]&&t.gh[3]!==t.el[3]&&"768"==t.el[2]&&t.gh[2]!==t.el[2]&&delete t.el,e.settings.size.height=null==t.el||null==t.el[e.LEV]||0==t.el[e.LEV]||"auto"==t.el[e.LEV]?_tpt.fillArray(t.gh,5,-1):_tpt.fillArray(t.el,5,-1),e.settings.size.width=_tpt.fillArray(t.gw,5,-1),e.settings.size.minHeight=_tpt.fillArray(t.mh??[0],5,-1),e.cacheSize={fullWidth:e.settings.size?.fullWidth,fullHeight:e.settings.size?.fullHeight},void 0!==t.off&&(t.off?.t&&(e.settings.size.m??={})&&(e.settings.size.m.t=t.off.t),t.off?.b&&(e.settings.size.m??={})&&(e.settings.size.m.b=t.off.b),t.off?.l&&(e.settings.size.p??={})&&(e.settings.size.p.l=t.off.l),t.off?.r&&(e.settings.size.p??={})&&(e.settings.size.p.r=t.off.r),e.offsetPrepared=!0),_tpt.updatePMHeight(t.id,t,!0))},_tpt.updatePMHeight=(t,e,s)=>{let i=SR7.M[t];var n=i.settings.size.fullWidth?_tpt.winW:i.c.module.parentNode.offsetWidth;n=0===n||isNaN(n)?_tpt.winW:n;let o=i.settings.size.width[i.LEV]||i.settings.size.width[i.LEV++]||i.settings.size.width[i.LEV--]||n,l=i.settings.size.height[i.LEV]||i.settings.size.height[i.LEV++]||i.settings.size.height[i.LEV--]||0,r=i.settings.size.minHeight[i.LEV]||i.settings.size.minHeight[i.LEV++]||i.settings.size.minHeight[i.LEV--]||0;if(l="auto"==l?0:l,l=parseInt(l),"carousel"!==e.type&&(n-=parseInt(e.onw??0)||0),i.MP=!i.settings.size.fullWidth&&n<o||_tpt.winW<o?Math.min(1,n/o):1,e.size.fullScreen||e.size.fullHeight){let t=parseInt(e.fho)||0,s=(""+e.fho).indexOf("%")>-1;e.newh=_tpt.winH-(s?_tpt.winH*t/100:t)}else e.newh=i.MP*Math.max(l,r);if(e.newh+=(parseInt(e.onh??0)||0)+(parseInt(e.carousel?.pt)||0)+(parseInt(e.carousel?.pb)||0),void 0!==e.slideduration&&(e.newh=Math.max(e.newh,parseInt(e.slideduration)/3)),e.shdw&&_tpt.buildShadow(e.id,e),i.c.adjuster.style.height=e.newh+"px",i.c.module.style.height=e.newh+"px",i.c.content.style.height=e.newh+"px",i.states.heightPrepared=!0,i.dims??={},i.dims.moduleRect=i.c.module.getBoundingClientRect(),i.c.content.style.left="-"+i.dims.moduleRect.left+"px",!i.settings.size.fullWidth)return s&&requestAnimationFrame(()=>{n!==i.c.module.parentNode.offsetWidth&&_tpt.updatePMHeight(e.id,e)}),void _tpt.bgStyle(e.id,e,window.innerWidth==_tpt.winW,!0);_tpt.bgStyle(e.id,e,window.innerWidth==_tpt.winW,!0),requestAnimationFrame(function(){s&&requestAnimationFrame(()=>{n!==i.c.module.parentNode.offsetWidth&&_tpt.updatePMHeight(e.id,e)})}),i.earlyResizerFunction||(i.earlyResizerFunction=function(){requestAnimationFrame(function(){_tpt.getWinDim(),_tpt.moduleDefaults(e.id,e),_tpt.updateSlideBg(t,!0)})},window.addEventListener("resize",i.earlyResizerFunction))},_tpt.buildShadow=function(t,e){let s=SR7.M[t];null==s.c.shadow&&(s.c.shadow=document.createElement("sr7-module-shadow"),s.c.shadow.classList.add("sr7-shdw-"+e.shdw),s.c.content.appendChild(s.c.shadow))},_tpt.bgStyle=async(t,e,s,i,n)=>{const o=SR7.M[t];if((e=e??o.settings).fixed&&!o.c.module.classList.contains("sr7-top-fixed")&&(o.c.module.classList.add("sr7-top-fixed"),o.c.module.style.position="fixed",o.c.module.style.width="100%",o.c.module.style.top="0px",o.c.module.style.left="0px",o.c.module.style.pointerEvents="none",o.c.module.style.zIndex=5e3,o.c.content.style.pointerEvents="none"),null==o.c.bgcanvas){let t=document.createElement("sr7-module-bg"),l=!1;if("string"==typeof e?.bg?.color&&e?.bg?.color.includes("{"))if(_tpt.gradient&&_tpt.gsap)e.bg.color=_tpt.gradient.convert(e.bg.color);else try{let t=JSON.parse(e.bg.color);(t?.orig||t?.string)&&(e.bg.color=JSON.parse(e.bg.color))}catch(t){return}let r="string"==typeof e?.bg?.color?e?.bg?.color||"transparent":e?.bg?.color?.string??e?.bg?.color?.orig??e?.bg?.color?.color??"transparent";if(t.style["background"+(String(r).includes("grad")?"":"Color")]=r,("transparent"!==r||n)&&(l=!0),o.offsetPrepared&&(t.style.visibility="hidden"),e?.bg?.image?.src&&(t.style.backgroundImage=`url(${e?.bg?.image.src})`,t.style.backgroundSize=""==(e.bg.image?.size??"")?"cover":e.bg.image.size,t.style.backgroundPosition=e.bg.image.position,t.style.backgroundRepeat=""==e.bg.image.repeat||null==e.bg.image.repeat?"no-repeat":e.bg.image.repeat,l=!0),!l)return;o.c.bgcanvas=t,e.size.fullWidth?t.style.width=_tpt.winW-(s&&_tpt.winH<document.body.offsetHeight?_tpt.scrollBarW:0)+"px":i&&(t.style.width=o.c.module.offsetWidth+"px"),e.sbt?.use?o.c.content.appendChild(o.c.bgcanvas):o.c.module.appendChild(o.c.bgcanvas)}o.c.bgcanvas.style.height=void 0!==e.newh?e.newh+"px":("carousel"==e.type?o.dims.module.h:o.dims.content.h)+"px",o.c.bgcanvas.style.left=!s&&e.sbt?.use||o.c.bgcanvas.closest("SR7-CONTENT")?"0px":"-"+(o?.dims?.moduleRect?.left??0)+"px"},_tpt.updateSlideBg=function(t,e){const s=SR7.M[t];let i=s.settings;s?.c?.bgcanvas&&(i.size.fullWidth?s.c.bgcanvas.style.width=_tpt.winW-(e&&_tpt.winH<document.body.offsetHeight?_tpt.scrollBarW:0)+"px":preparing&&(s.c.bgcanvas.style.width=s.c.module.offsetWidth+"px"))},_tpt.moduleDefaults=(t,e)=>{let s=SR7.M[t];null!=s&&null!=s.c&&null!=s.c.module&&(s.dims??={},s.dims.moduleRect=s.c.module.getBoundingClientRect(),s.c.content.style.left="-"+s.dims.moduleRect.left+"px",s.c.content.style.width=_tpt.winW-_tpt.scrollBarW+"px","carousel"==e.type&&(s.c.module.style.overflow="visible"),_tpt.bgStyle(t,e,window.innerWidth==_tpt.winW))},_tpt.getOffset=t=>{var e=t.getBoundingClientRect(),s=window.pageXOffset||document.documentElement.scrollLeft,i=window.pageYOffset||document.documentElement.scrollTop;return{top:e.top+i,left:e.left+s}},_tpt.fillArray=function(t,e){let s,i;t=Array.isArray(t)?t:[t];let n=Array(e),o=t.length;for(i=0;i<t.length;i++)n[i+(e-o)]=t[i],null==s&&"#"!==t[i]&&(s=t[i]);for(let t=0;t<e;t++)void 0!==n[t]&&"#"!=n[t]||(n[t]=s),s=n[t];return n},_tpt.closestGE=function(t,e){let s=Number.MAX_VALUE,i=-1;for(let n=0;n<t.length;n++)t[n]-1>=e&&t[n]-1-e<s&&(s=t[n]-1-e,i=n);return++i}}();</script>
+<noscript><style> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript>    <script type="text/javascript">var _iub = _iub || {}; _iub.cons_instructions = _iub.cons_instructions || []; _iub.cons_instructions.push(["init", {api_key: "x7qFTU6SE2Ih47m0iNQK5Z1O2TDQvJzI"}]);</script><script type="text/javascript" src="https://cdn.iubenda.com/cons/iubenda_cons.js" async></script>
+<link rel='stylesheet' id='bravepop_front_css-css' href='https://www.sicam.it/wp-content/plugins/brave-popup-builder/assets/css/frontend.min.css' media='all' />
+
+</head>
+
+<body class="error404 wp-theme-bridge wp-child-theme-bridge-child bridge-core-3.3.4.8 mega-menu-top-navigation  qode-title-hidden hide_top_bar_on_mobile_header qode-child-theme-ver-1.0.0 qode-theme-ver-30.8.8.9 qode-theme-bridge qode_header_in_grid qode-wpml-enabled wpb-js-composer js-comp-ver-8.7.3 vc_responsive" itemscope itemtype="http://schema.org/WebPage">
+
+
+
+
+<div class="wrapper">
+	<div class="wrapper_inner">
+
+    
+		<!-- Google Analytics start -->
+				<!-- Google Analytics end -->
+
+		
+	<header class=" has_top scroll_top  stick scrolled_not_transparent with_border page_header">
+	<div class="header_inner clearfix">
+				<div class="header_top_bottom_holder">
+				<div class="header_top clearfix" style='' >
+				<div class="container">
+			<div class="container_inner clearfix">
+														<div class="left">
+						<div class="inner">
+							<div class="header-widget widget_icl_lang_sel_widget header-left-widget">
+<div
+	 role="navigation" aria-label="Selettore lingua" class="wpml-ls-sidebars-header_left wpml-ls wpml-ls-legacy-dropdown js-wpml-ls-legacy-dropdown">
+	<ul>
+		<li class="wpml-ls-slot-header_left wpml-ls-item wpml-ls-item-it wpml-ls-current-language wpml-ls-item-legacy-dropdown">
+									<a href="#" hreflang="it" lang="it" class="js-wpml-ls-item-toggle wpml-ls-item-toggle" aria-current="page" aria-expanded="false" aria-controls="wpml-ls-submenu-default" aria-label="Selettore lingua, premi tab per navigare tra le altre lingue" title="Passa a Italiano">
+				            <img
+            class="wpml-ls-flag"
+            src="https://www.sicam.it/wp-content/uploads/flags/ita.png"
+            alt="Italiano"
+            loading="lazy"
+            
+            
+    /></a>
+
+			<ul id="wpml-ls-submenu-default" class="wpml-ls-sub-menu">
+				
+					<li class="wpml-ls-slot-header_left wpml-ls-item wpml-ls-item-en wpml-ls-first-item">
+						<a href="https://www.sicam.it/en/" hreflang="en" lang="en" class="wpml-ls-link" aria-label="Passa a Inglese" title="Passa a Inglese">
+							            <img
+            class="wpml-ls-flag"
+            src="https://www.sicam.it/wp-content/uploads/flags/eng.png"
+            alt="Inglese"
+            loading="lazy"
+            
+            
+    /></a>
+					</li>
+
+				
+					<li class="wpml-ls-slot-header_left wpml-ls-item wpml-ls-item-es">
+						<a href="https://www.sicam.it/es/" hreflang="es" lang="es" class="wpml-ls-link" aria-label="Passa a Spagnolo" title="Passa a Spagnolo">
+							            <img
+            class="wpml-ls-flag"
+            src="https://www.sicam.it/wp-content/uploads/flags/ESP.png"
+            alt="Spagnolo"
+            loading="lazy"
+            
+            
+    /></a>
+					</li>
+
+				
+					<li class="wpml-ls-slot-header_left wpml-ls-item wpml-ls-item-fr wpml-ls-last-item">
+						<a href="https://www.sicam.it/fr/" hreflang="fr" lang="fr" class="wpml-ls-link" aria-label="Passa a Francese" title="Passa a Francese">
+							            <img
+            class="wpml-ls-flag"
+            src="https://www.sicam.it/wp-content/uploads/flags/FRA.png"
+            alt="Francese"
+            loading="lazy"
+            
+            
+    /></a>
+					</li>
+
+							</ul>
+
+		</li>
+
+	</ul>
+</div>
+</div><div class="widget_text header-widget widget_custom_html header-left-widget"><div class="textwidget custom-html-widget">/  <a href="https://www.sicam.it/news-fiere/">News & Fiere</a>  /  <a href="https://www.sicam.it/training-center/">Training Center</a> / </div></div><div class="header-widget widget_search header-left-widget">Search<form role="search" method="get" id="searchform" action="https://www.sicam.it/">
+    <div><label class="screen-reader-text" for="s">Search for:</label>
+        <input type="text" value="" placeholder="Search Here" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="" />
+    </div>
+</form></div>						</div>
+					</div>
+					<div class="right">
+						<div class="inner">
+							<div class="widget_text header-widget widget_custom_html header-right-widget"><div class="textwidget custom-html-widget"><a class="thelibrary" href="https://www.thefinder.it/login/" target="_blank" rel="noopener">Accedi/Registrati a <img src="https://www.sicam.it/wp-content/uploads/2020/03/logo_the_library.png" alt="the library sicam"></a></div></div>						</div>
+					</div>
+													</div>
+		</div>
+		</div>
+
+			<div class="header_bottom clearfix" style='' >
+								<div class="container">
+					<div class="container_inner clearfix">
+																				<div class="header_inner_left">
+																	<div class="mobile_menu_button">
+		<span>
+			<i class="qodef-icon-linea-icon icon-arrows-hamburger-2 " ></i>		</span>
+	</div>
+								<div class="logo_wrapper" >
+	<div class="q_logo">
+		<a itemprop="url" href="https://www.sicam.it/" >
+             <img itemprop="image" class="normal" src="https://www.sicam.it/wp-content/uploads/2020/03/logo_sicam.png" alt="Logo"> 			 <img itemprop="image" class="light" src="https://www.sicam.it/wp-content/uploads/2020/03/logo_sicam.png" alt="Logo"/> 			 <img itemprop="image" class="dark" src="https://www.sicam.it/wp-content/uploads/2020/03/logo_sicam.png" alt="Logo"/> 			 <img itemprop="image" class="sticky" src="https://www.sicam.it/wp-content/uploads/2020/03/logo_sicam.png" alt="Logo"/> 			 <img itemprop="image" class="mobile" src="https://www.sicam.it/wp-content/uploads/2020/03/logo_sicam.png" alt="Logo"/> 					</a>
+	</div>
+	</div>															</div>
+															<div class="header_inner_right">
+									<div class="side_menu_button_wrapper right">
+																														<div class="side_menu_button">
+																																	
+										</div>
+									</div>
+								</div>
+							
+							
+							<nav class="main_menu drop_down right">
+								<div id="mega-menu-wrap-top-navigation" class="mega-menu-wrap"><div class="mega-menu-toggle"><div class="mega-toggle-blocks-left"></div><div class="mega-toggle-blocks-center"></div><div class="mega-toggle-blocks-right"><div class='mega-toggle-block mega-menu-toggle-block mega-toggle-block-1' id='mega-toggle-block-1'><span aria-expanded="false" aria-haspopup="true" role="button" class='mega-toggle-label'><span class='mega-toggle-label-closed'>MENU</span><span class='mega-toggle-label-open'>MENU</span></span></div></div></div><ul id="mega-menu-top-navigation" class="mega-menu max-mega-menu mega-menu-horizontal mega-no-js" data-event="hover_intent" data-effect="fade_up" data-effect-speed="200" data-effect-mobile="disabled" data-effect-speed-mobile="0" data-mobile-force-width="false" data-second-click="go" data-document-click="collapse" data-vertical-behaviour="standard" data-breakpoint="600" data-unbind="true" data-mobile-state="collapse_all" data-mobile-direction="vertical"><li class="mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-2770" id="mega-menu-item-2770"><a class="mega-menu-link" href="https://www.sicam.it/people">People</a></li><li class="mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-2771" id="mega-menu-item-2771"><a class="mega-menu-link" href="https://www.sicam.it/quality">Quality</a></li><li class="mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-2772" id="mega-menu-item-2772"><a class="mega-menu-link" href="https://www.sicam.it/responsibility">Responsibility</a></li><li class="mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-has-children mega-menu-megamenu mega-menu-grid mega-align-bottom-left mega-hide-arrow mega-disable-link mega-menu-item-30" id="mega-menu-item-30"><a class="mega-menu-link" tabindex="0" aria-expanded="false" aria-controls="mega-sub-menu-30" role="button">Solutions <span class="plus_label">+</span><span class="mega-indicator" aria-hidden="true"></span></a>
+<ul class="mega-sub-menu" role='presentation' id='mega-sub-menu-30'>
+<li class="mega-menu-row" id="mega-menu-30-0">
+	<ul class="mega-sub-menu" style='--columns:4' role='presentation'>
+<li class="mega-menu-column mega-menu-columns-1-of-4" style="--columns:4; --span:1" id="mega-menu-30-0-0">
+		<ul class="mega-sub-menu">
+<li class="mega-menu-item mega-menu-item-type-widget widget_media_image mega-menu-item-media_image-7" id="mega-menu-item-media_image-7"><img width="250" height="300" src="https://www.sicam.it/wp-content/uploads/2021/03/quality-tyre_changers-1.png" class="image wp-image-3135  attachment-full size-full" alt="" style="max-width: 100%; height: auto;" decoding="async" fetchpriority="high" /></li><li class="mega-menu-item mega-menu-item-type-widget widget_custom_html mega-menu-item-custom_html-10" id="mega-menu-item-custom_html-10"><div class="textwidget custom-html-widget"><a itemprop="url" href="https://www.sicam.it/tyre-changers/" target="_self" class="qbutton  center default bottone_menu" style="color: #ffffff; background-color: rgba(0,0,0,0.5);">Tyre Changers</a></div></li><li class="mega-menu-item mega-menu-item-type-widget widget_custom_html mega-menu-item-custom_html-11" id="mega-menu-item-custom_html-11"><div class="textwidget custom-html-widget"><h1 class="titolo-absolute">Solutions</h1></div></li>		</ul>
+</li><li class="mega-menu-column mega-menu-columns-1-of-4" style="--columns:4; --span:1" id="mega-menu-30-0-1">
+		<ul class="mega-sub-menu">
+<li class="mega-menu-item mega-menu-item-type-widget widget_media_image mega-menu-item-media_image-9" id="mega-menu-item-media_image-9"><a href="https://www.sicam.it/wheel-balancers/"><img width="250" height="300" src="https://www.sicam.it/wp-content/uploads/2021/03/quality-wheel_balancers-1-250x300.png" class="image wp-image-3139  attachment-medium size-medium" alt="" style="max-width: 100%; height: auto;" decoding="async" srcset="https://www.sicam.it/wp-content/uploads/2021/03/quality-wheel_balancers-1-250x300.png 250w, https://www.sicam.it/wp-content/uploads/2021/03/quality-wheel_balancers-1.png 262w" sizes="(max-width: 250px) 100vw, 250px" /></a></li><li class="mega-menu-item mega-menu-item-type-widget widget_custom_html mega-menu-item-custom_html-7" id="mega-menu-item-custom_html-7"><div class="textwidget custom-html-widget"><a itemprop="url" href="https://www.sicam.it/wheel-balancers/" target="_self" class="qbutton  center default bottone_menu" style="color: #ffffff; background-color: rgba(0,0,0,0.5);">Wheel Balancers</a></div></li>		</ul>
+</li><li class="mega-menu-column mega-menu-columns-1-of-4" style="--columns:4; --span:1" id="mega-menu-30-0-2">
+		<ul class="mega-sub-menu">
+<li class="mega-menu-item mega-menu-item-type-widget widget_media_image mega-menu-item-media_image-10" id="mega-menu-item-media_image-10"><a href="https://www.sicam.it/wheel-aligners/"><img width="250" height="300" src="https://www.sicam.it/wp-content/uploads/2021/01/quality-wheel_aligners-1-250x300.png" class="image wp-image-2730  attachment-medium size-medium" alt="" style="max-width: 100%; height: auto;" decoding="async" srcset="https://www.sicam.it/wp-content/uploads/2021/01/quality-wheel_aligners-1-250x300.png 250w, https://www.sicam.it/wp-content/uploads/2021/01/quality-wheel_aligners-1.png 262w" sizes="(max-width: 250px) 100vw, 250px" /></a></li><li class="mega-menu-item mega-menu-item-type-widget widget_custom_html mega-menu-item-custom_html-8" id="mega-menu-item-custom_html-8"><div class="textwidget custom-html-widget"><a itemprop="url" href="https://www.sicam.it/wheel-aligners/" target="_self" class="qbutton  center default bottone_menu" style="color: #ffffff; background-color: rgba(0,0,0,0.5);">Wheel Aligners</a></div></li>		</ul>
+</li><li class="mega-menu-column mega-menu-columns-1-of-4" style="--columns:4; --span:1" id="mega-menu-30-0-3">
+		<ul class="mega-sub-menu">
+<li class="mega-menu-item mega-menu-item-type-widget widget_media_image mega-menu-item-media_image-11" id="mega-menu-item-media_image-11"><a href="https://www.sicam.it/lifts/"><img width="250" height="300" src="https://www.sicam.it/wp-content/uploads/2020/06/sicam_lift_category.png" class="image wp-image-1702  attachment-full size-full" alt="" style="max-width: 100%; height: auto;" decoding="async" /></a></li><li class="mega-menu-item mega-menu-item-type-widget widget_custom_html mega-menu-item-custom_html-9" id="mega-menu-item-custom_html-9"><div class="textwidget custom-html-widget"><a itemprop="url" href="https://www.sicam.it/lifts/" target="_self" class="qbutton  center default bottone_menu" style="color: #ffffff; background-color: rgba(0,0,0,0.5);">Lifts</a></div></li>		</ul>
+</li>	</ul>
+</li><li class="mega-menu-row" id="mega-menu-30-1">
+	<ul class="mega-sub-menu" style='--columns:12' role='presentation'>
+<li class="mega-menu-column mega-menu-columns-3-of-12" style="--columns:12; --span:3" id="mega-menu-30-1-0">
+		<ul class="mega-sub-menu">
+<li class="mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-1008" id="mega-menu-item-1008"><a class="mega-menu-link" href="https://www.sicam.it/tyre-changers/" aria-label="Tyre Changers"></a></li><li class="mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-1007" id="mega-menu-item-1007"><a class="mega-menu-link" href="https://www.sicam.it/wheel-balancers/" aria-label="Wheel Balancers"></a></li><li class="mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-1005" id="mega-menu-item-1005"><a class="mega-menu-link" href="https://www.sicam.it/wheel-aligners/" aria-label="Wheel Aligners"></a></li><li class="mega-menu-item mega-menu-item-type-post_type mega-menu-item-object-page mega-menu-item-1004" id="mega-menu-item-1004"><a class="mega-menu-link" href="https://www.sicam.it/lifts/" aria-label="Lifts"></a></li>		</ul>
+</li>	</ul>
+</li></ul>
+</li><li class="mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-2773" id="mega-menu-item-2773"><a class="mega-menu-link" href="https://www.sicam.it/service">Service</a></li><li class="mega-menu-item mega-menu-item-type-custom mega-menu-item-object-custom mega-menu-item-2774" id="mega-menu-item-2774"><a class="mega-menu-link" href="https://www.sicam.it/contacts">Contacts</a></li></ul></div>							</nav>
+														<nav class="mobile_menu">
+	<ul id="menu-menu_mobile" class=""><li id="mobile-menu-item-994" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="https://www.sicam.it/people/" class=""><span>People</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+<li id="mobile-menu-item-993" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="https://www.sicam.it/quality/" class=""><span>Quality</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+<li id="mobile-menu-item-992" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="https://www.sicam.it/responsibility/" class=""><span>Responsibility</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+<li id="mobile-menu-item-988" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children  has_sub"><h3><span>Solutions</span></h3><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span>
+<ul class="sub_menu">
+	<li id="mobile-menu-item-986" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="https://www.sicam.it/tyre-changers/" class=""><span>Tyre Changers</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+	<li id="mobile-menu-item-985" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="https://www.sicam.it/wheel-balancers/" class=""><span>Wheel Balancers</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+	<li id="mobile-menu-item-983" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="https://www.sicam.it/wheel-aligners/" class=""><span>Wheel Aligners</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+	<li id="mobile-menu-item-982" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="https://www.sicam.it/lifts/" class=""><span>Lifts</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+</ul>
+</li>
+<li id="mobile-menu-item-991" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="https://www.sicam.it/service/" class=""><span>Service</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+<li id="mobile-menu-item-987" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="https://www.sicam.it/training-center/" class=""><span>Training center</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+<li id="mobile-menu-item-989" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="https://www.sicam.it/news-fiere/" class=""><span>News &#038; Fiere</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+<li id="mobile-menu-item-1220" class="menu-item menu-item-type-custom menu-item-object-custom "><a target="_blank" href="https://www.thefinder.it/login/" class=""><span>Accedi/Registrati a <img src="https://www.sicam.it/wp-content/uploads/2020/03/logo_the_library.png" /></span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+<li id="mobile-menu-item-990" class="menu-item menu-item-type-post_type menu-item-object-page "><a href="https://www.sicam.it/contacts/" class=""><span>Contacts</span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+<li id="mobile-menu-item-wpml-ls-25-it" class="menu-item wpml-ls-slot-25 wpml-ls-item wpml-ls-item-it wpml-ls-current-language wpml-ls-menu-item menu-item-type-wpml_ls_menu_item menu-item-object-wpml_ls_menu_item menu-item-has-children  has_sub"><a href="https://www.sicam.it/" class=""><span><img
+            class="wpml-ls-flag"
+            src="https://www.sicam.it/wp-content/uploads/flags/ita.png"
+            alt="Italiano"
+            loading="lazy"
+            
+            
+    /></span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span>
+<ul class="sub_menu">
+	<li id="mobile-menu-item-wpml-ls-25-en" class="menu-item wpml-ls-slot-25 wpml-ls-item wpml-ls-item-en wpml-ls-menu-item wpml-ls-first-item menu-item-type-wpml_ls_menu_item menu-item-object-wpml_ls_menu_item "><a title="Passa a Inglese" href="https://www.sicam.it/en/" class=""><span><img
+            class="wpml-ls-flag"
+            src="https://www.sicam.it/wp-content/uploads/flags/eng.png"
+            alt="Inglese"
+            loading="lazy"
+            
+            
+    /></span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+	<li id="mobile-menu-item-wpml-ls-25-es" class="menu-item wpml-ls-slot-25 wpml-ls-item wpml-ls-item-es wpml-ls-menu-item menu-item-type-wpml_ls_menu_item menu-item-object-wpml_ls_menu_item "><a title="Passa a Spagnolo" href="https://www.sicam.it/es/" class=""><span><img
+            class="wpml-ls-flag"
+            src="https://www.sicam.it/wp-content/uploads/flags/ESP.png"
+            alt="Spagnolo"
+            loading="lazy"
+            
+            
+    /></span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+	<li id="mobile-menu-item-wpml-ls-25-fr" class="menu-item wpml-ls-slot-25 wpml-ls-item wpml-ls-item-fr wpml-ls-menu-item wpml-ls-last-item menu-item-type-wpml_ls_menu_item menu-item-object-wpml_ls_menu_item "><a title="Passa a Francese" href="https://www.sicam.it/fr/" class=""><span><img
+            class="wpml-ls-flag"
+            src="https://www.sicam.it/wp-content/uploads/flags/FRA.png"
+            alt="Francese"
+            loading="lazy"
+            
+            
+    /></span></a><span class="mobile_arrow"><i class="fa fa-angle-right"></i><i class="fa fa-angle-down"></i></span></li>
+</ul>
+</li>
+</ul></nav>																				</div>
+					</div>
+									</div>
+			</div>
+		</div>
+
+</header>	<a id="back_to_top" href="#">
+        <span class="fa-stack">
+            <i class="qode_icon_font_awesome fa fa-arrow-up " ></i>        </span>
+	</a>
+	
+	
+    
+    	
+    
+    <div class="content content_top_margin_none">
+        <div class="content_inner  ">
+    
+						<div class="container">
+                				<div class="container_inner default_template_holder">
+					<div class="page_not_found">
+						<h2> The page you are looking for is not found </h2>
+                        <p> The page you are looking for does not exist. It may have been moved, or removed altogether. Perhaps you can return back to the site&#039;s homepage and see if you can find what you are looking for. </p>
+						<div class="separator  transparent center  " style="margin-top:35px;"></div>
+						<p><a itemprop="url" class="qbutton with-shadow" href="https://www.sicam.it/"> Back to homepage </a></p>
+						<div class="separator  transparent center  " style="margin-top:35px;"></div>
+					</div>
+				</div>
+                			</div>
+		
+	</div>
+</div>
+
+
+
+	<footer >
+		<div class="footer_inner clearfix">
+				<div class="footer_top_holder">
+            			<div class="footer_top">
+								<div class="container">
+					<div class="container_inner">
+										<div id="custom_html-4" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><div class="container_footer">
+	<div class="container_img">
+		<img alt="logo-sicam-footer" src="https://www.sicam.it/wp-content/uploads/2020/03/logo_footer.png"/>
+	</div>
+	<div class="container_txt">
+		<p>
+			Via G. Corradini, 1<br>
+			42015 Correggio<br>
+			Reggio Emilia – Italy
+		</p>
+	</div>
+	<div class="container_txt">
+		<p>Tel <a href="tel:+390522643311">+39 0522 643311</a><br>
+		Fax +39 0522 637760<br>
+		Mail <a href="mailto:sales@sicam.it">sales@sicam.it</a></p>
+	</div>
+</div>
+
+<style>
+.container_footer {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.container_img {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container_txt {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+	@media (max-width: 768px) {
+		.container_txt {
+			width: 100%;
+      margin: 10% 0 0 0;
+      text-align: center;
+		}
+		.container_img {
+			width: 100%;
+		}
+}
+</style></div></div>									</div>
+				</div>
+							</div>
+					</div>
+							<div class="footer_bottom_holder">
+                								<div class="container">
+					<div class="container_inner">
+									<div class="footer_bottom">
+							<div class="textwidget"><p>© <script type="text/javascript">document.write(new Date().getFullYear());</script> &#8211; SICAM srl soc. unip. &#8211; REA RE 186383 &#8211; P. IVA 01445990359 &#8211; <a class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe " title="Cookie Policy " href="https://www.iubenda.com/privacy-policy/45304151/cookie-policy">Cookie Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script> &#8211; <a class="iubenda-nostyle no-brand iubenda-noiframe iubenda-embed iubenda-noiframe " title="Privacy Policy " href="https://www.iubenda.com/privacy-policy/45304151">Privacy Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script><br />
+<a href="https://www.sicam.it/wp-content/uploads/2020/09/CGV_Sicam_it.pdf" target="_blank" rel="noopener">Condizioni Generali di Vendita</a> &#8211; <a href="https://www.sicam.it/politica-della-qualita/">Politica della Qualità</a> &#8211; <a href="https://sicam.smartleaks.cloud/" target="_blank" rel="noopener">Segnalazioni Whistleblowing</a><br />
+<a href="https://www.pindarica.it/" target="_blank" rel="noopener">Agenzia di Comunicazione Pindarica</a> &#8211; <a href="https://www.cristianiotti.com/" target="_blank" rel="noopener">Ph. Cristian Iotti</a></p>
+</div>
+					</div>
+									</div>
+			</div>
+						</div>
+				</div>
+	</footer>
+		
+</div>
+</div>
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/bridge-child/*","/wp-content/themes/bridge/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<div id="bravepop_element_tooltip"></div><div id="bravepop_element_lightbox"><div id="bravepop_element_lightbox_close" onclick="brave_lightbox_close()"></div><div id="bravepop_element_lightbox_content"></div></div><script id="wp-hooks-js" src="https://www.sicam.it/wp-includes/js/dist/hooks.min.js"></script>
+<script id="wp-i18n-js" src="https://www.sicam.it/wp-includes/js/dist/i18n.min.js"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+//# sourceURL=wp-i18n-js-after
+</script>
+<script id="swv-js" src="https://www.sicam.it/wp-content/plugins/contact-form-7/includes/swv/js/index.js"></script>
+<script id="contact-form-7-js-translations">
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "contact-form-7", {"translation-revision-date":"2026-05-15 07:25:09+0000","generator":"GlotPress\/4.0.3","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","plural-forms":"nplurals=2; plural=n != 1;","lang":"it"},"This contact form is placed in the wrong place.":["Questo modulo di contatto \u00e8 posizionato nel posto sbagliato."],"Error:":["Errore:"]}},"comment":{"reference":"includes\/js\/index.js"}} );
+//# sourceURL=contact-form-7-js-translations
+</script>
+<script id="contact-form-7-js-before">
+var wpcf7 = {
+    "api": {
+        "root": "https:\/\/www.sicam.it\/wp-json\/",
+        "namespace": "contact-form-7\/v1"
+    }
+};
+//# sourceURL=contact-form-7-js-before
+</script>
+<script id="contact-form-7-js" src="https://www.sicam.it/wp-content/plugins/contact-form-7/includes/js/index.js"></script>
+<script id="iubenda-forms-js-extra">
+var iubFormParams = [];
+//# sourceURL=iubenda-forms-js-extra
+</script>
+<script id="iubenda-forms-js" src="https://www.sicam.it/wp-content/plugins/iubenda-cookie-law-solution/assets/js/frontend.js"></script>
+<script id="siteground-optimizer-lazy-sizes-js-js" src="https://www.sicam.it/wp-content/plugins/sg-cachepress/assets/js/lazysizes.min.js"></script>
+<script id="jquery-ui-core-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/core.min.js"></script>
+<script id="jquery-ui-accordion-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/accordion.min.js"></script>
+<script id="jquery-ui-menu-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/menu.min.js"></script>
+<script id="wp-dom-ready-js" src="https://www.sicam.it/wp-includes/js/dist/dom-ready.min.js"></script>
+<script id="wp-a11y-js-translations">
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "default", {"translation-revision-date":"2026-06-30 13:55:00+0000","generator":"GlotPress\/4.0.3","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","plural-forms":"nplurals=2; plural=n != 1;","lang":"it"},"Notifications":["Notifiche"]}},"comment":{"reference":"wp-includes\/js\/dist\/a11y.js"}} );
+//# sourceURL=wp-a11y-js-translations
+</script>
+<script id="wp-a11y-js" src="https://www.sicam.it/wp-includes/js/dist/a11y.min.js"></script>
+<script id="jquery-ui-autocomplete-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/autocomplete.min.js"></script>
+<script id="jquery-ui-controlgroup-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/controlgroup.min.js"></script>
+<script id="jquery-ui-checkboxradio-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/checkboxradio.min.js"></script>
+<script id="jquery-ui-button-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/button.min.js"></script>
+<script id="jquery-ui-datepicker-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/datepicker.min.js"></script>
+<script id="jquery-ui-datepicker-js-after">
+jQuery(function(jQuery){jQuery.datepicker.setDefaults({"closeText":"Chiudi","currentText":"Oggi","monthNames":["Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre"],"monthNamesShort":["Gen","Feb","Mar","Apr","Mag","Giu","Lug","Ago","Set","Ott","Nov","Dic"],"nextText":"Successivo","prevText":"Precedente","dayNames":["domenica","luned\u00ec","marted\u00ec","mercoled\u00ec","gioved\u00ec","venerd\u00ec","sabato"],"dayNamesShort":["Dom","Lun","Mar","Mer","Gio","Ven","Sab"],"dayNamesMin":["D","L","M","M","G","V","S"],"dateFormat":"d MM yy","firstDay":1,"isRTL":false});});
+//# sourceURL=jquery-ui-datepicker-js-after
+</script>
+<script id="jquery-ui-mouse-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/mouse.min.js"></script>
+<script id="jquery-ui-resizable-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/resizable.min.js"></script>
+<script id="jquery-ui-draggable-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/draggable.min.js"></script>
+<script id="jquery-ui-dialog-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/dialog.min.js"></script>
+<script id="jquery-ui-droppable-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/droppable.min.js"></script>
+<script id="jquery-ui-progressbar-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/progressbar.min.js"></script>
+<script id="jquery-ui-selectable-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/selectable.min.js"></script>
+<script id="jquery-ui-sortable-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/sortable.min.js"></script>
+<script id="jquery-ui-slider-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/slider.min.js"></script>
+<script id="jquery-ui-spinner-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/spinner.min.js"></script>
+<script id="jquery-ui-tooltip-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/tooltip.min.js"></script>
+<script id="jquery-ui-tabs-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/tabs.min.js"></script>
+<script id="jquery-effects-core-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/effect.min.js"></script>
+<script id="jquery-effects-blind-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/effect-blind.min.js"></script>
+<script id="jquery-effects-bounce-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/effect-bounce.min.js"></script>
+<script id="jquery-effects-clip-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/effect-clip.min.js"></script>
+<script id="jquery-effects-drop-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/effect-drop.min.js"></script>
+<script id="jquery-effects-explode-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/effect-explode.min.js"></script>
+<script id="jquery-effects-fade-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/effect-fade.min.js"></script>
+<script id="jquery-effects-fold-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/effect-fold.min.js"></script>
+<script id="jquery-effects-highlight-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/effect-highlight.min.js"></script>
+<script id="jquery-effects-pulsate-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/effect-pulsate.min.js"></script>
+<script id="jquery-effects-size-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/effect-size.min.js"></script>
+<script id="jquery-effects-scale-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/effect-scale.min.js"></script>
+<script id="jquery-effects-shake-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/effect-shake.min.js"></script>
+<script id="jquery-effects-slide-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/effect-slide.min.js"></script>
+<script id="jquery-effects-transfer-js" src="https://www.sicam.it/wp-includes/js/jquery/ui/effect-transfer.min.js"></script>
+<script id="doubleTapToGo-js" src="https://www.sicam.it/wp-content/themes/bridge/js/plugins/doubletaptogo.js"></script>
+<script id="modernizr-js" src="https://www.sicam.it/wp-content/themes/bridge/js/plugins/modernizr.min.js"></script>
+<script id="appear-js" src="https://www.sicam.it/wp-content/themes/bridge/js/plugins/jquery.appear.js"></script>
+<script id="hoverIntent-js" src="https://www.sicam.it/wp-includes/js/hoverIntent.min.js"></script>
+<script id="prettyphoto-js" src="https://www.sicam.it/wp-content/themes/bridge/js/plugins/jquery.prettyPhoto.js"></script>
+<script id="mediaelement-core-js-before">
+var mejsL10n = {"language":"it","strings":{"mejs.download-file":"Scarica il file","mejs.install-flash":"Stai usando un browser che non ha Flash player abilitato o installato. Attiva il tuo plugin Flash player o scarica l'ultima versione da https://get.adobe.com/flashplayer/","mejs.fullscreen":"Schermo intero","mejs.play":"Play","mejs.pause":"Pausa","mejs.time-slider":"Time Slider","mejs.time-help-text":"Usa i tasti freccia sinistra/destra per avanzare di un secondo, su/gi\u00f9 per avanzare di 10 secondi.","mejs.live-broadcast":"Diretta streaming","mejs.volume-help-text":"Usa i tasti freccia su/gi\u00f9 per aumentare o diminuire il volume.","mejs.unmute":"Togli il muto","mejs.mute":"Muto","mejs.volume-slider":"Cursore del volume","mejs.video-player":"Video Player","mejs.audio-player":"Audio Player","mejs.captions-subtitles":"Didascalie/Sottotitoli","mejs.captions-chapters":"Capitoli","mejs.none":"Nessuna","mejs.afrikaans":"Afrikaans","mejs.albanian":"Albanese","mejs.arabic":"Arabo","mejs.belarusian":"Bielorusso","mejs.bulgarian":"Bulgaro","mejs.catalan":"Catalano","mejs.chinese":"Cinese","mejs.chinese-simplified":"Cinese (semplificato)","mejs.chinese-traditional":"Cinese (tradizionale)","mejs.croatian":"Croato","mejs.czech":"Ceco","mejs.danish":"Danese","mejs.dutch":"Olandese","mejs.english":"Inglese","mejs.estonian":"Estone","mejs.filipino":"Filippino","mejs.finnish":"Finlandese","mejs.french":"Francese","mejs.galician":"Galician","mejs.german":"Tedesco","mejs.greek":"Greco","mejs.haitian-creole":"Haitian Creole","mejs.hebrew":"Ebraico","mejs.hindi":"Hindi","mejs.hungarian":"Ungherese","mejs.icelandic":"Icelandic","mejs.indonesian":"Indonesiano","mejs.irish":"Irish","mejs.italian":"Italiano","mejs.japanese":"Giapponese","mejs.korean":"Coreano","mejs.latvian":"Lettone","mejs.lithuanian":"Lituano","mejs.macedonian":"Macedone","mejs.malay":"Malese","mejs.maltese":"Maltese","mejs.norwegian":"Norvegese","mejs.persian":"Persiano","mejs.polish":"Polacco","mejs.portuguese":"Portoghese","mejs.romanian":"Romeno","mejs.russian":"Russo","mejs.serbian":"Serbo","mejs.slovak":"Slovak","mejs.slovenian":"Sloveno","mejs.spanish":"Spagnolo","mejs.swahili":"Swahili","mejs.swedish":"Svedese","mejs.tagalog":"Tagalog","mejs.thai":"Thailandese","mejs.turkish":"Turco","mejs.ukrainian":"Ucraino","mejs.vietnamese":"Vietnamita","mejs.welsh":"Gallese","mejs.yiddish":"Yiddish"}};
+//# sourceURL=mediaelement-core-js-before
+</script>
+<script id="mediaelement-core-js" src="https://www.sicam.it/wp-includes/js/mediaelement/mediaelement-and-player.min.js"></script>
+<script id="mediaelement-migrate-js" src="https://www.sicam.it/wp-includes/js/mediaelement/mediaelement-migrate.min.js"></script>
+<script id="mediaelement-js-extra">
+var _wpmejsSettings = {"pluginPath":"/wp-includes/js/mediaelement/","classPrefix":"mejs-","stretching":"responsive","audioShortcodeLibrary":"mediaelement","videoShortcodeLibrary":"mediaelement"};
+//# sourceURL=mediaelement-js-extra
+</script>
+<script id="wp-mediaelement-js" src="https://www.sicam.it/wp-includes/js/mediaelement/wp-mediaelement.min.js"></script>
+<script id="waitforimages-js" src="https://www.sicam.it/wp-content/themes/bridge/js/plugins/jquery.waitforimages.js"></script>
+<script id="jquery-form-js" src="https://www.sicam.it/wp-includes/js/jquery/jquery.form.min.js"></script>
+<script id="waypoints-js" src="https://www.sicam.it/wp-content/themes/bridge/js/plugins/waypoints.min.js"></script>
+<script id="easing-js" src="https://www.sicam.it/wp-content/themes/bridge/js/plugins/jquery.easing.1.3.js"></script>
+<script id="mousewheel-js" src="https://www.sicam.it/wp-content/themes/bridge/js/plugins/jquery.mousewheel.min.js"></script>
+<script id="isotope-js" src="https://www.sicam.it/wp-content/themes/bridge/js/plugins/jquery.isotope.min.js"></script>
+<script id="skrollr-js" src="https://www.sicam.it/wp-content/themes/bridge/js/plugins/skrollr.js"></script>
+<script id="bridge-default-dynamic-js" src="https://www.sicam.it/wp-content/themes/bridge/js/default_dynamic.js"></script>
+<script id="bridge-default-js-extra">
+var QodeAdminAjax = {"ajaxurl":"https://www.sicam.it/wp-admin/admin-ajax.php"};
+var qodeGlobalVars = {"vars":{"qodeAddingToCartLabel":"Adding to Cart...","page_scroll_amount_for_sticky":"","commentSentLabel":"Comment has been sent!"}};
+//# sourceURL=bridge-default-js-extra
+</script>
+<script id="bridge-default-js" src="https://www.sicam.it/wp-content/themes/bridge/js/default.min.js"></script>
+<script id="bridge-default-js-after">
+var realAccept = document.querySelector('.real_accept');
+var fakeAccept = document.querySelector('.fake_accept');
+     
+fakeAccept.addEventListener('click', function() {
+    realAccept.click();
+    fakeAccept.classList.toggle('active');
+});
+
+
+document.getElementById('mega-menu-item-30').addEventListener("mouseover", switchMinus);
+
+function switchMinus() {
+    document.querySelector('.plus_label').innerHTML = "-";
+}
+document.getElementById('mega-menu-item-30').addEventListener("mouseout", switchPlus);
+
+function switchPlus() {
+    document.querySelector('.plus_label').innerHTML = " + ";
+}
+
+document.getElementById('mega-menu-item-1171').addEventListener("mouseover", switchMinusEn);
+
+function switchMinusEn() {
+    document.querySelector('.plus_label_en').innerHTML = "-";
+}
+
+document.getElementById('mega-menu-item-1171').addEventListener("mouseout", switchPlusEn);
+
+function switchPlusEn() {
+    document.querySelector('.plus_label_en').innerHTML = " + ";
+}
+
+document.getElementById('mega-menu-item-1371').addEventListener("mouseover", switchMinusEs);
+
+function switchMinusEs() {
+    document.querySelector('.plus_label_es').innerHTML = "-";
+}
+
+document.getElementById('mega-menu-item-1371').addEventListener("mouseout", switchPlusEs);
+
+function switchPlusEs() {
+    document.querySelector('.plus_label_es').innerHTML = " + ";
+}
+
+document.getElementById('mega-menu-item-1557').addEventListener("mouseover", switchMinusFr);
+
+function switchMinusFr() {
+    document.querySelector('.plus_label_fr').innerHTML = "-";
+}
+
+document.getElementById('mega-menu-item-1557').addEventListener("mouseout", switchPlusFr);
+
+function switchPlusFr() {
+    document.querySelector('.plus_label_fr').innerHTML = " + ";
+}
+
+//# sourceURL=bridge-default-js-after
+</script>
+<script id="wpb_composer_front_js-js" src="https://www.sicam.it/wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min.js"></script>
+<script id="qode-like-js-extra">
+var qodeLike = {"ajaxurl":"https://www.sicam.it/wp-admin/admin-ajax.php"};
+//# sourceURL=qode-like-js-extra
+</script>
+<script id="qode-like-js" src="https://www.sicam.it/wp-content/themes/bridge/js/plugins/qode-like.min.js"></script>
+<script id="google-recaptcha-js" src="https://www.google.com/recaptcha/api.js?render=6LcjWHkiAAAAAF8U2zh84JU_odfuWsmLnsPfWEr-&#038;ver=3.0"></script>
+<script id="wp-polyfill-js" src="https://www.sicam.it/wp-includes/js/dist/vendor/wp-polyfill.min.js"></script>
+<script id="wpcf7-recaptcha-js-before">
+var wpcf7_recaptcha = {
+    "sitekey": "6LcjWHkiAAAAAF8U2zh84JU_odfuWsmLnsPfWEr-",
+    "actions": {
+        "homepage": "homepage",
+        "contactform": "contactform"
+    }
+};
+//# sourceURL=wpcf7-recaptcha-js-before
+</script>
+<script id="wpcf7-recaptcha-js" src="https://www.sicam.it/wp-content/plugins/contact-form-7/modules/recaptcha/index.js"></script>
+<script id="megamenu-js" src="https://www.sicam.it/wp-content/plugins/megamenu/js/maxmegamenu.js"></script>
+<script id="iubenda-cons-cdn-js" src="//cdn.iubenda.com/cons/iubenda_cons.js?ver=3.13.2"></script>
+<script id="iubenda-cons-js-extra">
+var iubConsParams = {"api_key":"x7qFTU6SE2Ih47m0iNQK5Z1O2TDQvJzI","log_level":"error","logger":"console","send_from_local_storage_at_load":"true"};
+//# sourceURL=iubenda-cons-js-extra
+</script>
+<script id="iubenda-cons-js" src="https://www.sicam.it/wp-content/plugins/iubenda-cookie-law-solution/assets/js/cons.js"></script>
+<script id="bravepop_front_js-js-extra">
+var bravepop_global = {"loggedin":"false","isadmin":"false","referer":"","security":"632cc8e9b2","goalSecurity":"a28eb19ea0","couponSecurity":"925f411516","cartURL":"","checkoutURL":"","ajaxURL":"https://www.sicam.it/wp-admin/admin-ajax.php","field_required":"Required","no_html_allowed":"No Html Allowed","invalid_number":"Invalid Number","invalid_phone":"Invalid Phone Number","invalid_email":"Invalid Email","invalid_url":"Invalid URL","invalid_date":"Invalid Date","fname_required":"First Name is Required.","lname_required":"Last Name is Required.","username_required":"Username is Required.","email_required":"Email is Required.","email_invalid":"Invalid Email addresss.","pass_required":"Password is Required.","pass_short":"Password is too Short.","yes":"Yes","no":"No","login_error":"Something Went Wrong. Please contact the Site administrator.","pass_reset_success":"Please check your Email for the Password reset link.","customFonts":[],"disableGoogleFonts":"false"};
+//# sourceURL=bravepop_front_js-js-extra
+</script>
+<script id="bravepop_front_js-js" src="https://www.sicam.it/wp-content/plugins/brave-popup-builder/assets/frontend/brave.js"></script>
+<script></script>		<script>
+		(function() {
+			'use strict';
+			var parentSelector = '.menu-item.wpml-ls-current-language.menu-item-has-children';
+			
+			function toggleSubmenu(link, forceClose) {
+				var isExpanded = link.getAttribute('aria-expanded') === 'true';
+				if (forceClose || isExpanded) {
+					link.setAttribute('aria-expanded', 'false');
+				} else {
+					link.setAttribute('aria-expanded', 'true');
+				}
+			}
+			
+			function handleKeydown(e) {
+				var key = e.key || e.keyCode;
+				if (key === 'Enter' || key === ' ' || key === 13 || key === 32) {
+					e.preventDefault();
+					toggleSubmenu(this);
+				} else if (key === 'Escape' || key === 'Esc' || key === 27) {
+					if (this.getAttribute('aria-expanded') === 'true') {
+						e.preventDefault();
+						toggleSubmenu(this, true);
+					}
+				}
+			}
+			
+			function handleBlur(e) {
+				var link = this;
+				var parent = link.closest(parentSelector);
+				if (!parent) return;
+				
+				setTimeout(function() {
+					if (!parent.contains(document.activeElement)) {
+						toggleSubmenu(link, true);
+					}
+				}, 100);
+			}
+			
+			function init() {
+				var parents = document.querySelectorAll(parentSelector);
+				for (var i = 0; i < parents.length; i++) {
+					var link = parents[i].querySelector('a[aria-expanded]');
+					if (link) {
+						link.addEventListener('keydown', handleKeydown);
+						link.addEventListener('blur', handleBlur);
+					}
+				}
+			}
+			
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', init);
+			} else {
+				init();
+			}
+		})();
+		</script>
+		</body>
+</html>
