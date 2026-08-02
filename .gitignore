@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Excel lock files (created when brands.xlsx is open)
+~$*.xlsx
+~$*.xls
+
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Logs / temp
+*.log
+tmp/
+.cache/
