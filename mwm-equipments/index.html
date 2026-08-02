@@ -115,7 +115,26 @@
 <div class="wrap" id="pc-section">
   <p class="sec-tag"><span class="en">Our Range</span><span class="ar-t">تشكيلتنا</span><span class="cn-t">产品系列</span></p>
   <h2 class="sec-h" style="margin-bottom:.5rem"><span class="en">MWM <span class="ac">Products</span></span><span class="ar-t">منتجات <span class="ac">MWM</span></span><span class="cn-t">MWM <span class="ac">产品</span></span></h2>
-  <p style="font-size:.8rem;color:var(--muted);margin-bottom:.5rem"><span class="en">Professional tools and equipment engineered for the MENA and Middle East.</span><span class="ar-t">عدد ومعدات احترافية مصمّمة للمنطقة الشرق الأوسط وشمال أفريقيا والشرق الأوسط.</span><span class="cn-t">为海湾及中东地区打造的专业工具与设备。</span></p>
+  <p style="font-size:.8rem;color:var(--muted);margin-bottom:1.5rem"><span class="en">Professional tools and equipment engineered for the MENA and Middle East.</span><span class="ar-t">عدد ومعدات احترافية مصمّمة للمنطقة الشرق الأوسط وشمال أفريقيا والشرق الأوسط.</span><span class="cn-t">为海湾及中东地区打造的专业工具与设备。</span></p>
+
+  <!-- VIEW TOGGLE -->
+  <div style="display:flex;gap:.6rem;margin-bottom:2rem;border-bottom:1px solid var(--border);padding-bottom:1rem;flex-wrap:wrap;align-items:center;justify-content:space-between">
+    <div style="display:flex;gap:.5rem">
+      <button id="viewBtn1" onclick="switchView('details')" style="display:flex;align-items:center;gap:7px;padding:.6rem 1.2rem;background:var(--blue);color:#fff;border:1px solid var(--blue);border-radius:8px;font-family:inherit;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .25s">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        <span class="en">Product Details</span><span class="ar-t">تفاصيل المنتجات</span>
+      </button>
+      <button id="viewBtn2" onclick="switchView('catalog')" style="display:flex;align-items:center;gap:7px;padding:.6rem 1.2rem;background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:8px;font-family:inherit;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .25s">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        <span class="en">General Catalog</span><span class="ar-t">الكتالوج العام</span>
+        <span style="background:var(--lime);color:#0a0a0f;padding:.1rem .45rem;border-radius:20px;font-size:.6rem;font-weight:800">305</span>
+      </button>
+    </div>
+    <span style="font-size:.68rem;color:var(--muted);letter-spacing:.05em"><span class="en">MWM Equipment Catalogue — 2026</span><span class="ar-t">كتالوج معدات MWM — 2026</span></span>
+  </div>
+
+  <!-- VIEW: Product Details -->
+  <div id="viewDetails">
   <div class="pc-wrap">
     <div class="pc-side">
       <div class="pc-side-h"><span class="en">Categories</span><span class="ar-t">الأقسام</span><span class="cn-t">分类</span></div>
@@ -129,14 +148,41 @@
       <div class="pc-grid" id="pcGrid"><div class="pc-loading"><span class="en">Loading products…</span><span class="ar-t">جارٍ تحميل المنتجات…</span><span class="cn-t">正在加载产品…</span></div></div>
       <div class="pc-pager" id="pcPager"></div>
     </div>
+  </div><!-- /pc-wrap -->
+  </div><!-- /viewDetails -->
+
+  <!-- VIEW: General Catalog 305 -->
+  <div id="viewCatalog" style="display:none">
+    <iframe src="../catalog-2026.html" style="width:100%;height:82vh;border:1px solid var(--border);border-radius:12px;background:#0a0a0f" title="General Product Catalog 2026" loading="lazy"></iframe>
   </div>
-</div>
+
+</div><!-- /wrap -->
+
 <div class="pc-modal" id="pcModal" onclick="if(event.target===this)pcCloseModal()">
   <div class="pc-box" id="pcBox"></div>
 </div>
 
+<script>
+function switchView(v){
+  var d=document.getElementById('viewDetails');
+  var c=document.getElementById('viewCatalog');
+  var b1=document.getElementById('viewBtn1');
+  var b2=document.getElementById('viewBtn2');
+  if(v==='details'){
+    d.style.display=''; c.style.display='none';
+    b1.style.background='var(--blue)'; b1.style.color='#fff'; b1.style.borderColor='var(--blue)';
+    b2.style.background='transparent'; b2.style.color='var(--muted)'; b2.style.borderColor='var(--border)';
+  } else {
+    d.style.display='none'; c.style.display='';
+    b2.style.background='var(--blue)'; b2.style.color='#fff'; b2.style.borderColor='var(--blue)';
+    b1.style.background='transparent'; b1.style.color='var(--muted)'; b1.style.borderColor='var(--border)';
+    // scroll to catalog section
+    document.getElementById('pc-section').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+}
+</script>
 
-</div>
+</div><!-- /pg-equip -->
 <footer>
   <div class="footer-in">
     <div>
