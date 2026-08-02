@@ -571,8 +571,271 @@
           "active": 1
         }
       ]
+    },
+    {
+      "brand_id": "bosch",
+      "name_en": "BOSCH",
+      "name_ar": "بوش",
+      "name_cn": "博世",
+      "country_en": "Germany",
+      "country_ar": "ألمانيا",
+      "flag": "🇩🇪",
+      "tagline_en": "Invented for Life",
+      "tagline_ar": "مخترع من أجل الحياة",
+      "description_en": "Bosch Professional is the world's leading manufacturer of power tools and accessories. Founded in Stuttgart in 1886, Bosch brings over 135 years of German engineering excellence to every tool — from 18V cordless systems and SDS rotary hammers to angle grinders, demolition tools, and the legendary L-BOXX storage system. Trusted by tradespeople in 160+ countries.",
+      "description_ar": "بوش برو فيشنال هي الشركة الرائدة عالمياً في صناعة العدد الكهربائية والملحقات. تأسست في شتوتغارت عام 1886، وتجلب بوش أكثر من 135 عاماً من الهندسة الألمانية المتميزة لكل أداة — من منظومات 18V اللاسلكية ومطارق SDS الدوارة إلى طواحين الزاوية وعدد الهدم ونظام التخزين L-BOXX الأسطوري. موثوق بها من قِبل المحترفين في 160+ دولة.",
+      "logo_path": "images/brands/bosch/logo.svg",
+      "hero_path": "images/brands/bosch/hero-banner.jpg",
+      "color": "#e20015",
+      "website": "https://www.bosch-professional.com",
+      "featured": 1,
+      "active": 1,
+      "sort_order": 9,
+      "products": [
+        {
+          "product_id": "bosch-1",
+          "brand_id": "bosch",
+          "name_en": "18V Cordless System",
+          "name_ar": "منظومة 18V اللاسلكية",
+          "image_path": "images/brands/bosch/hero-banner.jpg",
+          "category_en": "Cordless",
+          "category_ar": "لاسلكية",
+          "is_new": 0,
+          "active": 1
+        },
+        {
+          "product_id": "bosch-2",
+          "brand_id": "bosch",
+          "name_en": "Metalworking Tools",
+          "name_ar": "عدد تشغيل المعادن",
+          "image_path": "images/brands/bosch/metalworking.jpg",
+          "category_en": "Metalworking",
+          "category_ar": "تشغيل المعادن",
+          "is_new": 0,
+          "active": 1
+        },
+        {
+          "product_id": "bosch-3",
+          "brand_id": "bosch",
+          "name_en": "L-BOXX System",
+          "name_ar": "نظام L-BOXX",
+          "image_path": "images/brands/bosch/lboxx-contractor.jpg",
+          "category_en": "Storage",
+          "category_ar": "تخزين",
+          "is_new": 0,
+          "active": 1
+        }
+      ]
+    },
+    {
+      "brand_id": "karcher",
+      "name_en": "KÄRCHER",
+      "name_ar": "كارشر",
+      "name_cn": "卡赫",
+      "country_en": "Germany",
+      "country_ar": "ألمانيا",
+      "flag": "🇩🇪",
+      "tagline_en": "World No.1 in Cleaning Technology",
+      "tagline_ar": "الأول عالمياً في تقنية التنظيف",
+      "description_en": "Kärcher is the world's leading provider of cleaning technology, headquartered in Winnenden, Germany. With over 3,000 patents and products sold in 60+ countries, Kärcher delivers professional high-pressure cleaners, floor scrubbers, vacuum cleaners, steam cleaners, and industrial cleaning systems. The gold standard for professional cleaning across construction, automotive, food industry, and public sector.",
+      "description_ar": "كارشر هي الشركة الرائدة عالمياً في تقنية التنظيف، ومقرها وينيندن، ألمانيا. مع أكثر من 3,000 براءة اختراع ومنتجات تُباع في أكثر من 60 دولة، توفر كارشر ضواغط المياه عالية الضغط الاحترافية، وآلات تلميع الأرضيات، ومكانس الكهرباء، ومنظفات البخار، وأنظمة التنظيف الصناعي. المعيار الذهبي للتنظيف الاحترافي في البناء والسيارات والصناعة الغذائية والقطاع العام.",
+      "logo_path": "images/brands/karcher/logo.svg",
+      "hero_path": "",
+      "color": "#FFD700",
+      "website": "https://www.kaercher.com/ae",
+      "featured": 1,
+      "active": 1,
+      "sort_order": 10,
+      "products": []
+    },
+    {
+      "brand_id": "total",
+      "name_en": "TOTAL",
+      "name_ar": "توتال",
+      "name_cn": "大有",
+      "country_en": "China",
+      "country_ar": "الصين",
+      "flag": "🇨🇳",
+      "tagline_en": "Power for Professionals",
+      "tagline_ar": "قوة المحترفين",
+      "description_en": "TOTAL is a fast-growing professional power tools brand with a comprehensive portfolio spanning over 1,000 SKUs across corded and cordless tools, pneumatic tools, hand tools, and measuring instruments. The P20S 20V and S12 12V battery platforms deliver consistent power across 200+ compatible tools. Widely distributed across Africa, the Middle East, and Asia for value-driven professional performance.",
+      "description_ar": "توتال علامة تجارية سريعة النمو في العدد الكهربائية الاحترافية بمحفظة شاملة تضم أكثر من 1,000 منتج في العدد السلكية واللاسلكية والهوائية واليدوية وأجهزة القياس. تقدم منصتا P20S 20V و S12 12V طاقة متسقة عبر أكثر من 200 أداة متوافقة. تتميز بانتشار واسع في أفريقيا والشرق الأوسط وآسيا بأداء احترافي وقيمة ممتازة.",
+      "logo_path": "",
+      "hero_path": "images/brands/total/hero-banner.jpg",
+      "color": "#e5002b",
+      "website": "https://www.totalbusiness.com",
+      "featured": 0,
+      "active": 1,
+      "sort_order": 11,
+      "products": [
+        {
+          "product_id": "total-1",
+          "brand_id": "total",
+          "name_en": "P20S 20V Platform",
+          "name_ar": "منصة P20S 20V",
+          "image_path": "images/brands/total/hero-banner.jpg",
+          "category_en": "Cordless",
+          "category_ar": "لاسلكية",
+          "is_new": 0,
+          "active": 1
+        },
+        {
+          "product_id": "total-2",
+          "brand_id": "total",
+          "name_en": "S12 12V Platform",
+          "name_ar": "منصة S12 12V",
+          "image_path": "images/brands/total/s12-banner.jpg",
+          "category_en": "Cordless",
+          "category_ar": "لاسلكية",
+          "is_new": 0,
+          "active": 1
+        }
+      ]
+    },
+    {
+      "brand_id": "crown",
+      "name_en": "CROWN",
+      "name_ar": "كراون",
+      "name_cn": "皇冠",
+      "country_en": "United Arab Emirates",
+      "country_ar": "الإمارات العربية المتحدة",
+      "flag": "🇦🇪",
+      "tagline_en": "Tools That Work",
+      "tagline_ar": "عدد تشتغل",
+      "description_en": "CROWN is a UAE-based professional power tools brand with over 30 years of presence in the MENA market. With more than 500 product lines spanning angle grinders, drills, circular saws, jigsaws, planers, and accessories, CROWN tools are engineered for the trades professional. The B3 product platform integrates 20V lithium battery technology across a wide cordless ecosystem optimised for Middle East job sites.",
+      "description_ar": "كراون علامة إماراتية في العدد الكهربائية الاحترافية بحضور يزيد على 30 عاماً في منطقة الشرق الأوسط وشمال أفريقيا. بأكثر من 500 خط إنتاج يشمل طواحين الزاوية والثقاقات والمناشير الدائرية والمناشير الإهليلجية والمسوّيات والملحقات، تُهندس عدد كراون للمحترفين. تدمج منصة B3 تقنية بطارية ليثيوم 20V عبر منظومة لاسلكية واسعة محسّنة لمواقع البناء في الشرق الأوسط.",
+      "logo_path": "images/brands/crown/logo.webp",
+      "hero_path": "images/brands/crown/hero-banner.png",
+      "color": "#cc0000",
+      "website": "https://crown-tools.com",
+      "featured": 1,
+      "active": 1,
+      "sort_order": 12,
+      "products": [
+        {
+          "product_id": "crown-1",
+          "brand_id": "crown",
+          "name_en": "Professional Power Tools",
+          "name_ar": "عدد كهربائية احترافية",
+          "image_path": "images/brands/crown/hero-banner.png",
+          "category_en": "Power Tools",
+          "category_ar": "عدد كهربائية",
+          "is_new": 0,
+          "active": 1
+        },
+        {
+          "product_id": "crown-2",
+          "brand_id": "crown",
+          "name_en": "B3 Cordless Platform",
+          "name_ar": "منصة B3 اللاسلكية",
+          "image_path": "images/brands/crown/b3-platform.png",
+          "category_en": "Cordless",
+          "category_ar": "لاسلكية",
+          "is_new": 0,
+          "active": 1
+        }
+      ]
+    },
+    {
+      "brand_id": "dongcheng",
+      "name_en": "DONGCHENG",
+      "name_ar": "دونغ شينغ",
+      "name_cn": "东成",
+      "country_en": "China",
+      "country_ar": "الصين",
+      "flag": "🇨🇳",
+      "tagline_en": "East Cheng — Born to Build",
+      "tagline_ar": "شرق الصين — خُلق للبناء",
+      "description_en": "Dongcheng (DCK) is one of China's largest professional power tools manufacturers, founded in 1995 in Jiangsu Province. Exporting to 100+ countries, Dongcheng produces over 3,000 product models covering angle grinders, rotary hammers, circular saws, cordless systems, and heavy-duty industrial tools. A trusted OEM partner for major global brands and a standalone force in professional job site equipment.",
+      "description_ar": "دونغ شينغ (DCK) هي إحدى أكبر شركات تصنيع العدد الكهربائية الاحترافية في الصين، تأسست عام 1995 في مقاطعة جيانغسو. تصدر لأكثر من 100 دولة، وتنتج دونغ شينغ أكثر من 3,000 موديل يشمل طواحين الزاوية ومطارق SDS والمناشير الدائرية والمنظومات اللاسلكية والعدد الصناعية الثقيلة. شريك OEM موثوق لكبرى العلامات العالمية وقوة مستقلة في معدات مواقع البناء.",
+      "logo_path": "images/brands/dongcheng/logo.png",
+      "hero_path": "images/brands/dongcheng/hero-banner.jpg",
+      "color": "#e84919",
+      "website": "https://www.dongcheng.com",
+      "featured": 0,
+      "active": 1,
+      "sort_order": 13,
+      "products": [
+        {
+          "product_id": "dongcheng-1",
+          "brand_id": "dongcheng",
+          "name_en": "Professional Tool Range",
+          "name_ar": "تشكيلة العدد الاحترافية",
+          "image_path": "images/brands/dongcheng/hero-banner.jpg",
+          "category_en": "Power Tools",
+          "category_ar": "عدد كهربائية",
+          "is_new": 0,
+          "active": 1
+        },
+        {
+          "product_id": "dongcheng-2",
+          "brand_id": "dongcheng",
+          "name_en": "International Trade Show",
+          "name_ar": "المعرض التجاري الدولي",
+          "image_path": "images/brands/dongcheng/dubai-big5.jpg",
+          "category_en": "Exhibition",
+          "category_ar": "معارض",
+          "is_new": 0,
+          "active": 1
+        }
+      ]
+    },
+    {
+      "brand_id": "emtop",
+      "name_en": "EMTOP",
+      "name_ar": "إمتوب",
+      "name_cn": "EMTOP",
+      "country_en": "China",
+      "country_ar": "الصين",
+      "flag": "🇨🇳",
+      "tagline_en": "Professional Tools for Every Job",
+      "tagline_ar": "عدد احترافية لكل عمل",
+      "description_en": "EMTOP is a professional-grade power tools brand under the Total Tools Group, offering a complete ecosystem of 20V P20S and 12V S12 battery-powered cordless tools alongside a full line of corded tools, pneumatics, and hand tools. With 1,000+ SKUs designed for contractors and tradespeople, EMTOP delivers engineered performance at accessible price points across 100+ markets worldwide.",
+      "description_ar": "إمتوب هي علامة احترافية في العدد الكهربائية ضمن مجموعة توتال تولز، تقدم منظومة متكاملة من العدد اللاسلكية بمنصة 20V P20S و 12V S12 إلى جانب خط كامل من العدد السلكية والهوائية واليدوية. بأكثر من 1,000 منتج مصمم للمقاولين والحرفيين، تقدم إمتوب أداءً مهندساً بأسعار في متناول الجميع في أكثر من 100 سوق حول العالم.",
+      "logo_path": "",
+      "hero_path": "images/brands/emtop/hero-banner.png",
+      "color": "#0057a8",
+      "website": "https://www.emtop-tools.com",
+      "featured": 0,
+      "active": 1,
+      "sort_order": 14,
+      "products": [
+        {
+          "product_id": "emtop-1",
+          "brand_id": "emtop",
+          "name_en": "Professional Tool Range",
+          "name_ar": "تشكيلة العدد الاحترافية",
+          "image_path": "images/brands/emtop/hero-banner.png",
+          "category_en": "Power Tools",
+          "category_ar": "عدد كهربائية",
+          "is_new": 0,
+          "active": 1
+        },
+        {
+          "product_id": "emtop-2",
+          "brand_id": "emtop",
+          "name_en": "P20S Cordless Platform",
+          "name_ar": "منصة P20S اللاسلكية",
+          "image_path": "images/brands/emtop/p20s-hero.png",
+          "category_en": "Cordless",
+          "category_ar": "لاسلكية",
+          "is_new": 0,
+          "active": 1
+        },
+        {
+          "product_id": "emtop-3",
+          "brand_id": "emtop",
+          "name_en": "S12 Compact Platform",
+          "name_ar": "منصة S12 المدمجة",
+          "image_path": "images/brands/emtop/s12-hero.png",
+          "category_en": "Cordless",
+          "category_ar": "لاسلكية",
+          "is_new": 0,
+          "active": 1
+        }
+      ]
     }
   ],
   "new_arrivals": [],
-  "_generated": "2026-08-02T20:00:00.000000"
+  "_generated": "2026-08-02T22:00:00.000000"
 }
