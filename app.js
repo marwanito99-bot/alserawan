@@ -1,3 +1,19 @@
+/* ===== SECURITY HELPERS =====
+   All remote data (RSS feeds, Google-Sheets CSV) is untrusted and must be
+   escaped before it touches innerHTML. esc() for text/attribute content,
+   safeUrl() to block javascript:/data: URI injection in href/src. */
+function esc(s){
+  return String(s==null?'':s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+function safeUrl(u){
+  u=String(u==null?'':u).trim();
+  if(!u) return '#';
+  if(/^(?:https?:|mailto:|tel:|\/|\.\/|\.\.\/|#)/i.test(u)) return esc(u);
+  return '#';
+}
+
 /* ===== MWM IMAGE LOADER ===== */
 var MWM_IMG={'img-hero':'transport.jpg','img-crane':'crane.jpg','img-plane':'plane.jpg','img-airsea':'airsea.jpg','img-ship-aerial':'ship_aerial.jpg','img-jamil':'jamil.jpg','img-marwan':'marwan.jpg','img-mwm-hero':'untitled.jpg','img-motors-hero':'airsea2.jpg','img-equip-hero':'crane2.jpg','img-src-hero':'transport.jpg','img-wechat-qr':'qr.jpg','__IMG_LOGO':'logo-full.png','__IMG_LOGO_ICON':'logo-icon.png','__IMG_TRANSPORT':'transport.jpg','__IMG_CRANE':'crane.jpg','__IMG_PLANE':'plane.jpg','__IMG_AIRSEA':'airsea.jpg','__IMG_AIRSEA2':'airsea2.jpg','__IMG_CRANE2':'crane2.jpg','__IMG_SHIP_AERIAL':'ship_aerial.jpg','__IMG_JAMIL':'jamil.jpg','__IMG_MARWAN':'marwan.jpg','__IMG_UNTITLED':'untitled.jpg','__IMG_QR':'qr.jpg','__IMG_LICENSE':'license.jpg','__IMG_INLINE':'inline.jpg','__IMG_WAQR':'waqr.jpg'};
 function mwmImgPath(f){var root=(typeof SITE_ROOT!=='undefined')?SITE_ROOT:'';return root+'images/'+f;}
@@ -156,9 +172,9 @@ function renderNews(items){
   if(!items||!items.length){return renderNewsFallback()}
   var h='';
   items.slice(0,5).forEach(function(it,i){
-    var t=(it.title||'').replace(/<[^>]*>/g,'').trim();
-    var src=it.source||'';var ago=it.pubDate?timeAgo(it.pubDate):'';
-    h+='<a class="news-item" href="'+(it.link||'#')+'" target="_blank" rel="noopener">'
+    var t=esc((it.title||'').replace(/<[^>]*>/g,'').trim());
+    var src=esc(it.source||'');var ago=esc(it.pubDate?timeAgo(it.pubDate):'');
+    h+='<a class="news-item" href="'+safeUrl(it.link)+'" target="_blank" rel="noopener noreferrer">'
       +'<div class="news-num">0'+(i+1)+'</div>'
       +'<div class="news-body"><div class="news-title">'+t+'</div>'
       +'<div class="news-meta">'+src+(ago?'  •  '+ago:'')+'</div></div>'
@@ -351,7 +367,7 @@ function pcImgSrc(p){
 }
 function pcImgHTML(p){
   var src=pcImgSrc(p.img);
-  if(src) return '<img src="'+src+'" alt="'+p.en+'" loading="lazy" onerror="this.parentNode.innerHTML=pcPhHTML()"/>';
+  if(src) return '<img src="'+safeUrl(src)+'" alt="'+esc(p.en)+'" loading="lazy" decoding="async" onerror="this.parentNode.innerHTML=pcPhHTML()"/>';
   return pcPhHTML();
 }
 function pcPhHTML(){
@@ -367,10 +383,10 @@ function pcRender(){
   var h='';
   items.forEach(function(p,i){
     var idx=pcAll.indexOf(p);
-    h+='<div class="pc-card" onclick="pcOpen('+idx+')">'
-      +'<div class="pc-img">'+(p.badge?'<div class="pc-badge">'+p.badge+'</div>':'')+pcImgHTML(p)+'</div>'
-      +'<div class="pc-info"><div class="pc-model">'+p.model+'</div>'
-      +'<div class="pc-name"><div class="pc-name-en">'+p.en+'</div><div class="pc-name-loc">'+(p.ar||'')+'</div></div></div></div>';
+    h+='<div class="pc-card" role="button" tabindex="0" onclick="pcOpen('+idx+')" onkeydown="if(event.key===\'Enter\'||event.key===\' \'){event.preventDefault();pcOpen('+idx+')}">'
+      +'<div class="pc-img">'+(p.badge?'<div class="pc-badge">'+esc(p.badge)+'</div>':'')+pcImgHTML(p)+'</div>'
+      +'<div class="pc-info"><div class="pc-model">'+esc(p.model)+'</div>'
+      +'<div class="pc-name"><div class="pc-name-en">'+esc(p.en)+'</div><div class="pc-name-loc">'+esc(p.ar||'')+'</div></div></div></div>';
   });
   g.innerHTML=h;
   var c=document.getElementById('pcCount');
