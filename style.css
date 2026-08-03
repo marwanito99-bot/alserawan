@@ -194,7 +194,11 @@ body.ar .pb-label{left:auto;right:1.2rem}
 .co-spot-row.spot-on .co-spot-name{color:var(--text)}
 .co-spot-row:hover:not(.spot-on) .co-spot-name{color:rgba(255,255,255,.55)}
 .co-spot-expand{max-height:0;overflow:hidden;transition:max-height .42s cubic-bezier(.4,0,.2,1)}
-.co-spot-row.spot-on .co-spot-expand{max-height:180px}
+/* max-height must clear the tallest wrapped state, otherwise the "View Company"
+   button is clipped by overflow:hidden and becomes untappable. Narrow screens
+   wrap the description and pills onto many more lines, so the ceiling rises
+   as the viewport shrinks. */
+.co-spot-row.spot-on .co-spot-expand{max-height:260px}
 .co-spot-desc{font-size:.82rem;color:var(--muted);line-height:1.75;margin-top:.7rem}
 .co-spot-pills{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.8rem}
 .co-spot-pill{font-size:.58rem;padding:.22rem .7rem;border:0.5px solid rgba(255,255,255,.1);border-radius:100px;color:var(--muted);letter-spacing:.05em}
@@ -1414,4 +1418,17 @@ body.page-leaving{opacity:0!important;transition:opacity .12s ease!important;poi
 /* ── Photo band items — rounded on mobile ── */
 @media(max-width:600px){
   .pb-item{border-radius:10px;overflow:hidden}
+}
+
+/* ── Companies spotlight: mobile ── */
+@media(max-width:900px){
+  .co-spot-row.spot-on .co-spot-expand{max-height:420px}
+}
+@media(max-width:600px){
+  .co-spot-row.spot-on .co-spot-expand{max-height:560px}
+  /* Bigger tap target for the CTA on touch devices. */
+  .co-spot-cta{padding:.55rem 0;min-height:44px}
+}
+@media(max-width:520px){
+  .co-spot-row.spot-on .co-spot-expand{max-height:680px}
 }

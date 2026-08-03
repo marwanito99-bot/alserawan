@@ -175,7 +175,7 @@
 
   <div class="co-spotlight">
     <!-- Row 1 -->
-    <div class="co-spot-row spot-on" id="spot-0" onclick="spotActivate(0)">
+    <div class="co-spot-row spot-on" id="spot-0" data-go="logistics" onclick="spotActivate(0)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();spotActivate(0)}" role="button" tabindex="0" aria-expanded="true" aria-label="Max Worldwide Mastering">
       <div class="co-spot-bar"></div>
       <div class="co-spot-num">01</div>
       <div class="co-spot-icon">
@@ -187,14 +187,14 @@
         <div class="co-spot-expand">
           <p class="co-spot-desc"><span class="en">Integrated logistics — shipping, warehousing, customs clearance, and supply chain management from Yiwu to the world.</span><span class="ar-t">لوجستيات متكاملة — شحن وتخزين وتخليص جمركي وإدارة سلاسل التوريد من يوو إلى العالم.</span><span class="cn-t">一体化物流——从义乌到全球的货运、仓储、报关和供应链管理。</span></p>
           <div class="co-spot-pills"><span class="co-spot-pill">Logistics</span><span class="co-spot-pill">Cargo</span><span class="co-spot-pill">Customs</span><span class="co-spot-pill">3PL</span></div>
-          <button class="co-spot-cta" onclick="event.stopPropagation();window.location.href='logistics/'"><div class="co-spot-cta-line"></div><span class="en">View Company</span><span class="ar-t">عرض الشركة</span><span class="cn-t">查看公司</span></button>
+          <button class="co-spot-cta" onclick="event.stopPropagation();show('logistics')"><div class="co-spot-cta-line"></div><span class="en">View Company</span><span class="ar-t">عرض الشركة</span><span class="cn-t">查看公司</span></button>
         </div>
       </div>
       <div class="co-spot-bignum">01</div>
     </div>
 
     <!-- Row 2 -->
-    <div class="co-spot-row" id="spot-1" onclick="spotActivate(1)">
+    <div class="co-spot-row" id="spot-1" data-go="motors" onclick="spotActivate(1)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();spotActivate(1)}" role="button" tabindex="0" aria-expanded="false" aria-label="MWM Motors">
       <div class="co-spot-bar"></div>
       <div class="co-spot-num">02</div>
       <div class="co-spot-icon">
@@ -213,7 +213,7 @@
     </div>
 
     <!-- Row 3 -->
-    <div class="co-spot-row" id="spot-2" onclick="spotActivate(2)">
+    <div class="co-spot-row" id="spot-2" data-go="equip" onclick="spotActivate(2)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();spotActivate(2)}" role="button" tabindex="0" aria-expanded="false" aria-label="MWM Equipments">
       <div class="co-spot-bar"></div>
       <div class="co-spot-num">03</div>
       <div class="co-spot-icon">

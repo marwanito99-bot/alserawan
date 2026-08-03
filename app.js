@@ -136,10 +136,23 @@ function show(id){
   var root=(typeof SITE_ROOT!=='undefined')?SITE_ROOT:'';
   window.location.href = root + (r?r+'/':'');
 }
+/* Companies spotlight accordion.
+   First tap opens the row; tapping an already-open row navigates to that
+   company. On touch screens the small "View Company" link is easy to miss,
+   so the whole open row acts as the link. */
 function spotActivate(i){
+  var target=document.getElementById('spot-'+i);
+  if(target&&target.classList.contains('spot-on')){
+    var go=target.getAttribute('data-go');
+    if(go){ show(go); return; }
+  }
   for(var j=0;j<3;j++){
     var row=document.getElementById('spot-'+j);
-    if(row) row.classList.toggle('spot-on', j===i);
+    if(row){
+      var on=(j===i);
+      row.classList.toggle('spot-on',on);
+      row.setAttribute('aria-expanded',on?'true':'false');
+    }
   }
 }
 function goto(id){
@@ -369,18 +382,30 @@ function pcImgSrc(p){
    Used as a fallback when the sheet's Image URL is empty or fails to load
    (external shops such as supplyvan.com block hotlinking, and Google Drive
    share links never render inside <img>). */
+/* GitHub Pages serves from Linux, so image paths are case-SENSITIVE:
+   images/CD20.jpg and images/cd20.jpg are different files. This repo contains
+   both conventions (rh2600.jpg lowercase, CD20.jpg uppercase), so every
+   candidate is tried in both cases rather than assuming one. */
 function pcLocalImg(model){
-  var m=(model||'').trim().toLowerCase().replace(/^mwm[-_\s]*/,'').replace(/[^a-z0-9._-]/g,'');
-  if(!m) return '';
+  var m=(model||'').trim().replace(/^mwm[-_\s]*/i,'').replace(/[^A-Za-z0-9._-]/g,'');
+  if(!m) return [];
   var root=(typeof SITE_ROOT!=='undefined')?SITE_ROOT:'';
-  return root+'images/'+m+'.jpg';
+  var out=[], seen={};
+  [m.toLowerCase(), m.toUpperCase(), m].forEach(function(v){
+    var u=root+'images/'+v+'.jpg';
+    if(!seen[u]){ seen[u]=1; out.push(u) }
+  });
+  return out;
 }
 
 /* Ordered candidate list -> first one that loads wins, else placeholder. */
 function pcImgCandidates(p){
   var out=[], seen={};
-  [pcImgSrc(p.img), pcLocalImg(p.model), pcImgSrc(p.img2), pcImgSrc(p.img3)]
-    .forEach(function(u){ if(u&&!seen[u]){seen[u]=1;out.push(u)} });
+  function add(u){ if(u&&!seen[u]){seen[u]=1;out.push(u)} }
+  add(pcImgSrc(p.img));
+  pcLocalImg(p.model).forEach(add);
+  add(pcImgSrc(p.img2));
+  add(pcImgSrc(p.img3));
   return out;
 }
 
