@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>تشخيص صور المنتجات — MWM</title>
+<style>
+:root{--blue:#1d00f4;--lime:#ccfd1b;--black:#0a0a0f;--d2:#131320;--d3:#1c1c2e;
+      --text:#f0ede6;--muted:#7a7a9a;--bd:rgba(29,0,244,.22);--ok:#28c76f;--bad:#ff4d4f;--warn:#ffa940}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--black);color:var(--text);font-family:system-ui,"Segoe UI",Arial,sans-serif;padding:2rem 1.2rem;line-height:1.6}
+.wrap{max-width:1200px;margin:0 auto}
+h1{font-size:1.5rem;margin-bottom:.3rem}
+.sub{color:var(--muted);font-size:.85rem;margin-bottom:1.6rem}
+#status{padding:1rem 1.2rem;background:var(--d2);border:1px solid var(--bd);border-radius:3px;margin-bottom:1.5rem;font-size:.9rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:1.8rem}
+.c{background:var(--d2);border:1px solid var(--bd);border-radius:3px;padding:1rem;text-align:center}
+.c .n{font-size:1.9rem;font-weight:800;line-height:1}
+.c .l{font-size:.68rem;color:var(--muted);letter-spacing:.06em;margin-top:.35rem}
+.c.ok .n{color:var(--ok)} .c.bad .n{color:var(--bad)} .c.warn .n{color:var(--warn)}
+h2{font-size:1rem;margin:1.8rem 0 .7rem;padding-bottom:.4rem;border-bottom:1px solid var(--bd)}
+table{width:100%;border-collapse:collapse;font-size:.8rem;background:var(--d2);border:1px solid var(--bd)}
+th,td{padding:.6rem .7rem;text-align:right;border-bottom:1px solid rgba(255,255,255,.05);vertical-align:top}
+th{background:var(--d3);font-size:.7rem;letter-spacing:.06em;color:var(--muted);position:sticky;top:0}
+tr:last-child td{border-bottom:none}
+.pill{display:inline-block;padding:.15rem .5rem;border-radius:2px;font-size:.65rem;font-weight:700;white-space:nowrap}
+.p-ok{background:rgba(40,199,111,.15);color:var(--ok)}
+.p-bad{background:rgba(255,77,79,.15);color:var(--bad)}
+.p-warn{background:rgba(255,169,64,.15);color:var(--warn)}
+.url{font-family:ui-monospace,Consolas,monospace;font-size:.7rem;color:var(--muted);word-break:break-all;direction:ltr;text-align:left;display:block;max-width:420px}
+.fix{color:var(--lime);font-size:.72rem}
+.thumb{width:52px;height:52px;object-fit:contain;background:var(--d3);border:1px solid var(--bd);border-radius:2px}
+button{background:var(--blue);color:#fff;border:0;padding:.6rem 1.4rem;font-size:.78rem;font-weight:700;
+       border-radius:2px;cursor:pointer;font-family:inherit;margin-bottom:1rem}
+button:hover{background:var(--lime);color:var(--black)}
+.hint{background:rgba(29,0,244,.08);border:1px solid var(--bd);border-radius:3px;padding:1rem 1.2rem;font-size:.82rem;margin-top:1.5rem}
+.hint code{background:var(--d3);padding:.1rem .4rem;border-radius:2px;font-size:.75rem;direction:ltr;display:inline-block}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>تشخيص صور المنتجات</h1>
+<p class="sub">يقرأ نفس ملف Google Sheet الذي يستخدمه الموقع، ويختبر كل صورة على حدة ويخبرك بسبب فشلها.</p>
+
+<button id="run">إعادة الفحص</button>
+<div id="status">جارٍ التحميل…</div>
+<div class="cards" id="cards"></div>
+<div id="out"></div>
+
+<div class="hint">
+  <strong>الأسباب الشائعة وحلولها:</strong><br><br>
+  • <strong>خانة Image URL فارغة</strong> — أضف الرابط في الشيت.<br>
+  • <strong>رابط Google Drive للمشاركة</strong> — روابط <code>drive.google.com/file/d/.../view</code> لا تعمل داخل <code>&lt;img&gt;</code>.
+  حوّلها إلى <code>https://lh3.googleusercontent.com/d/&lt;FILE_ID&gt;</code> أو ارفع الصورة إلى مجلد <code>images/</code> في الموقع.<br>
+  • <strong>رابط خارجي محجوب</strong> — كثير من مواقع البراندات تمنع الرابط المباشر (hotlink protection). الحل: نزّل الصورة وارفعها في <code>images/</code>.<br>
+  • <strong>ملف محلي غير موجود</strong> — تأكد أن الاسم مطابق تماماً (حساس لحالة الأحرف).
+</div>
+</div>
+
+<script>
+var CSV='https://docs.google.com/spreadsheets/d/e/2PACX-1vRTEYaED31Eun6Tnq8K9xoipYJO5oB_yF3NavzevBRfsFnXs7Y75xqVHP3JH0VbYw/pub?gid=572362026&single=true&output=csv';
+var SITE='https://www.alserawan.com/';
+
+function parseCSV(t){t=t.replace(/\r/g,'');var rows=[],cur='',q=false,line=[];
+  for(var i=0;i<t.length;i++){var c=t[i];
+    if(c==='"'){ if(q&&t[i+1]==='"'){cur+='"';i++} else q=!q }
+    else if(c===','&&!q){line.push(cur);cur=''}
+    else if(c==='\n'&&!q){line.push(cur);rows.push(line);line=[];cur=''}
+    else cur+=c}
+  if(cur||line.length){line.push(cur);rows.push(line)}return rows}
+function N(s){return (s||'').trim()}
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+
+// نفس منطق الموقع تماماً (pcImgSrc) مع SITE_ROOT للصفحة /mwm-equipments/
+function resolve(u){u=N(u); if(!u)return '';
+  if(/^(https?:)?\/\//i.test(u)||u.indexOf('data:')===0)return u;
+  if(u.charAt(0)==='/')return SITE+u.slice(1);
+  return SITE+u;}
+
+function diagnose(url,loaded){
+  if(!url) return ['p-bad','خانة Image URL فارغة','أضف رابط الصورة في الشيت'];
+  if(loaded) return ['p-ok','تعمل',''];
+  if(/drive\.google\.com/i.test(url)) return ['p-warn','رابط Google Drive للمشاركة','حوّله إلى lh3.googleusercontent.com/d/FILE_ID أو ارفع الصورة محلياً'];
+  if(/^https?:\/\//i.test(url) && url.indexOf('alserawan.com')<0) return ['p-bad','رابط خارجي فشل (محجوب أو محذوف)','نزّل الصورة وارفعها في مجلد images/'];
+  return ['p-bad','الملف غير موجود على الموقع','تأكد من الاسم والمسار (حساس لحالة الأحرف)'];
+}
+
+function test(src){return new Promise(function(res){
+  if(!src) return res(false);
+  var im=new Image(); var done=false;
+  var t=setTimeout(function(){if(!done){done=true;res(false)}},12000);
+  im.onload=function(){if(!done){done=true;clearTimeout(t);res(im.naturalWidth>1)}};
+  im.onerror=function(){if(!done){done=true;clearTimeout(t);res(false)}};
+  im.src=src;})}
+
+async function run(){
+  var S=document.getElementById('status'), OUT=document.getElementById('out'), C=document.getElementById('cards');
+  OUT.innerHTML=''; C.innerHTML=''; S.textContent='جارٍ تحميل الشيت…';
+  var txt;
+  try{ txt=await fetch(CSV).then(function(r){if(!r.ok)throw 0;return r.text()}) }
+  catch(e){
+    try{ txt=await fetch('https://corsproxy.io/?'+encodeURIComponent(CSV)).then(function(r){return r.text()}) }
+    catch(e2){ S.innerHTML='<span style="color:var(--bad)">تعذّر تحميل الشيت. تأكد أنه منشور: File → Share → Publish to web → CSV</span>'; return }
+  }
+  var rows=parseCSV(txt), hi=-1;
+  for(var i=0;i<Math.min(6,rows.length);i++)
+    if(rows[i].some(function(c){return N(c).toLowerCase()==='model'})){hi=i;break}
+  if(hi<0){ S.innerHTML='<span style="color:var(--bad)">لم أجد صف العناوين (يجب أن يحتوي عمود اسمه Model)</span>'; return }
+  var H=rows[hi].map(function(c){return N(c).toLowerCase()});
+  var iM=H.indexOf('model'), iEN=H.indexOf('name en'), iS=H.indexOf('status'), iImg=H.indexOf('image url');
+  if(iImg<0){ S.innerHTML='<span style="color:var(--bad)">لا يوجد عمود اسمه "Image URL" في الشيت</span>'; return }
+
+  var items=[];
+  for(var r=hi+1;r<rows.length;r++){
+    var v=rows[r]; if(!v||!N(v[iM]))continue;
+    var st=N(v[iS]).toLowerCase(); if(st==='hidden')continue;
+    if(N(v[iM])==='الموديل'||st==='الحالة')continue;
+    var en=iEN>=0?N(v[iEN]):''; if(!en||en==='الاسم إنجليزي')continue;
+    items.push({model:N(v[iM]),en:en,raw:N(v[iImg])});
+  }
+  S.textContent='جارٍ اختبار '+items.length+' صورة…';
+
+  for(var k=0;k<items.length;k++){
+    items[k].src=resolve(items[k].raw);
+    items[k].ok=await test(items[k].src);
+    if(k%10===0) S.textContent='جارٍ الاختبار… '+(k+1)+'/'+items.length;
+  }
+
+  var ok=items.filter(function(x){return x.ok}),
+      empty=items.filter(function(x){return !x.ok&&!x.raw}),
+      fail=items.filter(function(x){return !x.ok&&x.raw});
+  S.innerHTML='اكتمل الفحص لـ <b>'+items.length+'</b> منتج.';
+  C.innerHTML=
+    '<div class="c"><div class="n">'+items.length+'</div><div class="l">إجمالي المنتجات</div></div>'+
+    '<div class="c ok"><div class="n">'+ok.length+'</div><div class="l">صور تعمل</div></div>'+
+    '<div class="c bad"><div class="n">'+fail.length+'</div><div class="l">روابط فاشلة</div></div>'+
+    '<div class="c warn"><div class="n">'+empty.length+'</div><div class="l">بلا رابط أصلاً</div></div>';
+
+  function table(title,list,showThumb){
+    if(!list.length)return '';
+    var h='<h2>'+title+' ('+list.length+')</h2><table><tr><th>الموديل</th><th>الاسم</th>'+
+          (showThumb?'<th>معاينة</th>':'')+'<th>الرابط في الشيت</th><th>الحالة</th><th>الحل</th></tr>';
+    list.forEach(function(x){
+      var d=diagnose(x.raw,x.ok);
+      h+='<tr><td><b>'+esc(x.model)+'</b></td><td>'+esc(x.en)+'</td>'+
+         (showThumb?'<td><img class="thumb" src="'+esc(x.src)+'" alt=""></td>':'')+
+         '<td><span class="url">'+(esc(x.raw)||'—')+'</span></td>'+
+         '<td><span class="pill '+d[0]+'">'+d[1]+'</span></td>'+
+         '<td class="fix">'+d[2]+'</td></tr>';
+    });
+    return h+'</table>';
+  }
+  OUT.innerHTML=table('روابط فاشلة — تحتاج إصلاح',fail,false)
+               +table('بلا رابط صورة في الشيت',empty,false)
+               +table('تعمل بشكل صحيح',ok,true);
+}
+document.getElementById('run').onclick=run;
+run();
+</script>
+</body>
+</html>
