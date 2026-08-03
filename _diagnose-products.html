@@ -78,12 +78,21 @@ function resolve(u){u=N(u); if(!u)return '';
   if(u.charAt(0)==='/')return SITE+u.slice(1);
   return SITE+u;}
 
-function diagnose(url,loaded){
-  if(!url) return ['p-bad','خانة Image URL فارغة','أضف رابط الصورة في الشيت'];
-  if(loaded) return ['p-ok','تعمل',''];
-  if(/drive\.google\.com/i.test(url)) return ['p-warn','رابط Google Drive للمشاركة','حوّله إلى lh3.googleusercontent.com/d/FILE_ID أو ارفع الصورة محلياً'];
-  if(/^https?:\/\//i.test(url) && url.indexOf('alserawan.com')<0) return ['p-bad','رابط خارجي فشل (محجوب أو محذوف)','نزّل الصورة وارفعها في مجلد images/'];
-  return ['p-bad','الملف غير موجود على الموقع','تأكد من الاسم والمسار (حساس لحالة الأحرف)'];
+function localOf(model){
+  var m=(model||'').trim().toLowerCase().replace(/^mwm[-_\s]*/,'').replace(/[^a-z0-9._-]/g,'');
+  return m?SITE+'images/'+m+'.jpg':'';
+}
+function diagnose(x){
+  if(x.ok) return ['p-ok','تعمل من الشيت',''];
+  if(x.localOk){
+    if(!x.raw) return ['p-ok','تعمل من الملف المحلي','الخانة فارغة لكن الاحتياطي التقط images/'+x.code+'.jpg'];
+    return ['p-ok','الشيت فشل — الاحتياطي أنقذها','يفضّل تصحيح الرابط في الشيت إلى images/'+x.code+'.jpg'];
+  }
+  if(!x.raw) return ['p-bad','لا رابط ولا ملف محلي','ارفع الصورة باسم images/'+x.code+'.jpg أو ضع الرابط في الشيت'];
+  if(/drive\.google\.com/i.test(x.raw)) return ['p-warn','رابط Google Drive للمشاركة','لا يعمل داخل img — ارفع الصورة باسم images/'+x.code+'.jpg'];
+  if(/^https?:\/\//i.test(x.raw) && x.raw.indexOf('alserawan.com')<0)
+    return ['p-bad','رابط خارجي محجوب (hotlink)','نزّل الصورة وارفعها باسم images/'+x.code+'.jpg'];
+  return ['p-bad','الملف غير موجود','تأكد من الاسم (حساس لحالة الأحرف)'];
 }
 
 function test(src){return new Promise(function(res){
@@ -122,38 +131,45 @@ async function run(){
   S.textContent='جارٍ اختبار '+items.length+' صورة…';
 
   for(var k=0;k<items.length;k++){
-    items[k].src=resolve(items[k].raw);
-    items[k].ok=await test(items[k].src);
+    var it=items[k];
+    it.code=(it.model||'').trim().toLowerCase().replace(/^mwm[-_\s]*/,'').replace(/[^a-z0-9._-]/g,'');
+    it.src=resolve(it.raw);
+    it.local=localOf(it.model);
+    it.ok=it.src?await test(it.src):false;
+    it.localOk=(!it.ok&&it.local)?await test(it.local):false;
+    it.shown=it.ok?it.src:(it.localOk?it.local:'');
     if(k%10===0) S.textContent='جارٍ الاختبار… '+(k+1)+'/'+items.length;
   }
 
-  var ok=items.filter(function(x){return x.ok}),
-      empty=items.filter(function(x){return !x.ok&&!x.raw}),
-      fail=items.filter(function(x){return !x.ok&&x.raw});
-  S.innerHTML='اكتمل الفحص لـ <b>'+items.length+'</b> منتج.';
+  var okSheet=items.filter(function(x){return x.ok}),
+      okLocal=items.filter(function(x){return !x.ok&&x.localOk}),
+      broken =items.filter(function(x){return !x.ok&&!x.localOk});
+  S.innerHTML='اكتمل الفحص لـ <b>'+items.length+'</b> منتج. '+
+    'بعد الاحتياطي الجديد ستظهر <b style="color:var(--ok)">'+(okSheet.length+okLocal.length)+'</b> صورة، '+
+    'وتبقى <b style="color:var(--bad)">'+broken.length+'</b> بلا صورة.';
   C.innerHTML=
     '<div class="c"><div class="n">'+items.length+'</div><div class="l">إجمالي المنتجات</div></div>'+
-    '<div class="c ok"><div class="n">'+ok.length+'</div><div class="l">صور تعمل</div></div>'+
-    '<div class="c bad"><div class="n">'+fail.length+'</div><div class="l">روابط فاشلة</div></div>'+
-    '<div class="c warn"><div class="n">'+empty.length+'</div><div class="l">بلا رابط أصلاً</div></div>';
+    '<div class="c ok"><div class="n">'+okSheet.length+'</div><div class="l">تعمل من الشيت</div></div>'+
+    '<div class="c warn"><div class="n">'+okLocal.length+'</div><div class="l">أنقذها الاحتياطي المحلي</div></div>'+
+    '<div class="c bad"><div class="n">'+broken.length+'</div><div class="l">بلا صورة نهائياً</div></div>';
 
   function table(title,list,showThumb){
     if(!list.length)return '';
     var h='<h2>'+title+' ('+list.length+')</h2><table><tr><th>الموديل</th><th>الاسم</th>'+
           (showThumb?'<th>معاينة</th>':'')+'<th>الرابط في الشيت</th><th>الحالة</th><th>الحل</th></tr>';
     list.forEach(function(x){
-      var d=diagnose(x.raw,x.ok);
+      var d=diagnose(x);
       h+='<tr><td><b>'+esc(x.model)+'</b></td><td>'+esc(x.en)+'</td>'+
-         (showThumb?'<td><img class="thumb" src="'+esc(x.src)+'" alt=""></td>':'')+
-         '<td><span class="url">'+(esc(x.raw)||'—')+'</span></td>'+
+         (showThumb?'<td>'+(x.shown?'<img class="thumb" src="'+esc(x.shown)+'" alt="">':'—')+'</td>':'')+
+         '<td><span class="url">'+(esc(x.raw)||'— فارغة —')+'</span></td>'+
          '<td><span class="pill '+d[0]+'">'+d[1]+'</span></td>'+
          '<td class="fix">'+d[2]+'</td></tr>';
     });
     return h+'</table>';
   }
-  OUT.innerHTML=table('روابط فاشلة — تحتاج إصلاح',fail,false)
-               +table('بلا رابط صورة في الشيت',empty,false)
-               +table('تعمل بشكل صحيح',ok,true);
+  OUT.innerHTML=table('بلا صورة نهائياً — تحتاج رفع صور',broken,false)
+               +table('أنقذها الاحتياطي المحلي (يُفضّل تصحيح الشيت)',okLocal,true)
+               +table('تعمل من الشيت مباشرة',okSheet,true);
 }
 document.getElementById('run').onclick=run;
 run();

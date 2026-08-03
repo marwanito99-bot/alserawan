@@ -365,10 +365,46 @@ function pcImgSrc(p){
   var root=(typeof SITE_ROOT!=='undefined')?SITE_ROOT:'';
   return root+u;
 }
+/* Local convention: model "MWM-CI20" is stored as images/ci20.jpg .
+   Used as a fallback when the sheet's Image URL is empty or fails to load
+   (external shops such as supplyvan.com block hotlinking, and Google Drive
+   share links never render inside <img>). */
+function pcLocalImg(model){
+  var m=(model||'').trim().toLowerCase().replace(/^mwm[-_\s]*/,'').replace(/[^a-z0-9._-]/g,'');
+  if(!m) return '';
+  var root=(typeof SITE_ROOT!=='undefined')?SITE_ROOT:'';
+  return root+'images/'+m+'.jpg';
+}
+
+/* Ordered candidate list -> first one that loads wins, else placeholder. */
+function pcImgCandidates(p){
+  var out=[], seen={};
+  [pcImgSrc(p.img), pcLocalImg(p.model), pcImgSrc(p.img2), pcImgSrc(p.img3)]
+    .forEach(function(u){ if(u&&!seen[u]){seen[u]=1;out.push(u)} });
+  return out;
+}
+
+/* Called from the inline onerror; walks to the next candidate. */
+function pcImgFallback(el){
+  var list;
+  try{ list=JSON.parse(el.getAttribute('data-alt')||'[]') }catch(e){ list=[] }
+  if(list.length){
+    var next=list.shift();
+    el.setAttribute('data-alt',JSON.stringify(list));
+    el.src=next;
+    return;
+  }
+  el.onerror=null;
+  if(el.parentNode) el.parentNode.innerHTML=pcPhHTML();
+}
+
 function pcImgHTML(p){
-  var src=pcImgSrc(p.img);
-  if(src) return '<img src="'+safeUrl(src)+'" alt="'+esc(p.en)+'" loading="lazy" decoding="async" onerror="this.parentNode.innerHTML=pcPhHTML()"/>';
-  return pcPhHTML();
+  var c=pcImgCandidates(p);
+  if(!c.length) return pcPhHTML();
+  var first=c[0], rest=c.slice(1);
+  return '<img src="'+safeUrl(first)+'" alt="'+esc(p.en)+'" loading="lazy" decoding="async"'
+       + ' data-alt="'+esc(JSON.stringify(rest))+'"'
+       + ' onerror="pcImgFallback(this)"/>';
 }
 function pcPhHTML(){
   return '<div class="pc-img-ph"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>MWM</div>';
