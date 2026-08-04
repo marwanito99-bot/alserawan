@@ -127,12 +127,12 @@
 
 <!-- TICKER -->
 <div class="ticker"><div class="ticker-track">
-  <div class="ticker-item"><div class="td"></div><span class="en">Supply Chain Management</span><span class="ar-t">إدارة سلاسل التوريد</span><span class="cn-t">供应链管理</span><span class="cn-t">供应链管理</span></div>
-  <div class="ticker-item"><div class="td"></div><span class="en">International Freight · Air · Sea · Land</span><span class="ar-t">شحن دولي · جوي · بحري · بري</span><span class="cn-t">国际货运 · 空运 · 海运 · 陆运</span><span class="cn-t">国际货运 · 空运 · 海运 · 陆运</span></div>
-  <div class="ticker-item"><div class="td"></div><span class="en">Automotive Trading</span><span class="ar-t">تجارة السيارات</span><span class="cn-t">汽车贸易</span><span class="cn-t">汽车贸易</span></div>
-  <div class="ticker-item"><div class="td"></div><span class="en">Heavy Equipment</span><span class="ar-t">المعدات الثقيلة</span><span class="cn-t">重型设备</span><span class="cn-t">重型设备</span></div>
-  <div class="ticker-item"><div class="td"></div><span class="en">Customs Clearance</span><span class="ar-t">التخليص الجمركي</span><span class="cn-t">清关服务</span><span class="cn-t">清关服务</span></div>
-  <div class="ticker-item"><div class="td"></div><span class="en">Warehousing & 3PL</span><span class="ar-t">التخزين و3PL</span><span class="cn-t">仓储与第三方物流</span><span class="cn-t">仓储与第三方物流</span></div>
+  <div class="ticker-item"><div class="td"></div><span class="en">Supply Chain Management</span><span class="ar-t">إدارة سلاسل التوريد</span><span class="cn-t">供应链管理</span></div>
+  <div class="ticker-item"><div class="td"></div><span class="en">International Freight · Air · Sea · Land</span><span class="ar-t">شحن دولي · جوي · بحري · بري</span><span class="cn-t">国际货运 · 空运 · 海运 · 陆运</span></div>
+  <div class="ticker-item"><div class="td"></div><span class="en">Automotive Trading</span><span class="ar-t">تجارة السيارات</span><span class="cn-t">汽车贸易</span></div>
+  <div class="ticker-item"><div class="td"></div><span class="en">Heavy Equipment</span><span class="ar-t">المعدات الثقيلة</span><span class="cn-t">重型设备</span></div>
+  <div class="ticker-item"><div class="td"></div><span class="en">Customs Clearance</span><span class="ar-t">التخليص الجمركي</span><span class="cn-t">清关服务</span></div>
+  <div class="ticker-item"><div class="td"></div><span class="en">Warehousing & 3PL</span><span class="ar-t">التخزين و3PL</span><span class="cn-t">仓储与第三方物流</span></div>
   <div class="ticker-item"><div class="td"></div><span class="en">Yiwu · 义乌 · China · Syria</span><span class="ar-t">يوو · 义乌 · الصين · سوريا</span><span class="cn-t">义乌 · 中国 · 叙利亚</span></div>
   <div class="ticker-item"><div class="td"></div><span class="en">Supply Chain Management</span><span class="ar-t">إدارة سلاسل التوريد</span><span class="cn-t">供应链管理</span></div>
   <div class="ticker-item"><div class="td"></div><span class="en">International Freight · Air · Sea · Land</span><span class="ar-t">شحن دولي · جوي · بحري · بري</span><span class="cn-t">国际货运 · 空运 · 海运 · 陆运</span></div>
@@ -173,63 +173,49 @@
     </div>
   </div>
 
-  <div class="co-spotlight">
-    <!-- Row 1 -->
-    <div class="co-spot-row spot-on" id="spot-0" data-go="logistics" onclick="spotActivate(0)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();spotActivate(0)}" role="button" tabindex="0" aria-expanded="true" aria-label="Max Worldwide Mastering">
-      <div class="co-spot-bar"></div>
-      <div class="co-spot-num">01</div>
-      <div class="co-spot-icon">
-        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+  <div class="pillars">
+    <button class="pil" style="--pc:#1d00f4" onclick="show('mwm')" aria-label="Max Worldwide Mastering">
+      <div class="pil-pic"><img src="images/ship_aerial.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></div>
+      <div class="pil-veil"></div><div class="pil-glow"></div>
+      <div class="pil-n" aria-hidden="true">01</div>
+      <div class="pil-body">
+        <div class="pil-ico"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <div class="pil-sec"><span class="en">Supply Chain &amp; Logistics</span><span class="ar-t">سلاسل التوريد واللوجستيات</span><span class="cn-t">供应链与物流</span></div>
+        <h3 class="pil-name"><span class="en">Max Worldwide Mastering</span><span class="ar-t">ماكس وورلدوايد ماسترينج</span><span class="cn-t">Max Worldwide Mastering</span></h3>
+        <p class="pil-txt"><span class="en">Integrated logistics — shipping, warehousing, customs clearance and supply chain management from Yiwu to the world.</span><span class="ar-t">لوجستيات متكاملة — شحن وتخزين وتخليص جمركي وإدارة سلاسل التوريد من ييوو إلى العالم.</span><span class="cn-t">一体化物流——从义乌到全球的货运、仓储、报关与供应链管理。</span></p>
+        <div class="pil-tags"><span>Logistics</span><span>Cargo</span><span>Customs</span><span>3PL</span></div>
+        <span class="pil-go"><span class="en">View Company</span><span class="ar-t">عرض الشركة</span><span class="cn-t">查看公司</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
-      <div class="co-spot-info">
-        <div class="co-spot-sec"><span class="en">Supply Chain & Logistics</span><span class="ar-t">سلاسل التوريد واللوجستيات</span><span class="cn-t">供应链与物流</span></div>
-        <div class="co-spot-name"><span class="en">Max Worldwide Mastering</span><span class="ar-t">ماكس وورلدوايد ماسترينج</span><span class="cn-t">Max Worldwide Mastering</span></div>
-        <div class="co-spot-expand">
-          <p class="co-spot-desc"><span class="en">Integrated logistics — shipping, warehousing, customs clearance, and supply chain management from Yiwu to the world.</span><span class="ar-t">لوجستيات متكاملة — شحن وتخزين وتخليص جمركي وإدارة سلاسل التوريد من يوو إلى العالم.</span><span class="cn-t">一体化物流——从义乌到全球的货运、仓储、报关和供应链管理。</span></p>
-          <div class="co-spot-pills"><span class="co-spot-pill">Logistics</span><span class="co-spot-pill">Cargo</span><span class="co-spot-pill">Customs</span><span class="co-spot-pill">3PL</span></div>
-          <button class="co-spot-cta" onclick="event.stopPropagation();show('logistics')"><div class="co-spot-cta-line"></div><span class="en">View Company</span><span class="ar-t">عرض الشركة</span><span class="cn-t">查看公司</span></button>
-        </div>
+    </button>
+    <button class="pil" style="--pc:#c8102e" onclick="show('motors')" aria-label="MWM Motors">
+      <div class="pil-pic"><img src="images/motors/gwm/hero.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></div>
+      <div class="pil-veil"></div><div class="pil-glow"></div>
+      <div class="pil-n" aria-hidden="true">02</div>
+      <div class="pil-body">
+        <div class="pil-ico"><svg viewBox="0 0 24 24"><circle cx="6" cy="17" r="2"/><circle cx="18" cy="17" r="2"/><path d="M4 17H2V7l2-2h7l2 3h5l2 2v4h-2"/><path d="M8 17h8"/></svg></div>
+        <div class="pil-sec"><span class="en">Automotive</span><span class="ar-t">قطاع السيارات</span><span class="cn-t">汽车</span></div>
+        <h3 class="pil-name"><span class="en">MWM Motors</span><span class="ar-t">MWM موتورز</span><span class="cn-t">MWM Motors</span></h3>
+        <p class="pil-txt"><span class="en">Authorised Chinese vehicle exporter — twelve brands from BYD and HAVAL to SINOTRUK heavy trucks, sourced at factory level.</span><span class="ar-t">جهة تصدير معتمدة للسيارات الصينية — اثنتا عشرة علامة من BYD وهافال إلى شاحنات ساينوتراك الثقيلة، بتوريد من المصنع مباشرة.</span><span class="cn-t">中国授权整车出口商——从比亚迪、哈弗到中国重汽，十二个品牌工厂直采。</span></p>
+        <div class="pil-tags"><span>12 Brands</span><span>EV</span><span>SUV</span><span>Trucks</span></div>
+        <span class="pil-go"><span class="en">View Company</span><span class="ar-t">عرض الشركة</span><span class="cn-t">查看公司</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
-      <div class="co-spot-bignum">01</div>
-    </div>
-
-    <!-- Row 2 -->
-    <div class="co-spot-row" id="spot-1" data-go="motors" onclick="spotActivate(1)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();spotActivate(1)}" role="button" tabindex="0" aria-expanded="false" aria-label="MWM Motors">
-      <div class="co-spot-bar"></div>
-      <div class="co-spot-num">02</div>
-      <div class="co-spot-icon">
-        <svg viewBox="0 0 24 24"><circle cx="6" cy="17" r="2"/><circle cx="18" cy="17" r="2"/><path d="M4 17H2V7l2-2h7l2 3h5l2 2v4h-2"/><path d="M8 17h8"/></svg>
+    </button>
+    <button class="pil" style="--pc:#ccfd1b" onclick="show('equip')" aria-label="MWM Equipments">
+      <div class="pil-pic"><img src="images/brands/bosch/hero-banner.jpg" alt="" loading="lazy" decoding="async" onerror="this.remove()"></div>
+      <div class="pil-veil"></div><div class="pil-glow"></div>
+      <div class="pil-n" aria-hidden="true">03</div>
+      <div class="pil-body">
+        <div class="pil-ico"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 01-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 015.4-5.4l-2.6 2.6"/></svg></div>
+        <div class="pil-sec"><span class="en">Heavy Equipment &amp; Tools</span><span class="ar-t">المعدات والعدد</span><span class="cn-t">重型设备与工具</span></div>
+        <h3 class="pil-name"><span class="en">MWM Equipments</span><span class="ar-t">MWM للمعدات</span><span class="cn-t">MWM Equipments</span></h3>
+        <p class="pil-txt"><span class="en">Professional power tools, garage and workshop equipment — fourteen brands including BOSCH, MAKUTE, INGCO and SICAM.</span><span class="ar-t">عدد كهربائية احترافية ومعدات كراجات وورش — أربع عشرة علامة منها بوش وماكوتي وإنجكو وسيكام.</span><span class="cn-t">专业电动工具与车间设备——十四个品牌，涵盖博世、MAKUTE、英格科与喜科。</span></p>
+        <div class="pil-tags"><span>14 Brands</span><span>Power Tools</span><span>Garage</span><span>Workshop</span></div>
+        <span class="pil-go"><span class="en">View Company</span><span class="ar-t">عرض الشركة</span><span class="cn-t">查看公司</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
-      <div class="co-spot-info">
-        <div class="co-spot-sec"><span class="en">Automotive</span><span class="ar-t">قطاع السيارات</span><span class="cn-t">汽车</span></div>
-        <div class="co-spot-name">MWM Motors</div>
-        <div class="co-spot-expand">
-          <p class="co-spot-desc"><span class="en">Premium vehicle trading and distribution across the MENA and Middle East — fleet solutions and import/export.</span><span class="ar-t">تجارة وتوزيع السيارات في المنطقة الشرق الأوسط وشمال أفريقيا والشرق الأوسط — حلول أساطيل واستيراد وتصدير.</span><span class="cn-t">面向海湾和中东地区的高端汽车贸易与分销——车队解决方案及进出口服务。</span></p>
-          <div class="co-spot-pills"><span class="co-spot-pill"><span class="en">Vehicle Trading</span><span class="ar-t">تجارة سيارات</span><span class="cn-t">车辆贸易</span></span><span class="co-spot-pill">Fleet</span><span class="co-spot-pill">Import/Export</span></div>
-          <button class="co-spot-cta" onclick="event.stopPropagation();show('motors')"><div class="co-spot-cta-line"></div><span class="en">View Company</span><span class="ar-t">عرض الشركة</span><span class="cn-t">查看公司</span></button>
-        </div>
-      </div>
-      <div class="co-spot-bignum">02</div>
-    </div>
-
-    <!-- Row 3 -->
-    <div class="co-spot-row" id="spot-2" data-go="equip" onclick="spotActivate(2)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();spotActivate(2)}" role="button" tabindex="0" aria-expanded="false" aria-label="MWM Equipments">
-      <div class="co-spot-bar"></div>
-      <div class="co-spot-num">03</div>
-      <div class="co-spot-icon">
-        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-      </div>
-      <div class="co-spot-info">
-        <div class="co-spot-sec"><span class="en">Heavy Equipment</span><span class="ar-t">المعدات الثقيلة</span><span class="cn-t">重型设备</span></div>
-        <div class="co-spot-name">MWM Equipments</div>
-        <div class="co-spot-expand">
-          <p class="co-spot-desc"><span class="en">Industrial and heavy equipment for construction and infrastructure sectors across the Middle East sourced from China & Europe.</span><span class="ar-t">معدات صناعية وثقيلة للبناء والبنية التحتية في الشرق الأوسط من الصين وأوروبا.</span><span class="cn-t">从中国和欧洲采购，面向中东建筑和基础设施行业的工业重型设备。</span></p>
-          <div class="co-spot-pills"><span class="co-spot-pill">Machinery</span><span class="co-spot-pill">Construction</span><span class="co-spot-pill">Industrial</span></div>
-          <button class="co-spot-cta" onclick="event.stopPropagation();show('equip')"><div class="co-spot-cta-line"></div><span class="en">View Company</span><span class="ar-t">عرض الشركة</span><span class="cn-t">查看公司</span></button>
-        </div>
-      </div>
-      <div class="co-spot-bignum">03</div>
-    </div>
+    </button>
   </div>
 
   <!-- Stats bar -->
@@ -328,7 +314,7 @@
     <div class="svc-panel active" id="svcp-1">
       <div class="svc-panel-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 3 5-5"/></svg></div>
       <div class="svc-panel-n">SERVICE 01</div>
-      <h3 class="svc-panel-t"><span class="en">Integrated Business Solutions & Opportunity Development</span><span class="ar-t">حلول الأعمال المتكاملة وتطوير الفرص</span><span class="cn-t">综合商业解决方案与机会开发</span><span class="cn-t">综合商业解决方案与机会开发</span></h3>
+      <h3 class="svc-panel-t"><span class="en">Integrated Business Solutions & Opportunity Development</span><span class="ar-t">حلول الأعمال المتكاملة وتطوير الفرص</span><span class="cn-t">综合商业解决方案与机会开发</span></h3>
       <p class="svc-panel-d"><span class="en">Market research, needs assessment, and connecting clients with strategic partners — tailored trade solutions, product selection, and professional business correspondence.</span><span class="ar-t">بحوث السوق وتقييم الاحتياجات وربط العملاء بالشركاء الاستراتيجيين — حلول تجارية مخصصة واختيار المنتجات والمراسلات التجارية.</span><span class="cn-t">市场调研、需求评估，并为客户对接战略合作伙伴——量身定制的贸易解决方案、产品甄选及专业商务沟通。</span></p>
     </div>
     <div class="svc-panel" id="svcp-2">
@@ -358,13 +344,13 @@
     <div class="svc-panel" id="svcp-6">
       <div class="svc-panel-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></div>
       <div class="svc-panel-n">SERVICE 06</div>
-      <h3 class="svc-panel-t"><span class="en">Business Consulting & Market Research</span><span class="ar-t">الاستشارات التجارية وبحوث السوق</span><span class="cn-t">商业咨询与市场研究</span><span class="cn-t">商业咨询与市场研究</span></h3>
+      <h3 class="svc-panel-t"><span class="en">Business Consulting & Market Research</span><span class="ar-t">الاستشارات التجارية وبحوث السوق</span><span class="cn-t">商业咨询与市场研究</span></h3>
       <p class="svc-panel-d"><span class="en">In-depth market studies and sector analysis, with strategic consulting to support sound decision-making and identify growth opportunities in target markets.</span><span class="ar-t">دراسات سوق معمقة وتحليل قطاعي، مع استشارات استراتيجية لدعم القرار وتحديد فرص النمو.</span><span class="cn-t">提供深度市场研究与商业咨询，助您做出明智的战略决策。</span></p>
     </div>
     <div class="svc-panel" id="svcp-7">
       <div class="svc-panel-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4 8 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01"/></svg></div>
       <div class="svc-panel-n">SERVICE 07</div>
-      <h3 class="svc-panel-t"><span class="en">Market Entry & Company Formation</span><span class="ar-t">دخول الأسواق وتأسيس الشركات</span><span class="cn-t">市场进入与公司注册</span><span class="cn-t">市场进入与公司注册</span></h3>
+      <h3 class="svc-panel-t"><span class="en">Market Entry & Company Formation</span><span class="ar-t">دخول الأسواق وتأسيس الشركات</span><span class="cn-t">市场进入与公司注册</span></h3>
       <p class="svc-panel-d"><span class="en">Practical strategies for new market entry — legal company registration locally and internationally, remote incorporation, and full administrative support.</span><span class="ar-t">استراتيجيات عملية لدخول أسواق جديدة — تسجيل قانوني محلي ودولي ودعم إداري كامل.</span><span class="cn-t">协助您进入新市场并完成公司注册设立的全流程服务。</span></p>
     </div>
     <div class="svc-panel" id="svcp-8">
@@ -376,7 +362,7 @@
     <div class="svc-panel" id="svcp-9">
       <div class="svc-panel-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v4H3zM5 7v14h14V7M9 11h6M9 15h6"/></svg></div>
       <div class="svc-panel-n">SERVICE 09</div>
-      <h3 class="svc-panel-t"><span class="en">Trade Exhibitions & Event Management</span><span class="ar-t">المعارض التجارية وإدارة الفعاليات</span><span class="cn-t">贸易展览与活动管理</span><span class="cn-t">贸易展览与活动管理</span></h3>
+      <h3 class="svc-panel-t"><span class="en">Trade Exhibitions & Event Management</span><span class="ar-t">المعارض التجارية وإدارة الفعاليات</span><span class="cn-t">贸易展览与活动管理</span></h3>
       <p class="svc-panel-d"><span class="en">Professional organization of trade exhibitions, conferences, and business events — from planning to execution, building strategic partnerships globally.</span><span class="ar-t">تنظيم احترافي للمعارض والمؤتمرات والفعاليات — من التخطيط إلى التنفيذ لبناء الشراكات الاستراتيجية.</span><span class="cn-t">策划与执行贸易展览及商务活动，提升您的品牌影响力。</span></p>
     </div>
     <div class="svc-panel" id="svcp-10">
@@ -407,7 +393,7 @@
 
 <!-- TEAM -->
 <div id="team" class="wrap">
-  <p class="sec-tag"><span class="en">Leadership</span><span class="ar-t">القيادة</span><span class="cn-t">领导团队</span><span class="cn-t">领导团队</span></p>
+  <p class="sec-tag"><span class="en">Leadership</span><span class="ar-t">القيادة</span><span class="cn-t">领导团队</span></p>
   <h2 class="sec-h"><span class="en">The <span class="ac">People</span> Behind the Group</span><span class="cn-t">集团<span class="ac">领导</span>团队</span><span class="ar-t">الأشخاص <span class="ac">وراء</span> المجموعة</span></h2>
   <div class="team-grid">
     <div class="team-card reveal">

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>MWM Equipments — Product Catalogue 2026</title>
+<link rel="icon" type="image/png" href="images/logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#1d00f4; --lime:#ccfd1b; --black:#0a0a0f; --dark:#0f0f18;
+  --dark2:#131320; --dark3:#1c1c2e; --text:#f0ede6; --muted:#7a7a9a;
+  --bd:rgba(29,0,244,.22); --bd-l:rgba(204,253,27,.2);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--black);color:var(--text);font-family:"Space Grotesk",system-ui,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.ar{font-family:"IBM Plex Sans Arabic",system-ui,Arial,sans-serif;direction:rtl}
+
+/* ── COVER ── */
+.cover{
+  min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;
+  padding:3.5rem;position:relative;overflow:hidden;
+  background:radial-gradient(1200px 560px at 70% -10%,rgba(29,0,244,.22),transparent 68%),var(--black);
+  border-bottom:1px solid var(--bd);
+}
+.cover::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(29,0,244,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(29,0,244,.05) 1px,transparent 1px);
+  background-size:58px 58px;
+}
+.cv-top,.cv-mid,.cv-bot{position:relative;z-index:1}
+.cv-logo{height:56px;width:auto;object-fit:contain}
+.cv-tag{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--lime);margin-bottom:1.1rem;display:flex;align-items:center;gap:.8rem}
+.cv-tag::before{content:'';width:34px;height:1px;background:var(--lime)}
+.cv-title{font-size:clamp(2.6rem,7vw,5.4rem);font-weight:800;line-height:.98;letter-spacing:-.035em;margin-bottom:1.1rem}
+.cv-title .ac{color:var(--lime)}
+.cv-sub{font-size:.95rem;color:var(--muted);font-weight:300;max-width:520px;line-height:1.9}
+.cv-sub .ar{margin-top:.5rem;display:block;font-size:.9rem}
+.cv-bot{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;
+        border-top:1px solid var(--bd);padding-top:1.6rem}
+.cv-meta{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.cv-meta b{color:var(--text);display:block;font-size:.82rem;letter-spacing:.04em;margin-top:.2rem;text-transform:none}
+.cv-year{font-size:clamp(3rem,9vw,6rem);font-weight:800;line-height:.85;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1px rgba(204,253,27,.45)}
+
+/* ── SECTION HEAD ── */
+.sec{padding:4.5rem 3.5rem 1.5rem;max-width:1400px;margin:0 auto}
+.sec-tag{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:.6rem;display:flex;align-items:center;gap:.6rem}
+.sec-tag::before{content:'';width:20px;height:1px;background:var(--blue)}
+.sec-h{font-size:clamp(1.5rem,3.2vw,2.3rem);font-weight:800;letter-spacing:-.03em;line-height:1.05}
+.sec-h .ac{color:var(--lime)}
+.sec-rule{height:1px;background:linear-gradient(90deg,var(--bd),transparent);margin-top:1.4rem}
+
+/* ── PRODUCT LIST ── */
+.list{max-width:1400px;margin:0 auto;padding:0 3.5rem 5rem}
+.item{
+  display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:2.6rem;
+  padding:2.6rem 0;border-bottom:1px solid var(--bd);align-items:start;
+  break-inside:avoid;
+}
+.item:last-child{border-bottom:none}
+.ph{
+  position:relative;background:#fff;border:1px solid var(--bd);border-radius:3px;
+  aspect-ratio:1;display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.ph img{width:100%;height:100%;object-fit:contain;padding:9%}
+.ph-none{color:#c3c3cf;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;text-align:center}
+.ph-none svg{width:40px;height:40px;stroke:#c3c3cf;fill:none;stroke-width:1.2;display:block;margin:0 auto .55rem}
+.idx{
+  position:absolute;top:0;left:0;background:var(--black);color:var(--lime);
+  font-size:.6rem;font-weight:800;letter-spacing:.1em;padding:.32rem .62rem;z-index:2;
+}
+.badge{
+  position:absolute;top:0;right:0;background:var(--lime);color:var(--black);
+  font-size:.55rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.32rem .62rem;z-index:2;
+}
+.body{min-width:0}
+.model{
+  display:inline-block;background:var(--blue);color:#fff;font-size:.7rem;font-weight:800;
+  letter-spacing:.08em;padding:.34rem .8rem;margin-bottom:.9rem;border-radius:2px;
+}
+.cat{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.45rem}
+.name{font-size:clamp(1.15rem,2.4vw,1.6rem);font-weight:700;letter-spacing:-.02em;line-height:1.2;margin-bottom:.3rem}
+.name-ar{font-size:1rem;color:rgba(240,237,230,.62);font-weight:400;margin-bottom:.9rem}
+.desc{font-size:.85rem;color:rgba(240,237,230,.6);line-height:1.85;max-width:640px;margin-bottom:1.3rem;font-weight:300}
+.feats{display:flex;flex-direction:column;gap:.42rem;margin-bottom:1.3rem}
+.feat{display:flex;gap:.62rem;font-size:.79rem;color:rgba(240,237,230,.78);line-height:1.55}
+.feat::before{content:'';flex:0 0 5px;height:5px;background:var(--lime);margin-top:.55rem;border-radius:50%}
+.specs{border:1px solid var(--bd);border-radius:3px;overflow:hidden;margin-bottom:1.1rem}
+.specs table{width:100%;border-collapse:collapse}
+.specs td{padding:.6rem .9rem;font-size:.77rem;border-bottom:1px solid rgba(29,0,244,.1)}
+.specs tr:last-child td{border-bottom:none}
+.specs td:first-child{color:var(--muted);width:44%;letter-spacing:.03em}
+.specs td:last-child{color:var(--text);font-weight:600}
+.specs tr:nth-child(odd){background:rgba(255,255,255,.014)}
+.tags{display:flex;flex-wrap:wrap;gap:.45rem}
+.tag{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--bd);
+     padding:.28rem .68rem;color:var(--muted);border-radius:2px}
+.tag.hl{border-color:var(--bd-l);color:var(--lime)}
+
+/* ── FOOTER ── */
+.foot{border-top:1px solid var(--bd);background:var(--dark2);padding:3rem 3.5rem;
+      display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.foot-l{font-size:.75rem;color:var(--muted);line-height:1.9}
+.foot-l b{color:var(--text);display:block;font-size:.9rem;letter-spacing:.04em}
+.foot-r{display:flex;gap:.6rem;flex-wrap:wrap}
+.btn{background:var(--blue);color:#fff;padding:.72rem 1.6rem;text-decoration:none;font-size:.68rem;
+     font-weight:700;letter-spacing:.13em;text-transform:uppercase;border-radius:2px;
+     border:1px solid transparent;transition:background .22s,color .22s}
+.btn:hover{background:var(--lime);color:var(--black)}
+.btn.alt{background:transparent;border-color:var(--bd);color:var(--muted)}
+.btn.alt:hover{border-color:var(--lime);color:var(--lime);background:transparent}
+
+#state{padding:2.5rem 3.5rem;color:var(--muted);font-size:.88rem;max-width:1400px;margin:0 auto}
+.err{color:#ff6b6b}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .cover{padding:2.2rem 1.4rem}
+  .sec{padding:3rem 1.4rem 1.2rem}
+  .list{padding:0 1.4rem 3.5rem}
+  .item{grid-template-columns:minmax(0,1fr);gap:1.3rem;padding:2rem 0}
+  .ph{max-width:290px}
+  .foot{padding:2.2rem 1.4rem}
+  #state{padding:2rem 1.4rem}
+}
+
+/* ── PRINT (A4) ── */
+@media print{
+  @page{size:A4;margin:13mm}
+  body{background:#fff;color:#111}
+  .cover{min-height:auto;padding:0 0 12mm;background:#fff;border-bottom:2px solid #1d00f4;page-break-after:always}
+  .cover::before{display:none}
+  .cv-title{color:#0a0a0f}.cv-title .ac{color:#1d00f4}
+  .cv-tag{color:#1d00f4}.cv-sub,.cv-meta{color:#555}.cv-meta b{color:#111}
+  .cv-year{-webkit-text-stroke:1px #1d00f4;color:transparent}
+  .sec{padding:0 0 6mm}.sec-h{color:#0a0a0f}.sec-h .ac{color:#1d00f4}
+  .sec-rule{background:#ccc}
+  .list{padding:0}
+  .item{grid-template-columns:52mm 1fr;gap:8mm;padding:6mm 0;border-bottom:1px solid #ddd;page-break-inside:avoid}
+  .ph{border:1px solid #ddd;max-width:none}
+  .idx{background:#0a0a0f;color:#ccfd1b}
+  .name{color:#0a0a0f}.name-ar{color:#444}.desc{color:#444}
+  .feat{color:#333}.feat::before{background:#1d00f4}
+  .specs{border-color:#ddd}.specs td{border-color:#eee}
+  .specs td:first-child{color:#666}.specs td:last-child{color:#111}
+  .specs tr:nth-child(odd){background:#fafafa}
+  .tag{border-color:#ccc;color:#555}.tag.hl{border-color:#1d00f4;color:#1d00f4}
+  .foot{background:#fff;border-top:2px solid #1d00f4;padding:6mm 0;page-break-inside:avoid}
+  .foot-l{color:#555}.foot-l b{color:#111}
+  .btn,#state,.noprint{display:none!important}
+}
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div class="cv-top">
+    <img class="cv-logo" src="images/logo-full.png" alt="MWM — Max Worldwide Mastering" width="2671" height="899">
+  </div>
+  <div class="cv-mid">
+    <div class="cv-tag">Product Catalogue</div>
+    <h1 class="cv-title">MWM <span class="ac">Equipments</span></h1>
+    <p class="cv-sub">
+      Professional power tools and workshop equipment, engineered and sourced for
+      the MENA and Middle East markets.
+      <span class="ar">عدد ومعدات احترافية مصمّمة ومورّدة لأسواق الشرق الأوسط وشمال أفريقيا.</span>
+    </p>
+  </div>
+  <div class="cv-bot">
+    <div>
+      <div class="cv-meta">Issued by<b>al serawan group · 义乌镘旺国际贸易有限公司</b></div>
+      <div class="cv-meta" style="margin-top:.9rem">Selection<b id="cvCount">First 20 items</b></div>
+    </div>
+    <div class="cv-year">2026</div>
+  </div>
+</section>
+
+<div class="sec">
+  <div class="sec-tag">Product Details</div>
+  <h2 class="sec-h">Selected <span class="ac">Range</span></h2>
+  <div class="sec-rule"></div>
+</div>
+
+<div id="state">Loading catalogue…</div>
+<div class="list" id="list"></div>
+
+<footer class="foot">
+  <div class="foot-l">
+    <b>al serawan group</b>
+    Yiwu, Zhejiang, China · Since 1999<br>
+    info.mwm@alserawan.com · alserawan.com
+  </div>
+  <div class="foot-r noprint">
+    <a class="btn" href="javascript:window.print()">Print / Save as PDF</a>
+    <a class="btn alt" href="https://wa.me/963994483331" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+  </div>
+</footer>
+
+<script>
+var CSV='https://docs.google.com/spreadsheets/d/e/2PACX-1vRTEYaED31Eun6Tnq8K9xoipYJO5oB_yF3NavzevBRfsFnXs7Y75xqVHP3JH0VbYw/pub?gid=572362026&single=true&output=csv';
+var LIMIT=20, ROOT='';
+
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;')
+  .replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
+/* Allow http(s), protocol-relative and ordinary relative paths.
+   Block every other scheme (javascript:, data:, vbscript:, file: …). */
+function safeUrl(u){u=String(u==null?'':u).trim();
+  if(!u)return '';
+  if(/^https?:\/\//i.test(u)||u.slice(0,2)==='//')return esc(u);
+  if(/^[a-z][a-z0-9+.-]*:/i.test(u))return '';
+  return esc(u)}
+function N(s){return (s||'').trim()}
+
+function parseCSV(t){t=t.replace(/\r/g,'');var rows=[],cur='',q=false,line=[];
+  for(var i=0;i<t.length;i++){var c=t[i];
+    if(c==='"'){ if(q&&t[i+1]==='"'){cur+='"';i++} else q=!q }
+    else if(c===','&&!q){line.push(cur);cur=''}
+    else if(c==='\n'&&!q){line.push(cur);rows.push(line);line=[];cur=''}
+    else cur+=c}
+  if(cur||line.length){line.push(cur);rows.push(line)}return rows}
+
+function imgSrc(u){u=N(u); if(!u)return '';
+  if(/^(https?:)?\/\//i.test(u))return u;
+  if(u.charAt(0)==='/')return u;
+  return ROOT+u}
+function localImgs(model){
+  var m=N(model).replace(/^mwm[-_\s]*/i,'').replace(/[^A-Za-z0-9._-]/g,'');
+  if(!m)return [];
+  var o=[],seen={};
+  [m.toLowerCase(),m.toUpperCase(),m].forEach(function(v){
+    var u=ROOT+'images/'+v+'.jpg'; if(!seen[u]){seen[u]=1;o.push(u)}});
+  return o}
+function candidates(p){
+  var o=[],seen={};
+  function add(u){u=safeUrl(u); if(u&&!seen[u]){seen[u]=1;o.push(u)}}
+  add(imgSrc(p.img)); localImgs(p.model).forEach(add); add(imgSrc(p.img2)); add(imgSrc(p.img3));
+  return o}
+function phSVG(){return '<div class="ph-none"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>MWM</div>'}
+window.imgFallback=function(el){
+  var list; try{list=JSON.parse(el.getAttribute('data-alt')||'[]')}catch(e){list=[]}
+  if(list.length){var n=list.shift();el.setAttribute('data-alt',JSON.stringify(list));el.src=n;return}
+  el.onerror=null; if(el.parentNode) el.parentNode.innerHTML=phSVG()}
+
+function fetchCSV(u){
+  return fetch(u).then(function(r){if(!r.ok)throw 0;return r.text()})
+    .catch(function(){return fetch('https://corsproxy.io/?'+encodeURIComponent(u)).then(function(r){return r.text()})})}
+
+fetchCSV(CSV).then(function(txt){
+  var rows=parseCSV(txt),hi=-1;
+  for(var i=0;i<Math.min(6,rows.length);i++)
+    if(rows[i].some(function(c){return N(c).toLowerCase()==='model'})){hi=i;break}
+  if(hi<0) throw new Error('Header row with a "Model" column not found');
+  var H=rows[hi].map(function(c){return N(c).toLowerCase()});
+  function col(n){return H.indexOf(n.toLowerCase())}
+  var iM=col('Model'),iC=col('Category'),iS=col('Status'),iO=col('Order'),
+      iEN=col('Name EN'),iAR=col('Name AR'),iB=col('Badge'),iD=col('Short Desc EN'),
+      iImg=col('Image URL'),iI2=col('Image 2'),iI3=col('Image 3'),
+      iW=col('Warranty'),iP=col('Price');
+  var fc=[col('Feature 1'),col('Feature 2'),col('Feature 3'),col('Feature 4')];
+  var sc=[];for(var k=1;k<=6;k++)sc.push([col('Spec '+k+' Name'),col('Spec '+k+' Value')]);
+
+  var all=[];
+  for(var r=hi+1;r<rows.length;r++){
+    var v=rows[r]; if(!v||!N(v[iM]))continue;
+    var st=N(v[iS]).toLowerCase(); if(st==='hidden')continue;
+    if(N(v[iM])==='الموديل'||st==='الحالة')continue;
+    var en=iEN>=0?N(v[iEN]):''; if(!en||en==='الاسم إنجليزي')continue;
+    var o={model:N(v[iM]),cat:iC>=0?N(v[iC]):'',order:parseInt(N(v[iO]))||999,
+      en:en,ar:iAR>=0?N(v[iAR]):'',badge:iB>=0?N(v[iB]):'',desc:iD>=0?N(v[iD]):'',
+      img:iImg>=0?N(v[iImg]):'',img2:iI2>=0?N(v[iI2]):'',img3:iI3>=0?N(v[iI3]):'',
+      warr:iW>=0?N(v[iW]):'',price:iP>=0?N(v[iP]):'',feats:[],specs:[]};
+    fc.forEach(function(f){if(f>=0&&N(v[f]))o.feats.push(N(v[f]))});
+    sc.forEach(function(s){if(s[0]>=0&&N(v[s[0]]))o.specs.push([N(v[s[0]]),N(v[s[1]])])});
+    all.push(o)}
+  all.sort(function(a,b){return a.order-b.order});
+  var items=all.slice(0,LIMIT);
+  if(!items.length) throw new Error('No products found in the sheet');
+
+  document.getElementById('cvCount').textContent=
+    'First '+items.length+' of '+all.length+' items';
+
+  var h='';
+  items.forEach(function(p,i){
+    var c=candidates(p);
+    var media=c.length
+      ? '<img src="'+c[0]+'" alt="'+esc(p.en)+'" loading="lazy" decoding="async" data-alt="'
+        +esc(JSON.stringify(c.slice(1)))+'" onerror="imgFallback(this)">'
+      : phSVG();
+    var feats=p.feats.length
+      ? '<div class="feats">'+p.feats.map(function(f){return '<div class="feat">'+esc(f)+'</div>'}).join('')+'</div>' : '';
+    var specs=p.specs.length
+      ? '<div class="specs"><table>'+p.specs.map(function(s){
+          return '<tr><td>'+esc(s[0])+'</td><td>'+esc(s[1])+'</td></tr>'}).join('')+'</table></div>' : '';
+    var tags='';
+    if(p.warr) tags+='<span class="tag hl">'+esc(p.warr)+'</span>';
+    if(p.price) tags+='<span class="tag hl">'+esc(p.price)+'</span>';
+    if(p.cat)  tags+='<span class="tag">'+esc(p.cat)+'</span>';
+
+    h+='<article class="item">'
+      +'<div class="ph"><div class="idx">'+(i<9?'0':'')+(i+1)+'</div>'
+      +(p.badge?'<div class="badge">'+esc(p.badge)+'</div>':'')+media+'</div>'
+      +'<div class="body">'
+        +'<div class="model">'+esc(p.model)+'</div>'
+        +(p.cat?'<div class="cat">'+esc(p.cat)+'</div>':'')
+        +'<h3 class="name">'+esc(p.en)+'</h3>'
+        +(p.ar?'<div class="name-ar ar">'+esc(p.ar)+'</div>':'')
+        +(p.desc?'<p class="desc">'+esc(p.desc)+'</p>':'')
+        +feats+specs
+        +(tags?'<div class="tags">'+tags+'</div>':'')
+      +'</div></article>';
+  });
+  document.getElementById('list').innerHTML=h;
+  document.getElementById('state').style.display='none';
+}).catch(function(e){
+  document.getElementById('state').innerHTML=
+    '<span class="err">Could not load the catalogue: '+esc(e&&e.message?e.message:'network error')+'.</span><br><br>'
+    +'Make sure the sheet is published: File → Share → Publish to web → CSV.';
+});
+</script>
+</body>
+</html>

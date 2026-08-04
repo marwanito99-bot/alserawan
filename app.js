@@ -7,11 +7,16 @@ function esc(s){
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
     .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 }
+/* Allow http(s), protocol-relative, mailto/tel, anchors and ordinary relative
+   paths. Block every other scheme (javascript:, data:, vbscript:, file: …).
+   Bare relative paths such as "images/x.jpg" must pass: SITE_ROOT is "" on
+   root-level pages, so a stricter prefix test would silently drop them. */
 function safeUrl(u){
   u=String(u==null?'':u).trim();
   if(!u) return '#';
-  if(/^(?:https?:|mailto:|tel:|\/|\.\/|\.\.\/|#)/i.test(u)) return esc(u);
-  return '#';
+  if(/^(?:https?:\/\/|mailto:|tel:|#)/i.test(u)||u.slice(0,2)==='//') return esc(u);
+  if(/^[a-z][a-z0-9+.-]*:/i.test(u)) return '#';
+  return esc(u);
 }
 
 /* ===== MWM IMAGE LOADER ===== */
@@ -135,25 +140,6 @@ function show(id){
   if(r===undefined) return;
   var root=(typeof SITE_ROOT!=='undefined')?SITE_ROOT:'';
   window.location.href = root + (r?r+'/':'');
-}
-/* Companies spotlight accordion.
-   First tap opens the row; tapping an already-open row navigates to that
-   company. On touch screens the small "View Company" link is easy to miss,
-   so the whole open row acts as the link. */
-function spotActivate(i){
-  var target=document.getElementById('spot-'+i);
-  if(target&&target.classList.contains('spot-on')){
-    var go=target.getAttribute('data-go');
-    if(go){ show(go); return; }
-  }
-  for(var j=0;j<3;j++){
-    var row=document.getElementById('spot-'+j);
-    if(row){
-      var on=(j===i);
-      row.classList.toggle('spot-on',on);
-      row.setAttribute('aria-expanded',on?'true':'false');
-    }
-  }
 }
 function goto(id){
   var el=document.getElementById(id);

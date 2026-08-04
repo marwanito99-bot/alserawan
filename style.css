@@ -151,65 +151,11 @@ body.ar .pb-label{left:auto;right:1.2rem}
 .hero-scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;z-index:2;animation:fu 1s .8s ease both}
 .hero-scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,rgba(255,255,255,.3),transparent)}
 .hero-scroll-txt{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2)}
-
-/* COMPANIES — legacy grid (kept for company sub-pages) */
-.co-grid{display:grid;grid-template-columns:repeat(3,1fr);border:0.5px solid rgba(255,255,255,.06)}
-.co-card{padding:2.5rem 2rem;position:relative;overflow:hidden;cursor:pointer;border-right:0.5px solid rgba(255,255,255,.06);transition:background .3s}
-.co-card:last-child{border-right:none}
-.co-card:hover{background:var(--dark2)}
-.co-card::after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--lime));transform:scaleX(0);transform-origin:left;transition:transform .4s}
-.co-card:hover::after{transform:scaleX(1)}
-.co-num{font-size:3.5rem;font-weight:700;color:rgba(29,0,244,.08);position:absolute;top:1rem;right:1.5rem;line-height:1}
-.co-icon{width:42px;height:42px;border:0.5px solid rgba(29,0,244,.25);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;transition:border-color .3s}
-.co-card:hover .co-icon{border-color:var(--blue)}
-.co-icon svg{width:18px;height:18px;stroke:var(--blue);fill:none;stroke-width:1.8}
 .co-tag{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem}
 .co-name{font-size:1.2rem;font-weight:700;margin-bottom:.7rem;line-height:1.2}
 .co-desc{font-size:.8rem;line-height:1.75;color:var(--muted);margin-bottom:1.5rem}
 .co-pills{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.5rem}
 .pill{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.22rem .65rem;border:0.5px solid rgba(29,0,244,.2);color:var(--muted);transition:all .2s}
-.co-card:hover .pill{border-color:rgba(204,253,27,.3);color:var(--text)}
-.co-go{display:inline-flex;align-items:center;gap:6px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--lime);background:none;border:none;cursor:pointer;font-family:inherit;padding:0;transition:gap .2s}
-.co-go:hover{gap:12px}
-.co-go svg{width:12px;height:12px;stroke:var(--lime);fill:none;stroke-width:2.5}
-
-/* COMPANIES SPOTLIGHT — homepage */
-.co-spotlight{border-top:0.5px solid rgba(255,255,255,.06);border-bottom:0.5px solid rgba(255,255,255,.06)}
-.co-spot-row{display:flex;align-items:stretch;border-bottom:0.5px solid rgba(255,255,255,.06);cursor:pointer;position:relative;transition:background .2s}
-.co-spot-row:first-child{border-top:0.5px solid rgba(255,255,255,.06)}
-.co-spot-row:hover{background:rgba(255,255,255,.02)}
-.co-spot-row.spot-on{background:#0d0d1a}
-.co-spot-bar{width:2px;flex-shrink:0;background:transparent;transition:background .3s}
-.co-spot-row.spot-on .co-spot-bar{background:var(--lime)}
-.co-spot-num{font-size:.7rem;font-weight:700;color:rgba(255,255,255,.12);min-width:3.5rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:color .3s;letter-spacing:.05em}
-.co-spot-row.spot-on .co-spot-num{color:var(--lime)}
-.co-spot-icon{width:46px;height:46px;border-radius:50%;border:0.5px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;align-self:center;margin:0 .5rem;transition:all .3s}
-.co-spot-row.spot-on .co-spot-icon{border-color:rgba(204,253,27,.35);background:rgba(204,253,27,.06)}
-.co-spot-icon svg{width:20px;height:20px;stroke:rgba(255,255,255,.22);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
-.co-spot-row.spot-on .co-spot-icon svg{stroke:var(--lime)}
-.co-spot-info{flex:1;padding:1.5rem 1.2rem}
-.co-spot-sec{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.18);font-weight:600;margin-bottom:.3rem;transition:color .3s}
-.co-spot-row.spot-on .co-spot-sec{color:rgba(204,253,27,.5)}
-.co-spot-name{font-size:1.2rem;font-weight:700;color:rgba(255,255,255,.28);transition:color .3s;line-height:1.2}
-.co-spot-row.spot-on .co-spot-name{color:var(--text)}
-.co-spot-row:hover:not(.spot-on) .co-spot-name{color:rgba(255,255,255,.55)}
-.co-spot-expand{max-height:0;overflow:hidden;transition:max-height .42s cubic-bezier(.4,0,.2,1)}
-/* max-height must clear the tallest wrapped state, otherwise the "View Company"
-   button is clipped by overflow:hidden and becomes untappable. Narrow screens
-   wrap the description and pills onto many more lines, so the ceiling rises
-   as the viewport shrinks. */
-.co-spot-row.spot-on .co-spot-expand{max-height:260px}
-.co-spot-desc{font-size:.82rem;color:var(--muted);line-height:1.75;margin-top:.7rem}
-.co-spot-pills{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.8rem}
-.co-spot-pill{font-size:.58rem;padding:.22rem .7rem;border:0.5px solid rgba(255,255,255,.1);border-radius:100px;color:var(--muted);letter-spacing:.05em}
-.co-spot-cta{margin-top:1rem;display:flex;align-items:center;gap:.6rem;font-size:.65rem;font-weight:700;color:var(--lime);letter-spacing:.12em;text-transform:uppercase;background:none;border:none;cursor:pointer;font-family:inherit;padding:0}
-.co-spot-cta-line{height:1px;width:18px;background:var(--lime)}
-.co-spot-bignum{font-size:7rem;font-weight:900;color:rgba(255,255,255,.025);align-self:center;padding-right:2rem;letter-spacing:-.04em;line-height:1;user-select:none;flex-shrink:0;transition:color .3s}
-.co-spot-row.spot-on .co-spot-bignum{color:rgba(204,253,27,.04)}
-body.ar .co-spot-row{flex-direction:row-reverse}
-body.ar .co-spot-bar{right:0;left:auto}
-body.ar .co-spot-bignum{padding-right:0;padding-left:2rem}
-body.ar .co-spot-sec::before{display:none}
 
 /* COMPANIES STATS BAR */
 .co-stats-bar{display:grid;grid-template-columns:repeat(3,1fr);border-top:0.5px solid rgba(255,255,255,.06);background:rgba(255,255,255,.01)}
@@ -386,10 +332,6 @@ body.ar .ar-b{display:block}
 .reveal-delay-2{transition-delay:.2s}
 .reveal-delay-3{transition-delay:.3s}
 .reveal-delay-4{transition-delay:.4s}
-
-/* Enhanced Card Hover Glow */
-.co-card{transition:background .3s,box-shadow .3s,transform .3s}
-.co-card:hover{background:var(--dark2);box-shadow:0 0 0 1px rgba(29,0,244,.4),0 8px 40px rgba(29,0,244,.15);transform:translateY(-4px)}
 .tst-card{transition:border-color .3s,transform .3s,box-shadow .3s}
 .tst-card:hover{border-color:var(--blue);transform:translateY(-5px);box-shadow:0 12px 40px rgba(29,0,244,.2)}
 .val:hover{background:var(--dark3);box-shadow:inset 0 0 0 1px rgba(204,253,27,.15)}
@@ -444,8 +386,6 @@ body.ar .news-item:hover .news-arrow{transform:translateX(-4px) scaleX(-1)}
 @media(max-width:950px){
   nav{padding:0 1.2rem}
   .wrap{padding:4rem 1.5rem}
-  .co-grid{grid-template-columns:1fr}
-  .co-card{border-right:none;border-bottom:1px solid var(--border)}
   .stats{grid-template-columns:repeat(2,1fr)}
   .about-grid,.cert-grid,.contact-grid,.team-grid,.map-grid{grid-template-columns:1fr}
   .svc-grid{grid-template-columns:1fr}
@@ -511,7 +451,6 @@ body.ar .svc-panel{border-left:1px solid var(--border);border-right:3px solid va
 .svc-panel-d{font-size:.92rem;line-height:1.85;color:var(--muted);max-width:680px}
 @media(max-width:600px){.svc-tab{width:62px;padding:.7rem .3rem}.svc-tab-ico{width:22px;height:22px}.svc-panel{padding:1.6rem}.svc-panel-t{font-size:1.2rem}}
 
-
 /* === TESTIMONIALS === */
 .tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
 .tst-card{background:var(--dark2);border:1px solid var(--border);padding:2rem;position:relative;transition:border-color .3s,transform .3s}
@@ -542,7 +481,6 @@ body.ar .news-arrow{transform:scaleX(-1)}
 @media(max-width:900px){.tst-grid{grid-template-columns:1fr}.partner-wall{grid-template-columns:repeat(3,1fr)}.tst-text{min-height:auto}}
 @media(max-width:600px){.partner-wall{grid-template-columns:repeat(2,1fr)}.partner-logo{font-size:.85rem;padding:1.2rem .6rem}}
 
-
 /* === FEEDBACK & NEWS PAGES === */
 .tst-stars{display:flex;gap:.2rem;margin-bottom:1rem}
 .tst-stars svg{width:16px;height:16px;color:var(--lime)}
@@ -561,7 +499,6 @@ body.ar .news-arrow{transform:scaleX(-1)}
 .cnews-title{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:.7rem;line-height:1.35}
 .cnews-text{font-size:.85rem;line-height:1.75;color:var(--muted)}
 @media(max-width:600px){.cnews-grid{grid-template-columns:1fr}.news-tab{padding:.7rem 1rem;font-size:.7rem}}
-
 
 /* === CAREERS PAGE === */
 .careers-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
@@ -586,7 +523,6 @@ body.ar .career-resp li::before{left:auto;right:0}
 body.ar .careers-note{border-left:1px solid var(--border);border-right:3px solid var(--lime)}
 .careers-note b{color:var(--text)}
 @media(max-width:800px){.careers-grid{grid-template-columns:1fr}}
-
 
 /* SOCIAL ICONS */
 .footer-social{display:flex;gap:.7rem;align-items:center}
@@ -676,8 +612,6 @@ body.ar .pc-spec td:last-child{text-align:left}
   .pc-box-top{grid-template-columns:1fr}
 }
 @media(max-width:520px){.pc-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem}.pc-name-en{font-size:.7rem}}
-
-
 
 /* SOURCING PAGE STYLES */
 .src-hero{min-height:70vh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:9rem 3.5rem 5rem;overflow:hidden;border-bottom:1px solid var(--border)}
@@ -808,7 +742,6 @@ body.ar .pc-spec td:last-child{text-align:left}
   .src-stats-bar{grid-template-columns:repeat(2,1fr)}
 }
 
-
 /* MONITORING STYLES */
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -931,7 +864,6 @@ body{font-family:"Space Grotesk",sans-serif;background:var(--black);color:var(--
   .shipping-info{grid-template-columns:1fr}
   .track-container{padding:1rem}
 }
-
 
 /* Override for integration */
 .track-container{max-width:780px;margin:0 auto;padding:0 1.5rem 2rem}
@@ -1155,7 +1087,6 @@ input[type=file]{display:none}
 @keyframes spin{to{transform:rotate(360deg)}}
 .fw-loading-txt{font-size:.8rem;color:var(--muted);letter-spacing:.1em}
 
-
 /* ═══════════════════════════════════════════════════
    DESIGN REFINEMENTS v2 — Precision & Visual Polish
    ═══════════════════════════════════════════════════ */
@@ -1169,8 +1100,6 @@ input[type=file]{display:none}
 .btn-l:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(204,253,27,.16);opacity:1}
 .btn-o:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.3)}
 .nav-links a{transition:color .18s cubic-bezier(.25,.46,.45,.94)}
-.co-spot-row{transition:background .22s cubic-bezier(.25,.46,.45,.94)}
-.co-spot-expand{transition:max-height .5s cubic-bezier(.4,0,.2,1)}
 
 /* — Lime restraint: ticker dots → barely-there — */
 .td{background:rgba(255,255,255,.2);width:3px;height:3px}
@@ -1284,7 +1213,6 @@ body.ar .hr-fill{animation-direction:reverse}
   .nav-links a::after{display:none!important}
 }
 
-
 /* ══════════════════════════════════════════════
    MODERN REFRESH — fluid, rounded, animated
    ══════════════════════════════════════════════ */
@@ -1316,13 +1244,9 @@ body.page-leaving{opacity:0!important;transition:opacity .12s ease!important;poi
              box-shadow .36s cubic-bezier(.22,1,.36,1),
              background .3s ease;
 }
-.co-card{border-radius:12px}
 .pc-card{border-radius:10px;overflow:hidden}
 .pc-box{border-radius:14px;overflow:hidden}
 .req-form{border-radius:12px}
-
-/* ── Tags / Badges / Pills ── */
-.pill,.loc-tag,.co-spot-pill,.career-tag,.market-tag{border-radius:4px}
 .cert-badge,.svc-tab,.news-tab{border-radius:7px}
 .cat-badge{border-radius:5px}
 .svc-tab{border-radius:9px}
@@ -1382,7 +1306,6 @@ body.page-leaving{opacity:0!important;transition:opacity .12s ease!important;poi
 .market-card:hover{transform:translateY(-3px)}
 .cat-card:hover{transform:translateY(-5px);box-shadow:0 10px 36px rgba(204,253,27,.12)}
 .team-card:hover{transform:translateY(-7px);box-shadow:0 24px 60px rgba(29,0,244,.22)}
-.co-card:hover{transform:translateY(-5px)}
 
 /* ── WhatsApp button — smoother ── */
 .wa-btn{border-radius:14px;transition:all .3s cubic-bezier(.22,1,.36,1)}
@@ -1403,11 +1326,6 @@ body.page-leaving{opacity:0!important;transition:opacity .12s ease!important;poi
 /* ── Svc tracker buttons ── */
 .svc-num-btn{border-radius:5px;transition:all .25s cubic-bezier(.22,1,.36,1)}
 
-/* ── Link CTA arrows — smooth slide ── */
-.sec-split-lnk,.co-spot-cta,.co-go{
-  transition:gap .25s cubic-bezier(.22,1,.36,1),color .2s ease;
-}
-
 /* ── Form focus glow ── */
 .form-input:focus,.form-textarea:focus{
   box-shadow:0 0 0 3px rgba(29,0,244,.18);
@@ -1426,15 +1344,10 @@ body.page-leaving{opacity:0!important;transition:opacity .12s ease!important;poi
 
 /* ── Companies spotlight: mobile ── */
 @media(max-width:900px){
-  .co-spot-row.spot-on .co-spot-expand{max-height:420px}
 }
 @media(max-width:600px){
-  .co-spot-row.spot-on .co-spot-expand{max-height:560px}
-  /* Bigger tap target for the CTA on touch devices. */
-  .co-spot-cta{padding:.55rem 0;min-height:44px}
 }
 @media(max-width:520px){
-  .co-spot-row.spot-on .co-spot-expand{max-height:680px}
 }
 
 /* ── Products catalogue: mobile sizing ──
@@ -1470,3 +1383,113 @@ body.page-leaving{opacity:0!important;transition:opacity .12s ease!important;poi
   .pc-name-en{font-size:.64rem}
   .pc-name-loc{font-size:.57rem}
 }
+
+/* ══════════════════════════════════════════
+   PILLARS — shared company showcase
+   Used on the home page and /companies. Photography carries the weight;
+   each pillar owns one accent colour and everything else stays quiet.
+══════════════════════════════════════════ */
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+
+.pil{
+  --pc:var(--blue);
+  position:relative;display:flex;flex-direction:column;overflow:hidden;isolation:isolate;
+  min-height:430px;cursor:pointer;text-align:inherit;
+  background:linear-gradient(168deg,#16162a 0%,#101020 62%,#0c0c16 100%);
+  border:1px solid var(--border);border-radius:4px;
+  font-family:inherit;color:var(--text);padding:0;
+  transition:transform .48s cubic-bezier(.22,1,.36,1),border-color .48s,box-shadow .48s;
+}
+.pil::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;z-index:5;
+  background:linear-gradient(90deg,transparent,var(--pc),transparent);
+  transform:scaleX(0);transition:transform .55s cubic-bezier(.22,1,.36,1)}
+.pil:hover,.pil:focus-visible{
+  transform:translateY(-7px);
+  border-color:color-mix(in srgb,var(--pc) 52%,var(--border));
+  box-shadow:0 26px 58px -26px rgba(0,0,0,.94),
+             0 0 44px -18px color-mix(in srgb,var(--pc) 58%,transparent)}
+.pil:hover::before,.pil:focus-visible::before{transform:scaleX(1)}
+.pil:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+
+/* photograph */
+.pil-pic{position:absolute;inset:0;z-index:0;overflow:hidden}
+.pil-pic img{width:100%;height:100%;object-fit:cover;
+  filter:brightness(.42) saturate(1.15);
+  transition:transform .9s cubic-bezier(.22,1,.36,1),filter .6s}
+.pil:hover .pil-pic img{transform:scale(1.07);filter:brightness(.55) saturate(1.3)}
+.pil-veil{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(8,8,14,.42) 0%,rgba(8,8,14,.72) 44%,rgba(8,8,14,.97) 100%);
+  transition:opacity .6s}
+.pil-glow{position:absolute;inset:0;z-index:1;opacity:0;transition:opacity .6s;
+  background:radial-gradient(110% 72% at 50% 108%,color-mix(in srgb,var(--pc) 34%,transparent),transparent 62%)}
+.pil:hover .pil-glow{opacity:1}
+
+/* oversized index digit, sunk into the artwork */
+.pil-n{position:absolute;top:.9rem;right:1.4rem;z-index:2;
+  font-size:clamp(3.6rem,7vw,5.6rem);font-weight:800;line-height:.8;letter-spacing:-.05em;
+  color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.13);
+  transition:-webkit-text-stroke-color .5s}
+.pil:hover .pil-n{-webkit-text-stroke-color:color-mix(in srgb,var(--pc) 62%,transparent)}
+body.ar .pil-n{right:auto;left:1.4rem}
+
+.pil-body{position:relative;z-index:3;margin-top:auto;padding:1.9rem 1.7rem 1.7rem;display:flex;flex-direction:column}
+.pil-ico{width:44px;height:44px;border:1px solid color-mix(in srgb,var(--pc) 38%,var(--border));
+  border-radius:3px;display:flex;align-items:center;justify-content:center;margin-bottom:1.15rem;
+  background:rgba(8,8,14,.5);backdrop-filter:blur(4px);
+  transition:border-color .45s,background .45s,transform .45s cubic-bezier(.22,1,.36,1)}
+.pil-ico svg{width:19px;height:19px;fill:none;stroke:var(--pc);stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round;transition:stroke .45s}
+.pil:hover .pil-ico{border-color:var(--pc);background:color-mix(in srgb,var(--pc) 15%,rgba(8,8,14,.55));transform:translateY(-3px)}
+
+.pil-sec{font-size:.57rem;letter-spacing:.24em;text-transform:uppercase;color:var(--pc);
+  font-weight:700;margin-bottom:.5rem}
+.pil-name{font-size:clamp(1.15rem,1.9vw,1.5rem);font-weight:800;letter-spacing:-.02em;
+  line-height:1.12;margin-bottom:.7rem}
+.pil-txt{font-size:.79rem;color:rgba(240,237,230,.62);line-height:1.8;font-weight:300;
+  margin-bottom:1.1rem;transition:color .45s}
+.pil:hover .pil-txt{color:rgba(240,237,230,.8)}
+.pil-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.3rem}
+.pil-tags span{font-size:.57rem;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid var(--border);padding:.22rem .58rem;color:var(--muted);border-radius:2px;
+  transition:border-color .45s,color .45s}
+.pil:hover .pil-tags span{border-color:color-mix(in srgb,var(--pc) 34%,var(--border));color:rgba(240,237,230,.82)}
+
+.pil-go{display:inline-flex;align-items:center;gap:.55rem;align-self:flex-start;
+  background:none;border:0;padding:0 0 .3rem;font-family:inherit;
+  font-size:.61rem;font-weight:800;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--pc);cursor:pointer;-webkit-appearance:none;appearance:none;position:relative;
+  transition:gap .34s cubic-bezier(.22,1,.36,1)}
+.pil-go::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:var(--pc);opacity:.34;transition:opacity .34s}
+.pil-go svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.4;
+  transition:transform .34s cubic-bezier(.22,1,.36,1)}
+.pil:hover .pil-go{gap:.9rem}
+.pil:hover .pil-go::after{opacity:1}
+.pil:hover .pil-go svg{transform:translateX(3px)}
+body.ar .pil-go svg{transform:scaleX(-1)}
+body.ar .pil:hover .pil-go svg{transform:scaleX(-1) translateX(3px)}
+body.ar .pil-go::after{transform-origin:right}
+
+@media(max-width:1000px){
+  .pillars{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+  .pil{min-height:390px}
+}
+@media(max-width:700px){
+  .pillars{grid-template-columns:minmax(0,1fr);gap:10px}
+  .pil{min-height:330px}
+  .pil-body{padding:1.5rem 1.3rem 1.4rem}
+  .pil-n{font-size:3.2rem;top:.7rem;right:1.1rem}
+  body.ar .pil-n{left:1.1rem}
+  .pil-txt{font-size:.75rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .pil,.pil-pic img,.pil-ico{transition:none}
+  .pil:hover{transform:none}
+  .pil:hover .pil-pic img{transform:none}
+  .pil:hover .pil-ico{transform:none}
+}
+
+/* Restored after removing the retired spotlight/card components — these
+   selectors were sharing a rule with classes that are now gone. */
+.pill,.loc-tag,.career-tag,.market-tag{border-radius:4px}
+.sec-split-lnk{transition:gap .25s cubic-bezier(.22,1,.36,1),color .2s ease}
