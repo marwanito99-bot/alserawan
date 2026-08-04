@@ -225,6 +225,16 @@ body{font-family:"Space Grotesk",sans-serif;background:var(--black);color:var(--
 .mon-tab-btn:hover:not(.active){color:var(--text);background:rgba(255,255,255,.02)}
 .mon-panel-box{display:none}
 .mon-panel-box.active{display:block}
+.vmap-out{display:flex;align-items:center;justify-content:center;gap:.7rem;flex-wrap:wrap;
+  padding:.85rem 1.2rem;background:var(--dark2);border-top:1px solid var(--border);
+  font-size:.74rem;color:var(--muted)}
+.vmap-out a{display:inline-flex;align-items:center;gap:.4rem;color:var(--lime);
+  text-decoration:none;font-weight:700;letter-spacing:.06em;
+  border-bottom:1px solid rgba(204,253,27,.3);padding-bottom:2px;transition:border-color .25s}
+.vmap-out a:hover{border-bottom-color:var(--lime)}
+.vmap-out svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:520px){.vmap-out{flex-direction:column;gap:.45rem;text-align:center;font-size:.7rem}}
 .map-box{width:100%;height:calc(100vh - 250px);min-height:500px;position:relative;background:var(--dark2)}
 .map-box iframe{width:100%;height:100%;border:none}
 .map-badge-bar{position:absolute;top:1rem;left:1rem;z-index:10;background:rgba(10,10,15,.92);border:1px solid var(--border);padding:.5rem 1rem;backdrop-filter:blur(10px)}
@@ -379,6 +389,13 @@ body{font-family:"Space Grotesk",sans-serif;background:var(--black);color:var(--
     <iframe id="vesselMapIframe" title="MWM Live Vessel Map" style="width:100%;height:100%;border:none;display:block" loading="lazy" allowfullscreen src="about:blank"></iframe>
     <div id="vesselMapFallback" style="display:none"></div>
   </div>
+  <div class="vmap-out">
+    <span class="en">Map not loading on your device?</span><span class="ar-t">الخريطة لا تظهر على جهازك؟</span><span class="cn-t">地图无法加载？</span>
+    <a href="https://www.vesselfinder.com/?lat=25.5&amp;lon=55.3&amp;zoom=6" target="_blank" rel="noopener noreferrer">
+      <span class="en">Open full AIS map</span><span class="ar-t">افتح خريطة AIS كاملة</span><span class="cn-t">打开完整AIS地图</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+    </a>
+  </div>
   <div class="wrap" style="padding-top:2rem;padding-bottom:2rem">
     <div class="mon-info-grid">
       <div class="mon-info-item"><div class="mon-info-ico">🌍</div><div class="mon-info-label">Global</div><div class="mon-info-desc">100,000+ vessels</div></div>
@@ -414,39 +431,64 @@ function switchMon(p,btn){
   document.getElementById('mon-'+p).classList.add('active');
   if(p==='vessel'){ loadVesselMap(); }
 }
+/* Live AIS map.
+   The providers are cross-origin, so the page can never inspect what the
+   iframe rendered \u2014 reading contentDocument always throws, whether the embed
+   succeeded or was blocked. The only reliable signal is whether the frame
+   fires "load" at all, so that is what drives the fallback chain.
+   Mobile browsers are the common failure case: MarineTraffic refuses to embed
+   there, which is why an always-visible escape link sits under the map. */
 function loadVesselMap(){
   if(window.__vfLoaded) return;
   window.__vfLoaded=true;
+
   var f=document.getElementById('vesselMapIframe');
+  var box=document.getElementById('vesselMapFallback');
   if(!f) return;
-  // Primary: MarineTraffic live AIS embed (MENA / UAE focus) - renders in-page, no redirect
-  var MT='https://www.marinetraffic.com/en/ais/embed/zoom:7/centery:25.3/centerx:55.2/maptype:4/shownames:true/mmsi:0/shipid:0/fleet:/fleet_id:/vtypes:/showmenu:false/remember:false';
-  f.src=MT;
-  // Fallback chain: if MarineTraffic is blocked, try VesselFinder embed; if that fails too, show a tappable link
-  var tries=0;
-  function fallback(){
-    tries++;
-    if(tries===1){
-      f.src='https://www.vesselfinder.com/aismap?zoom=7&lat=25.5&lon=55.3&names=true';
-    } else {
-      var box=document.getElementById('vesselMapFallback');
-      f.style.display='none';
-      box.style.display='flex';
-      box.style.alignItems='center';
-      box.style.justifyContent='center';
-      box.style.width='100%';
-      box.style.height='100%';
-      box.innerHTML='<a href="https://www.vesselfinder.com/?lat=25.5&lon=55.3&zoom=7" target="_blank" rel="noopener" style="color:var(--lime,#ccfd1b);background:var(--dark2,#0a0f0f);text-decoration:none;font-weight:600;text-align:center;padding:1rem;display:flex;align-items:center;justify-content:center;width:100%;height:100%">\uD83D\uDEA2 Open Live Vessel Map (AIS) &rarr;</a>';
-    }
+
+  var SOURCES=[
+    'https://www.vesselfinder.com/aismap?zoom=6&lat=25.5&lon=55.3&names=true',
+    'https://www.marinetraffic.com/en/ais/embed/zoom:6/centery:25.3/centerx:55.2/maptype:4/shownames:true/mmsi:0/shipid:0/fleet:/fleet_id:/vtypes:/showmenu:false/remember:false'
+  ];
+  var i=0, settled=false, timer=null;
+
+  function done(){ settled=true; if(timer){clearTimeout(timer);timer=null;} }
+
+  function showLink(){
+    done();
+    if(f) f.style.display='none';
+    if(!box) return;
+    box.style.cssText='display:flex;align-items:center;justify-content:center;'+
+      'width:100%;height:100%;position:absolute;inset:0;background:var(--dark2,#131320);padding:1.5rem';
+    box.innerHTML='<a href="https://www.vesselfinder.com/?lat=25.5&lon=55.3&zoom=6" '+
+      'target="_blank" rel="noopener noreferrer" '+
+      'style="display:flex;flex-direction:column;align-items:center;gap:.8rem;text-align:center;'+
+      'color:#ccfd1b;text-decoration:none;font-weight:700;font-size:.85rem;letter-spacing:.06em">'+
+      '<svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6" '+
+      'stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l2-7h14l2 7M5 11V7a2 2 0 012-2h10a2 2 0 012 2v4"/>'+
+      '<path d="M12 5V3M2 18c2 2 4 2 6 0s4-2 6 0 4 2 6 0"/></svg>'+
+      '<span>Open Live Vessel Map (AIS) &rarr;</span>'+
+      '<span style="font-weight:400;font-size:.72rem;color:#7a7a9a">Opens in a new tab</span></a>';
   }
-  f.addEventListener('error',fallback);
-  // Some embeds fail silently (no error event). Detect a blank iframe after 8s.
-  setTimeout(function(){
-    try{
-      var doc=f.contentDocument||f.contentWindow.document;
-      if(doc && doc.body && doc.body.innerHTML.trim()==='') fallback();
-    }catch(e){ /* cross-origin = it loaded fine, do nothing */ }
-  },8000);
+
+  function tryNext(){
+    if(settled) return;
+    if(i>=SOURCES.length){ showLink(); return; }
+    var src=SOURCES[i++];
+    if(timer) clearTimeout(timer);
+    /* No "load" within 9s means the provider refused the frame. */
+    timer=setTimeout(function(){ if(!settled) tryNext(); },9000);
+    f.src=src;
+  }
+
+  f.addEventListener('load',function(){
+    /* about:blank fires load too \u2014 ignore that first one. */
+    if(!f.src || f.src==='about:blank') return;
+    done();
+  });
+  f.addEventListener('error',function(){ if(!settled) tryNext(); });
+
+  tryNext();
 }
 
 document.addEventListener('DOMContentLoaded',function(){
