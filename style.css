@@ -1769,3 +1769,109 @@ body.ar .trk-cta-btn svg{transform:scaleX(-1)}
   .vals:hover .vals-band img{transform:none}
   .vcard:hover{transform:none}
 }
+
+
+/* ══════════════════════════════════════════
+   REGISTER — three routes into the network
+   Each route owns an accent. The card body slides up on hover to reveal the
+   call to action, so the resting state stays calm and uncluttered.
+══════════════════════════════════════════ */
+.reg{position:relative;overflow:hidden;background:var(--black);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.reg-glow{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(760px 380px at 12% 0%,rgba(204,253,27,.09),transparent 62%),
+    radial-gradient(760px 380px at 88% 100%,rgba(29,0,244,.16),transparent 62%)}
+.reg-in{position:relative;z-index:1;max-width:1500px;margin:0 auto;padding:5.5rem 3.5rem 5rem}
+.reg-head{max-width:660px;margin-bottom:3rem}
+.reg-h{font-size:clamp(1.8rem,4.2vw,3.1rem);font-weight:800;letter-spacing:-.038em;
+  line-height:1.04;margin-bottom:1rem}
+.reg-h .ac{color:var(--lime)}
+.reg-sub{font-size:.88rem;color:var(--muted);font-weight:300;line-height:1.9}
+
+.reg-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.1rem}
+
+.rcard{--rc:var(--lime);position:relative;overflow:hidden;isolation:isolate;
+  display:flex;flex-direction:column;min-height:290px;
+  padding:1.9rem 1.7rem 1.7rem;text-decoration:none;color:var(--text);
+  background:linear-gradient(168deg,#17172c 0%,#111120 62%,#0d0d19 100%);
+  border:1px solid var(--border);border-radius:4px;
+  transition:transform .45s cubic-bezier(.22,1,.36,1),border-color .45s,box-shadow .45s}
+.rcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;z-index:3;
+  background:linear-gradient(90deg,transparent,var(--rc),transparent);
+  transform:scaleX(0);transition:transform .55s cubic-bezier(.22,1,.36,1)}
+.rcard::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;
+  background:radial-gradient(120% 78% at 50% 108%,color-mix(in srgb,var(--rc) 26%,transparent),transparent 64%);
+  transition:opacity .45s}
+.rcard:hover,.rcard:focus-visible{transform:translateY(-6px);
+  border-color:color-mix(in srgb,var(--rc) 52%,var(--border));
+  box-shadow:0 24px 52px -24px rgba(0,0,0,.94),0 0 40px -18px color-mix(in srgb,var(--rc) 55%,transparent)}
+.rcard:hover::before,.rcard:focus-visible::before{transform:scaleX(1)}
+.rcard:hover::after,.rcard:focus-visible::after{opacity:1}
+.rcard:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+
+.rcard-n{position:absolute;top:1.1rem;right:1.4rem;z-index:2;
+  font-size:2.6rem;font-weight:800;line-height:.8;letter-spacing:-.05em;
+  color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.13);
+  transition:-webkit-text-stroke-color .45s}
+.rcard:hover .rcard-n{-webkit-text-stroke-color:color-mix(in srgb,var(--rc) 62%,transparent)}
+body.ar .rcard-n{right:auto;left:1.4rem}
+
+.rcard-ico{position:relative;z-index:2;width:46px;height:46px;flex:0 0 46px;
+  display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;
+  border:1px solid color-mix(in srgb,var(--rc) 34%,var(--border));border-radius:3px;
+  background:rgba(8,8,14,.5);
+  transition:border-color .45s,background .45s,transform .45s cubic-bezier(.22,1,.36,1)}
+.rcard-ico svg{width:20px;height:20px;fill:none;stroke:var(--rc);stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
+.rcard:hover .rcard-ico{border-color:var(--rc);
+  background:color-mix(in srgb,var(--rc) 14%,rgba(8,8,14,.55));transform:translateY(-3px)}
+
+.rcard-t{position:relative;z-index:2;font-size:1.1rem;font-weight:800;letter-spacing:-.015em;
+  margin-bottom:.6rem}
+.rcard-d{position:relative;z-index:2;font-size:.79rem;color:rgba(240,237,230,.56);
+  line-height:1.82;font-weight:300;margin-bottom:1.3rem;transition:color .45s}
+.rcard:hover .rcard-d{color:rgba(240,237,230,.8)}
+
+.rcard-go{position:relative;z-index:2;margin-top:auto;align-self:flex-start;
+  display:inline-flex;align-items:center;gap:.55rem;padding-bottom:.3rem;
+  font-size:.62rem;font-weight:800;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--rc);transition:gap .34s cubic-bezier(.22,1,.36,1)}
+.rcard-go::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:var(--rc);opacity:.34;transition:opacity .34s}
+.rcard-go svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.4;
+  transition:transform .34s cubic-bezier(.22,1,.36,1)}
+.rcard:hover .rcard-go{gap:.9rem}
+.rcard:hover .rcard-go::after{opacity:1}
+.rcard:hover .rcard-go svg{transform:translateX(3px)}
+body.ar .rcard-go svg{transform:scaleX(-1)}
+body.ar .rcard:hover .rcard-go svg{transform:scaleX(-1) translateX(3px)}
+body.ar .rcard-go::after{transform-origin:right}
+
+.reg-note{display:flex;align-items:flex-start;gap:.7rem;margin-top:2rem;padding-top:1.5rem;
+  border-top:1px solid var(--border);font-size:.78rem;color:var(--muted);line-height:1.75;
+  max-width:760px}
+.reg-note svg{flex:0 0 16px;width:16px;height:16px;margin-top:.2rem;
+  fill:none;stroke:var(--lime);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+@media(max-width:1000px){
+  .reg-in{padding:3.6rem 1.5rem 3.2rem}
+  .reg-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem}
+  .rcard{min-height:258px;padding:1.5rem 1.35rem 1.4rem}
+}
+@media(max-width:660px){
+  .reg-grid{grid-template-columns:minmax(0,1fr);gap:.75rem}
+  .rcard{min-height:0;padding:1.25rem 1.2rem 1.3rem}
+  .rcard-n{font-size:1.9rem;top:.9rem;right:1.1rem}
+  body.ar .rcard-n{left:1.1rem;right:auto}
+  .rcard-ico{width:38px;height:38px;flex-basis:38px;margin-bottom:.85rem}
+  .rcard-ico svg{width:17px;height:17px}
+  .rcard-t{font-size:1rem;margin-bottom:.4rem}
+  .rcard-d{font-size:.74rem;line-height:1.72;margin-bottom:1rem}
+  .reg-note{font-size:.73rem;margin-top:1.5rem;padding-top:1.2rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .rcard,.rcard-ico,.rcard-go{transition:none}
+  .rcard:hover{transform:none}
+  .rcard:hover .rcard-ico{transform:none}
+}
