@@ -1102,7 +1102,11 @@ function displayResult(s,products){
       +'.cert-lb-close{position:absolute;top:1.1rem;right:1.2rem;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}'
       +'.cert-lb-close svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.3}'
       +'.cert-lb-hint{position:absolute;bottom:1.4rem;left:0;right:0;text-align:center;color:rgba(240,237,230,.6);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-family:"Space Grotesk","IBM Plex Sans Arabic",sans-serif}'
-      +'@media(max-width:600px){.cert-img{max-width:100%!important}}';
+      /* Mobile only: the certificate photo is landscape, so rotate it 90°
+         inside the lightbox — this lets it use the phone's full screen
+         height instead of being squeezed to a narrow strip. Desktop is
+         untouched (uses the non-rotated rule above). */
+      +'@media(max-width:600px){.cert-img{max-width:100%!important}.cert-lb{padding:0}.cert-lb img{transform:rotate(90deg);max-height:90vw;max-width:88vh;border-width:1px}}';
     document.head.appendChild(style);
 
     var lb=document.createElement('div');
