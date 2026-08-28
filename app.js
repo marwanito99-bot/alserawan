@@ -1086,3 +1086,49 @@ function displayResult(s,products){
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',injectBackBtn);
   else injectBackBtn();
 }());
+
+/* Certificate / license image lightbox — lets visitors view the full-size,
+   full-resolution document (mobile shows it too small to read otherwise). */
+(function(){
+  function init(){
+    var imgs=document.querySelectorAll('.cert-img');
+    if(!imgs.length) return;
+
+    var style=document.createElement('style');
+    style.textContent='.cert-img{cursor:zoom-in}'
+      +'.cert-lb{position:fixed;inset:0;z-index:999;display:none;align-items:center;justify-content:center;background:rgba(6,6,10,.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:2.5rem 1.2rem;box-sizing:border-box}'
+      +'.cert-lb.open{display:flex}'
+      +'.cert-lb img{max-width:min(94vw,900px);max-height:86vh;width:auto;height:auto;object-fit:contain;border:1px solid rgba(255,255,255,.15);background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.6)}'
+      +'.cert-lb-close{position:absolute;top:1.1rem;right:1.2rem;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}'
+      +'.cert-lb-close svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.3}'
+      +'.cert-lb-hint{position:absolute;bottom:1.4rem;left:0;right:0;text-align:center;color:rgba(240,237,230,.6);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-family:"Space Grotesk","IBM Plex Sans Arabic",sans-serif}'
+      +'@media(max-width:600px){.cert-img{max-width:100%!important}}';
+    document.head.appendChild(style);
+
+    var lb=document.createElement('div');
+    lb.className='cert-lb';
+    lb.innerHTML='<button class="cert-lb-close" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg></button><img alt=""><div class="cert-lb-hint">Tap anywhere to close</div>';
+    document.body.appendChild(lb);
+    var lbImg=lb.querySelector('img');
+
+    function open(src,alt){
+      lbImg.src=src;
+      lbImg.alt=alt||'';
+      lb.classList.add('open');
+      document.body.style.overflow='hidden';
+    }
+    function close(){
+      lb.classList.remove('open');
+      document.body.style.overflow='';
+    }
+    lb.addEventListener('click',close);
+    lb.querySelector('img').addEventListener('click',function(e){e.stopPropagation();});
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
+
+    imgs.forEach(function(img){
+      img.addEventListener('click',function(){ open(img.currentSrc||img.src, img.alt); });
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
+  else init();
+}());

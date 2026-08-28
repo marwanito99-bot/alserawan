@@ -388,6 +388,8 @@ body.ar .news-item:hover .news-arrow{transform:translateX(-4px) scaleX(-1)}
   .wrap{padding:4rem 1.5rem}
   .stats{grid-template-columns:repeat(2,1fr)}
   .about-grid,.cert-grid,.contact-grid,.team-grid,.map-grid{grid-template-columns:1fr}
+  .cert-card{padding:1.5rem 1rem}
+  .cert-img{max-width:340px}
   .svc-grid{grid-template-columns:1fr}
   .diff-grid{grid-template-columns:1fr 1fr}
   .footer-in{grid-template-columns:1fr;gap:2rem}
