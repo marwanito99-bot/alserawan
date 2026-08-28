@@ -432,12 +432,24 @@ function switchMon(p,btn){
   if(p==='vessel'){ loadVesselMap(); }
 }
 /* Live AIS map.
+   MarineTraffic's embed endpoint now returns 403 + X-Frame-Options:SAMEORIGIN
+   for every external site (verified directly against their response headers)
+   \u2014 it can no longer be embedded here at all, so it has been dropped from the
+   source list entirely rather than wasting a timeout on a guaranteed failure.
+   VesselFinder's embeddable map is the only source left, but it is flaky
+   under automation/odd network conditions (sometimes hangs, sometimes 403s)
+   \u2014 that flakiness, plus the old 2-source x 9s chain (18s worst case), is
+   what made the map feel "stuck" or slow.
    The providers are cross-origin, so the page can never inspect what the
    iframe rendered \u2014 reading contentDocument always throws, whether the embed
    succeeded or was blocked. The only reliable signal is whether the frame
-   fires "load" at all, so that is what drives the fallback chain.
-   Mobile browsers are the common failure case: MarineTraffic refuses to embed
-   there, which is why an always-visible escape link sits under the map. */
+   fires "load" at all, so that still drives the single remaining attempt,
+   now on a short 5s timeout.
+   Mobile is the least reliable environment for any of these embeds (small
+   viewport, touch/scroll conflicts, historically blocked outright by some
+   providers), so mobile skips the iframe gamble completely and goes
+   straight to the polished "open live map" link \u2014 instant and guaranteed
+   to work, instead of a blank frame that looks broken. */
 function loadVesselMap(){
   if(window.__vfLoaded) return;
   window.__vfLoaded=true;
@@ -446,16 +458,9 @@ function loadVesselMap(){
   var box=document.getElementById('vesselMapFallback');
   if(!f) return;
 
-  var SOURCES=[
-    'https://www.vesselfinder.com/aismap?zoom=6&lat=25.5&lon=55.3&names=true',
-    'https://www.marinetraffic.com/en/ais/embed/zoom:6/centery:25.3/centerx:55.2/maptype:4/shownames:true/mmsi:0/shipid:0/fleet:/fleet_id:/vtypes:/showmenu:false/remember:false'
-  ];
-  var i=0, settled=false, timer=null;
-
-  function done(){ settled=true; if(timer){clearTimeout(timer);timer=null;} }
+  var isMobile = window.matchMedia('(max-width:768px)').matches || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
   function showLink(){
-    done();
     if(f) f.style.display='none';
     if(!box) return;
     box.style.cssText='display:flex;align-items:center;justify-content:center;'+
@@ -471,24 +476,21 @@ function loadVesselMap(){
       '<span style="font-weight:400;font-size:.72rem;color:#7a7a9a">Opens in a new tab</span></a>';
   }
 
-  function tryNext(){
-    if(settled) return;
-    if(i>=SOURCES.length){ showLink(); return; }
-    var src=SOURCES[i++];
-    if(timer) clearTimeout(timer);
-    /* No "load" within 9s means the provider refused the frame. */
-    timer=setTimeout(function(){ if(!settled) tryNext(); },9000);
-    f.src=src;
-  }
+  if(isMobile){ showLink(); return; }
+
+  var settled=false, timer=null;
+  function done(){ settled=true; if(timer){clearTimeout(timer);timer=null;} }
 
   f.addEventListener('load',function(){
     /* about:blank fires load too \u2014 ignore that first one. */
     if(!f.src || f.src==='about:blank') return;
     done();
   });
-  f.addEventListener('error',function(){ if(!settled) tryNext(); });
+  f.addEventListener('error',function(){ if(!settled) showLink(); });
 
-  tryNext();
+  /* No "load" within 5s means the provider is refusing or hanging. */
+  timer=setTimeout(function(){ if(!settled) showLink(); },5000);
+  f.src='https://www.vesselfinder.com/aismap?zoom=6&lat=25.5&lon=55.3&names=true';
 }
 
 document.addEventListener('DOMContentLoaded',function(){
