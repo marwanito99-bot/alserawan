@@ -410,6 +410,8 @@ body{font-family:"Space Grotesk",sans-serif;background:var(--black);color:var(--
 // ═══ CONFIG ═══
 var SHEET_CSV_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vSnWUeztrgT8MTiVVFZhVe0dVpcsyQXzHfS7H-DyN5GYSZ3GnCFJZCkJEflbLOyHA/pub?gid=1234438729&single=true&output=csv';
 var PRODUCTS_CSV_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vSnWUeztrgT8MTiVVFZhVe0dVpcsyQXzHfS7H-DyN5GYSZ3GnCFJZCkJEflbLOyHA/pub?gid=1643766526&single=true&output=csv';
+var VOY_HEADER_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vSnWUeztrgT8MTiVVFZhVe0dVpcsyQXzHfS7H-DyN5GYSZ3GnCFJZCkJEflbLOyHA/pub?gid=357641936&single=true&output=csv';
+var VOY_MOVES_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vSnWUeztrgT8MTiVVFZhVe0dVpcsyQXzHfS7H-DyN5GYSZ3GnCFJZCkJEflbLOyHA/pub?gid=1532892577&single=true&output=csv';
 
 var STAGES=[
   {n:1,en:'Order Confirmed',ar:'تأكيد الطلب'},
@@ -542,6 +544,8 @@ function trackShipment(){
   document.getElementById('result').classList.remove('show');
   document.getElementById('errorMsg').classList.remove('show');
   document.getElementById('loading').classList.add('show');
+  var _vs=document.getElementById('voyageSection');
+  if(_vs){ _vs.style.display='none'; _vs.innerHTML=''; }
 
   fetchCSV(SHEET_CSV_URL).then(function(csv){
     var rows=parseCSV(csv);
@@ -579,7 +583,8 @@ function trackShipment(){
         return pTrack===num;
       });
       displayResult(shipment,prods);
-    }).catch(function(){displayResult(shipment,[])});
+      voyLoad(num);
+    }).catch(function(){displayResult(shipment,[]); voyLoad(num);});
   }).catch(function(err){
     document.getElementById('loading').classList.remove('show');
     document.getElementById('errorMsg').innerHTML='⚠️ Connection error: '+err.message+'<br><small>Try refreshing the page.</small>';
@@ -656,6 +661,238 @@ function displayResult(s,products){
   document.getElementById('emailLink').href='mailto:info.mwm@alserawan.com?subject=Shipment '+s['Tracking #'];
   document.getElementById('result').classList.add('show');
   document.getElementById('result').scrollIntoView({behavior:'smooth'});
+}
+
+/* ══════════ MWM VOYAGE TRACKER ══════════
+   Reads a second, dedicated Google Sheet (one row per shipment for the
+   header/ETA facts, one row per movement for the port-to-port timeline).
+   A shipment only shows this detailed section when its header row has
+   "Show Voyage" = yes — that lets the "basic" shipping-info card above
+   keep working for every shipment, and this richer view layer on top
+   only when the team has actually filled in the voyage sheet for it. */
+function voyNorm(s){ return (s||'').trim() }
+
+function voyIcoTruck(){return '<svg viewBox="0 0 24 24"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>'}
+function voyIcoShip(){return '<svg viewBox="0 0 24 24"><path d="M2 20a4 4 0 004-2 4 4 0 004 2 4 4 0 004-2 4 4 0 004 2 4 4 0 004-2"/><path d="M4 17l1-6h14l1 6"/><path d="M12 11V5M9 5h6"/></svg>'}
+function voyIcoPin(){return '<svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>'}
+function voyIcoPlane(){return '<svg viewBox="0 0 24 24"><path d="M17.8 19.2L16 11l3.5-3.5a2.1 2.1 0 00-3-3L13 8 4.8 6.2a1 1 0 00-.9 1.7L9 11l-2 3H4l-1 2 3.5 1L8 21l2-1v-3l3-2 3.1 5.1a1 1 0 001.7-.9z"/></svg>'}
+
+/* Turns raw parseCSVLine() rows into objects keyed by the header row —
+   same "find the row that has the right column name" approach as the
+   main sheet, so re-ordering columns in Sheets never breaks this. */
+function voyRowsToObjects(rows){
+  var hi=-1;
+  for(var i=0;i<Math.min(6,rows.length);i++){
+    for(var j=0;j<rows[i].length;j++){
+      if(voyNorm(rows[i][j]).toLowerCase()==='tracking #'){ hi=i; break }
+    }
+    if(hi>=0) break;
+  }
+  if(hi<0) return [];
+  var H=rows[hi].map(function(c){return voyNorm(c)});
+  var out=[];
+  for(var r=hi+1;r<rows.length;r++){
+    var v=rows[r];
+    if(!v||!voyNorm(v[0])) continue;
+    var first=voyNorm(v[0]);
+    if(first==='رقم الشحنة') continue;   // helper Arabic-labels row
+    var o={};
+    for(var c=0;c<H.length;c++) o[H[c]]=voyNorm(v[c]);
+    out.push(o);
+  }
+  return out;
+}
+
+/* 2026-09-10 -> Thu 10-SEP-2026 */
+function voyFmtDate(s){
+  s=voyNorm(s);
+  if(!s) return '';
+  var m=s.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if(!m) return s;
+  var MON=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+  var DAY=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var d=new Date(+m[1],+m[2]-1,+m[3]);
+  if(isNaN(d)) return s;
+  return DAY[d.getDay()]+' '+m[3]+'-'+MON[+m[2]-1]+'-'+m[1];
+}
+function voyFmtDateShort(s){
+  var f=voyFmtDate(s);
+  return f||voyNorm(s);
+}
+function voyDaysLeft(s){
+  var m=voyNorm(s).match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if(!m) return null;
+  var target=new Date(+m[1],+m[2]-1,+m[3]);
+  var now=new Date(); now.setHours(0,0,0,0);
+  var diff=Math.round((target-now)/86400000);
+  return diff;
+}
+
+/* Builds the route-track dots from the moves list: one dot per unique
+   location, land moves flagged separately so the track can switch from
+   a solid sea-freight line to a dashed inland-haulage line at the port
+   of discharge. */
+function voyBuildPoints(moves){
+  var pts=[], seen={};
+  moves.forEach(function(m){
+    var loc=voyNorm(m['Location']);
+    if(!loc) return;
+    var label=loc, sub='';
+    if(loc.indexOf('→')>=0){
+      var parts=loc.split('→');
+      label=voyNorm(parts[parts.length-1]);
+    }
+    var isLand=voyNorm(m['Leg']).toLowerCase()==='land';
+    var key=label.toUpperCase();
+    if(seen[key]!==undefined){
+      if(voyNorm(m['Current']).toLowerCase()==='yes') pts[seen[key]].now=true;
+      if(isLand) pts[seen[key]].land=true;
+      return;
+    }
+    seen[key]=pts.length;
+    pts.push({
+      label:label,
+      sub:isLand?'By Truck':'',
+      land:isLand,
+      now:voyNorm(m['Current']).toLowerCase()==='yes'
+    });
+  });
+  var firstLand=-1;
+  for(var i=0;i<pts.length;i++){ if(pts[i].land){ firstLand=i; break } }
+  if(firstLand>0){
+    pts[firstLand-1].sub='Port · Discharge';
+    pts[firstLand-1].portSw=true;
+  }
+  var n=pts.length;
+  pts.forEach(function(p,i){ p.pos = n<=1 ? 0 : Math.round(i*100/(n-1)) });
+  var nowIdx=-1;
+  for(var i=0;i<n;i++){ if(pts[i].now){ nowIdx=i; break } }
+  pts.forEach(function(p,i){ p.done = nowIdx>=0 && i<=nowIdx });
+  return pts;
+}
+
+function voyRender(hdr, moves){
+  var box=document.getElementById('voyageSection');
+  if(!box) return;
+  if(!hdr){ box.style.display='none'; box.innerHTML=''; return }
+
+  var pts=voyBuildPoints(moves);
+  var landStart=100;
+  for(var i=0;i<pts.length;i++){ if(pts[i].land){ landStart=pts[i-1]?pts[i-1].pos:pts[i].pos; break } }
+
+  var prog=parseFloat(voyNorm(hdr['Progress %']))||0;
+  if(prog<0)prog=0; if(prog>100)prog=100;
+
+  var status=voyNorm(hdr['Status']);
+  var cont=voyNorm(hdr['Container #']);
+  var ctype=voyNorm(hdr['Container Type']);
+  var h='<div class="voy"><div class="voy-head"><div class="voy-head-l">'
+    +'<span class="voy-title">Voyage Details</span>'
+    +(status?'<span class="voy-status">'+status+'</span>':'')
+    +(cont?'<span class="voy-cont">Container <b>'+cont+'</b>'+(ctype?' · '+ctype:'')+'</span>':'')
+    +'</div></div>';
+
+  var pol=voyNorm(hdr['POL']), polC=voyNorm(hdr['POL Country']);
+  var dst=voyNorm(hdr['Final Destination']), dstC=voyNorm(hdr['Dest Country']);
+  var hasLand=pts.some(function(p){return p.land});
+
+  h+='<div class="route"><div class="route-ends">'
+    +'<div class="route-end"><span class="route-tag">POL · Origin</span>'
+    +'<span class="route-port">'+pol+(polC?' ('+polC+')':'')+'</span>'
+    +'<span class="route-ico">'+voyIcoTruck()+'</span></div>'
+    +'<div class="route-end to"><span class="route-tag">'
+    +(hasLand?'Final Delivery · Inland':'POD · Destination')
+    +'</span><span class="route-port">'+dst+(dstC?' ('+dstC+')':'')+'</span>'
+    +'<span class="route-ico dest">'+voyIcoPin()+'</span></div></div>';
+
+  if(hasLand){
+    h+='<div class="route-legend">'
+      +'<span class="lg"><i class="lg-sea"></i>Sea Freight</span>'
+      +'<span class="lg"><i class="lg-land"></i>Inland Haulage</span>'
+      +'</div>';
+  }
+
+  h+='<div class="route-track">'
+    +'<div class="route-sea" style="width:'+landStart+'%"></div>'
+    +(hasLand?'<div class="route-land" style="left:'+landStart+'%;width:'+(100-landStart)+'%"></div>':'')
+    +'<div class="route-fill" style="width:'+prog+'%"></div>';
+  pts.forEach(function(p){
+    var cls='route-pt'+(p.done?' done':'')+(p.now?' now':'')+(p.portSw?' port-sw':'');
+    h+='<div class="'+cls+'" style="left:'+p.pos+'%">'
+      +'<div class="route-pt-dot'+(p.land?' land':'')+'"></div>'
+      +'<div class="route-pt-lbl">'+p.label+(p.sub?'<span class="lbl-sub'+(p.land?' land':'')+'">'+p.sub+'</span>':'')+'</div></div>';
+  });
+  h+='</div>';
+
+  var etaP=voyNorm(hdr['ETA Port']), etaPT=voyNorm(hdr['ETA Port Time']);
+  var etaF=voyNorm(hdr['ETA Final']), etaFT=voyNorm(hdr['ETA Final Time']);
+  if(etaP||etaF){
+    h+='<div class="eta">';
+    if(etaP){
+      var dl=voyDaysLeft(etaP);
+      h+='<div class="eta-box"><div class="eta-lbl">ETA Port</div>'
+        +'<div class="eta-date">'+voyFmtDate(etaP)+(etaPT?' · '+etaPT:'')+'</div>'
+        +(dl!==null?'<div class="eta-rem">'+(dl>0?dl+' days remaining':(dl===0?'Today':'Arrived'))+'</div>':'')
+        +'</div>';
+    }
+    if(etaF){
+      var dl2=voyDaysLeft(etaF);
+      h+='<div class="eta-box final"><div class="eta-lbl">ETA Final</div>'
+        +'<div class="eta-date">'+voyFmtDate(etaF)+(etaFT?' · '+etaFT:'')+'</div>'
+        +(dl2!==null?'<div class="eta-rem">'+(dl2>0?dl2+' days remaining':(dl2===0?'Today':'Delivered'))+'</div>':'')
+        +'</div>';
+    }
+    h+='</div>';
+  }
+  h+='</div>'; /* /.route */
+
+  if(moves && moves.length){
+    h+='<div class="moves"><div class="moves-h"><div>Date</div><div>Type</div><div>Location</div><div>Terminal</div><div>Vessel</div></div>';
+    moves.forEach(function(m){
+      var isLand=voyNorm(m['Leg']).toLowerCase()==='land';
+      var isNow=voyNorm(m['Current']).toLowerCase()==='yes';
+      h+='<div class="mv'+(isLand?' inland':'')+(isNow?' on':'')+'">'
+        +'<div class="mv-date"><div class="mv-ico">'+(isLand?voyIcoTruck():voyIcoShip())+'</div>'
+        +'<div><div class="mv-d">'+voyFmtDateShort(m['Date'])+'</div><div class="mv-t">'+voyNorm(m['Time'])+'</div></div></div>'
+        +'<div><span class="mv-badge'+(isLand?' land':'')+'">'+voyNorm(m['Move Type'])+'</span></div>'
+        +'<div class="mv-loc">'+voyNorm(m['Location'])+'</div>'
+        +'<div class="mv-term">'+voyNorm(m['Terminal'])+'</div>'
+        +'<div class="mv-ves">'+(voyNorm(m['Vessel'])||'—')+(voyNorm(m['Voyage'])?' <span>· '+voyNorm(m['Voyage'])+'</span>':'')+'</div>'
+        +'</div>';
+    });
+    h+='</div>';
+  }
+
+  h+='<div class="voy-foot"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>'
+    +'<span>Positions, dates and vessel names are indicative, based on carrier schedules, and may change without notice.</span></div>';
+
+  h+='</div>'; /* /.voy */
+  box.innerHTML=h;
+  box.style.display='block';
+}
+
+/* Fetches the two voyage sheets, finds this shipment's header row, and
+   only renders when the team has explicitly opted it in via the sheet's
+   "Show Voyage" column — shipments without that set simply show nothing
+   here (the basic shipping-info card above still covers them). */
+function voyLoad(trackingNum){
+  var box=document.getElementById('voyageSection');
+  if(!box) return;
+  Promise.all([fetchCSV(VOY_HEADER_URL), fetchCSV(VOY_MOVES_URL)]).then(function(res){
+    var hdrRows=res[0].replace(/\r/g,'').split('\n').map(parseCSVLine);
+    var movesRows=res[1].replace(/\r/g,'').split('\n').map(parseCSVLine);
+    var headers=voyRowsToObjects(hdrRows);
+    var moves=voyRowsToObjects(movesRows);
+    var hdr=null;
+    for(var i=0;i<headers.length;i++){
+      if(voyNorm(headers[i]['Tracking #']).toUpperCase()===trackingNum){ hdr=headers[i]; break }
+    }
+    if(!hdr || voyNorm(hdr['Show Voyage']).toLowerCase()!=='yes'){
+      box.style.display='none'; box.innerHTML=''; return;
+    }
+    var myMoves=moves.filter(function(m){ return voyNorm(m['Tracking #']).toUpperCase()===trackingNum });
+    voyRender(hdr, myMoves);
+  }).catch(function(){ box.style.display='none'; box.innerHTML=''; });
 }
 </script>
 
