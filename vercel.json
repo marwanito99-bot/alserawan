@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/management", "destination": "https://alserawan-management.vercel.app/management/" },
+    { "source": "/management/:path*", "destination": "https://alserawan-management.vercel.app/management/:path*" }
+  ]
+}
