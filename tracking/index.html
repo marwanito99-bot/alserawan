@@ -420,12 +420,9 @@ body{font-family:"Space Grotesk",sans-serif;background:var(--black);color:var(--
   </div>
 </div>
 
+<script src="../network.js"></script>
 <script>
-// ═══ CONFIG ═══
-var SHEET_CSV_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vSnWUeztrgT8MTiVVFZhVe0dVpcsyQXzHfS7H-DyN5GYSZ3GnCFJZCkJEflbLOyHA/pub?gid=1234438729&single=true&output=csv';
-var PRODUCTS_CSV_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vSnWUeztrgT8MTiVVFZhVe0dVpcsyQXzHfS7H-DyN5GYSZ3GnCFJZCkJEflbLOyHA/pub?gid=1643766526&single=true&output=csv';
-var VOY_HEADER_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vSnWUeztrgT8MTiVVFZhVe0dVpcsyQXzHfS7H-DyN5GYSZ3GnCFJZCkJEflbLOyHA/pub?gid=357641936&single=true&output=csv';
-var VOY_MOVES_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vSnWUeztrgT8MTiVVFZhVe0dVpcsyQXzHfS7H-DyN5GYSZ3GnCFJZCkJEflbLOyHA/pub?gid=1532892577&single=true&output=csv';
+// ═══ Data comes from the ALSERAWAN management system (network.js) ═══
 
 var STAGES=[
   {n:1,en:'Order Confirmed',ar:'تأكيد الطلب'},
@@ -512,16 +509,9 @@ function loadVesselMap(){
 document.addEventListener('DOMContentLoaded',function(){
   var inp=document.getElementById('trackInput');
   if(inp) inp.addEventListener('keydown',function(e){if(e.key==='Enter')trackShipment()});
+  var q=new URLSearchParams(location.search).get('code');
+  if(q && inp){ inp.value=q; trackShipment(); }
 });
-
-function fetchCSV(url){
-  return fetch(url).then(function(r){
-    if(!r.ok) throw new Error('HTTP '+r.status);
-    return r.text();
-  }).catch(function(){
-    return fetch('https://corsproxy.io/?url='+encodeURIComponent(url)).then(function(r){return r.text()});
-  });
-}
 
 function parseCSV(text){
   var lines=text.split('\n');
@@ -550,60 +540,70 @@ function parseCSVLine(line){
   return result;
 }
 
-function trackShipment(){
-  var num=document.getElementById('trackInput').value.trim().toUpperCase();
+var lastTrack=null;
+var PAY_STATUS={paid:'PAID',pending:'PENDING',not_paid:'NOT PAID'};
+function trackShipment(phone4){
+  var num=document.getElementById('trackInput').value.trim().toUpperCase().replace(/\s+/g,'');
   if(!num){alert('Please enter a tracking number');return}
-  if(!num.startsWith('MWM-')) num='MWM-'+num;
+  if(num.indexOf('MWM-')!==0) num='MWM-'+num;
+  if(typeof phone4!=='string') phone4=null;
 
-  document.getElementById('result').classList.remove('show');
+  if(!phone4){
+    document.getElementById('result').classList.remove('show');
+    document.getElementById('loading').classList.add('show');
+  }
   document.getElementById('errorMsg').classList.remove('show');
-  document.getElementById('loading').classList.add('show');
   var _vs=document.getElementById('voyageSection');
-  if(_vs){ _vs.style.display='none'; _vs.innerHTML=''; }
+  if(_vs && !phone4){ _vs.style.display='none'; _vs.innerHTML=''; }
 
-  fetchCSV(SHEET_CSV_URL).then(function(csv){
-    var rows=parseCSV(csv);
-    var shipment=null;
-    for(var i=0;i<rows.length;i++){
-      var row=rows[i];
-      var trackVal='';
-      var keys=Object.keys(row);
-      for(var k=0;k<keys.length;k++){
-        var key=keys[k].toLowerCase().trim();
-        if(key.indexOf('tracking')>-1||key.indexOf('track')>-1){trackVal=row[keys[k]].trim().toUpperCase();break}
-      }
-      if(!trackVal&&keys.length>0) trackVal=row[keys[0]].trim().toUpperCase();
-      if(trackVal===num){
-        var v=Object.values(row);
-        shipment={'Tracking #':v[0]||'','Client Name':v[1]||'','Company':v[2]||'','Email':v[3]||'','WhatsApp':v[4]||'','Order Description':v[5]||'','Container #':v[6]||'','Vessel Name':v[7]||'','Port From':v[8]||'','Port To':v[9]||'','Stage (1-10)':v[10]||'1','Last Update':v[11]||'','Notes':v[12]||'','Docs Link':v[13]||'','Total Amount':v[14]||'0','Currency':v[15]||'USD','Payment 1':v[16]||'','Payment 1 Date':v[17]||'','Payment 1 Status':v[18]||'','Payment 2':v[19]||'','Payment 2 Date':v[20]||'','Payment 2 Status':v[21]||'','Payment 3':v[22]||'','Payment 3 Date':v[23]||'','Payment 3 Status':v[24]||''};
-        break;
-      }
-    }
-    if(!shipment){
-      document.getElementById('loading').classList.remove('show');
-      var dbg='';
-      if(rows.length>0){dbg='<br><br><small style="color:var(--muted)">Columns: '+Object.keys(rows[0]).join(', ')+'<br>First value: '+Object.values(rows[0])[0]+'<br>Rows: '+rows.length+'</small>'}
-      document.getElementById('errorMsg').innerHTML='❌ Tracking number "<strong>'+num+'</strong>" not found.'+dbg;
+  ALSR_NET.track(num, phone4).then(function(d){
+    document.getElementById('loading').classList.remove('show');
+    if(!d){
+      document.getElementById('errorMsg').innerHTML='❌ <span class="en">Tracking number</span><span class="ar-t">رقم التتبع</span><span class="cn-t">追踪号</span> "<strong>'+num.replace(/[<>&"]/g,'')+'</strong>" <span class="en">not found.</span><span class="ar-t">غير موجود.</span><span class="cn-t">未找到。</span>';
       document.getElementById('errorMsg').classList.add('show');
       return;
     }
-    fetchCSV(PRODUCTS_CSV_URL).then(function(pcsv){
-      var allProds=parseCSV(pcsv);
-      var prods=allProds.filter(function(p){
-        var pTrack='';
-        var pk=Object.keys(p);
-        for(var k=0;k<pk.length;k++){if(pk[k].toLowerCase().indexOf('tracking')>-1){pTrack=p[pk[k]].trim().toUpperCase();break}}
-        if(!pTrack&&pk.length>0) pTrack=p[pk[0]].trim().toUpperCase();
-        return pTrack===num;
-      });
-      displayResult(shipment,prods);
-      voyLoad(num);
-    }).catch(function(){displayResult(shipment,[]); voyLoad(num);});
+    lastTrack={code:num,data:d};
+    var s={'Tracking #':d.tracking_code||num,'Client Name':d.client||'','Company':d.company||'','Order Description':d.description||'',
+      'Container #':d.container_no||'','Vessel Name':d.vessel||'','Port From':d.port_from||'','Port To':d.port_to||'',
+      'Stage (1-10)':String(d.stage||1),'Last Update':d.last_update||'','Notes':d.notes||'',
+      'Total Amount':d.private&&d.total_amount?String(d.total_amount):'0','Currency':d.currency||'USD'};
+    s.__pays=(d.payments||[]).map(function(p){return {a:Number(p.amount)||0,d:p.date||'',s:PAY_STATUS[p.status]||'PENDING'}});
+    s.__verify=!d.private && d.can_verify;
+    s.__verifyFailed=!!phone4 && !d.private;
+    var prods=(d.items||[]).map(function(i){return {'Tracking #':num,'Product Name':i.product||'','Quantity':i.quantity==null?'':String(i.quantity),'Color':i.color||'','Size':i.size||''}});
+    displayResult(s,prods);
+    if(d.voyage){
+      var v=d.voyage;
+      var hdr={'Status':v.status||'','Container #':v.container_no||'','Container Type':v.container_type||'','POL':v.pol||'','POL Country':v.pol_country||'',
+        'Final Destination':v.final_destination||'','Dest Country':v.dest_country||'','ETA Port':v.eta_port||'','ETA Port Time':v.eta_port_time||'',
+        'ETA Final':v.eta_final||'','ETA Final Time':v.eta_final_time||'','Progress %':v.progress==null?'':String(v.progress)};
+      var moves=(v.moves||[]).map(function(m){return {'Date':m.date||'','Time':m.time||'','Move Type':m.type||'','Location':m.location||'',
+        'Terminal':m.terminal||'','Vessel':m.vessel||'','Voyage':m.voyage||'','Leg':m.leg==='land'?'Land':m.leg==='air'?'Air':'Sea','Current':m.current?'Yes':''}});
+      voyRender(hdr,moves);
+    }
   }).catch(function(err){
     document.getElementById('loading').classList.remove('show');
-    document.getElementById('errorMsg').innerHTML='⚠️ Connection error: '+err.message+'<br><small>Try refreshing the page.</small>';
+    var rl=err&&err.code==='rate_limited';
+    document.getElementById('errorMsg').innerHTML=rl
+      ? '⚠️ <span class="en">Too many lookups. Please wait a few minutes.</span><span class="ar-t">محاولات كثيرة. انتظر بضع دقائق.</span><span class="cn-t">查询过于频繁，请稍后再试。</span>'
+      : '⚠️ <span class="en">Connection error. Please try again.</span><span class="ar-t">خطأ في الاتصال. حاول مجدداً.</span><span class="cn-t">连接错误，请重试。</span>';
     document.getElementById('errorMsg').classList.add('show');
   });
+}
+
+/* Payment details & full name need the last 4 digits of the customer's WhatsApp */
+function verifyBox(failed){
+  return '<div class="pay-verify" style="padding:1rem;border:1px dashed var(--border,#2a2a3a);background:var(--dark3,#16161f)">'
+    +'<div style="font-size:.8rem;color:var(--muted);margin-bottom:.7rem;line-height:1.6">🔒 <span class="en">To see payment details and the full client name, enter the last 4 digits of the WhatsApp number registered for this shipment.</span><span class="ar-t">لعرض تفاصيل الدفع والاسم الكامل، أدخل آخر 4 أرقام من رقم الواتساب المسجل لهذه الشحنة.</span><span class="cn-t">如需查看付款详情和完整客户名称，请输入此货运登记的WhatsApp号码后4位。</span></div>'
+    +(failed?'<div style="font-size:.78rem;color:#ff6b6b;margin-bottom:.6rem"><span class="en">Those digits do not match.</span><span class="ar-t">الأرقام غير مطابقة.</span><span class="cn-t">号码不匹配。</span></div>':'')
+    +'<div style="display:flex;gap:.5rem;max-width:320px"><input id="phone4" class="search-input" inputmode="numeric" maxlength="4" placeholder="• • • •" style="letter-spacing:.4em;text-align:center" dir="ltr">'
+    +'<button class="search-btn" type="button" onclick="verifyPhone()">OK</button></div></div>';
+}
+function verifyPhone(){
+  var v=(document.getElementById('phone4').value||'').replace(/\D/g,'');
+  if(v.length!==4){ document.getElementById('phone4').focus(); return; }
+  trackShipment(v);
 }
 
 function displayResult(s,products){
@@ -625,6 +625,9 @@ function displayResult(s,products){
     tl.innerHTML+='<div class="tl-step '+cls+'"><div class="tl-line"></div><div class="tl-dot">'+(st.n<=stage?'✓':st.n)+'</div><div class="tl-content"><div class="tl-name">'+st.en+'</div><div class="tl-name-ar">'+st.ar+'</div>'+(cls==='current'?'<div class="tl-badge">CURRENT STATUS</div>':'')+'</div></div>';
   }
 
+  document.getElementById('productsSection').style.display='none';
+  document.getElementById('shippingSection').style.display='none';
+  document.getElementById('notesSection').style.display='none';
   if(s['Order Description']){
     document.getElementById('orderDesc').textContent=s['Order Description'];
     document.getElementById('productsSection').style.display='block';
@@ -637,12 +640,18 @@ function displayResult(s,products){
   });
 
   var total=parseFloat(s['Total Amount'])||0;
+  document.getElementById('paymentSection').style.display='none';
+  if(s.__verify){
+    document.getElementById('paymentContent').innerHTML=verifyBox(s.__verifyFailed);
+    document.getElementById('paymentSection').style.display='block';
+    var p4=document.getElementById('phone4'); if(p4) p4.addEventListener('keydown',function(e){if(e.key==='Enter')verifyPhone()});
+  }
   if(total>0){
     var cur=s['Currency']||'USD';
-    var pays=[];
-    if(s['Payment 1'])pays.push({a:parseFloat(s['Payment 1']),d:s['Payment 1 Date'],s:s['Payment 1 Status']});
-    if(s['Payment 2'])pays.push({a:parseFloat(s['Payment 2']),d:s['Payment 2 Date'],s:s['Payment 2 Status']});
-    if(s['Payment 3'])pays.push({a:parseFloat(s['Payment 3']),d:s['Payment 3 Date'],s:s['Payment 3 Status']});
+    var pays=s.__pays?s.__pays.slice():[];
+    if(!s.__pays && s['Payment 1'])pays.push({a:parseFloat(s['Payment 1']),d:s['Payment 1 Date'],s:s['Payment 1 Status']});
+    if(!s.__pays && s['Payment 2'])pays.push({a:parseFloat(s['Payment 2']),d:s['Payment 2 Date'],s:s['Payment 2 Status']});
+    if(!s.__pays && s['Payment 3'])pays.push({a:parseFloat(s['Payment 3']),d:s['Payment 3 Date'],s:s['Payment 3 Status']});
     var paid=pays.reduce(function(sum,p){return sum+(p.s==='PAID'?p.a:0)},0);
     var pct=Math.round(paid/total*100);
     var ph='<div class="payment-grid">';
@@ -889,25 +898,6 @@ function voyRender(hdr, moves){
    only renders when the team has explicitly opted it in via the sheet's
    "Show Voyage" column — shipments without that set simply show nothing
    here (the basic shipping-info card above still covers them). */
-function voyLoad(trackingNum){
-  var box=document.getElementById('voyageSection');
-  if(!box) return;
-  Promise.all([fetchCSV(VOY_HEADER_URL), fetchCSV(VOY_MOVES_URL)]).then(function(res){
-    var hdrRows=res[0].replace(/\r/g,'').split('\n').map(parseCSVLine);
-    var movesRows=res[1].replace(/\r/g,'').split('\n').map(parseCSVLine);
-    var headers=voyRowsToObjects(hdrRows);
-    var moves=voyRowsToObjects(movesRows);
-    var hdr=null;
-    for(var i=0;i<headers.length;i++){
-      if(voyNorm(headers[i]['Tracking #']).toUpperCase()===trackingNum){ hdr=headers[i]; break }
-    }
-    if(!hdr || voyNorm(hdr['Show Voyage']).toLowerCase()!=='yes'){
-      box.style.display='none'; box.innerHTML=''; return;
-    }
-    var myMoves=moves.filter(function(m){ return voyNorm(m['Tracking #']).toUpperCase()===trackingNum });
-    voyRender(hdr, myMoves);
-  }).catch(function(){ box.style.display='none'; box.innerHTML=''; });
-}
 </script>
 
 

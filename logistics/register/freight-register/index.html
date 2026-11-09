@@ -865,8 +865,8 @@ input[type=file]{display:none}
 </div>
 
 <script src="../../../app.js"></script>
+<script src="../../../network.js"></script>
 <script>
-var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwcWKAncwooN_N5ybvNoSmtIn5F86TacxwcPY5LnYGhc11ve_-zoHGdX4p8iVF-qNfX/exec';
 
 var STEPS = [
   {n:1, en:'Company Identity',       ar:'هوية الشركة',                    cn:'公司基本信息'},
@@ -1140,9 +1140,10 @@ function readFileAsBase64(file){
   });
 }
 
+var sending=false;
 function submitForm(){
-  var lang=document.body.classList.contains('ar')?'ar':document.body.classList.contains('cn')?'cn':'en';
-
+  if(sending) return;
+  var lang=ALSR_NET.lang();
   // CR file required
   var crFile=document.getElementById('file-cr');
   if(!crFile.files||!crFile.files.length){
@@ -1150,87 +1151,25 @@ function submitForm(){
     alert(msgs[lang]);
     return;
   }
-
+  sending=true;
   document.getElementById('fw-loading').classList.add('show');
-
-  if(SCRIPT_URL==='YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'){
-    setTimeout(function(){document.getElementById('fw-loading').classList.remove('show');showSuccess();},1500);
-    return;
-  }
-
-  // Read all files as base64, then submit via hidden form
-  Promise.all([
-    readFileAsBase64(document.getElementById('file-cr').files[0]||null),
-    readFileAsBase64(document.getElementById('file-logo').files[0]||null),
-    readFileAsBase64(document.getElementById('file-profile').files[0]||null),
-    readFileAsBase64(document.getElementById('file-warehouse').files[0]||null)
-  ]).then(function(results){
-    var cr=results[0], logo=results[1], profile=results[2], warehouse=results[3];
-
-    // Collect text fields
-    var fd=new FormData(document.getElementById('fw-form'));
-    var textData={};
-    fd.forEach(function(val,key){
-      if(key==='file_cr'||key==='file_logo'||key==='file_profile'||key==='file_warehouse')return;
-      textData[key]=textData[key]?textData[key]+', '+val:val;
-    });
-
-    // Step 1: submit TEXT data via hidden form (no files — keeps payload small & reliable)
-    var uid='fw-'+Date.now();
-    var iframe=document.createElement('iframe');
-    iframe.name=uid; iframe.id=uid; iframe.style.display='none';
-    document.body.appendChild(iframe);
-
-    var hForm=document.createElement('form');
-    hForm.method='POST'; hForm.action=SCRIPT_URL;
-    hForm.target=uid; hForm.style.display='none';
-
-    Object.keys(textData).forEach(function(k){
-      var inp=document.createElement('input');
-      inp.type='hidden'; inp.name=k; inp.value=textData[k];
-      hForm.appendChild(inp);
-    });
-    document.body.appendChild(hForm);
-
-    var done=false;
-    function finish(){
-      if(done)return; done=true;
-      document.getElementById('fw-loading').classList.remove('show');
-      showSuccess();
-      try{document.body.removeChild(hForm);}catch(x){}
-      try{document.body.removeChild(iframe);}catch(x){}
-    }
-    setTimeout(finish, 8000);
-    iframe.onload=finish;
-
-    hForm.submit();
-
-    // Step 2: send files separately as JSON (text/plain bypasses CORS encoding issues)
-    // Fires after 3s to give Step 1 time to complete first
-    if(cr.b64||logo.b64||profile.b64||warehouse.b64){
-      setTimeout(function(){
-        var payload=JSON.stringify({
-          action:'files',
-          company:textData.company_name||'',
-          email:textData.email||'',
-          file_cr_b64:cr.b64,       file_cr_name:cr.name,
-          file_logo_b64:logo.b64,   file_logo_name:logo.name,
-          file_profile_b64:profile.b64, file_profile_name:profile.name,
-          file_warehouse_b64:warehouse.b64, file_warehouse_name:warehouse.name
-        });
-        fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:payload});
-      },3000);
-    }
-
-  }).catch(function(){
+  ALSR_NET.submit('partner_application', document.getElementById('fw-form'), [
+    {input:'file-cr', label:'Commercial registration', kind:'cr'},
+    {input:'file-logo', label:'Logo', kind:'logo'},
+    {input:'file-profile', label:'Company profile', kind:'profile'},
+    {input:'file-warehouse', label:'Warehouse documents', kind:'warehouse'}
+  ]).then(function(res){
     document.getElementById('fw-loading').classList.remove('show');
-    var m={en:'Error reading files. Please try again.',ar:'خطأ في قراءة الملفات. حاول مجدداً.',cn:'读取文件错误，请重试。'};
-    alert(m[lang]);
+    showSuccess(res && res.code);
+  }).catch(function(e){
+    sending=false;
+    document.getElementById('fw-loading').classList.remove('show');
+    alert(ALSR_NET.errorText(e));
   });
 }
 
-function showSuccess(){
-  document.querySelector('.fw-page').innerHTML='<div class="fw-container"><div style="text-align:center;padding:4rem 1rem"><div style="font-size:4rem;margin-bottom:1rem">✅</div><h2 style="font-size:1.5rem;font-weight:700;color:var(--lime);margin-bottom:.6rem"><span class="en">Application Submitted!</span><span class="ar-t">تم إرسال الطلب!</span><span class="cn-t">申请已提交！</span></h2><p style="font-size:.9rem;color:var(--muted);max-width:420px;margin:0 auto 2rem"><span class="en">Our team will review your application and contact you within 2–3 business days via WhatsApp or email.</span><span class="ar-t">سيراجع فريقنا طلبك ويتواصل معك خلال 2–3 أيام عمل عبر واتساب أو البريد الإلكتروني.</span><span class="cn-t">我们的团队将审核您的申请，并在2–3个工作日内通过WhatsApp或邮件与您联系。</span></p><a href="../../../" style="display:inline-block;padding:.85rem 2.5rem;background:var(--lime);color:var(--black);font-weight:700;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none"><span class="en">← Return to Homepage</span><span class="ar-t">→ العودة للرئيسية</span><span class="cn-t">← 返回首页</span></a></div></div>';
+function showSuccess(code){
+  document.querySelector('.fw-page').innerHTML='<div class="fw-container"><div style="text-align:center;padding:4rem 1rem"><div style="font-size:4rem;margin-bottom:1rem">✅</div><h2 style="font-size:1.5rem;font-weight:700;color:var(--lime);margin-bottom:.6rem"><span class="en">Application Submitted!</span><span class="ar-t">تم إرسال الطلب!</span><span class="cn-t">申请已提交！</span></h2><p style="font-size:.9rem;color:var(--muted);max-width:420px;margin:0 auto 2rem"><span class="en">Our team will review your application and contact you within 2–3 business days via WhatsApp or email.</span><span class="ar-t">سيراجع فريقنا طلبك ويتواصل معك خلال 2–3 أيام عمل عبر واتساب أو البريد الإلكتروني.</span><span class="cn-t">我们的团队将审核您的申请，并在2–3个工作日内通过WhatsApp或邮件与您联系。</span></p>'+ALSR_NET.refHtml(code)+'<a href="../../../" style="display:inline-block;padding:.85rem 2.5rem;background:var(--lime);color:var(--black);font-weight:700;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none"><span class="en">← Return to Homepage</span><span class="ar-t">→ العودة للرئيسية</span><span class="cn-t">← 返回首页</span></a></div></div>';
 }
 
 // Position select

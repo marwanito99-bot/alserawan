@@ -409,8 +409,8 @@
 </div>
 
 <script src="../../../app.js"></script>
+<script src="../../../network.js"></script>
 <script>
-var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzXkmQ8b-1EXHUx0fKYMsRt2b0iRzy7bNg3B4NrvDEcdi9ED_WPmvXcfO1d7UC-E7vI/exec';
 
 var STEPS = [
   {n:1, en:'Company Identity',   ar:'هوية الشركة',            cn:'公司基本信息'},
@@ -506,80 +506,33 @@ function readFileAsBase64(file){
     r.readAsDataURL(file);
   });
 }
-function showSuccess(){
+function showSuccess(code){
   document.getElementById('fw-form').style.display='none';
   document.querySelector('.fw-nav').style.display='none';
   document.querySelector('.fw-progress').style.display='none';
-  document.getElementById('fw-success').classList.add('show');
+  var box=document.getElementById('fw-success');
+  var sub=box.querySelector('.fw-success-sub');
+  if(code && sub && !box.querySelector('.alsr-ref')) sub.insertAdjacentHTML('afterend', ALSR_NET.refHtml(code));
+  box.classList.add('show');
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
+var sending=false;
 function submitForm(){
+  if(sending) return;
+  sending=true;
   document.getElementById('fw-loading').classList.add('show');
-
-  if(SCRIPT_URL.indexOf('PASTE_YOUR')===0){
-    setTimeout(function(){
-      document.getElementById('fw-loading').classList.remove('show');
-      showSuccess();
-    },1200);
-    return;
-  }
-
-  Promise.all([
-    readFileAsBase64((document.getElementById('file-catalogue').files||[])[0]||null),
-    readFileAsBase64((document.getElementById('file-licence').files||[])[0]||null),
-    readFileAsBase64((document.getElementById('file-factory').files||[])[0]||null)
-  ]).then(function(files){
-    var fd=new FormData(document.getElementById('fw-form'));
-    var textData={};
-    fd.forEach(function(val,key){
-      if(key.indexOf('file_')===0) return;
-      textData[key]=textData[key]?textData[key]+', '+val:val;
-    });
-    textData['submitted_at']=new Date().toISOString();
-
-    var uid='sp-'+Date.now();
-    var iframe=document.createElement('iframe');
-    iframe.name=uid; iframe.id=uid; iframe.style.display='none';
-    document.body.appendChild(iframe);
-
-    var hForm=document.createElement('form');
-    hForm.method='POST'; hForm.action=SCRIPT_URL;
-    hForm.target=uid; hForm.style.display='none';
-    Object.keys(textData).forEach(function(k){
-      var i=document.createElement('input');
-      i.type='hidden'; i.name=k; i.value=textData[k];
-      hForm.appendChild(i);
-    });
-    document.body.appendChild(hForm);
-
-    var done=false;
-    function finish(){
-      if(done) return; done=true;
-      document.getElementById('fw-loading').classList.remove('show');
-      showSuccess();
-      try{document.body.removeChild(hForm);}catch(x){}
-      try{document.body.removeChild(iframe);}catch(x){}
-    }
-    setTimeout(finish,8000);
-    iframe.onload=finish;
-    hForm.submit();
-
-    var cf=(document.getElementById('file-catalogue').files||[])[0];
-    var lf=(document.getElementById('file-licence').files||[])[0];
-    var ff=(document.getElementById('file-factory').files||[])[0];
-    if(files[0]||files[1]||files[2]){
-      setTimeout(function(){
-        var payload=JSON.stringify({
-          form_type:'supplier_registration_files',
-          company_name:textData.company_name||'',
-          file_catalogue:files[0], file_catalogue_name:cf?cf.name:'',
-          file_licence:files[1],   file_licence_name:lf?lf.name:'',
-          file_factory:files[2],   file_factory_name:ff?ff.name:''
-        });
-        fetch(SCRIPT_URL,{method:'POST',mode:'no-cors',body:payload});
-      },3000);
-    }
+  ALSR_NET.submit('supplier_registration', document.getElementById('fw-form'), [
+    {input:'file-catalogue', label:'Product catalogue', kind:'catalogue'},
+    {input:'file-licence', label:'Business licence', kind:'licence'},
+    {input:'file-factory', label:'Factory photos', kind:'factory'}
+  ]).then(function(res){
+    document.getElementById('fw-loading').classList.remove('show');
+    showSuccess(res && res.code);
+  }).catch(function(e){
+    sending=false;
+    document.getElementById('fw-loading').classList.remove('show');
+    alert(ALSR_NET.errorText(e));
   });
 }
 
