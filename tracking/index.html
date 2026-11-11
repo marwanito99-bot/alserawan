@@ -566,6 +566,7 @@ function trackShipment(phone4){
     lastTrack={code:num,data:d};
     var s={'Tracking #':d.tracking_code||num,'Client Name':d.client||'','Company':d.company||'','Order Description':d.description||'',
       'Container #':d.container_no||'','Vessel Name':d.vessel||'','Port From':d.port_from||'','Port To':d.port_to||'',
+      'Mode':d.mode||'sea','Airline':d.airline||'','Flight':d.flight_no||'','AWB':d.awb_no||'','ETD':d.etd||'',
       'Stage (1-10)':String(d.stage||1),'Last Update':d.last_update||'','Notes':d.notes||'',
       'Total Amount':d.private&&d.total_amount?String(d.total_amount):'0','Currency':d.currency||'USD'};
     s.__pays=(d.payments||[]).map(function(p){return {a:Number(p.amount)||0,d:p.date||'',s:PAY_STATUS[p.status]||'PENDING'}});
@@ -667,13 +668,24 @@ function displayResult(s,products){
   }
 
   var cn=s['Container #'],vs=s['Vessel Name'],pf=s['Port From'],pt=s['Port To'];
-  if(cn||vs||pf){
-    var sh='';
-    if(pf)sh+='<div class="si-item"><div class="si-label">Origin</div><div class="si-value">'+pf+'</div></div>';
-    if(pt)sh+='<div class="si-item"><div class="si-label">Destination</div><div class="si-value">'+pt+'</div></div>';
-    if(cn)sh+='<div class="si-item"><div class="si-label">Container</div><div class="si-value" style="font-weight:700;letter-spacing:.05em">'+cn+'</div></div>';
-    if(vs)sh+='<div class="si-item"><div class="si-label">Vessel</div><div class="si-value">'+vs+'</div></div>';
-    if(cn)sh+='<div class="si-map-btn"><a href="https://www.vesselfinder.com/?imo=0&name='+encodeURIComponent(vs||cn)+'" target="_blank" rel="noopener noreferrer">🗺️ VIEW ON LIVE MAP →</a></div>';
+  var md=s['Mode']||'sea',air=md==='air',al=s['Airline'],fl=s['Flight'],awb=s['AWB'],etd=s['ETD'];
+  var MODES={sea:['Sea freight','شحن بحري','海运'],air:['Air freight','شحن جوي','空运'],land:['Land freight','شحن بري','陆运'],courier:['Express courier','شحن سريع','快递'],rail:['Rail freight','شحن بالقطار','铁路运输']};
+  var esc=function(x){return String(x).replace(/[<>&"]/g,function(c){return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]})};
+  if(cn||vs||pf||pt||air||al||fl||awb){
+    var sh='',mm=MODES[md]||MODES.sea;
+    if(md!=='sea')sh+='<div class="si-item"><div class="si-label">Mode</div><div class="si-value"><span class="en">'+mm[0]+'</span><span class="ar-t">'+mm[1]+'</span><span class="cn-t">'+mm[2]+'</span></div></div>';
+    if(pf)sh+='<div class="si-item"><div class="si-label">Origin</div><div class="si-value">'+esc(pf)+'</div></div>';
+    if(pt)sh+='<div class="si-item"><div class="si-label">Destination</div><div class="si-value">'+esc(pt)+'</div></div>';
+    if(etd)sh+='<div class="si-item"><div class="si-label">Departure (ETD)</div><div class="si-value">'+esc(etd)+'</div></div>';
+    if(air){
+      if(awb)sh+='<div class="si-item"><div class="si-label">Air waybill (AWB)</div><div class="si-value" style="font-weight:700;letter-spacing:.05em">'+esc(awb)+'</div></div>';
+      if(al)sh+='<div class="si-item"><div class="si-label">Airline</div><div class="si-value">'+esc(al)+'</div></div>';
+      if(fl)sh+='<div class="si-item"><div class="si-label">Flight</div><div class="si-value">'+esc(fl)+'</div></div>';
+    }else{
+      if(cn)sh+='<div class="si-item"><div class="si-label">Container</div><div class="si-value" style="font-weight:700;letter-spacing:.05em">'+esc(cn)+'</div></div>';
+      if(vs)sh+='<div class="si-item"><div class="si-label">Vessel</div><div class="si-value">'+esc(vs)+'</div></div>';
+      if(cn&&md==='sea')sh+='<div class="si-map-btn"><a href="https://www.vesselfinder.com/?imo=0&name='+encodeURIComponent(vs||cn)+'" target="_blank" rel="noopener noreferrer">🗺️ VIEW ON LIVE MAP →</a></div>';
+    }
     document.getElementById('shippingInfo').innerHTML=sh;
     document.getElementById('shippingSection').style.display='block';
   }
@@ -870,12 +882,12 @@ function voyRender(hdr, moves){
   h+='</div>'; /* /.route */
 
   if(moves && moves.length){
-    h+='<div class="moves"><div class="moves-h"><div>Date</div><div>Type</div><div>Location</div><div>Terminal</div><div>Vessel</div></div>';
+    h+='<div class="moves"><div class="moves-h"><div>Date</div><div>Type</div><div>Location</div><div>Terminal</div><div>Vessel / Flight</div></div>';
     moves.forEach(function(m){
       var isLand=voyNorm(m['Leg']).toLowerCase()==='land';
       var isNow=voyNorm(m['Current']).toLowerCase()==='yes';
       h+='<div class="mv'+(isLand?' inland':'')+(isNow?' on':'')+'">'
-        +'<div class="mv-date"><div class="mv-ico">'+(isLand?voyIcoTruck():voyIcoShip())+'</div>'
+        +'<div class="mv-date"><div class="mv-ico">'+(isLand?voyIcoTruck():voyNorm(m['Leg']).toLowerCase()==='air'?voyIcoPlane():voyIcoShip())+'</div>'
         +'<div><div class="mv-d">'+voyFmtDateShort(m['Date'])+'</div><div class="mv-t">'+voyNorm(m['Time'])+'</div></div></div>'
         +'<div><span class="mv-badge'+(isLand?' land':'')+'">'+voyNorm(m['Move Type'])+'</span></div>'
         +'<div class="mv-loc">'+voyNorm(m['Location'])+'</div>'
